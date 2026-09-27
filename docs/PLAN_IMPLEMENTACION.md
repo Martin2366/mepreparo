@@ -431,9 +431,8 @@ C:\MePreparo\
 | D7 | 2026-09-27 | Ícono de app redibujado en vector (cuaderno + M + chispa) | El PNG del board mide 152 px; la versión final se revisa el Día 8 |
 | D8 | 2026-09-27 | Proyecto EAS en la cuenta `unkownnigga17` (confirmado por el fundador) · CI con Node 24 | — |
 | D9 | 2026-09-27 | `.easignore` excluye `assets/brand/` y `docs/` | La primera subida pesaba 59 MB por los originales de marca |
-
-**Pendiente de decisión del fundador (Día 3):** texto blanco sobre celeste `#4FB3E8` tiene contraste 2,4:1
-(no cumple AA, ni siquiera para texto grande). Opciones: fondo `sky-700 #1F86C0` con texto blanco (4,0:1; pasa AA solo para texto grande), o tinta sobre celeste (6:1).
+| D10 | 2026-09-27 | Botón primario: **texto tinta sobre celeste** (6:1, AA). Decidido por el fundador | Blanco sobre `#4FB3E8` daba 2,4:1 (no cumple AA) |
+| D11 | 2026-09-27 | Plan **Starter** de Expo (lo contrató el fundador) | Cupo Free agotado; el Build #1 no podía esperar al 1 de octubre |
 
 ## 11. Bitácora diaria
 | Día | Hecho | Pendiente | Bloqueos |

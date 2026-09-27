@@ -15,7 +15,7 @@ const BOX = {
 } as const;
 
 const LABEL = {
-  primary: 'text-white',
+  primary: 'text-ink', // tinta sobre celeste: 6:1 (AA). Blanco daba 2,4:1.
   secondary: 'text-ink',
   ghost: 'text-sky-700',
 } as const;
