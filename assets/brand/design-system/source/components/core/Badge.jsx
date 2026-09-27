@@ -1,0 +1,4 @@
+import React from 'react';
+const T={sky:['var(--mp-sky-100)','var(--mp-sky-700)','var(--mp-sky-200)'],ink:['var(--mp-ink)','var(--mp-white)','var(--mp-ink)'],coral:['var(--mp-coral-50)','var(--mp-coral-600)','var(--mp-coral-100)'],green:['var(--success-soft)','var(--success-text)','var(--mp-green-100)'],neutral:['var(--surface-sunken)','var(--text-muted)','var(--border-default)']};
+export function Badge({tone='sky',children,style}){const [bg,fg,bd]=T[tone]||T.sky;
+  return <span style={{display:'inline-flex',alignItems:'center',gap:4,height:26,padding:'0 10px',borderRadius:'var(--radius-pill)',background:bg,color:fg,border:'1px solid '+bd,font:'var(--fw-semibold) 13px/1 var(--font-sans)',whiteSpace:'nowrap',...style}}>{children}</span>;}

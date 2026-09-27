@@ -1,0 +1,3 @@
+/** Centered modal card (28px radius) with optional Equis illustration and stacked actions. */
+export interface DialogProps{ open?:boolean; title?:React.ReactNode; children?:React.ReactNode; actions?:React.ReactNode; illustration?:React.ReactNode; onClose?:()=>void; /** Render without scrim (for previews) */ inline?:boolean; style?:React.CSSProperties; }
+export declare function Dialog(props:DialogProps):JSX.Element|null;

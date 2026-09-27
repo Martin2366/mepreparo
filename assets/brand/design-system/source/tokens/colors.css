@@ -1,0 +1,22 @@
+:root{
+/* Brand palette — exact */
+--mp-ink:#1E2A4A;--mp-sky:#4FB3E8;--mp-coral:#FF7A59;--mp-paper:#FBF8F2;--mp-graphite:#5B6475;--mp-green:#2FBF71;
+/* Tints / shades (derived, used sparingly) */
+--mp-ink-900:#141C33;--mp-ink-700:#2C3A60;
+--mp-sky-50:#EEF7FD;--mp-sky-100:#DCEFFA;--mp-sky-200:#B9DFF5;--mp-sky-600:#2FA0DC;--mp-sky-700:#1F86C0;
+--mp-coral-50:#FFF1EC;--mp-coral-100:#FFDCD0;--mp-coral-600:#F2603D;
+--mp-green-50:#EAF7EF;--mp-green-100:#CDEEDB;--mp-green-700:#23995A;
+--mp-graphite-300:#A9AFBB;--mp-graphite-200:#CDD1D8;--mp-graphite-100:#E6E8EC;
+--mp-paper-2:#F5F0E6;--mp-line:#E7E1D5;--mp-white:#FFFFFF;
+--mp-grid-line:rgba(30,42,74,.07);
+/* Semantic aliases */
+--text-body:var(--mp-ink);--text-strong:var(--mp-ink);--text-muted:var(--mp-graphite);--text-subtle:var(--mp-graphite-300);--text-on-interactive:var(--mp-white);--text-link:var(--mp-sky-700);
+--surface-page:var(--mp-paper);--surface-card:var(--mp-white);--surface-sunken:var(--mp-paper-2);--surface-selected:var(--mp-sky-100);--surface-hover:var(--mp-sky-50);
+--border-default:var(--mp-line);--border-strong:var(--mp-graphite-200);--border-ink:var(--mp-ink);--border-focus:var(--mp-sky);
+--interactive:var(--mp-sky);--interactive-hover:var(--mp-sky-600);--interactive-press:var(--mp-sky-700);--interactive-soft:var(--mp-sky-100);
+--accent:var(--mp-coral);--accent-soft:var(--mp-coral-50);
+--success:var(--mp-green);--success-soft:var(--mp-green-50);--success-text:var(--mp-green-700);
+/* No red in the brand: "incorrect" is calm & neutral, never alarming */
+--retry:var(--mp-graphite);--retry-soft:var(--mp-graphite-100);
+--disabled-bg:var(--mp-graphite-100);--disabled-fg:var(--mp-graphite-300);
+}

@@ -1,0 +1,3 @@
+/** Lucide line icon (2px stroke) tinted via currentColor. Substitute icon set — see readme ICONOGRAPHY. */
+export interface IconProps{ /** Lucide icon name, e.g. "arrow-right", "bookmark", "lightbulb", "check" */ name:string; size?:number; color?:string; /** Accessible label; omit for decorative */ label?:string; style?:React.CSSProperties; }
+export declare function Icon(props:IconProps):JSX.Element;

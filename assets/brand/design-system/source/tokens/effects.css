@@ -1,0 +1,11 @@
+:root{
+--shadow-xs:0 1px 2px rgba(30,42,74,.06);
+--shadow-card:0 1px 2px rgba(30,42,74,.05),0 6px 20px rgba(30,42,74,.06);
+--shadow-raised:0 2px 4px rgba(30,42,74,.06),0 12px 32px rgba(30,42,74,.10);
+--focus-ring:0 0 0 3px rgba(79,179,232,.40);
+--overlay-scrim:rgba(30,42,74,.36);
+--ease-out:cubic-bezier(.2,.7,.2,1);/* @kind other */--ease-pop:cubic-bezier(.34,1.56,.64,1);/* @kind other */
+--dur-fast:120ms;/* @kind other */--dur-base:200ms;/* @kind other */--dur-slow:320ms;/* @kind other */
+/* Notebook grid motif */
+--bg-grid:linear-gradient(var(--mp-grid-line) 1px,transparent 1px) 0 0/var(--grid-cell) var(--grid-cell),linear-gradient(90deg,var(--mp-grid-line) 1px,transparent 1px) 0 0/var(--grid-cell) var(--grid-cell);
+}

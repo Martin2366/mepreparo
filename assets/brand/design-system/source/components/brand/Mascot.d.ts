@@ -1,0 +1,3 @@
+/** Equis — the mascot ("la incógnita que aprendes a resolver"). */
+export interface MascotProps{ pose?:'saludo'|'pensando'|'senalando'|'aja'|'explicando'|'celebrando'|'estudiando'|'descansando'|'frontal'|'tres-cuartos'|'perfil'|'curioso'|'aja-cara'|'tranquilo'|'apoyo'|'mini'; size?:number; assetBase?:string; alt?:string; style?:React.CSSProperties; }
+export declare function Mascot(props:MascotProps):JSX.Element;

@@ -1,0 +1,4 @@
+import React from 'react';
+const POSES={saludo:'equis-saludo',pensando:'equis-pensando',senalando:'equis-senalando',aja:'equis-aja',explicando:'equis-explicando',celebrando:'equis-celebrando',estudiando:'equis-estudiando',descansando:'equis-descansando',frontal:'equis-frontal','tres-cuartos':'equis-3-4',perfil:'equis-perfil',curioso:'expr-curioso','aja-cara':'expr-aja',tranquilo:'expr-tranquilo',apoyo:'expr-apoyo',mini:'equis-32'};
+export function Mascot({pose='saludo',size=120,assetBase='assets/',alt,style}){
+  return <img src={assetBase+'mascot/'+(POSES[pose]||POSES.saludo)+'.png'} alt={alt||'Equis'} style={{height:size,width:'auto',display:'block',...style}}/>;}

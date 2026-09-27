@@ -1,0 +1,25 @@
+<!-- @dsCard group="App" viewport="1000x860" name="MePreparo app" subtitle="Inicio → ejercicio → resumen click-through" -->
+<!doctype html><html><head><meta charset="utf-8"><title>MePreparo — App UI kit</title><link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>body{margin:0;min-height:100vh;background:var(--bg-grid),var(--mp-paper-2);font-family:var(--font-sans);color:var(--text-body);display:flex;align-items:center;justify-content:center;padding:24px;box-sizing:border-box}a{color:var(--text-link)}a:hover{color:var(--mp-ink)}</style>
+</head><body><div id="root"></div>
+<script type="text/babel" src="Home.jsx"></script><script type="text/babel" src="Exercise.jsx"></script><script type="text/babel" src="Summary.jsx"></script>
+<script type="text/babel">
+const {BottomNav}=window.MePreparoDesignSystem_20851d;
+function App(){const [s,setS]=React.useState(()=>localStorage.getItem('mp-kit-screen')||'home');React.useEffect(()=>localStorage.setItem('mp-kit-screen',s),[s]);
+  const tab=s==='progress'?'progress':s==='home'?'home':'practice';const showNav=s==='home'||s==='progress';
+  return <div style={{width:390,height:800,borderRadius:40,overflow:'hidden',background:'var(--surface-page)',boxShadow:'var(--shadow-raised)',border:'8px solid var(--mp-ink)',display:'flex',flexDirection:'column'}}>
+    <div style={{height:36,flex:'none',display:'flex',alignItems:'center',justifyContent:'space-between',padding:'0 24px',font:'600 13px/1 var(--font-sans)'}}><span>9:41</span><span style={{width:90,height:22,borderRadius:999,background:'var(--mp-ink)'}}></span><span>100%</span></div>
+    <div style={{flex:1,overflow:'auto'}} className={s==='home'?'':''}>
+      {s==='home'&&<HomeScreen onStart={()=>setS('exercise')}/>}
+      {s==='exercise'&&<ExerciseScreen onExit={()=>setS('home')} onFinish={()=>setS('summary')}/>}
+      {s==='summary'&&<SummaryScreen onHome={()=>setS('home')} onAgain={()=>setS('exercise')}/>}
+      {s==='progress'&&<ProgressScreen/>}
+    </div>
+    {showNav&&<BottomNav value={tab} onChange={v=>setS(v==='practice'?'exercise':v==='me'?'home':v)} items={[{value:'home',label:'Inicio',icon:'house'},{value:'practice',label:'Practicar',icon:'pencil-line'},{value:'progress',label:'Progreso',icon:'chart-line'},{value:'me',label:'Perfil',icon:'user'}]}/>}
+  </div>;}
+(function go(){if(window.MePreparoDesignSystem_20851d&&window.ExerciseScreen)ReactDOM.createRoot(document.getElementById('root')).render(<App/>);else setTimeout(go,50)})();
+</script></body></html>

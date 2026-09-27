@@ -1,0 +1,5 @@
+import React from 'react';
+export function Tabs({tabs=[],value,defaultValue,onChange,style}){const [v,setV]=React.useState(defaultValue??(tabs[0]&&(tabs[0].value??tabs[0])));const cur=value??v;
+  return <div role="tablist" style={{display:'inline-flex',gap:4,padding:4,borderRadius:999,background:'var(--surface-sunken)',border:'1px solid var(--border-default)',...style}}>
+   {tabs.map(t=>{const val=t.value??t,lab=t.label??t,on=val===cur;return <button key={val} role="tab" aria-selected={on} onClick={()=>{setV(val);onChange&&onChange(val)}}
+     style={{height:36,padding:'0 18px',borderRadius:999,border:'none',cursor:'pointer',background:on?'var(--surface-card)':'transparent',boxShadow:on?'var(--shadow-xs)':'none',color:on?'var(--text-body)':'var(--text-muted)',font:(on?'var(--fw-semibold)':'var(--fw-medium)')+' 15px/1 var(--font-sans)',transition:'all var(--dur-fast) var(--ease-out)'}}>{lab}</button>})}</div>;}

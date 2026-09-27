@@ -1,0 +1,5 @@
+import React from 'react';
+export function Tooltip({content,children,placement='top',tone='ink',forceOpen=false}){const [o,setO]=React.useState(false);const open=forceOpen||o;
+  const ink=tone==='ink';const pos=placement==='bottom'?{top:'calc(100% + 8px)'}:{bottom:'calc(100% + 8px)'};
+  return <span style={{position:'relative',display:'inline-flex'}} onMouseEnter={()=>setO(true)} onMouseLeave={()=>setO(false)} onFocus={()=>setO(true)} onBlur={()=>setO(false)}>{children}
+   {open&&<span role="tooltip" style={{position:'absolute',left:'50%',transform:'translateX(-50%)',...pos,whiteSpace:'nowrap',padding:'8px 12px',borderRadius:'var(--radius-sm)',background:ink?'var(--mp-ink)':'var(--mp-sky-100)',color:ink?'var(--mp-white)':'var(--mp-ink)',font:'var(--fw-medium) 13px/1.2 var(--font-sans)',boxShadow:'var(--shadow-card)',zIndex:50,pointerEvents:'none'}}>{content}</span>}</span>;}

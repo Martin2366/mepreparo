@@ -1,0 +1,22 @@
+<!-- @dsCard group="Components" viewport="700x400" name="Feedback" subtitle="Dialog, Toast, Tooltip, ProgressBar" -->
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>body{margin:0;padding:24px;background:var(--surface-page);font-family:var(--font-sans);color:var(--text-body)}.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}.col{display:flex;flex-direction:column;gap:16px}.lab{font:600 11px/1 var(--font-sans);letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);width:84px;flex:none}</style>
+</head><body><div id="root"></div>
+<script type="text/babel">
+const D=window.MePreparoDesignSystem_20851d;const {Dialog,Toast,Tooltip,ProgressBar,Button,IconButton,Mascot}=D;
+
+function App(){return <div className="row" style={{alignItems:'flex-start',gap:24}}>
+<Dialog inline title="¡Terminaste la sesión!" illustration={<Mascot pose="celebrando" size={96} assetBase="../../assets/"/>} actions={<><Button fullWidth>Seguir practicando</Button><Button fullWidth variant="ghost">Ver resumen</Button></>} style={{width:300,padding:'24px 20px 16px'}}>Resolviste 8 de 10. Vas a tu ritmo.</Dialog>
+<div className="col" style={{flex:1,paddingTop:8}}>
+<ProgressBar value={3} max={10} label="Ejercicio 3 de 10"/>
+<ProgressBar value={82} tone="green" label="Funciones" showValue/>
+<Toast tone="success">Ejercicio guardado</Toast>
+<Toast tone="aja">¡Momento ajá! Lo lograste solo.</Toast>
+<div className="row" style={{paddingTop:36,gap:40}}><Tooltip forceOpen content="Guardar para después"><IconButton icon="bookmark" label="Guardar" variant="outline"/></Tooltip><Tooltip forceOpen tone="soft" content="x es la incógnita"><span className="mp-math" style={{fontSize:22}}>x</span></Tooltip></div>
+</div></div>}
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script></body></html>

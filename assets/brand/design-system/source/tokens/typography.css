@@ -1,0 +1,18 @@
+:root{
+--font-sans:'Poppins',ui-rounded,system-ui,sans-serif;
+--font-hand:'Kalam','Comic Neue',cursive;
+--font-math:'STIX Two Text','Cambria Math',Georgia,serif;
+--fw-regular:400;/* @kind font */--fw-medium:500;/* @kind font */--fw-semibold:600;/* @kind font */--fw-bold:700;/* @kind font */--fw-black:800;/* @kind font */
+--fs-display:48px;--fs-h1:36px;--fs-h2:28px;--fs-h3:22px;--fs-lead:19px;--fs-body:17px;--fs-small:15px;--fs-caption:13px;--fs-overline:12px;
+--lh-tight:1.12;/* @kind font */--lh-snug:1.3;/* @kind font */--lh-body:1.55;/* @kind font */
+--ls-display:-0.02em;/* @kind font */--ls-heading:-0.01em;/* @kind font */--ls-overline:0.14em;/* @kind font */--ls-tagline:0.32em;/* @kind font */
+/* Semantic */
+--type-display:var(--fw-bold) var(--fs-display)/var(--lh-tight) var(--font-sans);
+--type-h1:var(--fw-bold) var(--fs-h1)/var(--lh-tight) var(--font-sans);
+--type-h2:var(--fw-semibold) var(--fs-h2)/var(--lh-snug) var(--font-sans);
+--type-h3:var(--fw-semibold) var(--fs-h3)/var(--lh-snug) var(--font-sans);
+--type-body:var(--fw-regular) var(--fs-body)/var(--lh-body) var(--font-sans);
+--type-small:var(--fw-regular) var(--fs-small)/var(--lh-body) var(--font-sans);
+--type-overline:var(--fw-semibold) var(--fs-overline)/1.2 var(--font-sans);
+--type-hand:var(--fw-regular) 22px/1.2 var(--font-hand);
+}

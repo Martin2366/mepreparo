@@ -1,0 +1,3 @@
+/** Text field, 48px, 14px radius, 2px border; `math` sets the value in the math serif for numeric answers. */
+export interface InputProps{ label?:string; hint?:string; error?:string; value?:string; defaultValue?:string; placeholder?:string; onChange?:(e:any)=>void; type?:string; disabled?:boolean; math?:boolean; style?:React.CSSProperties; }
+export declare function Input(props:InputProps):JSX.Element;

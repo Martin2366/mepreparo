@@ -1,0 +1,21 @@
+<!-- @dsCard group="Components" viewport="700x420" name="Core" subtitle="Button, IconButton, Icon, Badge, Tag, Card" -->
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>body{margin:0;padding:24px;background:var(--surface-page);font-family:var(--font-sans);color:var(--text-body)}.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}.col{display:flex;flex-direction:column;gap:16px}.lab{font:600 11px/1 var(--font-sans);letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);width:84px;flex:none}</style>
+</head><body><div id="root"></div>
+<script type="text/babel">
+const D=window.MePreparoDesignSystem_20851d;const {Button,IconButton,Badge,Tag,Card,Icon}=D;
+
+function App(){return <div className="col">
+<div className="row"><span className="lab">Button</span><Button size="lg" iconRight="arrow-right">Comenzar ejercicio</Button><Button variant="secondary">Ver pista</Button><Button variant="ghost">Saltar</Button></div>
+<div className="row"><span className="lab">Sizes</span><Button size="sm">Pequeño</Button><Button>Mediano</Button><Button variant="dark" iconLeft="play">Continuar</Button><Button disabled>Revisar</Button></div>
+<div className="row"><span className="lab">Icon btn</span><IconButton icon="bookmark" label="Guardar"/><IconButton icon="bookmark-check" label="Guardado" active/><IconButton icon="arrow-left" label="Volver" variant="outline"/><IconButton icon="arrow-right" label="Siguiente" variant="solid"/><Icon name="lightbulb" size={22}/><Icon name="clock" size={22}/><Icon name="flame" size={22} color="var(--mp-coral)"/></div>
+<div className="row"><span className="lab">Badge</span><Badge>M1</Badge><Badge>M2</Badge><Badge tone="ink">PAES 2027</Badge><Badge tone="coral">Nuevo</Badge><Badge tone="green">Dominado</Badge><Badge tone="neutral">Nivel 2</Badge></div>
+<div className="row"><span className="lab">Tag</span><Tag selected>Funciones</Tag><Tag>Álgebra</Tag><Tag>Geometría</Tag><Tag>Probabilidad</Tag></div>
+<div className="row"><span className="lab">Card</span><Card padding={16} style={{width:180}}><b style={{fontWeight:600}}>Funciones</b><div style={{fontSize:13,color:'var(--text-muted)'}}>12 ejercicios</div></Card><Card padding={16} tone="sky" elevated={false} style={{width:180}}><b style={{fontWeight:600}}>Tip del día</b><div style={{fontSize:13,color:'var(--text-muted)'}}>Tone sky, flat</div></Card></div>
+</div>}
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script></body></html>

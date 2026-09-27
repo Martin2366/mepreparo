@@ -1,0 +1,6 @@
+.mp-grid{background:var(--bg-grid),var(--surface-page)}
+.mp-math{font-family:var(--font-math);font-style:italic}
+.mp-overline{font:var(--type-overline);letter-spacing:var(--ls-overline);text-transform:uppercase;color:var(--text-body)}
+.mp-hand{font:var(--type-hand);color:var(--text-body)}
+@keyframes mp-pop{0%{transform:scale(.6);opacity:0}60%{transform:scale(1.08);opacity:1}100%{transform:scale(1)}}
+@keyframes mp-fade-up{from{transform:translateY(6px);opacity:0}to{transform:none;opacity:1}}

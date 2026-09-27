@@ -1,0 +1,5 @@
+import React from 'react';
+export function Switch({checked,defaultChecked,onChange,label,style}){const [c,setC]=React.useState(!!defaultChecked);const on=checked??c;
+  return <label style={{display:'inline-flex',alignItems:'center',gap:12,minHeight:44,cursor:'pointer',font:'var(--fw-regular) 16px/1.3 var(--font-sans)',color:'var(--text-body)',...style}}>
+   <button role="switch" aria-checked={on} onClick={()=>{setC(!on);onChange&&onChange(!on)}} style={{width:46,height:28,flex:'none',borderRadius:999,border:'none',padding:3,background:on?'var(--interactive)':'var(--mp-graphite-200)',cursor:'pointer',transition:'background var(--dur-base) var(--ease-out)'}}>
+     <span style={{display:'block',width:22,height:22,borderRadius:'50%',background:'var(--mp-white)',boxShadow:'var(--shadow-xs)',transform:on?'translateX(18px)':'none',transition:'transform var(--dur-base) var(--ease-out)'}}/></button>{label}</label>;}
