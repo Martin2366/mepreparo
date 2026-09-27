@@ -422,9 +422,21 @@ C:\MePreparo\
 ## 10. Registro de decisiones de implementación
 | ID | Fecha | Decisión | Razón |
 |---|---|---|---|
-| — | — | (se completa durante el desarrollo) | — |
+| D1 | 2026-09-27 | Rutas en `src/app/` (no `app/` en la raíz) | Es la convención del template de SDK 57; todo el código queda bajo `src/` |
+| D2 | 2026-09-27 | Fuentes con `@expo-google-fonts`: Poppins (UI), **STIX Two Text** (matemática) y **Kalam** (notas de Equis), cargadas con `useFonts` | Así lo define el design system; `useFonts` funciona igual en el dev build y en la vista web |
+| D3 | 2026-09-27 | `src/theme/tokens.json` = fuente única de tokens; paleta **cerrada** en Tailwind; familias `font-poppins-*` | Impide colores fuera de marca; `font-bold` con fuentes personalizadas falla en Android |
+| D4 | 2026-09-27 | Supabase sin `react-native-url-polyfill`; sesión en `expo-sqlite/localStorage` | La guía vigente de Expo + Supabase ya no pide el polyfill |
+| D5 | 2026-09-27 | `MathText` propio (Views + SVG) sobre `engine/math-parser`; matemática entre `$…$` y `\$` para pesos | Spike A; ninguna librería madura verificada. El signo `$` es común en problemas con pesos chilenos |
+| D6 | 2026-09-27 | TypeScript 6 con `noUncheckedIndexedAccess` y `types: ["jest","node"]` | TS 6 cambió defaults; el índice sin chequear es fuente típica de bugs en motores |
+| D7 | 2026-09-27 | Ícono de app redibujado en vector (cuaderno + M + chispa) | El PNG del board mide 152 px; la versión final se revisa el Día 8 |
+| D8 | 2026-09-27 | Proyecto EAS en la cuenta `unkownnigga17` (confirmado por el fundador) · CI con Node 24 | — |
+| D9 | 2026-09-27 | `.easignore` excluye `assets/brand/` y `docs/` | La primera subida pesaba 59 MB por los originales de marca |
+
+**Pendiente de decisión del fundador (Día 3):** texto blanco sobre celeste `#4FB3E8` tiene contraste 2,4:1
+(no cumple AA, ni siquiera para texto grande). Opciones: botón celeste con texto tinta, o fondo `sky-700 #1F86C0` con texto blanco (4,0:1; pasa AA solo para texto grande), o tinta sobre celeste (6:1).
 
 ## 11. Bitácora diaria
 | Día | Hecho | Pendiente | Bloqueos |
 |---|---|---|---|
-| — | — | — | — |
+| 0 | Repo GitHub creado y conectado · cuenta Expo · temarios DEMRE (regular + invierno) en `docs/temarios/` · assets movidos a `assets/brand/` · design system descomprimido en `assets/brand/design-system/source/` | Repo a **privado** (lo hace el fundador) · Supabase (0.3–0.4) · Google OAuth (0.5) · Sentry DSN (0.6) · referencias de pantallas (0.9) | — |
+| 1 | App Expo SDK 57 + TS estricto + Router · `app.json` (`cl.mepreparo.app`, `mepreparo://`, runtimeVersion, EAS Update) · **todas** las dependencias nativas (A4) · NativeWind 4.2.7 + tokens · ícono adaptativo, splash y notificación · `eas.json` (development/preview/production) · CI en verde · `content:validate` (notación + bloqueo de `draft` en producción) · motores `rational`, `math-parser`, `balance` (21 tests) · **Spike A** (`MathText`) y **Spike B** (balanza con arrastre + botones + FPS) verificados en vista web · bundle Android compila | **Build #1** en EAS e instalación en el teléfono · validar en el dispositivo: Poppins, arrastre táctil y 60 fps (captura/video) | **Cupo de EAS agotado** (15/15) hasta el **jue 1 oct**. El keystore ya está creado. Mientras tanto: Expo Go o build local con Android Studio (§9) |

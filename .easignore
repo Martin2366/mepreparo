@@ -1,0 +1,64 @@
+# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
+
+# dependencies
+node_modules/
+
+# Expo
+.expo/
+dist/
+web-build/
+expo-env.d.ts
+
+# Native
+.kotlin/
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# Metro
+.metro-health-check*
+
+# debug
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
+# macOS
+.DS_Store
+*.pem
+
+# local env files
+.env*.local
+
+# typescript
+*.tsbuildinfo
+
+example
+
+# generated native folders
+/ios
+/android
+
+# Secretos: NUNCA se commitean (service_role, secretos OAuth, tokens de Sentry).
+.env
+.env.*
+!.env.example
+
+# Claude Code (config local de cada máquina)
+.claude/settings.local.json
+
+# Sentry
+.sentryclirc
+
+# Originales pesados o duplicados (el design system va descomprimido en assets/brand/design-system/source)
+assets/brand/design-system/*.zip
+assets/brand/design-system/MePreparo App (1).html
+
+# Solo para EAS: no subir originales ni documentación al build
+assets/brand/
+docs/
+.github/
+.claude/
