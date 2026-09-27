@@ -1,0 +1,129 @@
+{
+  "_fuente": "Temarios PAES Regular, Admisión 2027 (DEMRE). Textos para el onboarding: revisar con el fundador.",
+  "tests": [
+    {
+      "id": "m1",
+      "name": "Matemática 1 (M1)",
+      "short": "M1",
+      "note": "Obligatoria para todas las carreras",
+      "required": true,
+      "icon": "percent"
+    },
+    {
+      "id": "lectora",
+      "name": "Competencia Lectora",
+      "short": "Lectora",
+      "note": "Obligatoria para todas las carreras",
+      "required": true,
+      "icon": "book"
+    },
+    {
+      "id": "m2",
+      "name": "Matemática 2 (M2)",
+      "short": "M2",
+      "note": "La piden carreras científicas e ingenierías",
+      "icon": "sigma"
+    },
+    {
+      "id": "ciencias",
+      "name": "Ciencias",
+      "short": "Ciencias",
+      "note": "Biología, Física o Química",
+      "icon": "flask"
+    },
+    {
+      "id": "historia",
+      "name": "Historia y Ciencias Sociales",
+      "short": "Historia",
+      "note": "Historia, formación ciudadana y economía",
+      "icon": "landmark"
+    }
+  ],
+  "topics": {
+    "matematica": {
+      "title": "Matemática",
+      "items": [
+        { "id": "numeros", "label": "Números", "hint": "Fracciones, porcentajes, potencias y raíces", "icon": "percent", "tests": ["m1", "m2"] },
+        { "id": "algebra", "label": "Álgebra", "hint": "Expresiones, ecuaciones y sistemas", "icon": "balanza", "tests": ["m1", "m2"] },
+        { "id": "funciones", "label": "Funciones", "hint": "Lineal, afín, cuadrática y proporcionalidad", "icon": "funcion", "tests": ["m1", "m2"] },
+        { "id": "geometria", "label": "Geometría", "hint": "Pitágoras, áreas, volúmenes y transformaciones", "icon": "triangulo", "tests": ["m1", "m2"] },
+        { "id": "probabilidad", "label": "Probabilidad y estadística", "hint": "Datos, gráficos, cuartiles y azar", "icon": "chart", "tests": ["m1", "m2"] },
+        { "id": "m2-logaritmos", "label": "Logaritmos y finanzas", "hint": "Logaritmos, interés, créditos y AFP", "icon": "sigma", "tests": ["m2"] },
+        { "id": "m2-funciones", "label": "Funciones avanzadas", "hint": "Exponencial, logarítmica, seno y coseno", "icon": "funcion", "tests": ["m2"] },
+        { "id": "m2-trigonometria", "label": "Trigonometría y circunferencia", "hint": "Razones trigonométricas, arcos, esfera", "icon": "triangulo", "tests": ["m2"] },
+        { "id": "m2-combinatoria", "label": "Combinatoria y probabilidad", "hint": "Permutaciones, condicional, binomial y normal", "icon": "chart", "tests": ["m2"] }
+      ]
+    },
+    "lectora": {
+      "title": "Competencia Lectora",
+      "items": [
+        { "id": "cl-localizar", "label": "Encontrar información", "hint": "Ubicar datos precisos en textos largos", "icon": "search" },
+        { "id": "cl-interpretar", "label": "Entender el sentido", "hint": "Idea principal, inferencias y vocabulario", "icon": "book" },
+        { "id": "cl-evaluar", "label": "Evaluar lo que leo", "hint": "Propósito del autor y calidad de los argumentos", "icon": "scale" },
+        { "id": "cl-literarios", "label": "Textos literarios", "hint": "Cuentos, poemas y fragmentos de novelas", "icon": "feather" },
+        { "id": "cl-no-literarios", "label": "Textos informativos", "hint": "Noticias, columnas, infografías", "icon": "newspaper" }
+      ]
+    },
+    "ciencias": {
+      "title": "Ciencias",
+      "items": [
+        { "id": "bio", "label": "Biología", "hint": "Célula, funciones, herencia y ecosistemas", "icon": "leaf" },
+        { "id": "fis", "label": "Física", "hint": "Ondas, mecánica, energía y electricidad", "icon": "zap" },
+        { "id": "qui", "label": "Química", "hint": "Átomo, química orgánica y estequiometría", "icon": "flask" },
+        { "id": "cien-habilidades", "label": "Experimentos y gráficos", "hint": "Variables, evidencia y conclusiones", "icon": "chart" }
+      ]
+    },
+    "historia": {
+      "title": "Historia y Ciencias Sociales",
+      "items": [
+        { "id": "his-chile", "label": "Historia de Chile", "hint": "Siglos XIX y XX", "icon": "landmark" },
+        { "id": "his-mundo", "label": "Europa y América", "hint": "Procesos de los siglos XIX y XX", "icon": "globe" },
+        { "id": "his-ciudadania", "label": "Formación ciudadana", "hint": "Estado, democracia y derechos", "icon": "users" },
+        { "id": "his-economia", "label": "Sistema económico", "hint": "Mercado, Estado y economía personal", "icon": "coins" },
+        { "id": "his-fuentes", "label": "Fuentes, mapas y gráficos", "hint": "Interpretar documentos y datos", "icon": "map" }
+      ]
+    }
+  },
+  "blockers": {
+    "matematica": {
+      "title": "En matemática",
+      "items": [
+        { "id": "mat-me-pierdo", "label": "Estudio, pero en los ejercicios me pierdo" },
+        { "id": "mat-formulas", "label": "Me sé las fórmulas, pero no las entiendo" },
+        { "id": "mat-tiempo", "label": "Me quedo sin tiempo en los ensayos" },
+        { "id": "mat-problemas-texto", "label": "Me cuesta pasar el enunciado a una ecuación" },
+        { "id": "mat-empezar", "label": "No sé por dónde empezar" }
+      ]
+    },
+    "lectora": {
+      "title": "En Competencia Lectora",
+      "items": [
+        { "id": "cl-olvido", "label": "Leo, pero se me olvida lo que leí" },
+        { "id": "cl-alternativas", "label": "Dudo entre dos alternativas parecidas" },
+        { "id": "cl-tiempo", "label": "Los textos largos me quitan mucho tiempo" },
+        { "id": "cl-inferir", "label": "Me cuesta entender lo que no está dicho" },
+        { "id": "cl-empezar", "label": "No sé por dónde empezar" }
+      ]
+    },
+    "ciencias": {
+      "title": "En Ciencias",
+      "items": [
+        { "id": "cien-memorizar", "label": "Es demasiado contenido para memorizar" },
+        { "id": "cien-conceptos", "label": "Memorizo, pero no entiendo los conceptos" },
+        { "id": "cien-graficos", "label": "Me pierdo en gráficos y experimentos" },
+        { "id": "cien-calculos", "label": "Me cuestan los cálculos de física y química" },
+        { "id": "cien-empezar", "label": "No sé por dónde empezar" }
+      ]
+    },
+    "historia": {
+      "title": "En Historia",
+      "items": [
+        { "id": "his-mezclo", "label": "Se me mezclan fechas y procesos" },
+        { "id": "his-causas", "label": "Me cuesta relacionar causas y consecuencias" },
+        { "id": "his-fuentes", "label": "Me cuesta interpretar fuentes, mapas y gráficos" },
+        { "id": "his-contenido", "label": "Es mucho contenido para memorizar" },
+        { "id": "his-empezar", "label": "No sé por dónde empezar" }
+      ]
+    }
+  }
+}

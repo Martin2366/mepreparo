@@ -1,0 +1,9 @@
+{
+  "_fuente": "DEMRE. Actualizable por OTA (R5). Fechas de 2027 aún no publicadas: se muestran como periodo aproximado.",
+  "sessions": {
+    "regular-2026": { "label": "PAES Regular 2026", "start": "2026-11-30", "end": "2026-12-02", "when": "30 nov – 2 dic 2026", "admission": 2027 },
+    "invierno-2026": { "label": "PAES de Invierno 2026", "start": "2026-06-01", "end": "2026-06-30", "when": "junio 2026", "admission": 2027, "past": true },
+    "invierno-2027": { "label": "PAES de Invierno 2027", "start": null, "when": "mitad de 2027", "admission": 2028 },
+    "regular-2027": { "label": "PAES Regular 2027", "start": null, "when": "fines de 2027", "admission": 2028 }
+  }
+}

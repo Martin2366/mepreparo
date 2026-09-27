@@ -56,3 +56,4 @@ example
 # Originales pesados o duplicados (el design system va descomprimido en assets/brand/design-system/source)
 assets/brand/design-system/*.zip
 assets/brand/design-system/MePreparo App (1).html
+scripts/admission/data/
