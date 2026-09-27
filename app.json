@@ -50,6 +50,17 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "17b00212-ffe1-41e3-bbf3-6c162cfcc4e6"
+      }
+    },
+    "owner": "unkownnigga17",
+    "updates": {
+      "url": "https://u.expo.dev/17b00212-ffe1-41e3-bbf3-6c162cfcc4e6"
+    },
+    "ios": {}
   }
 }
