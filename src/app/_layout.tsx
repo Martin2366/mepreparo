@@ -1,4 +1,5 @@
 import '@/global.css';
+import '@/components/ui/animated';
 
 import { Kalam_400Regular } from '@expo-google-fonts/kalam';
 import {

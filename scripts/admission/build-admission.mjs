@@ -103,6 +103,7 @@ const cleanCareer = (s) =>
 
 // ---------- Universidades DEMRE ↔ SIES ----------
 const siesIesOfDemreUni = new Map();
+const iesCodeOf = new Map();
 for (const u of demre.universities) {
   const votes = new Map();
   for (const c of demre.careers.filter((c) => c.university === u.n)) {
@@ -112,6 +113,7 @@ for (const u of demre.universities) {
   const top = [...votes].sort((a, b) => b[1] - a[1])[0];
   if (!top) throw new Error(`Sin cruce SIES para ${u.name}`);
   siesIesOfDemreUni.set(u.n, top[0]);
+  iesCodeOf.set(u.n, sies.find((r) => r['Nombre IES'] === top[0])['Código IES']);
 }
 const demreUniOfSiesIes = new Map([...siesIesOfDemreUni].map(([n, ies]) => [ies, n]));
 
@@ -195,6 +197,22 @@ const SHORT = {
   'IP DE CHILE': 'IPChile',
   'IP IACC': 'IACC',
 };
+// Nombre corto natural (atajos y botón "Elegir …") para las universidades más buscadas.
+const SHORT_UNI = {
+  'PONTIFICIA UNIVERSIDAD CATOLICA DE CHILE': 'UC',
+  'UNIVERSIDAD DE CHILE': 'U. de Chile',
+  'UNIVERSIDAD DE SANTIAGO DE CHILE': 'USACH',
+  'UNIVERSIDAD DE CONCEPCION': 'UdeC',
+  'UNIVERSIDAD TECNICA FEDERICO SANTA MARIA': 'USM',
+  'UNIVERSIDAD DE VALPARAISO': 'UV',
+  'PONTIFICIA UNIVERSIDAD CATOLICA DE VALPARAISO': 'PUCV',
+  'UNIVERSIDAD DIEGO PORTALES': 'UDP',
+  'UNIVERSIDAD ADOLFO IBANEZ': 'UAI',
+  'UNIVERSIDAD DE LOS ANDES': 'UANDES',
+  'UNIVERSIDAD AUSTRAL DE CHILE': 'UACh',
+  'UNIVERSIDAD DE LA FRONTERA': 'UFRO',
+  'UNIVERSIDAD DE TALCA': 'UTALCA',
+};
 
 // ---------- Categorías ----------
 const G_ESTATAL = 'Universidades estatales';
@@ -264,11 +282,11 @@ let uniMismatch = 0;
 for (const u of demre.universities) {
   const siesName = siesIesOfDemreUni.get(u.n);
   const sample = sies.find((r) => r['Nombre IES'] === siesName);
-  const id = `u${u.n}`;
+  const id = `ies${iesCodeOf.get(u.n)}`;
   institutions.push({
     id,
     name: UNI_NAME_FIX[titleCase(u.name)] ?? titleCase(u.name),
-    short: SHORT[siesName] ?? null,
+    short: SHORT_UNI[fold(u.name)] ?? SHORT[siesName] ?? null,
     search: SIGLAS[fold(u.name)] ?? SIGLAS[siesName] ?? '',
     category: categoryOf(sample, true),
     region: sample?.['Región Sede'] ?? '',
@@ -309,7 +327,7 @@ for (const c of demre.careers) {
   const w = c.weights;
   careers.push({
     id: c.code,
-    inst: `u${uniN}`,
+    inst: `ies${iesCodeOf.get(uniN)}`,
     name: titleCase(name.replace(/[,\s]+$/, '')),
     place: place ? titleCase(place) : r ? titleCase(r['Comuna Sede']) : '',
     area: niceArea(areaOf(r)),
@@ -344,9 +362,9 @@ for (const r of sies) {
   if (!others.has(ies)) others.set(ies, { cat, rows: [] });
   others.get(ies).rows.push(r);
 }
-let seq = 0;
+const slug = (s) => fold(s).toLowerCase().replace(/ /g, '-');
 for (const [ies, { cat, rows }] of [...others].sort()) {
-  const id = `o${++seq}`;
+  const id = `ies${rows[0]['Código IES']}`;
   institutions.push({
     id,
     name: fixInstitution(displayInstitution(ies)),
@@ -365,7 +383,7 @@ for (const [ies, { cat, rows }] of [...others].sort()) {
   }
   for (const v of byName.values()) {
     const places = [...v.places].sort((a, b) => a.localeCompare(b, 'es'));
-    careers.push({ id: `${id}-${careers.length}`, inst: id, name: v.name, place: places.length > 2 ? `${places.length} sedes` : places.join(' · '), area: v.area });
+    careers.push({ id: `${id}-${slug(v.name)}`, inst: id, name: v.name, place: places.length > 2 ? `${places.length} sedes` : places.join(' · '), area: v.area });
   }
 }
 
@@ -414,7 +432,7 @@ const cuts = {};
     }
   }
   const key = (s) => strip(s).toLowerCase().replace(/[^a-z]/g, '');
-  const pucByKey = new Map(careers.filter((c) => c.inst === 'u1').map((c) => [key(c.name), c]));
+  const pucByKey = new Map(careers.filter((c) => c.inst === `ies${iesCodeOf.get(1)}`).map((c) => [key(c.name), c]));
   let matched = 0;
   const unmatched = [];
   for (const r of ucRows) {

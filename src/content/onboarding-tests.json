@@ -5,7 +5,7 @@
       "id": "m1",
       "name": "Matemática 1 (M1)",
       "short": "M1",
-      "note": "Obligatoria para todas las carreras",
+      "note": "Números, álgebra, geometría y datos",
       "required": true,
       "icon": "percent"
     },
@@ -13,7 +13,7 @@
       "id": "lectora",
       "name": "Competencia Lectora",
       "short": "Lectora",
-      "note": "Obligatoria para todas las carreras",
+      "note": "Comprender y evaluar textos variados",
       "required": true,
       "icon": "book"
     },

@@ -106,6 +106,28 @@ Tabs según la referencia de diseño: **Inicio · Practicar · Progreso · Perfi
 Objetivo: en **≤ 90 s** (sin contar el diagnóstico) el estudiante siente valor, recibe un plan concreto y queda dentro de la app con Premium de prueba.
 Regla: cada pregunta **cambia algo visible** del plan. Si no cambia nada, no se pregunta.
 
+### 6.1 Implementado (2026-09-27, con los diseños del fundador)
+Orden optimizado (primero el sueño, después la logística; respuestas preseleccionadas donde se puede adivinar):
+
+| # | Pantalla | Detalle | Se salta si… |
+|---|---|---|---|
+| 1 | Bienvenida | Equis: "Soy Equis, tu compañero de estudio y tutor." · 3 promesas · solo **Comenzar** | — |
+| 2 | Nombre | Globo de Equis; se guarda solo en el teléfono; "Prefiero no decirlo" | — |
+| 3 | ¿Dónde te gustaría estudiar? | 119 instituciones oficiales por categoría (estatales, CRUCH, privadas del Sistema de Acceso, admisión propia, IP, CFT, FF.AA.); buscador destacado por nombre o sigla; atajos a las más buscadas | — |
+| 4 | ¿Qué te gustaría estudiar? | Carreras **de esa institución** por área, con corte oficial cuando existe; si no eligió institución, 126 carreras genéricas | — |
+| 5 | Lo que pesa | Dona animada con ponderaciones oficiales DEMRE 2027 (o promedio si es genérica); en IP/CFT explica la admisión directa | No eligió carrera |
+| 6 | ¿Cuándo das la PAES? | Preseleccionado "Este año" | — |
+| 7 | ¿Invierno o regular? | Cuenta regresiva real ("Faltan 64 días"); invierno 2026 deshabilitado (ya se rindió) | "En unos años" o "No sé" |
+| 8 | Puntaje meta | Corte oficial con conteo animado; si no hay corte: meta ajustable (700 preseleccionado) | Sin carrera o institución sin PAES |
+| 9 | ¡Vamos por tu meta! | Meta concreta + Equis celebrando: "Tengo casi todo listo… Solo unas preguntas más." | — |
+| 10 | Pruebas | Las 5 pruebas + "Todavía no sé"; preseleccionadas según ponderaciones de la carrera | — |
+| 11 | Temas que cuestan | Según las pruebas elegidas (M2 suma sus temas propios) | — |
+| 12 | Qué te frena | Uno por prueba, con desplazamiento automático a la siguiente | — |
+
+Datos: `src/content/admission/` (DEMRE Admisión 2027 + SIES 2026 + cortes oficiales U. de Chile y UC). Regenerar con `scripts/admission/`.
+Pendientes (siguiente lote de diseños): tiempo diario, recordatorio, diagnóstico, "generando tu plan", tu plan y Premium de regalo + cuenta.
+
+### 6.2 Propuesta original (referencia)
 | # | Pantalla | Pregunta / contenido | Para qué se usa |
 |---|---|---|---|
 | 1 | Bienvenida | Equis saluda: "Aprender haciendo. Hasta que haga clic." · botón **Empezar** · enlace "¿Ya tienes progreso? Entrar con Google" | Primera impresión; recuperar cuenta en teléfono nuevo |

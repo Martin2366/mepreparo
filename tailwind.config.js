@@ -6,6 +6,8 @@ const px = (obj) => Object.fromEntries(Object.entries(obj).map(([k, v]) => [k, `
 module.exports = {
   content: ['./src/**/*.{ts,tsx}'],
   presets: [require('nativewind/preset')],
+  // Solo modo claro en v1: el tema se controla por clase (evita que el sistema fuerce el oscuro).
+  darkMode: 'class',
   theme: {
     // Paleta cerrada: solo colores de marca (no se mezclan con la paleta por defecto de Tailwind).
     colors: tokens.colors,
