@@ -29,14 +29,13 @@ export function YearStep({ next }: StepProps) {
       <View className="gap-5">
         <StepTitle title="¿Cuándo das la PAES?" />
         <View className="gap-2.5">
-          {YEARS.map((y, i) => (
+          {YEARS.map((y) => (
             <OptionCard
               key={y.id}
               label={y.label}
               hint={y.hint}
               selected={year === y.id}
               onPress={() => update({ year: y.id, session: undefined })}
-              index={i}
             />
           ))}
         </View>
@@ -92,7 +91,6 @@ export function SessionStep({ next }: StepProps) {
               disabled={o.disabled}
               selected={!o.disabled && session === o.id}
               onPress={() => update({ session: o.id })}
-              index={i}
             />
           ))}
         </View>

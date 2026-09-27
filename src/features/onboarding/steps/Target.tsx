@@ -6,7 +6,7 @@ import { Icon } from '@/components/ui/Icon';
 import { HandNote, Mascot } from '@/components/ui/Mascot';
 import { Text } from '@/components/ui/Text';
 import { dur, easeOut } from '@/theme/motion';
-import { colors } from '@/theme/tokens';
+import { colors, fonts } from '@/theme/tokens';
 
 import { careerById } from '../admission';
 import { CountUp, StepLayout, StepTitle } from '../components';
@@ -22,14 +22,16 @@ function BigScore({ value, animate }: { value: number; animate: boolean }) {
     <View className="items-center">
       <View className="flex-row items-start">
         {animate ? (
-          <CountUp to={value} format={(n) => formatScore(n)} className="font-poppins-bold text-ink" style={{ fontSize: 64, lineHeight: 74 }} />
+          <CountUp to={value} format={(n) => formatScore(n)} style={{ fontFamily: fonts["poppins-bold"], color: colors.ink, fontSize: 64, lineHeight: 74 }} />
         ) : (
-          <Text className="font-poppins-bold text-ink" style={{ fontSize: 64, lineHeight: 74 }}>
+          <Text style={{ fontFamily: fonts["poppins-bold"], color: colors.ink, fontSize: 64, lineHeight: 74 }}>
             {formatScore(value)}
           </Text>
         )}
-        <Animated.View entering={ZoomIn.springify().delay(1300)} className="-mt-1 ml-1">
+        <Animated.View entering={ZoomIn.springify().delay(1300)}>
+          <View className="-mt-1 ml-1">
           <Icon name="sparkle" size={26} color={colors.coral} />
+          </View>
         </Animated.View>
       </View>
       <View className="mt-1 h-1.5 w-40 rounded-full bg-sky" />
@@ -57,7 +59,8 @@ export function Target({ next }: StepProps) {
         <View className="flex-1 gap-6">
           <StepTitle title="Apuntemos a superar este puntaje" />
           <BigScore value={cut.score} animate />
-          <Animated.View entering={FadeInUp.duration(dur.slow).delay(500).easing(easeOut)} className="items-center gap-2">
+          <Animated.View entering={FadeInUp.duration(dur.slow).delay(500).easing(easeOut)}>
+            <View className="items-center gap-2">
             <Text variant="small" className="text-center">
               Puntaje del último {cut.kind === 'seleccionado' ? 'seleccionado' : 'matriculado'} en {career?.name}
             </Text>
@@ -67,11 +70,14 @@ export function Target({ next }: StepProps) {
             <Text variant="small" className="px-4 text-center">
               El corte cambia cada año. Lo usaremos como referencia para tu preparación.
             </Text>
+            </View>
           </Animated.View>
           <View className="mt-auto flex-row items-end gap-2">
             <Mascot pose="senalando" height={120} />
-            <Animated.View entering={FadeIn.duration(dur.slow).delay(900)} className="pb-8">
+            <Animated.View entering={FadeIn.duration(dur.slow).delay(900)}>
+              <View className="pb-8">
               <HandNote>Vamos paso a paso.</HandNote>
+              </View>
             </Animated.View>
           </View>
         </View>

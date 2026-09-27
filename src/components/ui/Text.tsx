@@ -21,9 +21,16 @@ type Props = TextProps & { variant?: TextVariant; className?: string };
 const HAS_COLOR = /(^|\s)text-(ink|white|graphite|sky|coral|success|paper)(-\d+)?(\s|$)/;
 const HAS_FONT = /(^|\s)font-/;
 
-/** Texto de marca: Poppins siempre (RN no hereda la fuente, así que todo texto pasa por aquí). */
-export function Text({ variant = 'body', className = '', ...rest }: Props) {
-  const [type, color] = VARIANTS[variant];
+/**
+ * Texto de marca: Poppins siempre (RN no hereda la fuente, así que todo texto pasa por aquí).
+ * Con `style` explícito y sin variante ni clases, no se aplican clases: en NativeWind las clases
+ * pisan al `style`, y los componentes con StyleSheet ya traen su tipografía completa.
+ */
+export function Text({ variant, className = '', ...rest }: Props) {
+  if (!variant && !className && rest.style) {
+    return <RNText maxFontSizeMultiplier={1.4} {...rest} />;
+  }
+  const [type, color] = VARIANTS[variant ?? 'body'];
   const typeClasses = HAS_FONT.test(className) ? type.replace(/font-\S+/, '') : type;
   const classes = [typeClasses, HAS_COLOR.test(className) ? '' : color, className].join(' ');
   return <RNText className={classes} maxFontSizeMultiplier={1.4} {...rest} />;

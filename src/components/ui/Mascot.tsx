@@ -14,6 +14,7 @@ import Animated, {
 } from 'react-native-reanimated';
 
 import { popSpring } from '@/theme/motion';
+import { colors, fonts } from '@/theme/tokens';
 
 import { Text } from './Text';
 
@@ -103,7 +104,7 @@ export function SpeechBubble({ children }: { children: string }) {
 /** Nota manuscrita de Equis (Kalam, levemente girada), como en el tablero de marca. */
 export function HandNote({ children, rotate = -4, size = 22 }: { children: string; rotate?: number; size?: number }) {
   return (
-    <Text variant="hand" style={{ transform: [{ rotate: `${rotate}deg` }], fontSize: size, lineHeight: size * 1.2 }}>
+    <Text style={{ fontFamily: fonts.hand, color: colors.ink, transform: [{ rotate: `${rotate}deg` }], fontSize: size, lineHeight: size * 1.2 }}>
       {children}
     </Text>
   );

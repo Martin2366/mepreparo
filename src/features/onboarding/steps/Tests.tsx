@@ -54,7 +54,6 @@ export function Tests({ next }: StepProps) {
               leading={<TopicTile icon={t.icon} size={40} />}
               selected={!unknown && current.includes(t.id as TestId)}
               onPress={() => toggle(t.id as TestId)}
-              index={i}
             />
           ))}
           <OptionCard
@@ -63,7 +62,6 @@ export function Tests({ next }: StepProps) {
             hint="Te preparamos para las obligatorias"
             selected={unknown}
             onPress={() => update({ tests: unknown ? rec.tests : [] })}
-            index={content.tests.length}
           />
         </View>
         {rec.eitherHistoriaOCiencias ? (

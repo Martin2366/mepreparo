@@ -25,7 +25,6 @@ export function Topics({ next }: StepProps) {
   const update = useOnboarding((s) => s.update);
   const groups = groupsFor(tests);
   const toggle = (id: string) => update({ topics: topics.includes(id) ? topics.filter((t) => t !== id) : [...topics, id] });
-  let n = 0;
 
   return (
     <StepLayout primary={{ label: topics.length ? 'Continuar' : 'Saltar por ahora', onPress: next }}>
@@ -44,7 +43,6 @@ export function Topics({ next }: StepProps) {
                   leading={<TopicTile icon={t.icon} size={44} />}
                   selected={topics.includes(t.id)}
                   onPress={() => toggle(t.id)}
-                  index={n++}
                 />
               ))}
             </View>
@@ -63,7 +61,6 @@ export function Blockers({ next }: StepProps) {
   const scroll = useRef<ScrollView>(null);
   const offsets = useRef<Partial<Record<TopicGroup, number>>>({});
   const answered = groups.filter((g) => blockers[g]).length;
-  let n = 0;
 
   const choose = (g: TopicGroup, id: string) => {
     update({ blockers: { ...blockers, [g]: id } });
@@ -90,7 +87,6 @@ export function Blockers({ next }: StepProps) {
                   label={b.label}
                   selected={blockers[g] === b.id}
                   onPress={() => choose(g, b.id)}
-                  index={n++}
                 />
               ))}
             </View>

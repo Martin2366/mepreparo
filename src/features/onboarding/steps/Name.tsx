@@ -24,12 +24,15 @@ export function Name({ next }: StepProps) {
       secondary={{ label: 'Prefiero no decirlo', onPress: () => (update({ name: '' }), next()) }}
     >
       <View className="gap-6">
-        <Animated.View entering={FadeInUp.duration(dur.slow).easing(easeOut)} className="flex-row items-center gap-3">
+        <Animated.View entering={FadeInUp.duration(dur.slow).easing(easeOut)}>
+          <View className="flex-row items-center gap-3">
           <Mascot pose="curioso" height={72} />
           <SpeechBubble>Antes de empezar, quiero conocerte un poco.</SpeechBubble>
+          </View>
         </Animated.View>
         <StepTitle title="¿Cómo te llamas?" delay={80} />
-        <Animated.View entering={FadeInUp.duration(dur.slow).delay(160).easing(easeOut)} className="gap-2">
+        <Animated.View entering={FadeInUp.duration(dur.slow).delay(160).easing(easeOut)}>
+          <View className="gap-2">
           <TextField
             value={name}
             onChangeText={(t) => update({ name: tidy(t.replace(/\s{2,}/g, ' ')).slice(0, 30) })}
@@ -41,6 +44,7 @@ export function Name({ next }: StepProps) {
             accessibilityLabel="Tu nombre o apodo"
           />
           <Text variant="small">Así sabré cómo saludarte. Solo queda guardado en tu teléfono.</Text>
+          </View>
         </Animated.View>
       </View>
     </StepLayout>

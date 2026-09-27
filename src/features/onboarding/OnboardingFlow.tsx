@@ -40,18 +40,14 @@ const SCREENS: Record<StepId, ComponentType<StepProps>> = {
   blockers: Blockers,
 };
 
-// Transición calma: la pantalla nueva entra deslizándose 28 dp y apareciendo; la anterior se desvanece.
+// Transición calma: la pantalla nueva entra deslizándose 24 dp y apareciendo. Sin animación de salida:
+// en Android dejaba la pantalla anterior superpuesta.
 const ease = Easing.out(Easing.cubic);
 const enter = (dir: 1 | -1) =>
   new Keyframe({
-    0: { opacity: 0, transform: [{ translateX: 28 * dir }] },
+    0: { opacity: 0, transform: [{ translateX: 24 * dir }] },
     100: { opacity: 1, transform: [{ translateX: 0 }], easing: ease },
-  }).duration(320);
-const exit = (dir: 1 | -1) =>
-  new Keyframe({
-    0: { opacity: 1, transform: [{ translateX: 0 }] },
-    100: { opacity: 0, transform: [{ translateX: -18 * dir }], easing: Easing.in(Easing.quad) },
-  }).duration(180);
+  }).duration(260);
 
 function currentSteps(): StepId[] {
   const { answers } = useOnboarding.getState();
@@ -110,7 +106,6 @@ export function OnboardingFlow() {
             <Animated.View
               key={active}
               entering={enter(dir)}
-              exiting={exit(dir)}
               style={{ position: 'absolute', top: 0, right: 0, bottom: 0, left: 0 }}
             >
               <Screen next={next} />

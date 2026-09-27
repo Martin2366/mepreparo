@@ -368,6 +368,7 @@ for (const [ies, { cat, rows }] of [...others].sort()) {
   institutions.push({
     id,
     name: fixInstitution(displayInstitution(ies)),
+    siesName: ies,
     short: SHORT[ies] ?? null,
     search: SIGLAS[ies] ?? SIGLAS[fold(ies)] ?? '',
     category: cat,
@@ -484,6 +485,44 @@ const genericCareers = [...generic.values()]
   .filter((g) => g.list.length >= 2)
   .map((g) => ({ id: `g-${fold(g.name).toLowerCase().replace(/ /g, '-')}`, name: g.name, area: g.area, count: new Set(g.list.map((c) => c.inst)).size, ...avgWeights(g.list) }))
   .sort((a, b) => b.count - a.count);
+
+// ---------- Selección para el onboarding (lista corta y rápida) ----------
+// Se conservan las 47 universidades del Sistema de Acceso (PAES) y solo las instituciones técnicas
+// y de FF.AA. más buscadas. Las carreras repetidas por sede se muestran una vez.
+const KEEP_OTHERS = new Set([
+  'IP INACAP', 'IP DUOC UC', 'IP AIEP', 'IP SANTO TOMAS', 'IP DE CHILE', 'IP DR. VIRGINIO GOMEZ G.', 'IP IACC',
+  'CFT SANTO TOMAS', 'CFT CEDUC - UCN', 'CFT SAN AGUSTIN', 'CFT PUCV',
+  "ESCUELA MILITAR DEL LIBERTADOR GENERAL BERNARDO O'HIGGINS", 'ESCUELA NAVAL ARTURO PRAT',
+  'ESCUELA DE AVIACION CAPITAN MANUEL AVALOS PRADO', 'ESCUELA DE CARABINEROS DE CHILE DEL GENERAL CARLOS IBAÑEZ DEL CAMPO',
+  'ESCUELA DE INVESTIGACIONES POLICIALES',
+]);
+const keptIds = new Set(
+  institutions.filter((i) => i.paes || KEEP_OTHERS.has(i.siesName)).map((i) => i.id),
+);
+for (let k = institutions.length - 1; k >= 0; k--) {
+  if (!keptIds.has(institutions[k].id)) institutions.splice(k, 1);
+  else delete institutions[k].siesName;
+}
+const merged = new Map();
+for (const c of careers.filter((c) => keptIds.has(c.inst))) {
+  const key = `${c.inst}|${c.name}`;
+  const prev = merged.get(key);
+  if (!prev) merged.set(key, { ...c, places: [c.place] });
+  else {
+    prev.places.push(c.place);
+    // Si otra sede tiene corte oficial, esa manda (la meta se basa en el corte).
+    if (!prev.cut && c.cut) Object.assign(prev, { ...c, places: prev.places });
+  }
+}
+careers.length = 0;
+for (const c of merged.values()) {
+  const places = [...new Set(c.places.flatMap((p) => p.split(' · ')))].sort((a, b) => a.localeCompare(b, 'es'));
+  const sedes = places.filter((p) => !/sedes$/.test(p));
+  c.place = sedes.length > 2 || c.places.some((p) => /sedes$/.test(p)) ? `${Math.max(sedes.length, 3)} sedes` : sedes.join(' · ');
+  delete c.places;
+  careers.push(c);
+}
+CATEGORY_ORDER.splice(CATEGORY_ORDER.indexOf(G_PROPIA), 1);
 
 // ---------- Salida ----------
 institutions.sort((a, b) => CATEGORY_ORDER.indexOf(a.category) - CATEGORY_ORDER.indexOf(b.category) || a.name.localeCompare(b.name, 'es'));

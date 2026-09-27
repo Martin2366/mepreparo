@@ -23,7 +23,8 @@ export function Cheer({ next }: StepProps) {
   return (
     <StepLayout primary={{ label: 'Continuar', onPress: next }}>
       <View className="flex-1 justify-center gap-6">
-        <Animated.View entering={FadeInUp.duration(dur.slow).easing(easeOut)} className="gap-2">
+        <Animated.View entering={FadeInUp.duration(dur.slow).easing(easeOut)}>
+          <View className="gap-2">
           <Text accessibilityRole="header" className="font-poppins-bold text-h2 text-ink">
             {a.name ? `¡Vamos por tu meta, ${a.name}!` : '¡Vamos por tu meta!'}
           </Text>
@@ -41,6 +42,7 @@ export function Cheer({ next }: StepProps) {
               <Text variant="small">Puedes elegirla más adelante.</Text>
             </View>
           )}
+          </View>
         </Animated.View>
 
         <View className="items-center">

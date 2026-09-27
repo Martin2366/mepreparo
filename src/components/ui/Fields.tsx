@@ -1,43 +1,22 @@
 import { forwardRef, useState } from 'react';
-import { Pressable, TextInput, type TextInputProps, View } from 'react-native';
-import Animated, { interpolateColor, useAnimatedStyle, useDerivedValue, withTiming } from 'react-native-reanimated';
+import { Pressable, StyleSheet, TextInput, type TextInputProps, View } from 'react-native';
 
-import { dur, easeOut } from '@/theme/motion';
 import { colors, fonts } from '@/theme/tokens';
 
 import { Icon } from './Icon';
 
-type FieldProps = Omit<TextInputProps, 'style'> & { large?: boolean };
-
-function useFocusBorder(focused: boolean, strong: boolean) {
-  const f = useDerivedValue(() => withTiming(focused ? 1 : 0, { duration: dur.base, easing: easeOut }), [focused]);
-  return useAnimatedStyle(() => ({
-    borderColor: interpolateColor(f.value, [0, 1], [strong ? colors.sky200 : colors.graphite200, colors.sky]),
-    // Anillo de foco del design system (celeste al 40 %), dibujado como sombra suave.
-    shadowOpacity: f.value * 0.35,
-  }));
-}
-
-const fieldBox = {
-  borderWidth: 2,
-  backgroundColor: colors.white,
-  shadowColor: colors.sky,
-  shadowOffset: { width: 0, height: 0 },
-  shadowRadius: 6,
-  elevation: 0,
-} as const;
+type FieldProps = Omit<TextInputProps, 'style'>;
 
 /** Campo de texto de la marca (Input): borde grafito → celeste al enfocar. */
 export const TextField = forwardRef<TextInput, FieldProps>(function TextField({ onFocus, onBlur, ...rest }, ref) {
   const [focused, setFocused] = useState(false);
-  const border = useFocusBorder(focused, false);
   return (
-    <Animated.View style={[fieldBox, { borderRadius: 14 }, border]}>
+    <View style={[s.box, s.boxField, focused && s.boxFocus]}>
       <TextInput
         ref={ref}
         placeholderTextColor={colors.graphite300}
         maxFontSizeMultiplier={1.4}
-        style={{ fontFamily: fonts.poppins, fontSize: 19, color: colors.ink, paddingHorizontal: 16, minHeight: 56, outlineWidth: 0 }}
+        style={s.inputField}
         onFocus={(e) => {
           setFocused(true);
           onFocus?.(e);
@@ -48,19 +27,18 @@ export const TextField = forwardRef<TextInput, FieldProps>(function TextField({ 
         }}
         {...rest}
       />
-    </Animated.View>
+    </View>
   );
 });
 
 /**
- * Buscador destacado: más alto, borde celeste siempre visible, lupa y botón para limpiar.
+ * Buscador destacado: píldora alta con borde celeste siempre visible, lupa y botón para limpiar.
  * Es la acción principal de las listas largas (universidades, carreras).
  */
 export function SearchField({ value, onChangeText, placeholder, ...rest }: FieldProps) {
   const [focused, setFocused] = useState(false);
-  const border = useFocusBorder(focused, true);
   return (
-    <Animated.View style={[fieldBox, { borderRadius: 999 }, border]} className="flex-row items-center pl-4 pr-2">
+    <View style={[s.box, s.boxSearch, focused && s.boxFocus]}>
       <Icon name="search" size={22} color={focused ? colors.sky700 : colors.graphite} />
       <TextInput
         value={value}
@@ -72,23 +50,43 @@ export function SearchField({ value, onChangeText, placeholder, ...rest }: Field
         returnKeyType="search"
         maxFontSizeMultiplier={1.4}
         accessibilityLabel={placeholder}
-        style={{ flex: 1, fontFamily: fonts.poppins, fontSize: 17, color: colors.ink, paddingHorizontal: 12, minHeight: 54, outlineWidth: 0 }}
+        style={s.inputSearch}
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
         {...rest}
       />
       {value ? (
-        <Pressable
-          accessibilityRole="button"
-          accessibilityLabel="Borrar búsqueda"
-          onPress={() => onChangeText?.('')}
-          className="h-10 w-10 items-center justify-center rounded-full active:bg-sky-50"
-        >
+        <Pressable accessibilityRole="button" accessibilityLabel="Borrar búsqueda" onPress={() => onChangeText?.('')} style={s.clear} hitSlop={6}>
           <Icon name="x" size={20} color={colors.graphite} />
         </Pressable>
-      ) : (
-        <View className="w-2" />
-      )}
-    </Animated.View>
+      ) : null}
+    </View>
   );
 }
+
+const s = StyleSheet.create({
+  box: { borderWidth: 2, backgroundColor: colors.white, flexDirection: 'row', alignItems: 'center' },
+  boxField: { borderRadius: 14, borderColor: colors.graphite200 },
+  boxSearch: { borderRadius: 999, borderColor: colors.sky200, paddingLeft: 16, paddingRight: 6, minHeight: 56 },
+  boxFocus: { borderColor: colors.sky },
+  inputField: {
+    flex: 1,
+    fontFamily: fonts.poppins,
+    fontSize: 19,
+    color: colors.ink,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    minHeight: 56,
+    outlineWidth: 0,
+  },
+  inputSearch: {
+    flex: 1,
+    fontFamily: fonts.poppins,
+    fontSize: 17,
+    color: colors.ink,
+    paddingHorizontal: 12,
+    paddingVertical: 10,
+    outlineWidth: 0,
+  },
+  clear: { width: 40, height: 40, borderRadius: 20, alignItems: 'center', justifyContent: 'center' },
+});

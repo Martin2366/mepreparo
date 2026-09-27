@@ -1,12 +1,11 @@
-import { useDeferredValue, useMemo, useState } from 'react';
-import { Pressable, ScrollView, SectionList, View } from 'react-native';
-import Animated, { FadeInUp } from 'react-native-reanimated';
+import { memo, useCallback, useDeferredValue, useMemo, useState } from 'react';
+import { Pressable, ScrollView, SectionList, StyleSheet, View } from 'react-native';
 
 import { SearchField } from '@/components/ui/Fields';
 import { Mascot } from '@/components/ui/Mascot';
 import { OptionCard } from '@/components/ui/OptionCard';
 import { Text } from '@/components/ui/Text';
-import { dur, easeOut } from '@/theme/motion';
+import { colors, fonts } from '@/theme/tokens';
 
 import { allInstitutions, institutionSections } from '../admission';
 import { SectionLabel, StepLayout, StepTitle } from '../components';
@@ -19,9 +18,21 @@ const POPULAR = ['UC', 'UCH', 'USACH', 'UDEC', 'USM', 'UV', 'INACAP', 'DUOC'];
 
 export const shortOf = (i: Institution): string | null => i.short ?? (i.search ? i.search.split(' ')[0]! : null);
 
+const Row = memo(function Row({ item, selected, onChoose }: { item: Institution; selected: boolean; onChoose: (id: string) => void }) {
+  return (
+    <View style={{ paddingBottom: 8 }}>
+      <OptionCard
+        label={item.name}
+        hint={item.paes ? item.region : `${item.region} · admisión directa`}
+        selected={selected}
+        onPress={() => onChoose(item.id)}
+      />
+    </View>
+  );
+});
+
 export function InstitutionStep({ next }: StepProps) {
   const selected = useOnboarding((s) => s.answers.institutionId);
-  const name = useOnboarding((s) => s.answers.name);
   const update = useOnboarding((s) => s.update);
   const [query, setQuery] = useState('');
   const deferred = useDeferredValue(query);
@@ -31,8 +42,10 @@ export function InstitutionStep({ next }: StepProps) {
     [],
   );
 
-  const choose = (id: string) =>
-    update(selected === id ? {} : { institutionId: id, careerId: undefined, target: undefined, tests: undefined });
+  const choose = useCallback(
+    (id: string) => update({ institutionId: id, careerId: undefined, target: undefined, tests: undefined }),
+    [update],
+  );
   const current = allInstitutions().find((i) => i.id === selected);
   const label = current ? `Elegir ${shortOf(current) ?? 'esta institución'}` : 'Elegir';
 
@@ -42,33 +55,29 @@ export function InstitutionStep({ next }: StepProps) {
       primary={{ label, onPress: next, disabled: !current }}
       secondary={{ label: 'Aún no lo sé', onPress: () => (update({ institutionId: null, careerId: undefined, target: undefined, tests: undefined }), next()) }}
     >
-      <View className="gap-4 px-5 pt-2">
-        <StepTitle
-          title={name ? `${name}, ¿dónde te gustaría estudiar?` : '¿Dónde te gustaría estudiar?'}
-          subtitle="Universidades, institutos y CFT de todo Chile."
-        />
-        <Animated.View entering={FadeInUp.duration(dur.slow).delay(80).easing(easeOut)}>
-          <SearchField value={query} onChangeText={setQuery} placeholder="Busca por nombre o sigla" />
-        </Animated.View>
+      <View style={s.head}>
+        <StepTitle title="¿Dónde te gustaría estudiar?" subtitle="Universidades, institutos y escuelas de todo Chile." />
+        <SearchField value={query} onChangeText={setQuery} placeholder="Busca por nombre o sigla" />
       </View>
 
       <SectionList
-        className="flex-1"
-        contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: 24 }}
+        style={{ flex: 1 }}
+        contentContainerStyle={s.list}
         sections={sections}
         keyExtractor={(i) => i.id}
+        extraData={selected}
         stickySectionHeadersEnabled
         keyboardShouldPersistTaps="handled"
         keyboardDismissMode="on-drag"
-        initialNumToRender={10}
-        windowSize={7}
+        initialNumToRender={8}
+        maxToRenderPerBatch={8}
+        windowSize={9}
+        removeClippedSubviews
         ListHeaderComponent={
           !query ? (
-            <View className="pt-4">
-              <Text variant="overline" className="pb-2 text-graphite">
-                Más buscadas
-              </Text>
-              <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerClassName="gap-2 pr-5">
+            <View style={{ paddingTop: 6 }}>
+              <SectionLabel>Más buscadas</SectionLabel>
+              <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 8, paddingRight: 20 }}>
                 {popular.map((i) => {
                   const on = i.id === selected;
                   return (
@@ -78,9 +87,9 @@ export function InstitutionStep({ next }: StepProps) {
                       accessibilityState={{ selected: on }}
                       accessibilityLabel={i.name}
                       onPress={() => choose(i.id)}
-                      className={`min-h-tap justify-center rounded-full border-2 px-4 ${on ? 'border-sky bg-sky-100' : 'border-line bg-white'}`}
+                      style={[s.chip, on && s.chipOn]}
                     >
-                      <Text className="font-poppins-semibold text-ink">{shortOf(i)}</Text>
+                      <Text style={s.chipText}>{shortOf(i)}</Text>
                     </Pressable>
                   );
                 })}
@@ -89,27 +98,30 @@ export function InstitutionStep({ next }: StepProps) {
           ) : null
         }
         renderSectionHeader={({ section }) => <SectionLabel>{section.title}</SectionLabel>}
-        renderItem={({ item, index }) => (
-          <View className="pb-2">
-            <OptionCard
-              label={item.name}
-              hint={item.paes ? item.region : `${item.region} · admisión directa`}
-              selected={item.id === selected}
-              onPress={() => choose(item.id)}
-              index={index}
-              animateIn={index < 6}
-            />
-          </View>
-        )}
+        renderItem={({ item }) => <Row item={item} selected={item.id === selected} onChoose={choose} />}
         ListEmptyComponent={
-          <View className="items-center gap-3 py-10">
-            <Mascot pose="pensando" height={110} />
-            <Text className="text-center text-graphite">
-              No encontramos «{query}». Prueba con la sigla o con otra palabra del nombre.
-            </Text>
+          <View style={{ alignItems: 'center', gap: 12, paddingVertical: 40 }}>
+            <Mascot pose="pensando" height={110} float={false} />
+            <Text className="text-center text-graphite">No encontramos «{query}». Prueba con la sigla o con otra palabra.</Text>
           </View>
         }
       />
     </StepLayout>
   );
 }
+
+const s = StyleSheet.create({
+  head: { gap: 16, paddingHorizontal: 20, paddingTop: 8 },
+  list: { paddingHorizontal: 20, paddingBottom: 24 },
+  chip: {
+    minHeight: 48,
+    justifyContent: 'center',
+    borderRadius: 999,
+    borderWidth: 2,
+    borderColor: colors.line,
+    backgroundColor: colors.white,
+    paddingHorizontal: 18,
+  },
+  chipOn: { borderColor: colors.sky, backgroundColor: colors.sky100 },
+  chipText: { fontFamily: fonts['poppins-semibold'], fontSize: 16, lineHeight: 22, color: colors.ink },
+});
