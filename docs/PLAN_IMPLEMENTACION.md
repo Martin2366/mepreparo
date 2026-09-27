@@ -433,7 +433,7 @@ C:\MePreparo\
 | D9 | 2026-09-27 | `.easignore` excluye `assets/brand/` y `docs/` | La primera subida pesaba 59 MB por los originales de marca |
 
 **Pendiente de decisión del fundador (Día 3):** texto blanco sobre celeste `#4FB3E8` tiene contraste 2,4:1
-(no cumple AA, ni siquiera para texto grande). Opciones: botón celeste con texto tinta, o fondo `sky-700 #1F86C0` con texto blanco (4,0:1; pasa AA solo para texto grande), o tinta sobre celeste (6:1).
+(no cumple AA, ni siquiera para texto grande). Opciones: fondo `sky-700 #1F86C0` con texto blanco (4,0:1; pasa AA solo para texto grande), o tinta sobre celeste (6:1).
 
 ## 11. Bitácora diaria
 | Día | Hecho | Pendiente | Bloqueos |
