@@ -4,7 +4,8 @@ App Android (Expo/React Native) para **entender** la matemática PAES (Chile) co
 aprender haciendo con interactivos, a tu ritmo, sin juicio. v1 = eje Álgebra y funciones de M1, 100% gratis.
 
 ## Leer antes de trabajar
-1. `docs/SPEC_V1.md`: especificación aprobada (qué se construye y qué no).
+1. `docs/PRD.md`: **alcance vigente** (borrador en revisión): funciones, monetización, contenido y fases. Donde contradiga a la spec, gana el PRD.
+   `docs/SPEC_V1.md`: spec original (requisitos no funcionales y confiabilidad siguen vigentes).
 2. `docs/PLAN_IMPLEMENTACION.md`: plan por días, verificación, riesgos. Actualizar su **Bitácora** (§11) al cerrar cada día y sus **Decisiones** (§10) cuando se decida algo.
 3. `AGENTS.md`: reglas de Expo (las APIs cambian en cada SDK: verificar en docs.expo.dev/versions/v57.0.0, no de memoria).
 4. `assets/brand/design-system/`: design system (tokens, guías, componentes de referencia en HTML/JSX). `docs/referencias/`: referencias de pantallas.
@@ -32,7 +33,7 @@ npx eas-cli build --profile development|preview|production --platform android
 - `assets/brand/`: originales de marca (no se empaquetan). `assets/images/`: lo que usa la app.
 
 ## Reglas del producto
-- Sin vidas, sin paywall, sin anuncios en v1. Nunca cobros sorpresa (principio central de la marca).
+- Sin vidas ni anuncios. Aprender nunca se bloquea. Sin paywall en el onboarding: prueba Premium de 7 días **sin tarjeta ni cuenta** gestionada por la app; nunca cobros sorpresa (principio central de la marca). El tutor IA no decide si una respuesta es correcta: eso lo hace el motor.
 - El progreso se guarda **localmente en cada paso antes del feedback**; la sincronización es idempotente y nunca bloquea la UI.
 - Corrección de respuestas **determinista, local y con aritmética racional exacta**.
 - El contenido vive en `src/content/*.json`; solo `reviewStatus: "approved"` puede ir a producción (`content:validate` lo impone en el perfil `production`). Nada de contenido de estudiantes sin aprobación del fundador.
