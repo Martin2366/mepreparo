@@ -1,0 +1,403 @@
+{
+  "unitId": "cuerpos",
+  "lessons": [
+    {
+      "id": "m1-cg-1",
+      "title": "Desarmar un cuerpo",
+      "version": 1,
+      "reviewStatus": "draft",
+      "estimatedMinutes": 5,
+      "skills": ["representar"],
+      "steps": [
+        {
+          "id": "s1",
+          "type": "explain",
+          "title": "Caras, aristas y vértices",
+          "body": "Un cuerpo geométrico tiene caras (superficies), aristas (bordes) y vértices (esquinas). Su red o desarrollo es la figura plana que obtienes al desarmarlo: un cubo se desarma en 6 cuadrados.",
+          "mascot": "explicando"
+        },
+        {
+          "id": "s2",
+          "type": "choice",
+          "skill": "representar",
+          "difficulty": 1,
+          "prompt": "¿Cuántas caras tiene un prisma de base triangular?",
+          "options": ["$5$", "$3$", "$6$", "$9$"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. Además de las 3 caras laterales, tiene 2 bases triangulares.",
+            "2": "Casi. 6 caras tiene un prisma de base cuadrada.",
+            "3": "Casi. 9 son sus aristas."
+          },
+          "hints": ["2 bases + caras laterales."],
+          "explanation": "2 triángulos y 3 rectángulos: 5 caras."
+        },
+        {
+          "id": "s3",
+          "type": "numeric",
+          "skill": "representar",
+          "difficulty": 1,
+          "prompt": "¿Cuántas aristas tiene un cubo?",
+          "answer": "12",
+          "mistakes": [
+            { "value": "6", "feedback": "Casi. 6 son las caras." },
+            { "value": "8", "feedback": "Casi. 8 son los vértices." }
+          ],
+          "feedback": "Casi. Cuenta: 4 arriba, 4 abajo y 4 verticales.",
+          "hints": ["4 + 4 + 4"],
+          "solution": ["$4+4+4=12$"]
+        },
+        {
+          "id": "s4",
+          "type": "choice",
+          "skill": "representar",
+          "difficulty": 2,
+          "prompt": "¿De qué figuras está formado el desarrollo de un cilindro?",
+          "options": ["Dos círculos y un rectángulo", "Un círculo y un sector circular", "Seis cuadrados", "Dos círculos y un triángulo"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. Ese es el desarrollo de un cono.",
+            "2": "Casi. Ese es el desarrollo de un cubo.",
+            "3": "Casi. La superficie lateral del cilindro, al desenrollarla, es un rectángulo."
+          },
+          "hints": ["Piensa en la etiqueta de una lata: al despegarla, ¿qué forma tiene?"],
+          "explanation": "Dos tapas circulares y la superficie lateral, que es un rectángulo."
+        },
+        {
+          "id": "s5",
+          "type": "explain",
+          "title": "La fórmula de Euler",
+          "body": "En todo poliedro: caras + vértices − aristas = 2. En el cubo: $6+8-12=2$.",
+          "mascot": "aja"
+        },
+        {
+          "id": "s6",
+          "type": "numeric",
+          "skill": "resolver",
+          "difficulty": 3,
+          "prompt": "Un poliedro tiene 8 caras y 12 vértices. ¿Cuántas aristas tiene?",
+          "answer": "18",
+          "mistakes": [{ "value": "22", "feedback": "Casi. Es $C+V-A=2$: $8+12-A=2$, entonces $A=18$." }],
+          "feedback": "Casi. Usa $C+V-A=2$.",
+          "hints": ["$8+12-A=2$"],
+          "solution": ["$20-A=2$", "$A=18$"]
+        },
+        {
+          "id": "s7",
+          "type": "choice",
+          "skill": "representar",
+          "difficulty": 2,
+          "prompt": "Al girar un rectángulo en torno a uno de sus lados se obtiene un:",
+          "options": ["Cilindro", "Cono", "Esfera", "Prisma"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. Un cono se obtiene girando un triángulo rectángulo.",
+            "2": "Casi. Una esfera se obtiene girando un semicírculo.",
+            "3": "Casi. Un prisma no se obtiene por rotación."
+          },
+          "hints": ["Imagina el rectángulo girando como una puerta."],
+          "explanation": "El lado del eje es la altura y el otro lado es el radio: un cilindro."
+        }
+      ]
+    },
+    {
+      "id": "m1-cg-2",
+      "title": "Área de superficie",
+      "version": 1,
+      "reviewStatus": "draft",
+      "estimatedMinutes": 6,
+      "skills": ["resolver", "modelar"],
+      "steps": [
+        {
+          "id": "s1",
+          "type": "explain",
+          "title": "Sumar todas las caras",
+          "body": "El área total de un cuerpo es la suma de las áreas de todas sus caras. Cubo de arista $a$: $6a^{2}$. Cilindro: dos tapas $2πr^{2}$ más el lateral $2πrh$.",
+          "mascot": "explicando"
+        },
+        {
+          "id": "s2",
+          "type": "numeric",
+          "skill": "resolver",
+          "difficulty": 1,
+          "prompt": "¿Cuál es el área total de un cubo de arista 3 cm?",
+          "answer": "54",
+          "suffix": "cm²",
+          "mistakes": [
+            { "value": "27", "feedback": "Casi. 27 es el volumen; el área es $6\\cdot 3^{2}$." },
+            { "value": "9", "feedback": "Casi. Esa es una sola cara; el cubo tiene 6." }
+          ],
+          "feedback": "Casi. Son 6 cuadrados de $3\\cdot 3$.",
+          "hints": ["$6a^{2}$"],
+          "solution": ["$6\\cdot 9=54$"]
+        },
+        {
+          "id": "s3",
+          "type": "numeric",
+          "skill": "resolver",
+          "difficulty": 2,
+          "prompt": "Una caja mide 5 cm × 4 cm × 2 cm. ¿Cuál es su área total?",
+          "answer": "76",
+          "suffix": "cm²",
+          "mistakes": [
+            { "value": "40", "feedback": "Casi. 40 es el volumen." },
+            { "value": "38", "feedback": "Casi. Cada cara aparece dos veces (la de arriba y la de abajo, etc.)." }
+          ],
+          "feedback": "Casi. Calcula $2\\cdot(5\\cdot 4+5\\cdot 2+4\\cdot 2)$.",
+          "hints": ["Tres pares de caras iguales."],
+          "solution": ["$2\\cdot(20+10+8)=76$"]
+        },
+        {
+          "id": "s4",
+          "type": "choice",
+          "skill": "resolver",
+          "difficulty": 2,
+          "prompt": "¿Cuál es el área lateral de un cilindro de radio 2 cm y altura 5 cm?",
+          "options": ["$20π$ cm²", "$10π$ cm²", "$40π$ cm²", "$28π$ cm²"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. Falta el 2 de $2πrh$.",
+            "2": "Casi. Revisa: $2π\\cdot 2\\cdot 5=20π$.",
+            "3": "Casi. $28π$ es el área total; el lateral no incluye las tapas."
+          },
+          "hints": ["$2πrh$"],
+          "solution": ["$2π\\cdot 2\\cdot 5=20π$"]
+        },
+        {
+          "id": "s5",
+          "type": "numeric",
+          "skill": "resolver",
+          "difficulty": 3,
+          "prompt": "El área total de ese cilindro es $kπ$ cm². ¿Cuánto vale $k$?",
+          "answer": "28",
+          "mistakes": [{ "value": "20", "feedback": "Casi. Falta sumar las dos tapas: $2\\cdot π\\cdot 2^{2}=8π$." }],
+          "feedback": "Casi. Suma el lateral y las dos tapas.",
+          "hints": ["Tapas: $2π\\cdot 2^{2}$."],
+          "solution": ["$20π+8π=28π$"]
+        },
+        {
+          "id": "s6",
+          "type": "choice",
+          "skill": "modelar",
+          "difficulty": 3,
+          "prompt": "Se quiere pintar el exterior de una caja cerrada de 1 m × 1 m × 2 m. Si un litro de pintura cubre 5 m², ¿cuántos litros se necesitan?",
+          "options": ["2 litros", "1 litro", "4 litros", "0,4 litros"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. Revisa el área: $2\\cdot(1+2+2)=10$ m².",
+            "2": "Casi. $10\\div 5=2$ litros.",
+            "3": "Casi. Usaste el volumen; se pinta la superficie."
+          },
+          "hints": ["Área total: $2\\cdot(1\\cdot 1+1\\cdot 2+1\\cdot 2)$."],
+          "solution": ["Área: 10 m²", "$10\\div 5=2$ litros"]
+        }
+      ]
+    },
+    {
+      "id": "m1-cg-3",
+      "title": "Volumen",
+      "version": 1,
+      "reviewStatus": "draft",
+      "estimatedMinutes": 6,
+      "skills": ["resolver", "argumentar"],
+      "steps": [
+        {
+          "id": "s1",
+          "type": "explain",
+          "title": "Base por altura",
+          "body": "El volumen de prismas y cilindros es el área de la base por la altura. Las pirámides y los conos tienen un tercio de eso: $V=\\frac{B\\cdot h}{3}$.",
+          "mascot": "explicando"
+        },
+        {
+          "id": "s2",
+          "type": "numeric",
+          "skill": "resolver",
+          "difficulty": 1,
+          "prompt": "¿Cuál es el volumen de una caja de 6 cm × 4 cm × 3 cm?",
+          "answer": "72",
+          "suffix": "cm³",
+          "mistakes": [{ "value": "13", "feedback": "Casi. El volumen se multiplica, no se suma." }],
+          "feedback": "Casi. Multiplica las tres medidas.",
+          "hints": ["$6\\cdot 4\\cdot 3$"],
+          "solution": ["$6\\cdot 4\\cdot 3=72$"]
+        },
+        {
+          "id": "s3",
+          "type": "choice",
+          "skill": "resolver",
+          "difficulty": 2,
+          "prompt": "¿Cuál es el volumen de un cilindro de radio 3 cm y altura 10 cm?",
+          "options": ["$90π$ cm³", "$30π$ cm³", "$60π$ cm³", "$900π$ cm³"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. El radio va al cuadrado: $π\\cdot 3^{2}\\cdot 10$.",
+            "2": "Casi. $2πrh$ es el área lateral, no el volumen.",
+            "3": "Casi. Solo el radio va al cuadrado, no la altura."
+          },
+          "hints": ["$V=πr^{2}h$"],
+          "solution": ["$π\\cdot 9\\cdot 10=90π$"]
+        },
+        {
+          "id": "s4",
+          "type": "numeric",
+          "skill": "resolver",
+          "difficulty": 2,
+          "prompt": "Un cono tiene radio 3 cm y altura 4 cm. Su volumen es $kπ$ cm³. ¿Cuánto vale $k$?",
+          "answer": "12",
+          "mistakes": [{ "value": "36", "feedback": "Casi. El cono es un tercio del cilindro: $\\frac{36π}{3}$." }],
+          "feedback": "Casi. Usa $\\frac{πr^{2}h}{3}$.",
+          "hints": ["$\\frac{π\\cdot 9\\cdot 4}{3}$"],
+          "solution": ["$\\frac{π\\cdot 9\\cdot 4}{3}=12π$"]
+        },
+        {
+          "id": "s5",
+          "type": "choice",
+          "skill": "argumentar",
+          "difficulty": 3,
+          "prompt": "Si todas las aristas de un cubo se duplican, ¿qué pasa con su volumen?",
+          "options": ["Se multiplica por 8", "Se duplica", "Se multiplica por 4", "Se multiplica por 6"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. Se duplican las tres medidas: $2\\cdot 2\\cdot 2$.",
+            "2": "Casi. Por 4 se multiplica el área de las caras; el volumen, por 8.",
+            "3": "Casi. $(2a)^{3}=8a^{3}$."
+          },
+          "hints": ["$(2a)^{3}$"],
+          "explanation": "$(2a)^{3}=8a^{3}$."
+        },
+        {
+          "id": "s6",
+          "type": "numeric",
+          "skill": "resolver",
+          "difficulty": 3,
+          "prompt": "Una pirámide de base cuadrada de lado 6 cm tiene 5 cm de altura. ¿Cuál es su volumen?",
+          "answer": "60",
+          "suffix": "cm³",
+          "mistakes": [{ "value": "180", "feedback": "Casi. La pirámide es un tercio del prisma: $\\frac{36\\cdot 5}{3}$." }],
+          "feedback": "Casi. Usa $\\frac{B\\cdot h}{3}$ con $B=36$.",
+          "hints": ["Base: $6^{2}=36$."],
+          "solution": ["$\\frac{36\\cdot 5}{3}=60$"]
+        }
+      ]
+    },
+    {
+      "id": "m1-cg-4",
+      "title": "Problemas de capacidad",
+      "version": 1,
+      "reviewStatus": "draft",
+      "estimatedMinutes": 6,
+      "skills": ["modelar"],
+      "steps": [
+        {
+          "id": "s1",
+          "type": "explain",
+          "title": "Litros y volumen",
+          "body": "1 litro es 1.000 cm³ (un cubo de 10 cm de lado). Y 1 m³ son 1.000 litros.",
+          "mascot": "explicando"
+        },
+        {
+          "id": "s2",
+          "type": "numeric",
+          "skill": "resolver",
+          "difficulty": 1,
+          "prompt": "¿Cuántos litros caben en un estanque de 2 m³?",
+          "answer": "2000",
+          "suffix": "litros",
+          "mistakes": [{ "value": "2", "feedback": "Casi. Cada m³ son 1.000 litros." }],
+          "feedback": "Casi. Multiplica por 1.000.",
+          "hints": ["1 m³ = 1.000 litros."],
+          "solution": ["$2\\cdot 1000=2000$"]
+        },
+        {
+          "id": "s3",
+          "type": "numeric",
+          "skill": "modelar",
+          "difficulty": 2,
+          "prompt": "Un acuario mide 50 cm × 30 cm × 40 cm. ¿Cuántos litros caben?",
+          "answer": "60",
+          "suffix": "litros",
+          "mistakes": [{ "value": "60000", "feedback": "Casi. Eso son cm³; divide por 1.000 para pasar a litros." }],
+          "feedback": "Casi. Calcula el volumen en cm³ y divide por 1.000.",
+          "hints": ["$50\\cdot 30\\cdot 40=60000$ cm³"],
+          "solution": ["$60000\\div 1000=60$"]
+        },
+        {
+          "id": "s4",
+          "type": "choice",
+          "skill": "modelar",
+          "difficulty": 3,
+          "prompt": "Un vaso cilíndrico tiene radio 3 cm y altura 10 cm. Usando $π$ aproximadamente 3, ¿cuántos vasos llenos se sirven con 1 litro?",
+          "options": ["3 vasos", "4 vasos", "37 vasos", "10 vasos"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. Cada vaso tiene unos 270 cm³: 4 vasos serían 1.080 cm³, más de un litro.",
+            "2": "Casi. Revisa las unidades: un litro son 1.000 cm³.",
+            "3": "Casi. El volumen del vaso es $π\\cdot 3^{2}\\cdot 10$, unos 270 cm³."
+          },
+          "hints": ["Volumen del vaso: $3\\cdot 9\\cdot 10$ cm³."],
+          "solution": ["Vaso: unos 270 cm³", "$1000\\div 270$ es un poco más de 3"]
+        },
+        {
+          "id": "s5",
+          "type": "numeric",
+          "skill": "modelar",
+          "difficulty": 2,
+          "prompt": "Una piscina de 10 m × 5 m se llena hasta 1,2 m de altura. ¿Cuántos m³ de agua tiene?",
+          "answer": "60",
+          "suffix": "m³",
+          "mistakes": [{ "value": "50", "feedback": "Casi. Eso es el área del fondo; falta multiplicar por la altura." }],
+          "feedback": "Casi. Multiplica largo, ancho y altura del agua.",
+          "hints": ["$10\\cdot 5\\cdot 1,2$"],
+          "solution": ["$50\\cdot 1,2=60$"]
+        },
+        {
+          "id": "s6",
+          "type": "choice",
+          "skill": "modelar",
+          "difficulty": 4,
+          "prompt": "Una llave echa 20 litros por minuto. ¿Cuánto demora en llenar un estanque de 1,5 m³?",
+          "options": ["75 minutos", "7,5 minutos", "30 minutos", "750 minutos"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. 1,5 m³ son 1.500 litros, no 150.",
+            "2": "Casi. Revisa: $1500\\div 20=75$.",
+            "3": "Casi. 1,5 m³ son 1.500 litros, no 15.000."
+          },
+          "hints": ["Pasa a litros: $1,5\\cdot 1000$."],
+          "solution": ["$1500\\div 20=75$ minutos"]
+        }
+      ]
+    }
+  ],
+  "miniClasses": [
+    {
+      "id": "mc-cg-1",
+      "title": "Caras, aristas y vértices",
+      "reviewStatus": "draft",
+      "cards": [
+        { "title": "Cubo", "body": "6 caras, 12 aristas, 8 vértices." },
+        { "title": "Euler", "body": "En todo poliedro se cumple:", "formula": "$C+V-A=2$" },
+        { "title": "Redes", "body": "Cilindro: dos círculos y un rectángulo. Cono: un círculo y un sector circular." }
+      ]
+    },
+    {
+      "id": "mc-cg-2",
+      "title": "Área y volumen",
+      "reviewStatus": "draft",
+      "cards": [
+        { "title": "Área", "body": "Suma de las caras (cm²).", "formula": "$6a^{2}$ (cubo)" },
+        { "title": "Volumen", "body": "Base por altura (cm³). Pirámide y cono: un tercio.", "formula": "$V=B\\cdot h$" },
+        { "title": "Escala", "body": "Si las medidas se multiplican por $k$: el área por $k^{2}$ y el volumen por $k^{3}$." }
+      ]
+    },
+    {
+      "id": "mc-cg-3",
+      "title": "Litros",
+      "reviewStatus": "draft",
+      "cards": [
+        { "title": "Conversiones", "body": "1 litro = 1.000 cm³ = 1 dm³. 1 m³ = 1.000 litros." },
+        { "title": "Ejemplo", "body": "Una caja de 20 × 10 × 5 cm.", "example": ["$1000$ cm³", "$=1$ litro"] }
+      ]
+    }
+  ]
+}

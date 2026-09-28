@@ -12,6 +12,10 @@ const UNIT_FILES: unknown[] = [
   require('./m1/enteros-racionales.json'),
   require('./m1/porcentaje.json'),
   require('./m1/potencias-raices.json'),
+  require('./m1/figuras.json'),
+  require('./m1/cuerpos.json'),
+  require('./m1/transformaciones.json'),
+  require('./m1/semejanza.json'),
 ];
 
 export default UNIT_FILES;
