@@ -94,7 +94,9 @@ export function IntensiveScreen({ id }: { id: string }) {
       <Card style={{ gap: 10 }}>
         <View style={s.row}>
           <Text style={[s.strong, { flex: 1 }]}>
-            Día {Math.min(doneDays + (step?.kind === 'day' || step?.kind === 'wait' ? 1 : 0), program.days)} de {program.days}
+            {mine && doneDays + (step?.kind === 'day' || step?.kind === 'wait' ? 1 : 0) > 0
+              ? `Día ${Math.min(doneDays + (step?.kind === 'day' || step?.kind === 'wait' ? 1 : 0), program.days)} de ${program.days}`
+              : `${program.days} días`}
           </Text>
           <Text style={s.caption}>{doneDays} completados</Text>
         </View>
