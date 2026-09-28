@@ -17,24 +17,32 @@ export type Reveal = 'none' | 'wrong' | 'correct' | 'solution';
 
 // ─── Alternativas ──────────────────────────────────────────────────────────
 
-/** Alternativas A–D (AnswerOption del design system). El error se marca en grafito, nunca en rojo. */
+/**
+ * Alternativas A–D (AnswerOption del design system). El error se marca en grafito, nunca en rojo.
+ * `order` (opcional) es el orden en pantalla: las posiciones cambian, pero `selected`, `answer` y
+ * `onSelect` siguen hablando en índices del contenido.
+ */
 export function ChoiceInput({
   options,
   selected,
   onSelect,
   reveal,
   answer,
+  order,
 }: {
   options: string[];
   selected: number | null;
   onSelect: (i: number) => void;
   reveal: Reveal;
   answer: number;
+  order?: number[];
 }) {
   const locked = reveal === 'correct' || reveal === 'solution';
+  const shown = order && order.length === options.length ? order : options.map((_, i) => i);
   return (
     <View style={{ gap: 10 }} accessibilityRole="radiogroup">
-      {options.map((opt, i) => {
+      {shown.map((i, pos) => {
+        const opt = options[i]!;
         const isSel = selected === i;
         const showCorrect = (reveal === 'correct' && isSel) || (reveal === 'solution' && i === answer);
         const showWrong = (reveal === 'wrong' || reveal === 'solution') && isSel && i !== answer;
@@ -44,7 +52,7 @@ export function ChoiceInput({
             key={i}
             accessibilityRole="radio"
             accessibilityState={{ selected: isSel, disabled: locked }}
-            accessibilityLabel={`Alternativa ${LETTERS[i]}`}
+            accessibilityLabel={`Alternativa ${LETTERS[pos]}`}
             disabled={locked}
             onPress={() => {
               tap();
@@ -57,7 +65,7 @@ export function ChoiceInput({
               {showCorrect ? (
                 <Icon name="check" size={16} color={colors.white} />
               ) : (
-                <Text style={[s.letterText, (tone === 'selected' || tone === 'wrong') && { color: colors.white }]}>{LETTERS[i]}</Text>
+                <Text style={[s.letterText, (tone === 'selected' || tone === 'wrong') && { color: colors.white }]}>{LETTERS[pos]}</Text>
               )}
             </View>
             <View style={{ flex: 1 }}>
@@ -150,7 +158,11 @@ const KEY_LABEL: Record<string, string> = { del: 'Borrar', '-': 'Cambiar signo',
 
 // ─── Ordenar pasos ─────────────────────────────────────────────────────────
 
-/** Orden inicial mezclado de forma estable (la misma semilla cada vez que se abre el paso). */
+/**
+ * Orden mezclado de forma estable (la misma semilla cada vez que se abre el paso).
+ * Nunca devuelve el orden original: en "ordenar" no debe venir resuelto y en alternativas
+ * evita que la correcta quede siempre donde la escribió el autor.
+ */
 export function useShuffledOrder(n: number, seedText: string): number[] {
   return useMemo(() => {
     let seed = 0;

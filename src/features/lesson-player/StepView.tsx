@@ -68,6 +68,10 @@ export function StepView({ step, onGraded, onContinue, continueLabel = 'Continua
   const [numeric, setNumeric] = useState('');
   const initialOrder = useShuffledOrder(step.type === 'order' ? step.items.length : 0, step.id);
   const [order, setOrder] = useState<number[]>(initialOrder);
+  const choiceOrder = useShuffledOrder(
+    step.type === 'choice' ? step.options.length : 0,
+    step.type === 'choice' ? `${step.id}:${step.prompt}` : step.id,
+  );
   const [graph, setGraph] = useState<GraphValues | null>(null);
   const onGraph = useCallback((g: GraphValues) => setGraph(g), []);
 
@@ -185,6 +189,7 @@ export function StepView({ step, onGraded, onContinue, continueLabel = 'Continua
         {step.type === 'choice' ? (
           <ChoiceInput
             options={step.options}
+            order={choiceOrder}
             selected={choice}
             onSelect={(i) => {
               if (reveal === 'wrong') clearFeedback();
