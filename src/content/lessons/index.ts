@@ -5,6 +5,8 @@
 const UNIT_FILES: unknown[] = [
   require('./m1/ecuaciones-inecuaciones.json'),
   require('./m1/funcion-lineal-afin.json'),
+  require('./m1/expresiones-algebraicas.json'),
+  require('./m1/proporcionalidad.json'),
 ];
 
 export default UNIT_FILES;

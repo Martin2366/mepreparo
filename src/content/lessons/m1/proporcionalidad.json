@@ -1,0 +1,393 @@
+{
+  "unitId": "proporcionalidad",
+  "lessons": [
+    {
+      "id": "m1-pp-1",
+      "title": "Razones y proporciones",
+      "version": 1,
+      "reviewStatus": "draft",
+      "estimatedMinutes": 5,
+      "skills": ["modelar"],
+      "steps": [
+        {
+          "id": "s1",
+          "type": "explain",
+          "title": "Comparar dividiendo",
+          "body": "Una razón compara dos cantidades por división. Si en un curso hay 12 mujeres y 8 hombres, la razón mujeres a hombres es $12:8$, que simplificada es $3:2$.",
+          "mascot": "explicando"
+        },
+        {
+          "id": "s2",
+          "type": "choice",
+          "skill": "modelar",
+          "difficulty": 1,
+          "prompt": "En un curso, 18 estudiantes prefieren fútbol y 12 prefieren básquetbol. ¿Cuál es la razón fútbol a básquetbol, simplificada?",
+          "options": ["$3:2$", "$2:3$", "$18:30$", "$6:1$"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. El orden importa: primero fútbol y después básquetbol.",
+            "2": "Casi. 30 es el total; la razón compara fútbol con básquetbol.",
+            "3": "Casi. $18-12=6$ es una diferencia; una razón es una división."
+          },
+          "hints": ["Escribe $18:12$ y simplifica dividiendo ambos por lo mismo."],
+          "explanation": "$18:12$ dividido por 6 es $3:2$."
+        },
+        {
+          "id": "s3",
+          "type": "explain",
+          "title": "Proporción",
+          "body": "Una proporción es una igualdad de razones: $\\frac{a}{b}=\\frac{c}{d}$. En toda proporción se cumple $a\\cdot d=b\\cdot c$ (multiplicación cruzada).",
+          "mascot": "senalando"
+        },
+        {
+          "id": "s4",
+          "type": "numeric",
+          "skill": "resolver",
+          "difficulty": 2,
+          "prompt": "Resuelve la proporción $\\frac{x}{6}=\\frac{10}{15}$. ¿Cuánto vale $x$?",
+          "answer": "4",
+          "mistakes": [{ "value": "9", "feedback": "Casi. Multiplica en cruz: $15x=6\\cdot 10$." }],
+          "feedback": "Casi. Usa la multiplicación cruzada: $15\\cdot x=6\\cdot 10$.",
+          "hints": ["$15x=60$"],
+          "solution": ["$15x=6\\cdot 10=60$", "$x=4$"]
+        },
+        {
+          "id": "s5",
+          "type": "numeric",
+          "skill": "modelar",
+          "difficulty": 2,
+          "prompt": "Una receta usa 3 tazas de harina por cada 2 huevos. ¿Cuántas tazas se necesitan con 8 huevos?",
+          "answer": "12",
+          "suffix": "tazas",
+          "mistakes": [{ "value": "9", "feedback": "Casi. No se suma la diferencia: si los huevos se multiplican por 4, la harina también." }],
+          "feedback": "Casi. Plantea $\\frac{3}{2}=\\frac{x}{8}$.",
+          "hints": ["De 2 a 8 huevos se multiplica por 4."],
+          "solution": ["$\\frac{3}{2}=\\frac{x}{8}$", "$x=\\frac{3\\cdot 8}{2}=12$"]
+        },
+        {
+          "id": "s6",
+          "type": "choice",
+          "skill": "modelar",
+          "difficulty": 3,
+          "prompt": "La razón entre la edad de Ana y la de su mamá es $2:7$. Si la mamá tiene 42 años, ¿cuántos años tiene Ana?",
+          "options": ["$12$", "$6$", "$147$", "$37$"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. $42\\div 7=6$ es el valor de una parte; Ana tiene 2 partes.",
+            "2": "Casi. Planteaste la razón al revés: Ana es la menor.",
+            "3": "Casi. Una razón no se resta: compara dividiendo."
+          },
+          "hints": ["La mamá son 7 partes: ¿cuánto vale una parte?"],
+          "solution": ["Una parte: $42\\div 7=6$", "Ana: $2\\cdot 6=12$"]
+        }
+      ]
+    },
+    {
+      "id": "m1-pp-2",
+      "title": "Proporcionalidad directa",
+      "version": 1,
+      "reviewStatus": "draft",
+      "estimatedMinutes": 6,
+      "skills": ["modelar", "representar"],
+      "steps": [
+        {
+          "id": "s1",
+          "type": "explain",
+          "title": "Crecen juntas",
+          "body": "Dos variables son directamente proporcionales si su cociente es constante: $\\frac{y}{x}=k$. Si una se duplica, la otra también. Su gráfico es una recta que pasa por el origen.",
+          "mascot": "explicando"
+        },
+        {
+          "id": "s2",
+          "type": "choice",
+          "skill": "representar",
+          "difficulty": 2,
+          "prompt": "¿Qué tabla muestra proporcionalidad directa? (entrada → salida)",
+          "options": ["1 → 3, 2 → 6, 4 → 12", "1 → 3, 2 → 5, 4 → 9", "1 → 12, 2 → 6, 4 → 3", "1 → 4, 2 → 5, 4 → 7"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. $\\frac{5}{2}$ no es igual a $\\frac{3}{1}$: el cociente no es constante.",
+            "2": "Casi. Ahí el producto es constante: es proporcionalidad inversa.",
+            "3": "Casi. Se suma una cantidad, pero el cociente cambia."
+          },
+          "hints": ["Divide salida por entrada en cada fila: ¿da siempre lo mismo?"],
+          "explanation": "$\\frac{3}{1}=\\frac{6}{2}=\\frac{12}{4}=3$: el cociente es constante."
+        },
+        {
+          "id": "s3",
+          "type": "graph",
+          "skill": "representar",
+          "difficulty": 2,
+          "prompt": "Una relación de proporcionalidad directa pasa por el punto $(2,5)$. Ajusta la constante $m$ para que la recta $y=mx$ pase por ese punto.",
+          "family": "linear",
+          "params": [{ "name": "m", "min": -4, "max": 4, "step": "1/2", "start": "1" }],
+          "target": { "kind": "points", "points": [["2", "5"]] },
+          "marks": [["2", "5"]],
+          "feedback": "Casi. La constante es $\\frac{y}{x}$ para ese punto.",
+          "hints": ["$m=\\frac{5}{2}$"],
+          "explanation": "$m=\\frac{5}{2}$: por cada unidad en $x$, $y$ sube 2,5."
+        },
+        {
+          "id": "s4",
+          "type": "numeric",
+          "skill": "modelar",
+          "difficulty": 2,
+          "prompt": "Si 5 cuadernos cuestan \\$4.000, ¿cuánto cuestan 8 cuadernos iguales? Escribe solo el número.",
+          "answer": "6400",
+          "mistakes": [{ "value": "7000", "feedback": "Casi. No se suma la diferencia de cuadernos; calcula el precio de uno: $4000\\div 5$." }],
+          "feedback": "Casi. Un cuaderno cuesta $4000\\div 5=800$ pesos.",
+          "hints": ["Precio de uno: $4000\\div 5$."],
+          "solution": ["$4000\\div 5=800$", "$800\\cdot 8=6400$"]
+        },
+        {
+          "id": "s5",
+          "type": "numeric",
+          "skill": "resolver",
+          "difficulty": 3,
+          "prompt": "$y$ es directamente proporcional a $x$, y cuando $x=6$, $y=9$. ¿Cuánto vale $y$ cuando $x=10$?",
+          "answer": "15",
+          "mistakes": [{ "value": "13", "feedback": "Casi. No se suma la diferencia: se multiplica por la constante $k=\\frac{9}{6}$." }],
+          "feedback": "Casi. Calcula la constante $k=\\frac{y}{x}$ y úsala.",
+          "hints": ["$k=\\frac{9}{6}=\\frac{3}{2}$"],
+          "solution": ["$k=\\frac{9}{6}=\\frac{3}{2}$", "$y=\\frac{3}{2}\\cdot 10=15$"]
+        },
+        {
+          "id": "s6",
+          "type": "choice",
+          "skill": "modelar",
+          "difficulty": 4,
+          "prompt": "Un auto recorre 240 km con 16 litros de bencina. Con el mismo rendimiento, ¿cuántos litros necesita para 330 km?",
+          "options": ["$22$", "$30$", "$11$", "$18$"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. El rendimiento es $240\\div 16=15$ km por litro; divide 330 por 15.",
+            "2": "Casi. Revisa la proporción: $\\frac{240}{16}=\\frac{330}{x}$.",
+            "3": "Casi. A más kilómetros, más litros, pero en la misma proporción: $330\\div 15$."
+          },
+          "hints": ["¿Cuántos km recorre con 1 litro?"],
+          "solution": ["$240\\div 16=15$ km por litro", "$330\\div 15=22$ litros"]
+        }
+      ]
+    },
+    {
+      "id": "m1-pp-3",
+      "title": "Proporcionalidad inversa",
+      "version": 1,
+      "reviewStatus": "draft",
+      "estimatedMinutes": 6,
+      "skills": ["modelar"],
+      "steps": [
+        {
+          "id": "s1",
+          "type": "explain",
+          "title": "Una sube, la otra baja",
+          "body": "Dos variables son inversamente proporcionales si su producto es constante: $x\\cdot y=k$. Si una se duplica, la otra se reduce a la mitad.",
+          "mascot": "explicando"
+        },
+        {
+          "id": "s2",
+          "type": "choice",
+          "skill": "modelar",
+          "difficulty": 1,
+          "prompt": "¿Cuál situación es de proporcionalidad inversa?",
+          "options": [
+            "Personas que pintan una muralla y horas que demoran",
+            "Kilos de pan y precio a pagar",
+            "Edad y estatura de una persona",
+            "Lado de un cuadrado y su perímetro"
+          ],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. Más kilos, más precio en la misma proporción: es directa.",
+            "2": "Casi. No hay una constante que relacione edad y estatura: no es proporcional.",
+            "3": "Casi. Si el lado se duplica, el perímetro también: es directa."
+          },
+          "hints": ["Busca la que, al aumentar una, disminuye la otra en la misma proporción."],
+          "explanation": "Más personas terminan en menos horas: el producto personas · horas se mantiene."
+        },
+        {
+          "id": "s3",
+          "type": "numeric",
+          "skill": "modelar",
+          "difficulty": 2,
+          "prompt": "4 llaves iguales llenan un estanque en 6 horas. ¿Cuántas horas demoran 3 de esas llaves?",
+          "answer": "8",
+          "suffix": "horas",
+          "mistakes": [{ "value": "9/2", "feedback": "Casi. Con menos llaves se demora más: es proporcionalidad inversa." }],
+          "feedback": "Casi. El producto se mantiene: $4\\cdot 6=3\\cdot x$.",
+          "hints": ["$4\\cdot 6=24$"],
+          "solution": ["$4\\cdot 6=24$", "$24\\div 3=8$ horas"]
+        },
+        {
+          "id": "s4",
+          "type": "numeric",
+          "skill": "resolver",
+          "difficulty": 2,
+          "prompt": "$x$ e $y$ son inversamente proporcionales, y cuando $x=5$, $y=12$. ¿Cuánto vale $y$ cuando $x=15$?",
+          "answer": "4",
+          "mistakes": [{ "value": "36", "feedback": "Casi. Es inversa: $x\\cdot y=60$, entonces $y=60\\div 15$." }],
+          "feedback": "Casi. Calcula la constante $k=x\\cdot y$.",
+          "hints": ["$k=5\\cdot 12=60$"],
+          "solution": ["$k=5\\cdot 12=60$", "$y=60\\div 15=4$"]
+        },
+        {
+          "id": "s5",
+          "type": "explain",
+          "title": "Su gráfico",
+          "body": "El gráfico de una proporcionalidad inversa no es una recta: es una curva (hipérbola) que se acerca a los ejes sin tocarlos.",
+          "mascot": "pensando"
+        },
+        {
+          "id": "s6",
+          "type": "choice",
+          "skill": "argumentar",
+          "difficulty": 3,
+          "prompt": "Si $x\\cdot y=24$, ¿qué le pasa a $y$ cuando $x$ se triplica?",
+          "options": ["Se reduce a la tercera parte", "Se triplica", "Disminuye en 3", "No cambia"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. Si ambos se triplicaran, el producto cambiaría; debe mantenerse en 24.",
+            "2": "Casi. No se resta: se divide por 3.",
+            "3": "Casi. Si $x$ cambia y el producto se mantiene, $y$ tiene que cambiar."
+          },
+          "hints": ["Para que $x\\cdot y$ siga dando 24, ¿qué debe pasar con $y$?"],
+          "explanation": "$(3x)\\cdot\\frac{y}{3}=x\\cdot y=24$."
+        },
+        {
+          "id": "s7",
+          "type": "choice",
+          "skill": "modelar",
+          "difficulty": 4,
+          "prompt": "6 trabajadores terminan una obra en 10 días. Al mismo ritmo, ¿cuántos trabajadores se necesitan para terminarla en 4 días?",
+          "options": ["$15$", "$12$", "$24$", "$3$"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. Revisa el producto: $6\\cdot 10=60$ días de trabajo.",
+            "2": "Casi. $60\\div 4=15$.",
+            "3": "Casi. Menos días exigen más trabajadores: es inversa."
+          },
+          "hints": ["$6\\cdot 10=60$ días de trabajo en total."],
+          "solution": ["$6\\cdot 10=60$", "$60\\div 4=15$ trabajadores"]
+        }
+      ]
+    },
+    {
+      "id": "m1-pp-4",
+      "title": "¿Directa o inversa?",
+      "version": 1,
+      "reviewStatus": "draft",
+      "estimatedMinutes": 5,
+      "skills": ["argumentar", "modelar"],
+      "steps": [
+        {
+          "id": "s1",
+          "type": "explain",
+          "title": "Dos preguntas",
+          "body": "Si una variable aumenta, ¿la otra aumenta en la misma proporción (directa) o disminuye (inversa)? Y compruébalo: ¿se mantiene el cociente o el producto?",
+          "mascot": "pensando"
+        },
+        {
+          "id": "s2",
+          "type": "choice",
+          "skill": "argumentar",
+          "difficulty": 1,
+          "prompt": "Velocidad de un auto y tiempo que demora en recorrer una distancia fija.",
+          "options": ["Inversa", "Directa", "Ninguna de las dos"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. A más velocidad, menos tiempo: una sube y la otra baja.",
+            "2": "Casi. Sí son proporcionales: velocidad · tiempo = distancia, que es fija."
+          },
+          "hints": ["¿Qué pasa con el tiempo si vas el doble de rápido?"],
+          "explanation": "velocidad · tiempo = distancia (constante): es inversa."
+        },
+        {
+          "id": "s3",
+          "type": "choice",
+          "skill": "argumentar",
+          "difficulty": 1,
+          "prompt": "Cantidad de entradas al cine y costo total, si todas cuestan lo mismo.",
+          "options": ["Directa", "Inversa", "Ninguna de las dos"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. Más entradas cuestan más, no menos.",
+            "2": "Casi. Sí son proporcionales: costo ÷ entradas = precio de una entrada."
+          },
+          "hints": ["¿Qué pasa con el costo si compras el doble de entradas?"],
+          "explanation": "costo ÷ entradas = precio (constante): es directa."
+        },
+        {
+          "id": "s4",
+          "type": "choice",
+          "skill": "representar",
+          "difficulty": 2,
+          "prompt": "En la tabla, $x$: 2, 4, 8 y $y$: 20, 10, 5. ¿Qué relación es?",
+          "options": ["Inversa, con $k=40$", "Directa, con $k=10$", "Inversa, con $k=10$", "Directa, con $k=40$"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. Si $x$ sube, $y$ baja: no es directa.",
+            "2": "Casi. El producto es $2\\cdot 20=40$.",
+            "3": "Casi. Si $x$ sube, $y$ baja: es inversa."
+          },
+          "hints": ["Multiplica $x\\cdot y$ en cada columna."],
+          "explanation": "$2\\cdot 20=4\\cdot 10=8\\cdot 5=40$."
+        },
+        {
+          "id": "s5",
+          "type": "find-error",
+          "skill": "argumentar",
+          "difficulty": 3,
+          "prompt": "Tomás razonó así: si 3 máquinas hacen un trabajo en 12 horas, ¿cuánto demoran 6 máquinas? ¿En qué línea se equivocó?",
+          "lines": ["3 máquinas → 12 horas", "Más máquinas, más horas", "6 máquinas → 24 horas"],
+          "wrong": 1,
+          "feedback": "Casi. Esa línea es un dato o una consecuencia de la anterior. Busca dónde decidió el tipo de proporcionalidad.",
+          "hints": ["Con más máquinas, ¿el trabajo se hace más rápido o más lento?"],
+          "explanation": "Más máquinas trabajan más rápido: es inversa. $3\\cdot 12=36$, así que 6 máquinas demoran $36\\div 6=6$ horas."
+        },
+        {
+          "id": "s6",
+          "type": "numeric",
+          "skill": "modelar",
+          "difficulty": 3,
+          "prompt": "8 amigos se reparten en partes iguales el costo de un paseo y cada uno paga \\$15.000. Si se suman 4 amigos más, ¿cuánto paga cada uno? Escribe solo el número.",
+          "answer": "10000",
+          "mistakes": [{ "value": "22500", "feedback": "Casi. Con más amigos, cada uno paga menos: es inversa." }],
+          "feedback": "Casi. Calcula el costo total y repártelo entre 12.",
+          "hints": ["Costo total: $8\\cdot 15000$."],
+          "solution": ["$8\\cdot 15000=120000$", "$120000\\div 12=10000$"]
+        }
+      ]
+    }
+  ],
+  "miniClasses": [
+    {
+      "id": "mc-pp-1",
+      "title": "Razón y proporción",
+      "reviewStatus": "draft",
+      "cards": [
+        { "title": "Razón", "body": "Compara dos cantidades dividiendo. El orden importa.", "example": ["12 mujeres y 8 hombres", "$12:8=3:2$"] },
+        { "title": "Proporción", "body": "Igualdad de dos razones. Se resuelve multiplicando en cruz.", "formula": "$\\frac{a}{b}=\\frac{c}{d}$ → $a\\cdot d=b\\cdot c$" },
+        { "title": "Partes", "body": "En $2:7$ hay 9 partes en total. Si el total es 45, cada parte vale 5." }
+      ]
+    },
+    {
+      "id": "mc-pp-2",
+      "title": "Directa o inversa",
+      "reviewStatus": "draft",
+      "cards": [
+        { "title": "Directa", "body": "El cociente es constante. Ambas suben o bajan juntas.", "formula": "$\\frac{y}{x}=k$" },
+        { "title": "Inversa", "body": "El producto es constante. Una sube y la otra baja.", "formula": "$x\\cdot y=k$" },
+        { "title": "Truco", "body": "Pregúntate: si una se duplica, ¿la otra se duplica o se reduce a la mitad?" }
+      ]
+    },
+    {
+      "id": "mc-pp-3",
+      "title": "Regla de tres sin enredos",
+      "reviewStatus": "draft",
+      "cards": [
+        { "title": "Directa", "body": "Multiplica en cruz y divide.", "example": ["3 kg cuestan \\$2.400; 5 kg cuestan $x$", "$x=\\frac{2400\\cdot 5}{3}=4000$"] },
+        { "title": "Inversa", "body": "Multiplica en línea y divide.", "example": ["4 personas: 9 días; 6 personas: $x$ días", "$x=\\frac{4\\cdot 9}{6}=6$"] }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,462 @@
+{
+  "unitId": "expresiones-algebraicas",
+  "lessons": [
+    {
+      "id": "m1-ea-1",
+      "title": "Términos semejantes",
+      "version": 1,
+      "reviewStatus": "draft",
+      "estimatedMinutes": 5,
+      "skills": ["resolver"],
+      "steps": [
+        {
+          "id": "s1",
+          "type": "explain",
+          "title": "Solo se juntan los parecidos",
+          "body": "Términos semejantes tienen la misma parte literal: $3x$ y $-5x$ son semejantes; $3x$ y $3x^{2}$ no lo son. Solo los semejantes se pueden sumar o restar.",
+          "note": "$3x+5x=8x$, pero $3x+5$ queda así.",
+          "mascot": "explicando"
+        },
+        {
+          "id": "s2",
+          "type": "choice",
+          "skill": "representar",
+          "difficulty": 1,
+          "prompt": "¿Cuál par corresponde a términos semejantes?",
+          "options": ["$4ab$ y $-7ab$", "$4a$ y $4b$", "$x^{2}$ y $2x$", "$5y$ y $5$"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. Tienen el mismo coeficiente, pero distinta letra: no son semejantes.",
+            "2": "Casi. $x^{2}$ y $x$ tienen distinto exponente: no son semejantes.",
+            "3": "Casi. Uno tiene $y$ y el otro es solo un número."
+          },
+          "hints": ["Mira solo las letras y sus exponentes, no los números de adelante."],
+          "explanation": "$4ab$ y $-7ab$ tienen la misma parte literal, $ab$."
+        },
+        {
+          "id": "s3",
+          "type": "numeric",
+          "skill": "resolver",
+          "difficulty": 1,
+          "prompt": "Reduce $7x+3x-4x$. ¿Cuál es el coeficiente que queda en la $x$?",
+          "answer": "6",
+          "mistakes": [{ "value": "14", "feedback": "Casi. El $-4x$ resta: $7+3-4$." }],
+          "feedback": "Casi. Suma y resta solo los coeficientes: $7+3-4$.",
+          "hints": ["Los tres términos son semejantes: opera sus coeficientes."],
+          "solution": ["$7x+3x-4x=(7+3-4)x=6x$"]
+        },
+        {
+          "id": "s4",
+          "type": "choice",
+          "skill": "resolver",
+          "difficulty": 2,
+          "prompt": "Reduce $5a+2b-3a+4b$.",
+          "options": ["$2a+6b$", "$8ab$", "$2a-2b$", "$8a+6b$"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. $a$ y $b$ no son semejantes: no se pueden juntar en un solo término.",
+            "2": "Casi. $2b+4b=6b$.",
+            "3": "Casi. El $-3a$ resta: $5a-3a=2a$."
+          },
+          "hints": ["Junta las $a$ por un lado y las $b$ por otro."],
+          "solution": ["$(5a-3a)+(2b+4b)=2a+6b$"]
+        },
+        {
+          "id": "s5",
+          "type": "explain",
+          "title": "El menos delante de un paréntesis",
+          "body": "Un signo menos delante de un paréntesis cambia el signo de todo lo que está adentro: $-(2x-5)=-2x+5$. Y un número delante multiplica a cada término: $3(x+2)=3x+6$.",
+          "mascot": "senalando"
+        },
+        {
+          "id": "s6",
+          "type": "choice",
+          "skill": "resolver",
+          "difficulty": 3,
+          "prompt": "Reduce $3(x+2)-(x-4)$.",
+          "options": ["$2x+10$", "$2x+2$", "$4x+10$", "$2x+6$"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. El menos cambia el signo del $-4$: queda $+4$.",
+            "2": "Casi. $-(x-4)$ resta la $x$: $3x-x=2x$.",
+            "3": "Casi. Falta el $+4$ que sale de $-(-4)$."
+          },
+          "hints": ["$3(x+2)=3x+6$ y $-(x-4)=-x+4$."],
+          "solution": ["$3x+6-x+4$", "$=2x+10$"]
+        },
+        {
+          "id": "s7",
+          "type": "numeric",
+          "skill": "resolver",
+          "difficulty": 3,
+          "prompt": "Si $x=-2$, ¿cuánto vale $x^{2}-3x+1$?",
+          "answer": "11",
+          "mistakes": [
+            { "value": "3", "feedback": "Casi. $(-2)^{2}=4$: el cuadrado de un número negativo es positivo." },
+            { "value": "-1", "feedback": "Casi. $-3\\cdot(-2)=+6$." }
+          ],
+          "feedback": "Casi. Reemplaza con paréntesis: $(-2)^{2}-3\\cdot(-2)+1$.",
+          "hints": ["Usa paréntesis al reemplazar un negativo."],
+          "solution": ["$(-2)^{2}-3\\cdot(-2)+1$", "$=4+6+1=11$"]
+        },
+        {
+          "id": "s8",
+          "type": "find-error",
+          "skill": "argumentar",
+          "difficulty": 3,
+          "prompt": "Carla redujo $2(3x-1)-4x$. ¿En qué línea se equivocó?",
+          "lines": ["$2(3x-1)-4x$", "$6x-1-4x$", "$2x-1$"],
+          "wrong": 1,
+          "feedback": "Casi. Esa línea sigue bien desde la anterior. Revisa cómo se multiplicó el paréntesis.",
+          "hints": ["¿A qué términos multiplica el 2?"],
+          "explanation": "El 2 multiplica también al $-1$: $6x-2-4x=2x-2$."
+        }
+      ]
+    },
+    {
+      "id": "m1-ea-2",
+      "title": "El modelo de área",
+      "version": 1,
+      "reviewStatus": "draft",
+      "estimatedMinutes": 6,
+      "skills": ["representar", "resolver"],
+      "steps": [
+        {
+          "id": "s1",
+          "type": "explain",
+          "title": "Multiplicar es armar un rectángulo",
+          "body": "Un rectángulo de lados $x+3$ y $x+2$ se divide en 4 partes: $x^{2}$, $3x$, $2x$ y $6$. Su área total es la suma de las partes.",
+          "note": "$(x+3)(x+2)=x^{2}+5x+6$",
+          "mascot": "explicando"
+        },
+        {
+          "id": "s2",
+          "type": "numeric",
+          "skill": "representar",
+          "difficulty": 2,
+          "prompt": "Un rectángulo mide $x+4$ por $x+1$. Su área es $x^{2}+bx+4$. ¿Cuánto vale $b$?",
+          "answer": "5",
+          "mistakes": [{ "value": "4", "feedback": "Casi. Las dos partes del medio son $4x$ y $1x$: suman $5x$." }],
+          "feedback": "Casi. Dibuja las 4 partes: $x^{2}$, $4x$, $x$ y $4$.",
+          "hints": ["Las partes con $x$ son $4\\cdot x$ y $1\\cdot x$."],
+          "solution": ["$(x+4)(x+1)=x^{2}+x+4x+4=x^{2}+5x+4$"]
+        },
+        {
+          "id": "s3",
+          "type": "choice",
+          "skill": "resolver",
+          "difficulty": 2,
+          "prompt": "¿Cuál es el desarrollo de $(x+5)(x+3)$?",
+          "options": ["$x^{2}+8x+15$", "$x^{2}+15$", "$x^{2}+8x+8$", "$2x+8$"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. Faltan las partes del medio: $5x$ y $3x$.",
+            "2": "Casi. La última parte es $5\\cdot 3=15$, no $5+3$.",
+            "3": "Casi. $x\\cdot x=x^{2}$, no $2x$."
+          },
+          "hints": ["Cada término del primer paréntesis multiplica a cada término del segundo."],
+          "solution": ["$x^{2}+3x+5x+15=x^{2}+8x+15$"]
+        },
+        {
+          "id": "s4",
+          "type": "explain",
+          "title": "Distribuir",
+          "body": "Sin dibujar: cada término del primer paréntesis multiplica a cada término del segundo, y después se reducen los semejantes. Con signos negativos funciona igual.",
+          "mascot": "senalando"
+        },
+        {
+          "id": "s5",
+          "type": "numeric",
+          "skill": "resolver",
+          "difficulty": 3,
+          "prompt": "Desarrolla $(2x+1)(x+3)$. ¿Cuál es el coeficiente del término con $x$?",
+          "answer": "7",
+          "mistakes": [{ "value": "6", "feedback": "Casi. Falta el término $1\\cdot x$: $6x+x=7x$." }],
+          "feedback": "Casi. Multiplica los 4 pares y junta los términos con $x$.",
+          "hints": ["$2x\\cdot 3=6x$ y $1\\cdot x=x$."],
+          "solution": ["$2x^{2}+6x+x+3=2x^{2}+7x+3$"]
+        },
+        {
+          "id": "s6",
+          "type": "choice",
+          "skill": "resolver",
+          "difficulty": 3,
+          "prompt": "¿A qué es igual $(x-2)(x+5)$?",
+          "options": ["$x^{2}+3x-10$", "$x^{2}-3x-10$", "$x^{2}+3x+10$", "$x^{2}-10$"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. $5x-2x=3x$, que es positivo.",
+            "2": "Casi. $-2\\cdot 5=-10$.",
+            "3": "Casi. Faltan los términos con $x$: $5x$ y $-2x$."
+          },
+          "hints": ["Cuida los signos: $-2\\cdot x=-2x$ y $-2\\cdot 5=-10$."],
+          "solution": ["$x^{2}+5x-2x-10=x^{2}+3x-10$"]
+        },
+        {
+          "id": "s7",
+          "type": "choice",
+          "skill": "modelar",
+          "difficulty": 4,
+          "prompt": "Un rectángulo tiene lados $x+6$ y $x-1$. ¿Qué expresión representa su área?",
+          "options": ["$x^{2}+5x-6$", "$x^{2}+5x+6$", "$x^{2}-5x-6$", "$x^{2}+7x-6$"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. $6\\cdot(-1)=-6$.",
+            "2": "Casi. $6x-x=5x$, positivo.",
+            "3": "Casi. Es $6x-x$, no $6x+x$."
+          },
+          "hints": ["Área = largo por ancho: $(x+6)(x-1)$."],
+          "solution": ["$x^{2}-x+6x-6=x^{2}+5x-6$"]
+        }
+      ]
+    },
+    {
+      "id": "m1-ea-3",
+      "title": "Productos notables",
+      "version": 1,
+      "reviewStatus": "draft",
+      "estimatedMinutes": 6,
+      "skills": ["representar", "resolver"],
+      "steps": [
+        {
+          "id": "s1",
+          "type": "explain",
+          "title": "El cuadrado de un binomio",
+          "body": "$(a+b)^{2}$ es un cuadrado de lado $a+b$: se arma con un cuadrado $a^{2}$, otro $b^{2}$ y dos rectángulos $ab$. Por eso $(a+b)^{2}=a^{2}+2ab+b^{2}$.",
+          "note": "El error más común: olvidar el $2ab$.",
+          "mascot": "aja"
+        },
+        {
+          "id": "s2",
+          "type": "choice",
+          "skill": "resolver",
+          "difficulty": 1,
+          "prompt": "¿Cuál es el desarrollo de $(x+4)^{2}$?",
+          "options": ["$x^{2}+8x+16$", "$x^{2}+16$", "$x^{2}+4x+16$", "$x^{2}+8x+8$"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. Faltan los dos rectángulos: $2\\cdot 4x=8x$.",
+            "2": "Casi. El término del medio es el doble: $2\\cdot 4x=8x$.",
+            "3": "Casi. $4^{2}=16$."
+          },
+          "hints": ["$(a+b)^{2}=a^{2}+2ab+b^{2}$ con $a=x$ y $b=4$."],
+          "solution": ["$x^{2}+2\\cdot x\\cdot 4+4^{2}=x^{2}+8x+16$"]
+        },
+        {
+          "id": "s3",
+          "type": "numeric",
+          "skill": "resolver",
+          "difficulty": 2,
+          "prompt": "Si $(x-3)^{2}=x^{2}+bx+9$, ¿cuánto vale $b$?",
+          "answer": "-6",
+          "mistakes": [
+            { "value": "6", "feedback": "Casi. Con resta, el término del medio es negativo: $-2\\cdot 3x$." },
+            { "value": "-3", "feedback": "Casi. Es el doble: $2\\cdot 3=6$, con signo menos." }
+          ],
+          "feedback": "Casi. Usa $(a-b)^{2}=a^{2}-2ab+b^{2}$.",
+          "hints": ["El término del medio es $-2\\cdot x\\cdot 3$."],
+          "solution": ["$(x-3)^{2}=x^{2}-6x+9$"]
+        },
+        {
+          "id": "s4",
+          "type": "explain",
+          "title": "Suma por diferencia",
+          "body": "$(a+b)(a-b)=a^{2}-b^{2}$: al multiplicar, los términos del medio ($ab$ y $-ab$) se cancelan.",
+          "mascot": "explicando"
+        },
+        {
+          "id": "s5",
+          "type": "choice",
+          "skill": "resolver",
+          "difficulty": 2,
+          "prompt": "¿A qué es igual $(x+7)(x-7)$?",
+          "options": ["$x^{2}-49$", "$x^{2}+49$", "$x^{2}-14x-49$", "$x^{2}-7$"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. El último término es $7\\cdot(-7)=-49$.",
+            "2": "Casi. Los términos del medio se cancelan: $7x-7x=0$.",
+            "3": "Casi. Es $7^{2}=49$, no 7."
+          },
+          "hints": ["$(a+b)(a-b)=a^{2}-b^{2}$"],
+          "solution": ["$x^{2}-7^{2}=x^{2}-49$"]
+        },
+        {
+          "id": "s6",
+          "type": "numeric",
+          "skill": "argumentar",
+          "difficulty": 3,
+          "prompt": "Calcula $101\\cdot 99$ usando suma por diferencia.",
+          "answer": "9999",
+          "mistakes": [{ "value": "10001", "feedback": "Casi. Es $100^{2}-1^{2}$: el 1 se resta." }],
+          "feedback": "Casi. Escribe $101=100+1$ y $99=100-1$.",
+          "hints": ["$101\\cdot 99=(100+1)(100-1)$"],
+          "solution": ["$(100+1)(100-1)=100^{2}-1^{2}$", "$=10000-1=9999$"]
+        },
+        {
+          "id": "s7",
+          "type": "choice",
+          "skill": "argumentar",
+          "difficulty": 4,
+          "prompt": "Si $a+b=7$ y $ab=10$, ¿cuánto vale $a^{2}+b^{2}$?",
+          "options": ["$29$", "$49$", "$39$", "$69$"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. $(a+b)^{2}=49$ incluye el término $2ab=20$; hay que restarlo.",
+            "2": "Casi. $2ab=2\\cdot 10=20$, no 10.",
+            "3": "Casi. El $2ab$ se resta, no se suma."
+          },
+          "hints": ["$(a+b)^{2}=a^{2}+2ab+b^{2}$", "Reemplaza: $49=a^{2}+b^{2}+20$."],
+          "solution": ["$(a+b)^{2}=a^{2}+b^{2}+2ab$", "$49=a^{2}+b^{2}+20$", "$a^{2}+b^{2}=29$"]
+        }
+      ]
+    },
+    {
+      "id": "m1-ea-4",
+      "title": "Factorizar: volver al rectángulo",
+      "version": 1,
+      "reviewStatus": "draft",
+      "estimatedMinutes": 6,
+      "skills": ["resolver", "representar"],
+      "steps": [
+        {
+          "id": "s1",
+          "type": "explain",
+          "title": "El camino de vuelta",
+          "body": "Factorizar es escribir una suma como un producto. Lo primero es buscar un factor común: $6x+9=3(2x+3)$.",
+          "mascot": "explicando"
+        },
+        {
+          "id": "s2",
+          "type": "choice",
+          "skill": "resolver",
+          "difficulty": 2,
+          "prompt": "Factoriza $4x^{2}+8x$.",
+          "options": ["$4x(x+2)$", "$4(x^{2}+8x)$", "$x(4x+8)$", "$4x(x+8)$"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. Si sacas el 4, adentro queda $x^{2}+2x$, y aún queda $x$ común.",
+            "2": "Casi. Aún queda el factor común 4 adentro del paréntesis.",
+            "3": "Casi. $4x\\cdot 8=32x$; debería dar $8x$."
+          },
+          "hints": ["¿Qué número y qué letra dividen a los dos términos?"],
+          "solution": ["$4x^{2}+8x=4x\\cdot x+4x\\cdot 2=4x(x+2)$"]
+        },
+        {
+          "id": "s3",
+          "type": "explain",
+          "title": "Trinomios",
+          "body": "Para $x^{2}+bx+c$ busca dos números que multiplicados den $c$ y sumados den $b$. Por ejemplo, $x^{2}+5x+6=(x+2)(x+3)$ porque $2\\cdot 3=6$ y $2+3=5$.",
+          "mascot": "pensando"
+        },
+        {
+          "id": "s4",
+          "type": "choice",
+          "skill": "resolver",
+          "difficulty": 2,
+          "prompt": "Factoriza $x^{2}+7x+12$.",
+          "options": ["$(x+3)(x+4)$", "$(x+2)(x+6)$", "$(x+12)(x+1)$", "$(x-3)(x-4)$"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. $2\\cdot 6=12$, pero $2+6=8$, no 7.",
+            "2": "Casi. $12+1=13$, no 7.",
+            "3": "Casi. Los dos números deben sumar $+7$: son positivos."
+          },
+          "hints": ["Busca dos números con producto 12 y suma 7."],
+          "solution": ["$3\\cdot 4=12$ y $3+4=7$", "$x^{2}+7x+12=(x+3)(x+4)$"]
+        },
+        {
+          "id": "s5",
+          "type": "numeric",
+          "skill": "resolver",
+          "difficulty": 2,
+          "prompt": "Si $x^{2}-9=(x+3)(x-a)$, ¿cuánto vale $a$?",
+          "answer": "3",
+          "mistakes": [{ "value": "9", "feedback": "Casi. $x^{2}-9=x^{2}-3^{2}$: es una diferencia de cuadrados." }],
+          "feedback": "Casi. Recuerda $a^{2}-b^{2}=(a+b)(a-b)$.",
+          "hints": ["$9=3^{2}$"],
+          "solution": ["$x^{2}-9=(x+3)(x-3)$"]
+        },
+        {
+          "id": "s6",
+          "type": "choice",
+          "skill": "resolver",
+          "difficulty": 3,
+          "prompt": "Factoriza $x^{2}-x-6$.",
+          "options": ["$(x-3)(x+2)$", "$(x+3)(x-2)$", "$(x-6)(x+1)$", "$(x-3)(x-2)$"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. $3-2=1$ daría $+x$; necesitas que sumen $-1$.",
+            "2": "Casi. $-6+1=-5$, no $-1$.",
+            "3": "Casi. $(-3)(-2)=+6$, pero necesitas $-6$."
+          },
+          "hints": ["Producto $-6$ y suma $-1$: uno positivo y otro negativo."],
+          "solution": ["$(-3)\\cdot 2=-6$ y $-3+2=-1$", "$x^{2}-x-6=(x-3)(x+2)$"]
+        },
+        {
+          "id": "s7",
+          "type": "order",
+          "skill": "argumentar",
+          "difficulty": 3,
+          "prompt": "Ordena los pasos para factorizar $2x^{2}+10x+12$.",
+          "items": [
+            "Factor común: $2(x^{2}+5x+6)$",
+            "Buscar dos números con producto 6 y suma 5",
+            "Son 2 y 3",
+            "$2(x+2)(x+3)$"
+          ],
+          "feedback": "Casi. Siempre se busca primero el factor común; después se factoriza lo que queda.",
+          "hints": ["¿Qué se hace primero cuando todos los términos tienen un factor común?"],
+          "explanation": "Primero el factor común 2, después el trinomio $x^{2}+5x+6=(x+2)(x+3)$."
+        },
+        {
+          "id": "s8",
+          "type": "choice",
+          "skill": "argumentar",
+          "difficulty": 4,
+          "prompt": "Para $x$ distinto de $-2$, ¿a qué expresión es equivalente $\\frac{x^{2}-4}{x+2}$?",
+          "options": ["$x-2$", "$x+2$", "$x-4$", "$x^{2}-2$"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. Al simplificar se cancela $x+2$ y queda el otro factor.",
+            "2": "Casi. Factoriza primero el numerador: $x^{2}-4=(x+2)(x-2)$.",
+            "3": "Casi. No se simplifica término a término; factoriza el numerador."
+          },
+          "hints": ["$x^{2}-4$ es una diferencia de cuadrados."],
+          "solution": ["$\\frac{(x+2)(x-2)}{x+2}=x-2$"]
+        }
+      ]
+    }
+  ],
+  "miniClasses": [
+    {
+      "id": "mc-ea-1",
+      "title": "Reducir en 90 segundos",
+      "reviewStatus": "draft",
+      "cards": [
+        { "title": "Semejantes", "body": "Misma parte literal (letras y exponentes). Solo esos se suman o restan.", "example": ["$3x^{2}+2x-x^{2}+5x$", "$=2x^{2}+7x$"] },
+        { "title": "Paréntesis", "body": "Un número delante multiplica a cada término; un menos cambia todos los signos.", "formula": "$-(a-b)=-a+b$" },
+        { "title": "Comprueba", "body": "Reemplaza un número (por ejemplo $x=1$) en la expresión original y en la reducida: deben dar lo mismo." }
+      ]
+    },
+    {
+      "id": "mc-ea-2",
+      "title": "Productos notables",
+      "reviewStatus": "draft",
+      "cards": [
+        { "title": "Cuadrado de binomio", "body": "Primero al cuadrado, más el doble del primero por el segundo, más el segundo al cuadrado.", "formula": "$(a+b)^{2}=a^{2}+2ab+b^{2}$" },
+        { "title": "Con resta", "body": "Solo cambia el signo del término del medio.", "formula": "$(a-b)^{2}=a^{2}-2ab+b^{2}$" },
+        { "title": "Suma por diferencia", "body": "Los términos del medio se cancelan.", "formula": "$(a+b)(a-b)=a^{2}-b^{2}$" }
+      ]
+    },
+    {
+      "id": "mc-ea-3",
+      "title": "Factorizar paso a paso",
+      "reviewStatus": "draft",
+      "cards": [
+        { "title": "1. Factor común", "body": "Siempre primero.", "example": ["$5x^{2}-10x=5x(x-2)$"] },
+        { "title": "2. Diferencia de cuadrados", "body": "Dos cuadrados restados.", "example": ["$x^{2}-25=(x+5)(x-5)$"] },
+        { "title": "3. Trinomio", "body": "Dos números: producto $c$ y suma $b$.", "example": ["$x^{2}+x-12$", "$4\\cdot(-3)=-12$ y $4-3=1$", "$(x+4)(x-3)$"] }
+      ]
+    }
+  ]
+}
