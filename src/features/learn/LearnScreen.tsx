@@ -26,7 +26,6 @@ const TESTS = [
 ];
 
 export const TILES = {
-  balanza: require('@/assets/images/icons/balanza-tile.png'),
   funcion: require('@/assets/images/icons/funcion-tile.png'),
   triangulo: require('@/assets/images/icons/triangulo-tile.png'),
 };
@@ -120,7 +119,7 @@ export function LearnScreen() {
           <Chip label="Nuevo" tone="new" />
           <Text style={s.bodyStrong}>Cada lección se toca</Text>
         </View>
-        <Text style={s.small}>Balanzas, gráficos y pasos cortos. Si te equivocas, te explicamos exactamente qué pasó.</Text>
+        <Text style={s.small}>Gráficos que se mueven, pasos cortos y ejercicios que se tocan. Si te equivocas, te explicamos exactamente qué pasó.</Text>
       </Card>
     </TabScreen>
   );

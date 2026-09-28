@@ -55,21 +55,21 @@
     {
       "id": "algebra",
       "name": "Álgebra y funciones",
-      "icon": "scale",
-      "tile": "balanza",
+      "icon": "sigma",
+      "tile": "funcion",
       "share": 0.37,
       "focus": ["Álgebra", "Funciones"],
       "units": [
         {
           "id": "ecuaciones-inecuaciones",
           "name": "Ecuaciones e inecuaciones de primer grado",
-          "summary": "Despejar la incógnita manteniendo el equilibrio, y resolver desigualdades.",
+          "summary": "Despejar la incógnita con operaciones inversas y resolver desigualdades.",
           "skills": ["resolver", "modelar"],
           "lessons": [
-            { "id": "m1-ei-1", "title": "La balanza: dejar la x sola" },
+            { "id": "m1-ei-1", "title": "Despejar: dejar la x sola" },
             { "id": "m1-ei-2", "title": "Ecuaciones con x en ambos lados" },
             { "id": "m1-ei-3", "title": "De palabras a ecuaciones" },
-            { "id": "m1-ei-4", "title": "Inecuaciones: cuando la balanza no se equilibra" }
+            { "id": "m1-ei-4", "title": "Inecuaciones: cuando un lado es mayor" }
           ],
           "generators": ["linear-equation", "linear-equation-both-sides", "linear-inequality"]
         },

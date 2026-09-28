@@ -43,7 +43,7 @@ export const AxisSchema = z.object({
   name: z.string(),
   /** Ícono de interfaz (`components/ui/Icon`) y ficha ilustrada opcional del design system. */
   icon: z.string(),
-  tile: z.enum(['balanza', 'funcion', 'triangulo']).optional(),
+  tile: z.enum(['funcion', 'triangulo']).optional(),
   /** Proporción aproximada de preguntas del eje en la prueba (suman 1). */
   share: z.number().positive().max(1),
   /** Etiquetas del onboarding/diagnóstico que apuntan a este eje ("Álgebra", "Funciones"…). */
@@ -109,20 +109,6 @@ export const NumericStep = z.object({
   explanation: z.string().optional(),
 });
 
-/** Ecuación lineal `ax + b = cx + d` con coeficientes racionales en texto. */
-export const EquationData = z.object({
-  left: z.tuple([RationalText, RationalText]),
-  right: z.tuple([RationalText, RationalText]),
-});
-
-export const BalanceStep = z.object({
-  ...base,
-  type: z.literal('balance'),
-  prompt: z.string(),
-  equation: EquationData,
-  explanation: z.string().optional(),
-});
-
 export const GraphParam = z.object({
   name: z.string(),
   min: z.number(),
@@ -182,7 +168,6 @@ export const StepSchema = z.discriminatedUnion('type', [
   ExplainStep,
   ChoiceStep,
   NumericStep,
-  BalanceStep,
   GraphStep,
   OrderStep,
   FindErrorStep,

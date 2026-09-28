@@ -1,10 +1,10 @@
-import { applyToBoth, applyToOneSide, equation, isEquivalent, isSolved, side, solve, weight } from '../balance';
+import { applyToBoth, applyToOneSide, equation, isEquivalent, isSolved, side, solve, weight } from '../linear';
 import { rat } from '../rational';
 
 // 2x + 3 = 7
 const e0 = equation(side(2, 3), side(0, 7));
 
-describe('balance', () => {
+describe('ecuaciones lineales', () => {
   it('resuelve paso a paso aplicando a ambos lados', () => {
     const r1 = applyToBoth(e0, { kind: 'sub', x: rat(0), c: rat(3) });
     expect(r1.ok).toBe(true);
@@ -17,7 +17,7 @@ describe('balance', () => {
     expect(isEquivalent(e0, r2.equation)).toBe(true);
   });
 
-  it('detecta "olvidé un lado de la balanza"', () => {
+  it('detecta "aplicar la operación a un solo lado"', () => {
     const r = applyToOneSide(e0, 'left', { kind: 'sub', x: rat(0), c: rat(3) });
     expect(r).toMatchObject({ ok: false, mistake: 'ONE_SIDE_ONLY' });
     expect(isEquivalent(e0, r.equation)).toBe(false);

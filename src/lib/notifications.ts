@@ -12,7 +12,7 @@ const CHANNEL = 'recordatorio';
 const ASKED_KEY = 'mp.notif.asked';
 
 const MESSAGES = [
-  'Equis te guardó la balanza donde la dejaste.',
+  'Equis te guardó la lección donde la dejaste.',
   '10 minutos hoy valen más que 2 horas el domingo.',
   'Tu racha te espera. Un paso a la vez.',
   'Hoy toca un poquito de matemática. Tú puedes.',

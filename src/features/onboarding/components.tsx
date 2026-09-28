@@ -85,12 +85,11 @@ export function SectionLabel({ children }: { children: string }) {
 }
 
 const TILES = {
-  balanza: require('@/assets/images/icons/balanza-tile.png'),
   funcion: require('@/assets/images/icons/funcion-tile.png'),
   triangulo: require('@/assets/images/icons/triangulo-tile.png'),
 } as const;
 
-/** Ícono de tema: las ilustraciones de marca (balanza, función, triángulo) o un ícono lineal en tile. */
+/** Ícono de tema: las ilustraciones de marca (función, triángulo) o un ícono lineal en tile. */
 export function TopicTile({ icon, size = 44 }: { icon: string; size?: number }) {
   if (icon in TILES) {
     return (

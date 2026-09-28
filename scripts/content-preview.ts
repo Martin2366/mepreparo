@@ -44,10 +44,6 @@ function step(s: Step, i: number): string[] {
       for (const m of s.mistakes ?? []) out.push(`- Si escribe ${m.value} → ${m.feedback}`);
       out.push(`- Otro error → ${s.feedback}`);
       break;
-    case 'balance':
-      out.push(s.prompt, '', `Balanza: $${s.equation.left[0]}x+${s.equation.left[1]}=${s.equation.right[0]}x+${s.equation.right[1]}$`);
-      if (s.explanation) out.push(`Por qué: ${s.explanation}`);
-      break;
     case 'graph':
       out.push(s.prompt, '', `Familia: ${s.family} · deslizadores: ${s.params.map((p) => `${p.name} ∈ [${p.min}, ${p.max}] paso ${p.step} (parte en ${p.start})`).join('; ')}`);
       out.push(`Objetivo: ${JSON.stringify(s.target)}`, `Si falla → ${s.feedback}`);

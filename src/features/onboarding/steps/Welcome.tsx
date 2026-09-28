@@ -11,7 +11,7 @@ import type { StepProps } from './types';
 
 const VALUES = [
   { icon: 'funcion', strong: 'Entiende', rest: ' cada tema con ejercicios visuales.' },
-  { icon: 'balanza', strong: 'Practica', rest: ' con preguntas tipo PAES de M1 y M2.' },
+  { icon: 'list-checks', strong: 'Practica', rest: ' con preguntas tipo PAES de M1 y M2.' },
   { icon: 'triangulo', strong: 'Avanza', rest: ' a tu ritmo, con un tutor que no se cansa de explicar.' },
 ];
 

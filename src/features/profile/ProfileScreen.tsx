@@ -145,7 +145,6 @@ export function ProfileScreen() {
       {__DEV__ ? (
         <Section title="Desarrollo">
           <Card style={{ gap: 8 }}>
-            <Button label="Probar la balanza" variant="secondary" onPress={() => router.push('/dev/balance')} />
             <Button label="Ver matemática legible" variant="secondary" onPress={() => router.push('/dev/math')} />
             <Button
               label="Borrar progreso y onboarding"

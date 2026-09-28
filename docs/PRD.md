@@ -30,7 +30,7 @@ Competidores: Preu AI, PAES Quiz, Cachai Online, Paes Matemática 1, Prepa PAES;
 | Contenido **impreciso** ("revisado por IA") | Corrección determinista con aritmética exacta; ejercicios verificados por motor; pipeline de revisión en 4 capas (§14.4); "Reportar error" en cada paso |
 | **Pierden el progreso** (fallas, reinstalar) | Guardado local en cada paso + sincronización idempotente + respaldo con Google |
 | **Ejercicios muy pequeños** / ilegibles | `MathText` propio con números grandes (ya construido) |
-| Solo ensayos + video + chatbot: **se memoriza, no se entiende** | Lecciones interactivas (balanza, gráficos con deslizadores, áreas, recta numérica…) y tutor socrático que guía sin dar la respuesta |
+| Solo ensayos + video + chatbot: **se memoriza, no se entiende** | Lecciones interactivas (gráficos con deslizadores, áreas, recta numérica…) y tutor socrático que guía sin dar la respuesta |
 
 **Lo que sí funciona en el mercado y adoptamos** (evaluación propia, no de la investigación de reseñas):
 ensayos cronometrados en formato real, puntaje estimado, banco grande de preguntas, rachas y metas diarias,
@@ -170,7 +170,7 @@ Pendientes (siguiente lote de diseños): tiempo diario, recordatorio, diagnósti
 | # | Pantalla | Pregunta / contenido | Para qué se usa |
 |---|---|---|---|
 | 1 | Bienvenida | Equis saluda: "Aprender haciendo. Hasta que haga clic." · botón **Empezar** · enlace "¿Ya tienes progreso? Entrar con Google" | Primera impresión; recuperar cuenta en teléfono nuevo |
-| 2 | Momento ajá (interactivo) | Mini balanza de 20 s: "Deja la x sola". Equis celebra con la chispa | Demuestra el producto antes de pedir nada. Mayor palanca de conversión |
+| 2 | Momento ajá (interactivo) | Mini ejercicio de 20 s. Equis celebra con la chispa | Demuestra el producto antes de pedir nada. Mayor palanca de conversión |
 | 3 | Prueba | **¿Qué pruebas vas a rendir?** (multi) M1 · M2 · Competencia Lectora · Ciencias · Historia | Ejes del plan; marca interés en Premium (M2 y otras) |
 | 4 | Cuándo | **¿Cuándo das la PAES?** Regular 2026 (30 nov) · Invierno 2027 · Regular 2027 · Aún no sé | Cuenta regresiva e intensidad del plan (fechas en `paes-config.json`) |
 | 5 | Curso | **¿En qué curso estás?** 1.º–2.º medio · 3.º medio · 4.º medio · Ya egresé | Tono, profundidad del repaso de base |
@@ -187,7 +187,6 @@ Pendientes (siguiente lote de diseños): tiempo diario, recordatorio, diagnósti
 | 16 | Premium de regalo + cuenta | "Tienes **7 días de Premium gratis**. Sin tarjeta. Sin cobros." · **Guardar mi progreso con Google** · **Continuar sin cuenta** | Activa la prueba; ofrece respaldo sin obligar |
 
 Notas:
-- La pantalla 2 reutiliza el motor de balanza ya construido (Spike B).
 - Eventos por pantalla para medir el embudo (`onboarding_step_viewed{n}`, abandono por pantalla).
 - Todo lo respondido se puede cambiar en Perfil.
 
@@ -219,7 +218,6 @@ Cada paso tiene: `skillIds`, **habilidad PAES** (Resolver problemas / Modelar / 
 | Tipo | Qué hace el estudiante | Habilidad que entrena |
 |---|---|---|
 | `explain` | Lee una idea corta con ilustración/animación | — |
-| `balance` ✅ (spike) | Mantiene el equilibrio aplicando operaciones a ambos lados | Resolver |
 | `graph` | Mueve deslizadores (m, n / a, b, c) o arrastra puntos y ve la función cambiar | Representar, Modelar |
 | `numberline` | Ubica/arrastra valores e intervalos en la recta (enteros, fracciones, inecuaciones) | Representar |
 | `area-model` | Arma rectángulos para productos notables y factorización | Representar |
@@ -259,10 +257,10 @@ Cada paso tiene: `skillIds`, **habilidad PAES** (Resolver problemas / Modelar / 
 **Qué es:** un tutor socrático que **te conoce** (carrera, ponderaciones, fecha, errores) y ayuda a **entender**, no entrega respuestas.
 Es la respuesta a "para eso uso ChatGPT": no es un chat en blanco.
 
-- **Pestaña Equis:** saludo contextual ("Ayer te equivocaste 3 veces con el signo al despejar. ¿Lo vemos con la balanza?")
+- **Pestaña Equis:** saludo contextual ("Ayer te equivocaste 3 veces con el signo al despejar. ¿Lo repasamos paso a paso?")
   + atajos ("Explícame mi último error", "¿Qué estudio hoy?", "Quiz de 5 min de lo que me cuesta", "Sácale foto a un ejercicio",
   "¿Me alcanza para mi carrera?") + conversaciones recientes + contador honesto del uso gratis.
-- **Respuestas con interactivos embebidos** (mini balanza, gráfico) y matemática bien escrita; cierra con una pregunta de
+- **Respuestas con interactivos embebidos** (gráfico, recta numérica) y matemática bien escrita; cierra con una pregunta de
   comprobación que corrige el motor (etiqueta "Verificado").
 - **Foto de un ejercicio** (necesita cámara → build nuevo, Hito 3): Equis reconoce el enunciado (editable), lo resuelven juntos
   y arma 5 ejercicios parecidos del banco verificado.
@@ -273,7 +271,7 @@ Es la respuesta a "para eso uso ChatGPT": no es un chat en blanco.
   2. Da la **siguiente** idea mínima, nunca toda la solución de golpe.
   3. Si el estudiante lo pide 3 veces o se frustra, muestra la resolución completa paso a paso, **generada desde la solución verificada** (no inventada).
   4. Cierra verificando comprensión con una pregunta parecida (generada por plantilla y corregida por el motor).
-- **Paciencia infinita:** nunca dice "ya te lo expliqué"; cambia de representación (balanza → gráfico → ejemplo con plata).
+- **Paciencia infinita:** nunca dice "ya te lo expliqué"; cambia de representación (ecuación → gráfico → ejemplo con plata).
 - **Precisión:** el tutor **no decide** si algo es correcto; eso lo hace el motor. Cualquier número que el tutor afirme sobre la respuesta sale de la solución verificada.
 - **Seguridad (13+):** sin datos personales en el prompt; se limita a temas de estudio; derivación amable si aparece angustia ("Si te sientes sobrepasado, habla con alguien de confianza").
 - **Técnica:** Supabase Edge Function → API de Claude (la clave vive solo en los secretos de la función). Modelo rápido y económico por defecto (familia Haiku), uno más capaz solo para explicaciones largas. Respuestas en streaming. Tope diario por usuario (gratis/Premium) y tope global de gasto mensual con alerta. Sin red: mensaje amable + pistas locales.
@@ -373,7 +371,7 @@ La PAES Regular 2026 es el **30 nov – 2 dic**. El cuello de botella no es el c
 | **F1 · Base jugable** | ~1 semana | Onboarding de 16 pantallas (con los diseños del fundador) · tabs Inicio/Practicar/Progreso/Perfil con datos reales · reproductor de lecciones · 6+ tipos de paso · Álgebra y funciones completo · práctica paramétrica · guardado + sync · racha/XP/logros base |
 | **F2 · Lanzamiento a closed testing** | ~1,5–2 semanas | 4 ejes de M1 con lecciones · ensayos M1 + mini-ensayos · tutor IA · prueba 7 días + Premium (RevenueCat) · puntaje estimado · cumplimiento Play → **AAB en closed testing** |
 | **F3 · Durante el closed testing (OTA)** | 14 días | Correcciones de contenido · M2 (práctica + ensayos) · reto relámpago · más plantillas |
-| **F4 · Público** | ~fin de octubre / inicio de noviembre | Producción en Play · marketing (TikTok con clips de balanza y gráficos) |
+| **F4 · Público** | ~fin de octubre / inicio de noviembre | Producción en Play · marketing (TikTok con clips de gráficos y ejercicios) |
 | **F5 · Temporada invierno 2027** | dic 2026 – mar 2027 | M2 profundo · Competencia Lectora · Ciencias · Historia (Premium) |
 
 Los pagos (RevenueCat) agregan una dependencia nativa → **un build nuevo** (con plan Starter no es problema).
@@ -399,5 +397,5 @@ Los pagos (RevenueCat) agregan una dependencia nativa → **un build nuevo** (co
 7. Aprobación de las 16 preguntas/pantallas del onboarding (§6).
 
 ## 21. Qué se conserva de lo ya construido
-Todo sirve: proyecto y build, marca y tokens, `MathText` (toda la matemática de la app), motor racional y balanza
+Todo sirve: proyecto y build, marca y tokens, `MathText` (toda la matemática de la app), motor racional y de ecuaciones lineales
 (lecciones de ecuaciones y la pantalla 2 del onboarding), validador de contenido, CI, Supabase (anónimo + Google) y Sentry.

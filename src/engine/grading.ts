@@ -1,6 +1,5 @@
 import type { StepOf } from '@/content/schema';
 
-import { type Equation, equation, side } from './balance';
 import { add, div, eq, mul, neg, parseRational, rat, type Rational } from './rational';
 
 /**
@@ -14,7 +13,6 @@ export type Answer =
   | { type: 'numeric'; text: string }
   | { type: 'order'; order: number[] }
   | { type: 'find-error'; line: number }
-  | { type: 'balance'; solved: boolean; oneSideMistakes: number }
   | { type: 'graph'; values: Record<string, Rational> };
 
 /** Convierte un texto racional del contenido. El validador garantiza que siempre es válido. */
@@ -57,12 +55,6 @@ export function gradeFindError(step: StepOf<'find-error'>, line: number): Grade 
     : { correct: false, feedback: step.feedback, mistakeCode: `line:${line}` };
 }
 
-export function equationOf(step: StepOf<'balance'>): Equation {
-  const [a, b] = step.equation.left;
-  const [c, d] = step.equation.right;
-  return equation(side(r(a), r(b)), side(r(c), r(d)));
-}
-
 /** Evalúa la función del gráfico con los parámetros dados, en aritmética exacta. */
 export function evalGraph(family: 'linear' | 'quadratic', p: Record<string, Rational>, x: Rational): Rational {
   const get = (k: string) => p[k] ?? rat(0);
@@ -89,12 +81,3 @@ export function gradeGraph(step: StepOf<'graph'>, values: Record<string, Rationa
   return ok ? { correct: true } : { correct: false, feedback: step.feedback, mistakeCode: 'graph' };
 }
 
-export function gradeBalance(step: StepOf<'balance'>, solved: boolean): Grade {
-  return solved
-    ? { correct: true }
-    : {
-        correct: false,
-        feedback: 'Casi. Lo que haces en un platillo, hazlo también en el otro, hasta que la x quede sola.',
-        mistakeCode: 'balance',
-      };
-}

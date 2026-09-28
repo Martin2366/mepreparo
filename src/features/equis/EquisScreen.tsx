@@ -81,8 +81,8 @@ export function EquisScreen() {
           <Chip label="Muy pronto" tone="neutral" />
         </View>
         <Text style={s.body}>
-          Podrás preguntarle cualquier duda. Equis te pregunta primero qué intentaste, te da la siguiente idea y te explica con balanzas
-          y gráficos. Las respuestas las verifica el motor, no una IA.
+          Podrás preguntarle cualquier duda. Equis te pregunta primero qué intentaste, te da la siguiente idea y te explica con gráficos
+          y ejemplos. Las respuestas las verifica el motor, no una IA.
         </Text>
         <HandNote>Yo no te doy la respuesta: te ayudo a llegar.</HandNote>
       </Card>

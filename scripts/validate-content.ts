@@ -5,7 +5,7 @@
  *  - el currículo y cada archivo de `src/content/lessons/` contra el esquema zod (`src/content/schema.ts`);
  *  - que TODA la notación matemática esté dentro del subconjunto permitido;
  *  - las respuestas, de forma automática con el motor exacto (A3): una sola alternativa correcta y explicación
- *    para cada incorrecta, números legibles, balanzas con solución única, gráficos cuyo objetivo se puede
+ *    para cada incorrecta, números legibles, gráficos cuyo objetivo se puede
  *    alcanzar con los deslizadores, etc.;
  *  - los generadores de práctica de cada unidad (varias semillas y dificultades);
  *  - en producción, que no haya contenido `draft` (A2).
@@ -17,9 +17,8 @@ import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { join, relative } from 'node:path';
 
 import { CurriculumSchema, type Step, type StepOf, UnitContentSchema } from '../src/content/schema';
-import { isSolved, solve } from '../src/engine/balance';
 import { GENERATORS } from '../src/engine/generators';
-import { equationOf, gradeGraph } from '../src/engine/grading';
+import { gradeGraph } from '../src/engine/grading';
 import { MathParseError, parseRich } from '../src/engine/math-parser';
 import { add, cmp, parseRational, type Rational, rat } from '../src/engine/rational';
 
@@ -108,20 +107,6 @@ function checkNumeric(where: string, s: StepOf<'numeric'>) {
   }
 }
 
-function checkBalance(where: string, s: StepOf<'balance'>) {
-  const all = [...s.equation.left, ...s.equation.right];
-  if (!all.every((t) => num(where, t))) return;
-  const e = equationOf(s);
-  const sol = solve(e);
-  if (sol.kind !== 'unique') err(where, 'la ecuación de la balanza no tiene solución única');
-  if (isSolved(e)) err(where, 'la balanza ya parte resuelta');
-  // La balanza dibuja pesos enteros positivos.
-  if (!all.every((t) => {
-    const v = parseRational(t);
-    return v !== null && v.d === 1 && v.n >= 0 && v.n <= 9;
-  })) err(where, 'la balanza solo dibuja coeficientes enteros entre 0 y 9');
-}
-
 function gridOf(where: string, p: StepOf<'graph'>['params'][number]): Rational[] | null {
   const step = num(where, p.step);
   const start = num(where, p.start);
@@ -172,8 +157,6 @@ function checkStep(where: string, s: Step) {
       return checkChoice(where, s);
     case 'numeric':
       return checkNumeric(where, s);
-    case 'balance':
-      return checkBalance(where, s);
     case 'graph':
       return checkGraph(where, s);
     case 'order':

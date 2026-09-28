@@ -50,7 +50,7 @@ export const cmp = (a: Rational, b: Rational): -1 | 0 | 1 => Math.sign(a.n * b.d
 export const isZero = (a: Rational): boolean => a.n === 0;
 export const isInteger = (a: Rational): boolean => a.d === 1;
 
-/** Solo para dibujar (inclinación de la balanza, posición en un gráfico). Nunca para corregir. */
+/** Solo para dibujar (posición en un gráfico). Nunca para corregir. */
 export const toNumber = (a: Rational): number => a.n / a.d;
 
 export const toString = (a: Rational): string => (a.d === 1 ? `${a.n}` : `${a.n}/${a.d}`);

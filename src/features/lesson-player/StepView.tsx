@@ -13,9 +13,7 @@ import { MathText } from '@/components/ui/MathText';
 import { Text } from '@/components/ui/Text';
 import type { Step } from '@/content/schema';
 import {
-  equationOf,
   type Grade,
-  gradeBalance,
   gradeChoice,
   gradeFindError,
   gradeGraph,
@@ -23,7 +21,6 @@ import {
   gradeOrder,
 } from '@/engine/grading';
 import type { Outcome } from '@/engine/xp';
-import { Balance, type BalanceState } from '@/features/interactives/balance/Balance';
 import { Graph, type GraphValues } from '@/features/interactives/graph/Graph';
 import { useAllowance } from '@/features/progress/allowance';
 import { dur, easeOut } from '@/theme/motion';
@@ -70,9 +67,7 @@ export function StepView({ step, onGraded, onContinue, continueLabel = 'Continua
   const [numeric, setNumeric] = useState('');
   const initialOrder = useShuffledOrder(step.type === 'order' ? step.items.length : 0, step.id);
   const [order, setOrder] = useState<number[]>(initialOrder);
-  const [balance, setBalance] = useState<BalanceState | null>(null);
   const [graph, setGraph] = useState<GraphValues | null>(null);
-  const onBalance = useCallback((b: BalanceState) => setBalance(b), []);
   const onGraph = useCallback((g: GraphValues) => setGraph(g), []);
 
   if (step.type === 'explain') {
@@ -103,7 +98,6 @@ export function StepView({ step, onGraded, onContinue, continueLabel = 'Continua
     (step.type === 'numeric' && numeric.length > 0) ||
     step.type === 'order' ||
     (step.type === 'find-error' && choice !== null) ||
-    (step.type === 'balance' && balance !== null) ||
     (step.type === 'graph' && graph !== null);
 
   const check = () => {
@@ -125,10 +119,6 @@ export function StepView({ step, onGraded, onContinue, continueLabel = 'Continua
       case 'find-error':
         grade = gradeFindError(step, choice!);
         answer = String(choice);
-        break;
-      case 'balance':
-        grade = gradeBalance(step, !!balance?.solved);
-        answer = balance?.solved ? 'solved' : 'unsolved';
         break;
       case 'graph':
         grade = gradeGraph(step, graph ?? {});
@@ -236,7 +226,6 @@ export function StepView({ step, onGraded, onContinue, continueLabel = 'Continua
             wrong={step.wrong}
           />
         ) : null}
-        {step.type === 'balance' ? <Balance start={equationOf(step)} onChange={onBalance} disabled={locked} /> : null}
         {step.type === 'graph' ? <Graph step={step} onChange={onGraph} disabled={locked} /> : null}
 
         {hints.slice(0, hintsShown).map((h, i) => (
@@ -294,7 +283,7 @@ export function StepView({ step, onGraded, onContinue, continueLabel = 'Continua
       <View style={{ gap: 8 }}>
         {locked ? (
           <Button label={continueLabel} arrow onPress={onContinue} />
-        ) : reveal === 'wrong' && (step.type === 'balance' || step.type === 'graph') ? (
+        ) : reveal === 'wrong' && step.type === 'graph' ? (
           <Button label="Comprobar de nuevo" onPress={check} disabled={!answered} />
         ) : (
           <Button label="Comprobar" onPress={check} disabled={!answered || reveal === 'wrong'} />

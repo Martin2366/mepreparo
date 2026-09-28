@@ -1,5 +1,5 @@
 import diagnostic from '@/content/diagnostic.json';
-import { equation, side, solve } from '@/engine/balance';
+import { equation, side, solve } from '@/engine/linear';
 import { parseRich } from '@/engine/math-parser';
 import { add, div, mul, rat, sub } from '@/engine/rational';
 

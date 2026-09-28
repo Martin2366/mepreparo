@@ -44,7 +44,7 @@
       "title": "Matemática",
       "items": [
         { "id": "numeros", "label": "Números", "hint": "Fracciones, porcentajes, potencias y raíces", "icon": "percent", "tests": ["m1", "m2"] },
-        { "id": "algebra", "label": "Álgebra", "hint": "Expresiones, ecuaciones y sistemas", "icon": "balanza", "tests": ["m1", "m2"] },
+        { "id": "algebra", "label": "Álgebra", "hint": "Expresiones, ecuaciones y sistemas", "icon": "sigma", "tests": ["m1", "m2"] },
         { "id": "funciones", "label": "Funciones", "hint": "Lineal, afín, cuadrática y proporcionalidad", "icon": "funcion", "tests": ["m1", "m2"] },
         { "id": "geometria", "label": "Geometría", "hint": "Pitágoras, áreas, volúmenes y transformaciones", "icon": "triangulo", "tests": ["m1", "m2"] },
         { "id": "probabilidad", "label": "Probabilidad y estadística", "hint": "Datos, gráficos, cuartiles y azar", "icon": "chart", "tests": ["m1", "m2"] },

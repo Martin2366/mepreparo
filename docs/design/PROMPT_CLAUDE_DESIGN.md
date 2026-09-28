@@ -11,7 +11,7 @@ Diseña la app completa de **MePreparo** que el estudiante ve **después de term
 
 ## 0. Qué es MePreparo (contexto para decidir bien)
 
-App Android para que estudiantes chilenos de 16–18 años **entiendan** la matemática de la PAES (M1 primero; M2, Competencia Lectora, Ciencias e Historia después). Tiene el ADN de Brilliant: se aprende **haciendo** con interactivos (balanza de ecuaciones, gráficos con deslizadores, recta numérica, modelos de área), en pasos cortos, sin juicio. Pero **no es Brilliant**: es un **preuniversitario completo en el bolsillo**, pensado para una meta concreta: la carrera, el puntaje de corte y la fecha de la PAES de cada estudiante.
+App Android para que estudiantes chilenos de 16–18 años **entiendan** la matemática de la PAES (M1 primero; M2, Competencia Lectora, Ciencias e Historia después). Tiene el ADN de Brilliant: se aprende **haciendo** con interactivos (gráficos con deslizadores, recta numérica, modelos de área), en pasos cortos, sin juicio. Pero **no es Brilliant**: es un **preuniversitario completo en el bolsillo**, pensado para una meta concreta: la carrera, el puntaje de corte y la fecha de la PAES de cada estudiante.
 
 La pregunta que cada pantalla debe responder: **"¿por qué usaría esto y no ChatGPT o un preu?"** Nuestras respuestas, que el diseño tiene que hacer visibles:
 1. **Te conoce**: sabe tu carrera, sus ponderaciones, el corte, tu fecha, tus errores y qué te cuesta. Todo lo que ves está personalizado.
@@ -39,7 +39,7 @@ La pregunta que cada pantalla debe responder: **"¿por qué usaría esto y no Ch
   - Una sola acción primaria por pantalla; en los ejercicios va fija abajo.
 - **Movimiento**: calmado (ease-out 120/200/320 ms, fade-up de 6 px). El único "pop" es para el correcto y el ajá. Sin confeti.
 - **Mascota Equis**: poses saludo, pensando, señalando, ajá, explicando, celebrando, estudiando, descansando; expresiones curioso, ajá, tranquilo, apoyo. Es un compañero tranquilo que explica sin juzgar. Úsala con intención, no en todas las tarjetas.
-- **Íconos**: Lucide con trazo de 2 px (vía el componente `Icon`) y las fichas de tema del DS (balanza, función, triángulo). **Sin emoji.**
+- **Íconos**: Lucide con trazo de 2 px (vía el componente `Icon`) y las fichas de tema del DS (función, triángulo). **Sin emoji.**
 - **Accesibilidad**:
   - Objetivos táctiles de 48 dp o más.
   - Contraste AA: el celeste nunca es texto pequeño.
@@ -177,7 +177,7 @@ Cada chip abre su detalle en Progreso.
 7. **Reproductor de lección** (pantalla completa):
    - barra de progreso de pasos + X para salir;
    - enunciado con matemática grande;
-   - el interactivo (diseña 3 ejemplos: **balanza** de ecuaciones con fichas arrastrables y botones "restar 3 a ambos lados"; **gráfico** de una parábola con deslizadores a, b, c; **modelo de área** para (x + 4)(x + 2));
+   - el interactivo (diseña 3 ejemplos: **teclado matemático** para responder una ecuación; **gráfico** de una parábola con deslizadores a, b, c; **modelo de área** para (x + 4)(x + 2));
    - botón "Comprobar";
    - pistas graduadas (HintBox);
    - feedback: correcto en verde con +10 XP; error en grafito "Casi…" con explicación específica y "Pregúntale a Equis";
@@ -187,7 +187,7 @@ Cada chip abre su detalle en Progreso.
 10. **Mini-clase**: tarjetas deslizables con diagrama, fórmula grande, ejemplo resuelto paso a paso, "Guardar fórmula" y al final "Probar con 3 ejercicios".
 
 ### Parte 3 · Equis (el tutor que te conoce; **no** un chat en blanco)
-1. **Portada de Equis**: Equis grande (pose explicando) + "Hola, Cata. Ayer te equivocaste 3 veces con el signo al despejar. ¿Lo vemos con la balanza?". Luego **atajos**:
+1. **Portada de Equis**: Equis grande (pose explicando) + "Hola, Cata. Ayer te equivocaste 3 veces con el signo al despejar. ¿Lo repasamos paso a paso?". Luego **atajos**:
    - "Explícame mi último error"
    - "¿Qué estudio hoy?"
    - "Quiz de 5 min de lo que me cuesta"
@@ -197,7 +197,7 @@ Cada chip abre su detalle en Progreso.
 
    Debajo, conversaciones recientes y el contador honesto de uso gratis ("Te quedan 2 conversaciones hoy"), o "Sin límite" en Premium.
 2. **Conversación**:
-   - Equis pregunta antes de responder ("¿Qué hiciste con el 3 del lado izquierdo?"), da la siguiente idea mínima y **responde con interactivos embebidos** (una mini balanza o un gráfico dentro de la burbuja) y matemática bien escrita.
+   - Equis pregunta antes de responder ("¿Qué hiciste con el 3 del lado izquierdo?"), da la siguiente idea mínima y **responde con interactivos embebidos** (un gráfico o una recta numérica dentro de la burbuja) y matemática bien escrita.
    - Cierra con una pregunta de comprobación que **corrige el motor** (etiqueta "Verificado").
    - Botones rápidos bajo el campo: "Dame otra pista", "Muéstrame paso a paso", "Otro ejemplo", "Ya entendí".
    - Mensaje en su contexto cuando se abre desde un ejercicio (la tarjeta del ejercicio fijada arriba).

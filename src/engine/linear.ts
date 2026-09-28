@@ -1,6 +1,6 @@
 import { add, div, eq, isZero, mul, ONE, rat, type Rational, sub } from './rational';
 
-/** Un lado de la balanza: `x·coef + constante`. */
+/** Un lado de una ecuación lineal: `x·coef + constante`. */
 export type Side = { readonly x: Rational; readonly c: Rational };
 export type Equation = { readonly left: Side; readonly right: Side };
 export type SideName = 'left' | 'right';
@@ -48,8 +48,8 @@ export function applyToBoth(e: Equation, op: Operation): OperationResult {
 }
 
 /**
- * Aplica la operación a un solo lado: es el error típico "olvidar un lado de la balanza".
- * Devuelve la ecuación resultante (ya no equivalente) para que la balanza se incline.
+ * Aplica la operación a un solo lado: es el error típico "hacerlo solo en un lado de la igualdad".
+ * Devuelve la ecuación resultante (ya no equivalente).
  */
 export function applyToOneSide(e: Equation, which: SideName, op: Operation): OperationResult {
   if ((op.kind === 'div' || op.kind === 'mul') && isZero(op.k)) {
@@ -70,7 +70,7 @@ export function solve(e: Equation): Solution {
   return { kind: 'unique', x: div(b, a) };
 }
 
-/** Peso de un lado si `x` vale `value`; sirve para decidir hacia dónde se inclina la balanza. */
+/** Valor de un lado si `x` vale `value`. */
 export const weight = (s: Side, value: Rational): Rational => add(mul(s.x, value), s.c);
 
 /** ¿Quedó `x = c` (o `c = x`)? */

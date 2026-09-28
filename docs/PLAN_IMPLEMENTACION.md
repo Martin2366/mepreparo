@@ -451,6 +451,7 @@ C:\MePreparo\
 | D13 | 2026-09-28 | Gratis = aprender (todas las lecciones y mini-clases); Premium = capa de preu (plan, ensayos, tutor, análisis, simulador). Límites en `src/content/limits.json` | La queja n.º 1 del discovery son los paywalls y cobros sorpresa; la presión por pagar viene del valor |
 | D14 | 2026-09-28 | Motivación v1 = XP, niveles, racha y logros. Sin diamantes, gemas, tienda ni regalos | Una segunda moneda pide una tienda; se evalúa después del lanzamiento |
 | D15 | 2026-09-28 | Mini-clases en tarjetas (no video) | Se producen y revisan rápido, pesan poco y funcionan sin red |
+| D17 | 2026-09-28 | Se elimina la balanza (interactivo, paso `balance`, spike B). Las ecuaciones se practican con respuesta numérica, alternativas, ordenar y encontrar el error; el motor pasa a `engine/linear.ts` | Decisión del fundador: la metáfora no se entendía y no debe tener protagonismo |
 | D16 | 2026-09-28 | Intentos de pasos en SQLite (solo inserción, uuid de `expo-crypto`) + agregados en zustand/kv; en la vista web, `localStorage` | Miles de intentos no caben bien en un JSON reescrito en cada paso; `expo-sqlite` en web está en alfa |
 
 ## 11. Bitácora diaria

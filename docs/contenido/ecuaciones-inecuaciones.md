@@ -2,28 +2,33 @@
 
 > Generado por `npm run content:preview`. No editar a mano: se edita el JSON.
 
-## m1-ei-1 · La balanza: dejar la x sola (draft, ~5 min)
+## m1-ei-1 · Despejar: dejar la x sola (draft, ~5 min)
 
 **1. [explain]**
-*Una ecuación es una balanza*
-Lo que hay a la izquierda pesa exactamente lo mismo que lo de la derecha. La $x$ es un peso que no conocemos. Resolver es descubrir cuánto pesa.
+*Una ecuación es una igualdad*
+Lo que está a la izquierda del signo $=$ vale exactamente lo mismo que lo que está a la derecha. La $x$ es un número que no conocemos. Resolver es descubrir cuál es.
 > Nota de Equis: Lo que haces en un lado, hazlo en el otro.
 
-**2. [balance]** · resolver · dificultad 1
-Deja la $x$ sola. Quita pesos de los dos platillos sin que la balanza se incline.
+**2. [numeric]** · resolver · dificultad 1
+¿Qué número hace verdadera la igualdad $x+3=7$?
 
-Balanza: $1x+3=0x+7$
-Por qué: Quitamos 3 de cada lado: $x+3=7$ se convierte en $x=4$.
+Respuesta: **4**
+- Si escribe 10 → Casi. Comprueba: $10+3=13$, no 7. Busca el número que sumado con 3 da 7.
+- Otro error → Casi. Prueba tu número en la igualdad: ¿sumado con 3 da 7?
 
-Pistas: (1) Hay 3 pesos de 1 junto a la $x$. ¿Qué pasa si los quitas? (2) Quita 3 pesos de cada lado: así la balanza sigue en equilibrio.
+Pistas: (1) ¿Qué número, sumado con 3, da 7? (2) Si restas 3 a ambos lados queda $x=7-3$.
+Resolución: $x+3=7$ → $x=7-3$ → $x=4$
 
-**3. [balance]** · resolver · dificultad 2
-Ahora hay dos $x$. Deja una sola $x$ en un platillo.
+**3. [numeric]** · resolver · dificultad 2
+Ahora con dos $x$: resuelve $2x+1=7$.
 
-Balanza: $2x+1=0x+7$
-Por qué: $2x+1=7$ → quitamos 1 de cada lado: $2x=6$ → dividimos por 2: $x=3$.
+Respuesta: **3**
+- Si escribe 6 → Casi. $6$ es el valor de $2x$; falta dividir por 2 para tener una sola $x$.
+- Si escribe 4 → Casi. El 1 pasa restando: $2x=7-1=6$, y después se divide por 2.
+- Otro error → Casi. Primero quita el 1 de ambos lados y después divide por 2.
 
-Pistas: (1) Primero quita el peso de 1 que acompaña a las $x$ (de ambos lados). (2) Te quedan $2x$ y 6. Si dos $x$ pesan 6, ¿cuánto pesa una? Divide ambos lados por 2.
+Pistas: (1) Resta 1 a ambos lados: $2x=6$. (2) Si dos $x$ valen 6, ¿cuánto vale una?
+Resolución: $2x+1=7$ → $2x=6$ (restamos 1 a ambos lados) → $x=3$ (dividimos por 2)
 
 **4. [explain]**
 *Despejar*
@@ -58,7 +63,7 @@ Resuelve $3x=21$. ¿Cuánto vale $x$?
 Respuesta: **7**
 - Si escribe 18 → Casi. El 3 multiplica a la $x$: hay que dividir ambos lados por 3, no restar.
 - Si escribe 63 → Casi. El 3 ya está multiplicando: la operación inversa es dividir.
-- Otro error → Casi. Si tres $x$ pesan 21, ¿cuánto pesa una $x$?
+- Otro error → Casi. Si tres $x$ valen 21, ¿cuánto vale una $x$?
 
 Pistas: (1) $3x$ significa 3 por $x$. (2) Divide ambos lados por 3.
 Resolución: $3x=21$ → $x=21\div 3$ → $x=7$
@@ -88,24 +93,31 @@ Resolución: $7x+4=39$ → $7x=35$ → $x=5$
 ## m1-ei-2 · Ecuaciones con x en ambos lados (draft, ~6 min)
 
 **1. [explain]**
-*La x en los dos platillos*
-A veces hay $x$ a ambos lados. Primero juntamos todas las $x$ en un solo platillo, quitando la misma cantidad de $x$ de los dos.
+*La x en los dos lados*
+A veces hay $x$ a ambos lados del $=$. Primero juntamos todas las $x$ en un solo lado, restando la misma cantidad de $x$ a los dos.
 
-**2. [balance]** · resolver · dificultad 2
-Resuelve $3x+1=x+5$ con la balanza.
+**2. [choice]** · resolver · dificultad 2
+En $3x+1=x+5$, ¿cuál es un buen primer paso?
 
-Balanza: $3x+1=1x+5$
-Por qué: $3x+1=x+5$ → $2x+1=5$ → $2x=4$ → $x=2$.
+- A) Restar $x$ a ambos lados  ✅
+- B) Sumar $x$ a ambos lados  → Casi. Sumar $x$ deja más $x$ en los dos lados; queremos juntarlas en uno solo.
+- C) Restar $3x$ solo a la izquierda  → Casi. Lo que haces en un lado lo tienes que hacer también en el otro.
+- D) Dividir todo por 3  → Casi. Dividir por 3 no junta las $x$ y, además, aparecen fracciones.
 
-Pistas: (1) Quita una $x$ de cada platillo. (2) Después quita el 1 y divide.
+Por qué: Restando $x$ a ambos lados queda $2x+1=5$, y de ahí $x=2$.
 
-**3. [balance]** · resolver · dificultad 3
-Ahora $4x+2=2x+8$.
+Pistas: (1) El objetivo es que la $x$ quede en un solo lado.
 
-Balanza: $4x+2=2x+8$
-Por qué: $4x+2=2x+8$ → $2x+2=8$ → $2x=6$ → $x=3$.
+**3. [numeric]** · resolver · dificultad 3
+Resuelve $4x+2=2x+8$. ¿Cuánto vale $x$?
 
-Pistas: (1) Quita dos $x$ de cada lado. (2) Te queda $2x+2=8$: sigue igual que antes.
+Respuesta: **3**
+- Si escribe 1 → Casi. El $2x$ pasa a la izquierda restando: queda $2x$, y el 2 pasa restando: $2x=6$.
+- Si escribe 6 → Casi. $6$ es el valor de $2x$; falta dividir por 2.
+- Otro error → Casi. Junta las $x$ a la izquierda y los números a la derecha.
+
+Pistas: (1) Resta $2x$ a ambos lados: $2x+2=8$. (2) Resta 2 y divide por 2.
+Resolución: $4x+2=2x+8$ → $2x+2=8$ → $2x=6$ → $x=3$
 
 **4. [explain]**
 *Pasar al otro lado*
@@ -245,11 +257,11 @@ En un curso hay 38 estudiantes y hay 6 mujeres más que hombres. ¿Cuántos homb
 Pistas: (1) Hombres: $h$. Mujeres: $h+6$. (2) $h+h+6=38$.
 Resolución: $h+(h+6)=38$ → $2h=32$ → $h=16$
 
-## m1-ei-4 · Inecuaciones: cuando la balanza no se equilibra (draft, ~6 min)
+## m1-ei-4 · Inecuaciones: cuando un lado es mayor (draft, ~6 min)
 
 **1. [explain]**
-*Un lado pesa más*
-Una inecuación es una balanza desequilibrada: un lado pesa más que el otro. Su solución no es un solo número, sino todos los números que la cumplen.
+*Un lado es mayor*
+Una inecuación compara dos lados que no son iguales: uno es mayor (o menor) que el otro. Su solución no es un solo número, sino todos los números que la cumplen.
 > Nota de Equis: $<$ menor · $>$ mayor · $\le$ menor o igual · $\ge$ mayor o igual
 
 **2. [choice]** · representar · dificultad 1

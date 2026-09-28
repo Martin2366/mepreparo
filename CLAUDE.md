@@ -25,7 +25,7 @@ npx eas-cli build --profile development|preview|production --platform android
 
 ## Estructura
 - `src/app/`: rutas de Expo Router (pantallas delgadas). `src/app/dev/`: spikes y pantallas de desarrollo.
-- `src/engine/`: lógica pura con tests (`rational`, `math-parser`, `balance`, …). Nunca `float` para corregir.
+- `src/engine/`: lógica pura con tests (`rational`, `math-parser`, `linear`, `grading`, `generators`, …). Nunca `float` para corregir.
 - `src/components/ui/`: design system (`Screen`, `Text`, `Button`, `MathText`, `GridBackground`…).
 - `src/features/`: pantallas compuestas e interactivos. `src/lib/`: integraciones (Sentry, …).
 - `src/theme/tokens.json`: **fuente única** de tokens; la leen `tailwind.config.js` y `src/theme/tokens.ts`.
