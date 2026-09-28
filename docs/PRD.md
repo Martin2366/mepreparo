@@ -1,6 +1,8 @@
 # MePreparo — PRD (Product Requirements Document)
 
-> **Estado:** BORRADOR v0.1 · 2026-09-27 · pendiente de aprobación del fundador.
+> **Estado:** v0.2 · 2026-09-28 · decisiones del fundador del 28-09 incorporadas (pestañas, formatos de contenido,
+> Gratis vs Premium, precios). Discovery de reseñas: [discovery/RESENAS.md](discovery/RESENAS.md).
+> Prompt de diseño para Claude Design: [design/PROMPT_CLAUDE_DESIGN.md](design/PROMPT_CLAUDE_DESIGN.md).
 > **Relación con otros documentos:** este PRD **amplía y reemplaza el alcance** de [SPEC_V1.md](SPEC_V1.md)
 > donde se contradicen (monetización, tutor IA, ejes, ensayos, otras pruebas). Los requisitos no funcionales,
 > el stack y las reglas de confiabilidad de la spec **se mantienen**. Una vez aprobado, se reescribe
@@ -59,47 +61,84 @@ explicación de cada alternativa.
 - **Oferta de fin de prueba:** 50 % de descuento el primer periodo, válida 48 h **reales** (no se reinicia al reabrir la app; si expira, expira). Recomendación: una sola vez por usuario. [DECIDIR] duración y porcentaje.
 - La compra se hace con Google Play Billing (RevenueCat); se muestra el precio final en CLP, qué incluye y cómo cancelar, en una pantalla tipo **boleta** (asset ya diseñado).
 
-### 4.2 Qué es gratis y qué es Premium (propuesta)
+### 4.2 Qué es gratis y qué es Premium (decidido 2026-09-28)
+
+**Principio: gratis = aprender** (nunca se bloquea una lección). **Premium = prepararte como en un preu**
+(plan, ensayos sin límite, tutor sin límite, análisis y simulador). La presión por pagar viene del valor,
+no de bloquear: la queja n.º 1 del mercado son los paywalls y los cobros sorpresa ([discovery](discovery/RESENAS.md)).
 
 | Función | Gratis (para siempre) | Premium |
 |---|---|---|
-| Ruta de lecciones M1 (los 4 ejes) | ✅ completa | ✅ |
-| Explicación específica de cada error | ✅ | ✅ |
-| Pistas graduadas | 1.ª pista siempre; 2.ª y 3.ª: **5 por día** | Sin límite |
-| Tutor IA "Pregúntale a Equis" | 3 conversaciones por día | Sin límite (con tope técnico anti-abuso) |
-| Práctica por tema (banco paramétrico) | 20 ejercicios por día | Sin límite |
-| Repaso inteligente de errores | Últimos 7 días | Todo el historial + repaso espaciado |
-| Ensayos M1 completos (65 preguntas) | 1 al mes | Sin límite + análisis por habilidad |
-| Mini-ensayos (15 preguntas, 20 min) | 1 por semana | Sin límite |
-| M2: lecciones, práctica y ensayos | Vista previa (1 lección por eje) | ✅ |
-| Reto relámpago (minijuego) | 1 partida por día | Sin límite + ligas semanales |
-| Logros | Set base (rachas, primeras veces) | Colección completa + logros de maestría |
-| Puntaje estimado PAES | Rango aproximado | Detalle por eje y habilidad + evolución |
-| Competencia Lectora, Ciencias, Historia | — | ✅ (según fases, §18) |
-| Racha, XP, recordatorios, respaldo Google | ✅ | ✅ + protector de racha extra por semana |
+| Lecciones y mini-clases de M1 (ruta completa) | Todas | Todas |
+| Explicación específica de cada error + 1.ª pista | Siempre | Siempre |
+| 2.ª y 3.ª pista | 5 al día | Sin límite |
+| Resolución completa paso a paso | 3 al día | Sin límite |
+| Equis (tutor IA) | 3 conversaciones al día | Sin límite (tope técnico anti-abuso) |
+| Foto de un ejercicio a Equis | 1 a la semana | Sin límite |
+| Práctica por tema (banco paramétrico) | 20 ejercicios al día | Sin límite |
+| Ensayo completo M1 | 1 al mes | Sin límite |
+| Mini-ensayo | 1 a la semana | Sin límite |
+| Ensayos temáticos y a tu medida | — | Sin límite |
+| Revisión de ensayos | Respuesta correcta + explicación de cada alternativa | + tiempo por pregunta, análisis por habilidad, Equis en cada pregunta |
+| Intensivos | Día 1 de cada uno | Completos |
+| Plan de estudio | "Sesión de hoy" | Plan semanal adaptativo hasta tu PAES |
+| Cuaderno de errores | Últimos 7 días | Todo el historial + repaso espaciado automático |
+| Puntaje estimado | Rango global | Por eje y habilidad + evolución |
+| Simulador de postulación | Tu carrera meta | Hasta 10 carreras + qué subir en cada prueba |
+| M2 | Diagnóstico + 1.ª lección de cada eje | Completo |
+| Competencia Lectora, Ciencias, Historia | Diagnóstico (cuando estén) | Completas (según fases, §18) |
+| Imprimir ensayo en PDF con clavijero | — | Sí |
+| Racha, XP, niveles, logros base, fórmulas, recordatorios, respaldo Google | Sí | + 1 protector de racha extra por semana y logros de maestría |
+| Reto relámpago | 1 partida al día | Sin límite |
 
-> La tabla prioriza que un estudiante sin dinero pueda **prepararse de verdad** gratis (ruta completa + explicaciones)
-> y que Premium sea **más cómodo, más profundo y más amplio**. [DECIDIR] límites exactos (se ajustan por config remota sin build).
+Reglas: nunca se interrumpe un ejercicio o ensayo en curso con un paywall; al llegar a un límite se muestra una
+**tarjeta amable** con el precio a la vista y siempre un camino gratis. Los límites viven en `src/content/limits.json`
+(se ajustan por OTA sin build). v1 no tiene diamantes, gemas, tienda ni regalos: solo XP, niveles, racha y logros.
 
-### 4.3 Precio (propuesta, [DECIDIR])
+### 4.3 Precio (decidido 2026-09-28)
 - **Mensual:** $3.990 CLP.
-- **Pase PAES** (pago único hasta la fecha de tu PAES, sin renovación): $12.990 CLP. Encaja con la promesa "sin cobros sorpresa" porque no se renueva.
-- Oferta de fin de prueba: 50 % el primer mes o el Pase PAES.
-- El tablero de marca ya muestra una boleta con $4.990; los montos finales se definen antes de crear los productos en Play Console.
+- **Pase PAES:** $12.990 CLP, pago único hasta tu próxima PAES, **sin renovación**. Responde al pedido de
+  "plan semestral / hasta mi PAES" de las reseñas y a la promesa "sin cobros sorpresa".
+- Oferta de fin de prueba: 50 % el primer mes o el Pase PAES, válida 48 h reales.
+- Referencia de mercado: Preu AI cobra $76.990 su Plan Intensivo hasta la PAES; un preu presencial, cientos de miles al año.
+- La boleta del tablero de marca ($4.990) queda desactualizada.
 
 ## 5. Arquitectura de información
 
 ```
-Onboarding (16 pantallas, una vez)
-└─ Tabs
-   ├─ Inicio      plan de hoy · continuar · temas (ruta por eje) · cuenta regresiva · racha
-   ├─ Practicar   práctica por tema · repaso de errores · ensayos · mini-ensayos · reto relámpago
-   ├─ Progreso    puntaje estimado · dominio por eje/unidad/habilidad · racha · XP y nivel · logros · historial
-   └─ Perfil      cuenta y respaldo · plan Premium · PAES y metas · recordatorios · privacidad · ayuda
-Pantallas completas: lección · ejercicio de práctica · ensayo · resultados de ensayo · tutor · reto relámpago · boleta/compra
+Onboarding (una vez)
+└─ Pestañas (decidido 2026-09-28)
+   ├─ Inicio      cabecera (racha · meta diaria XP · cuenta regresiva · avatar) · sesión de hoy · tu meta · continuar · sugerencias
+   ├─ Aprender    catálogo por prueba → eje → unidad → lecciones y mini-clases · buscador
+   ├─ Equis       (al centro, destacada) tutor que te conoce: saludo contextual, atajos, conversaciones, foto de un ejercicio
+   ├─ Practicar   ensayos (completo, mini, temático, a tu medida) · intensivos · práctica por tema · cuaderno de errores · reto · fórmulas
+   └─ Progreso    puntaje estimado · simulador de postulación · dominio por eje/unidad/habilidad · racha · XP y nivel · logros · historial
+Perfil: desde el avatar (arriba a la derecha de cada pestaña).
+Pantallas completas: lección · mini-clase · práctica · ensayo · resultados · revisión · intensivo · chat de Equis · reto · planes/boleta
 ```
 
-Tabs según la referencia de diseño: **Inicio · Practicar · Progreso · Perfil**. El tutor vive **dentro** de cada ejercicio y de la revisión de ensayos (en contexto), no como chat suelto.
+Racha, XP y cuenta regresiva **no** son pestañas: viven en la cabecera de Inicio y su detalle está en Progreso.
+Equis tiene pestaña propia pero **no es un chat en blanco** (ver §10); también aparece en contexto dentro de cada ejercicio
+y de la revisión de ensayos.
+
+### 5.1 Formatos de contenido
+
+| Formato | Qué es | Duración |
+|---|---|---|
+| **Lección** | El corazón, estilo Brilliant: descubrir con un interactivo → formalizar con Equis → practicar en 3 niveles → desafío en formato PAES → XP | 4–6 min |
+| **Mini-clase** | Repaso de **un** concepto en 4–6 tarjetas deslizables (diagrama, fórmula, ejemplo resuelto). Tarjetas, no video: se producen y revisan rápido y funcionan sin red | 90 s |
+| **Práctica** | Ejercicios generados sin fin por tema o habilidad (plantillas paramétricas, §14.3), dificultad adaptativa 1–5 | Libre |
+| **Ensayo completo** | Formato oficial M1: 65 preguntas, 4 alternativas, 2 h 20 min | 140 min |
+| **Mini-ensayo** | 15 preguntas mezcladas | 30 min |
+| **Ensayo temático** | 20 preguntas de un eje | 30 min |
+| **Ensayo a tu medida** | Temas, cantidad (10–65) y tiempo (real, propio o sin tiempo) elegidos por el estudiante | Libre |
+| **Intensivo** | Programa guiado de 7, 14 o 30 días: sesión diaria + ensayo de entrada y de salida ("Recta final: 60 días a la PAES", "Intensivo Funciones · 7 días") | Días |
+| **Cuaderno de errores** | Cada error guardado con su explicación; vuelve en repaso espaciado (1, 3, 7, 14 días) | — |
+| **Reto relámpago** | 60 s de cálculo mental y ecuaciones rápidas; combo y récord | 60 s |
+| **Fórmulas** | Tarjetas de fórmulas por unidad para guardar y repasar | — |
+
+Los ensayos se arman desde el banco verificado y **nunca se repiten** entre intentos (queja fuerte contra Preu AI).
+Volumen objetivo M1: 16 unidades · 64 lecciones (4 por unidad) · 96 mini-clases (6 por unidad) · práctica y ensayos ilimitados.
 
 ## 6. Onboarding (16 pantallas)
 
@@ -152,14 +191,23 @@ Notas:
 - Eventos por pantalla para medir el embudo (`onboarding_step_viewed{n}`, abandono por pantalla).
 - Todo lo respondido se puede cambiar en Perfil.
 
-## 7. Inicio
-- **Saludo** con apodo (o "Hola.") + frase del día según el plan ("Hoy toca funciones. 10 minutos, a tu ritmo.").
-- **Tarjeta "Sesión de hoy":** tema, progreso "3 de 10 ejercicios", botón **Continuar** (primario, tinta sobre celeste).
-- **Meta diaria:** anillo de XP del día + racha (llama coral) + cuenta regresiva "Faltan 64 días para tu PAES".
-- **Tus temas:** los 4 ejes de M1 (y M2 si aplica) con ilustración, % de dominio y barra; al tocar → **ruta del eje** (unidades → lecciones con estados: bloqueada suave/sugerida/en curso/completada/dominada).
-- **Sugerencias inteligentes:** "Repasa 3 errores de ayer" · "Mini-ensayo de 15 min" · "Te falta poco para dominar Porcentaje".
-- Banner discreto del estado de Premium de prueba ("Premium: te quedan 5 días").
-- Indicador de respaldo: "Guardado en tu teléfono" / "Respaldado".
+## 7. Inicio ("¿qué hago hoy?")
+- **Cabecera fija:** logo · racha (llama coral) · anillo de meta diaria (XP) · cuenta regresiva ("63 días") · avatar → Perfil.
+- **Saludo** con apodo (o "Hola.") + frase del día según el plan ("Hoy toca funciones. 20 minutos, a tu ritmo.").
+- **Sesión de hoy** (tarjeta héroe): lección + ejercicios de práctica + errores por repasar, con checks, botón **Continuar**
+  y el **por qué** ("Porque M1 pesa 35 % en tu carrera y Funciones es tu eje más bajo").
+- **Cuenta regresiva** con línea de tiempo del plan y el hito siguiente ("Ensayo completo este sábado").
+- **Tu meta:** rango estimado → corte de tu carrera; lleva al simulador (§11).
+- **Para ti:** sugerencias ("Repasa 3 errores de ayer" · "Mini-ensayo de 30 min" · "Te falta 1 lección para dominar Porcentaje").
+- **Continuar donde quedaste.**
+- Chip discreto del estado de Premium de prueba ("Premium · 5 días") e indicador de respaldo ("Guardado en tu teléfono" / "Respaldado").
+
+## 7.1 Aprender (catálogo)
+- Selector de prueba (M1 · M2 · Lectora · Ciencias · Historia); las que aún no tienen contenido dicen "Pronto" con honestidad.
+- Resumen ("M1 · 16 unidades · 64 lecciones · 96 mini-clases") + dominio global; 4 ejes con dominio; buscador de temas.
+- **Ruta del eje:** unidades → lecciones con estados sugerida / en curso / completada / dominada / "más adelante"
+  (suave, se puede abrir igual: **nunca bloqueada**). Unidades sin lecciones aprobadas: "En preparación", nunca contenido falso.
+- **Detalle de unidad:** lecciones, mini-clases, fórmulas, "Practicar esta unidad", "Ensayo temático" (Premium) y tu dominio.
 
 ## 8. Aprender: lecciones interactivas
 
@@ -196,19 +244,29 @@ Cada paso tiene: `skillIds`, **habilidad PAES** (Resolver problemas / Modelar / 
 ## 9. Practicar
 1. **Práctica por tema:** elige eje/unidad/habilidad; ejercicios generados por **plantillas paramétricas** (§14.3): variedad prácticamente infinita, siempre verificada.
 2. **Repaso de errores:** cada error queda en tu "cuaderno de errores"; repaso espaciado (1, 3, 7, 14 días).
-3. **Ensayos:**
+3. **Ensayos** (nunca se repiten entre intentos; imprimir en PDF con clavijero en Premium):
    - **M1:** 65 preguntas, 4 alternativas, 2 h 20 min (formato DEMRE 2027).
    - **M2:** 55 preguntas, 4 o 5 alternativas, incluye suficiencia de datos, 2 h 20 min.
-   - **Mini-ensayos** de 15 preguntas / 20 min para practicar en la micro.
+   - **Mini-ensayos** de 15 preguntas / 30 min para practicar en la micro.
+   - **Temáticos** (20 preguntas de un eje, 30 min) y **a tu medida** (temas, cantidad y tiempo elegidos, o sin tiempo).
+   - **Intensivos:** programas de 7, 14 o 30 días con ensayo de entrada y de salida (§5.1).
    - Pausa/retomar (se guarda cada respuesta), revisión posterior con explicación de **cada alternativa** y tutor en contexto.
    - Resultado: puntaje estimado (rango, con aviso honesto: "estimación orientativa, no es el puntaje oficial"), desglose por eje, unidad y habilidad, tiempo por pregunta, y "tu plan se ajustó".
 4. **Reto relámpago (minijuego):** 60 s de cálculo mental y ecuaciones rápidas con dificultad creciente; combo, récord personal, XP. Premium: ligas semanales anónimas (apodo opcional).
 
 ## 10. Tutor IA: "Pregúntale a Equis"
 
-**Qué es:** un tutor socrático en contexto que ayuda a **entender**, no entrega respuestas.
+**Qué es:** un tutor socrático que **te conoce** (carrera, ponderaciones, fecha, errores) y ayuda a **entender**, no entrega respuestas.
+Es la respuesta a "para eso uso ChatGPT": no es un chat en blanco.
 
-- **Dónde:** botón "No entiendo" / "Pregúntale a Equis" en cada ejercicio, en la revisión de ensayos y tras 2 errores seguidos.
+- **Pestaña Equis:** saludo contextual ("Ayer te equivocaste 3 veces con el signo al despejar. ¿Lo vemos con la balanza?")
+  + atajos ("Explícame mi último error", "¿Qué estudio hoy?", "Quiz de 5 min de lo que me cuesta", "Sácale foto a un ejercicio",
+  "¿Me alcanza para mi carrera?") + conversaciones recientes + contador honesto del uso gratis.
+- **Respuestas con interactivos embebidos** (mini balanza, gráfico) y matemática bien escrita; cierra con una pregunta de
+  comprobación que corrige el motor (etiqueta "Verificado").
+- **Foto de un ejercicio** (necesita cámara → build nuevo, Hito 3): Equis reconoce el enunciado (editable), lo resuelven juntos
+  y arma 5 ejercicios parecidos del banco verificado.
+- **Dónde más:** botón "No entiendo" / "Pregúntale a Equis" en cada ejercicio, en la revisión de ensayos y tras 2 errores seguidos.
 - **Qué recibe (contexto):** enunciado, respuesta del estudiante, código de error del motor, solución canónica verificada del contenido, pistas ya vistas, nivel del estudiante.
 - **Cómo responde:**
   1. Pregunta primero qué intentó ("¿Qué hiciste con el 3 del lado izquierdo?").
@@ -223,6 +281,9 @@ Cada paso tiene: `skillIds`, **habilidad PAES** (Resolver problemas / Modelar / 
 
 ## 11. Progreso
 - **Puntaje estimado M1 (y M2):** rango + tendencia semanal; se calcula con dominio por unidad ponderado por peso en la prueba y resultados de ensayos. Siempre con aviso de estimación.
+- **Simulador de postulación** (diferenciador principal): puntaje ponderado estimado de tu carrera vs su corte, con las
+  ponderaciones DEMRE 2027 ya cargadas (`src/content/admission/`), NEM y Ranking editables, aporte de cada prueba y la
+  "mejor palanca" ("Si subes 40 puntos en M1, ganas 14 ponderados"). Premium: comparar hasta 10 carreras.
 - **Mapa de dominio:** 4 ejes → 16 unidades (M1) → habilidades; colores de marca (sin rojo).
 - **Las 4 habilidades PAES** (Resolver, Modelar, Representar, Argumentar) con su dominio: nadie más lo muestra.
 - **Racha:** calendario, día de descanso semanal automático, protector de racha.
@@ -230,7 +291,8 @@ Cada paso tiene: `skillIds`, **habilidad PAES** (Resolver problemas / Modelar / 
 - **Logros:** 12 insignias ya ilustradas (rachas 3/7/30, idea, números, x, geometría, estadística, ensayo, 100, repaso de errores, desbloquear M2) + logros de maestría Premium.
 - **Historial de ensayos** con evolución.
 
-## 12. Perfil
+## 12. Perfil (desde el avatar)
+- Mi PAES: fecha, pruebas, carrera, institución y meta (al cambiar, "Tu plan se recalculará").
 - Cuenta: "Guardar mi progreso con Google" / "Entrar con Google" / resolución de conflicto de cuenta.
 - Plan: estado de la prueba/Premium, boleta, gestionar o cancelar (enlace a Play), restaurar compras.
 - Mi PAES: pruebas, fecha, meta de puntaje, tiempo diario.
@@ -259,7 +321,8 @@ Cada paso tiene: `skillIds`, **habilidad PAES** (Resolver problemas / Modelar / 
 **Premium, otras pruebas (fases posteriores):** Competencia Lectora, Ciencias, Historia. Requieren tipos de ejercicio distintos (lectura con textos, subrayado, inferencia) y otro pipeline de contenido; se diseñan aparte.
 
 ### 14.2 Volumen objetivo al lanzamiento
-- **M1:** 16 unidades × ~3 lecciones = ~48 lecciones interactivas + **1 plantilla paramétrica por habilidad de cada unidad** (≥ 60 plantillas) + 3 ensayos M1 completos + 10 mini-ensayos.
+- **M1:** 16 unidades × 4 lecciones = **64 lecciones** interactivas + 96 mini-clases + **1 plantilla paramétrica por habilidad de cada unidad** (≥ 60 plantillas) → ensayos completos, mini, temáticos y a tu medida generados sin repetir.
+- Orden de producción: Álgebra y funciones primero (lotes de 2 unidades = 8 lecciones, revisión del fundador por lote).
 - **M2:** ensayos y práctica paramétrica primero; lecciones profundas por OTA.
 
 ### 14.3 Cómo lograr variedad y profundidad sin revisar miles de ítems
@@ -327,9 +390,9 @@ Los pagos (RevenueCat) agregan una dependencia nativa → **un build nuevo** (co
 | Puntaje estimado mal calibrado | Rango + aviso honesto; calibración con ensayos |
 
 ## 20. Decisiones abiertas para el fundador
-1. Límites exactos Gratis vs Premium (§4.2).
-2. Precios: mensual y/o Pase PAES; montos (§4.3).
-3. Oferta de fin de prueba: % y duración real (§4.1).
+1. ~~Límites exactos Gratis vs Premium (§4.2).~~ Decidido 2026-09-28 (ajustables en `limits.json`).
+2. ~~Precios: mensual y/o Pase PAES; montos (§4.3).~~ Decidido 2026-09-28: $3.990 mensual · $12.990 Pase PAES.
+3. ~~Oferta de fin de prueba: % y duración real (§4.1).~~ 50 % por 48 h reales.
 4. Tope mensual de gasto del tutor IA (§10).
 5. ¿Contratar un profesor de matemática freelance para revisar lotes? (§14.4).
 6. Orden de las otras pruebas Premium (Lectora, Ciencias, Historia) (§18 F5).

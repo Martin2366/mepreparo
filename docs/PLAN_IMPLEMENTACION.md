@@ -228,7 +228,21 @@ C:\MePreparo\
 
 ---
 
-## 6. Plan por días
+## 6. Hitos vigentes (desde 2026-09-28)
+
+> El plan por días (§6.1 en adelante) queda como **referencia histórica**: el alcance creció con el [PRD v0.2](PRD.md)
+> (pestañas, formatos de contenido, Gratis vs Premium). Desde el día 2 se trabaja por hitos. Se construye **en paralelo a
+> Claude Design** ([prompt](design/PROMPT_CLAUDE_DESIGN.md)): primero lo que no depende del diseño, con estilo provisional del DS,
+> y cada pantalla se viste cuando llega su diseño.
+
+| Hito | Qué incluye | ✅ Verificación |
+|---|---|---|
+| **0 · Documentos** | PRD v0.2, discovery de reseñas, prompt de diseño, este plan | Documentos en el repo |
+| **1 · Núcleo jugable (local)** | 5 pestañas (Inicio · Aprender · Equis · Practicar · Progreso) + Perfil desde el avatar · motores puros con tests (`plan`, `grading`, `xp`, `streak`, `mastery`, `score`, `weighted`, `review`, `entitlements`, `generators/`) · progreso local (intentos en SQLite, agregados en kv) guardado antes del feedback · esquema zod de contenido + validador con verificación de respuestas · reproductor de lecciones (explain, choice, numeric + teclado matemático, balanza, gráfico, ordenar, encontrar el error) · práctica por tema · currículo M1 (16 unidades) · lote 1 de lecciones (Ecuaciones e inecuaciones + Función lineal y afín) · recordatorio diario local | Onboarding → Inicio → 1.ª lección completa; XP y racha suben; cerrar a mitad y retomar en el mismo paso; práctica con límite gratis visible; Progreso refleja el dominio. `typecheck`, `lint`, `test`, `content:validate` en verde |
+| **2 · Ensayos, motivación y resto de M1** | Motor de ensayos (completo, mini, temático, a tu medida; sin repetir; guardado por respuesta) · resultados y revisión · logros, niveles, resumen semanal · intensivos · reto relámpago · fórmulas · Números, Geometría y Probabilidad (lotes de 2 unidades) + generadores de las 16 unidades | Ensayo completo pausado y retomado sin pérdida; puntaje por eje y habilidad; logros una sola vez |
+| **3 · Nube, Equis real y Premium** | Supabase (anónimo, migraciones, RLS, outbox idempotente) · Google `linkIdentity` · borrar cuenta · Equis por Edge Function (requiere API key de Anthropic en secretos de Supabase) · **un build de EAS** con RevenueCat + cámara + impresión PDF · avisos de prueba, fin de prueba, planes, boleta y tarjetas de límite | Modo avión → sincroniza sin duplicados; RLS de 2 usuarios; compra de prueba; reinstalar + Google restaura |
+
+## 6.1 Plan por días (histórico)
 
 > Formato: **Objetivo** · Tareas · ✅ Verificación (criterio de "hecho"). El contenido avanza **en paralelo** (§7).
 
@@ -433,9 +447,15 @@ C:\MePreparo\
 | D9 | 2026-09-27 | `.easignore` excluye `assets/brand/` y `docs/` | La primera subida pesaba 59 MB por los originales de marca |
 | D10 | 2026-09-27 | Botón primario: **texto tinta sobre celeste** (6:1, AA). Decidido por el fundador | Blanco sobre `#4FB3E8` daba 2,4:1 (no cumple AA) |
 | D11 | 2026-09-27 | Plan **Starter** de Expo (lo contrató el fundador) | Cupo Free agotado; el Build #1 no podía esperar al 1 de octubre |
+| D12 | 2026-09-28 | 5 pestañas: Inicio · Aprender · **Equis** (centro) · Practicar · Progreso; Perfil desde el avatar. `Tabs` de `expo-router/js-tabs` con `tabBar` propio | Aprender con pestaña propia hace visible la abundancia de contenido; Equis al centro es el diferenciador frente a "para eso uso ChatGPT" |
+| D13 | 2026-09-28 | Gratis = aprender (todas las lecciones y mini-clases); Premium = capa de preu (plan, ensayos, tutor, análisis, simulador). Límites en `src/content/limits.json` | La queja n.º 1 del discovery son los paywalls y cobros sorpresa; la presión por pagar viene del valor |
+| D14 | 2026-09-28 | Motivación v1 = XP, niveles, racha y logros. Sin diamantes, gemas, tienda ni regalos | Una segunda moneda pide una tienda; se evalúa después del lanzamiento |
+| D15 | 2026-09-28 | Mini-clases en tarjetas (no video) | Se producen y revisan rápido, pesan poco y funcionan sin red |
+| D16 | 2026-09-28 | Intentos de pasos en SQLite (solo inserción, uuid de `expo-crypto`) + agregados en zustand/kv; en la vista web, `localStorage` | Miles de intentos no caben bien en un JSON reescrito en cada paso; `expo-sqlite` en web está en alfa |
 
 ## 11. Bitácora diaria
 | Día | Hecho | Pendiente | Bloqueos |
 |---|---|---|---|
 | 0 | Repo GitHub creado y conectado · cuenta Expo · temarios DEMRE (regular + invierno) en `docs/temarios/` · assets movidos a `assets/brand/` · design system descomprimido en `assets/brand/design-system/source/` | Repo a **privado** (lo hace el fundador) · Supabase (0.3–0.4) · Google OAuth (0.5) · Sentry DSN (0.6) · referencias de pantallas (0.9) | — |
 | 1 | App Expo SDK 57 + TS estricto + Router · `app.json` (`cl.mepreparo.app`, `mepreparo://`, runtimeVersion, EAS Update) · **todas** las dependencias nativas (A4) · NativeWind 4.2.7 + tokens · ícono adaptativo, splash y notificación · `eas.json` (development/preview/production) · CI en verde · `content:validate` (notación + bloqueo de `draft` en producción) · motores `rational`, `math-parser`, `balance` (21 tests) · **Spike A** (`MathText`) y **Spike B** (balanza con arrastre + botones + FPS) verificados en vista web · bundle Android compila | **Build #1** en EAS e instalación en el teléfono · validar en el dispositivo: Poppins, arrastre táctil y 60 fps (captura/video) | **Cupo de EAS agotado** (15/15) hasta el **jue 1 oct**. El keystore ya está creado. Mientras tanto: Expo Go o build local con Android Studio (§9) |
+| 2 | Onboarding completo en el teléfono (institución, carrera, ponderaciones, fecha, meta, pruebas, temas, frenos, hábitos, diagnóstico, plan, Premium de prueba) · discovery de reseñas en `docs/discovery/RESENAS.md` · PRD v0.2 · prompt para Claude Design · plan por hitos (§6) | Hito 1 | API key de Anthropic para Equis (Hito 3) |
