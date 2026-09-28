@@ -90,6 +90,7 @@ describe('dominio y puntaje estimado', () => {
     expect(r.point).toBe(600);
     expect(r.low).toBe(540);
     expect(r.high).toBe(660);
+    expect(estimateRange([{ share: 1, mastery: 1 }], 0).point).toBe(1000);
   });
   it('el rango se angosta con más evidencia', () => {
     const r = estimateRange([{ share: 0.5, mastery: 0.5 }, { share: 0.5, mastery: 0.5 }], 200);

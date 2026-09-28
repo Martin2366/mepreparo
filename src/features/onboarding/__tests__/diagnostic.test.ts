@@ -50,8 +50,10 @@ describe('diagnóstico: las respuestas marcadas son correctas (verificadas con e
 describe('plan', () => {
   it('estima M1 según aciertos y parte en 600 sin diagnóstico', () => {
     expect(estimateM1(0, 10, false)).toBe(600);
-    expect(estimateM1(5, 10, true)).toBe(660);
-    expect(estimateM1(10, 10, true)).toBe(900);
+    expect(estimateM1(5, 10, true)).toBe(620);
+    expect(estimateM1(6, 10, true)).toBe(710);
+    expect(estimateM1(10, 10, true)).toBe(1000);
+    expect(estimateM1(0, 10, true)).toBe(100);
   });
   it('cuenta semanas y arma el foco sin repetir', () => {
     expect(weeksUntil(63)).toBe(9);

@@ -21,7 +21,7 @@ describe('plan', () => {
       ctx,
     );
     expect(p).toMatchObject({ days: 63, weeks: 9, hasDate: true, correct: 3, done: true, target: 830, minutes: 20 });
-    expect(p.est).toBe(780); // 420 + 3/4 · 480
+    expect(p.est).toBe(840); // paesScale(3/4)
     expect(p.focus).toEqual(['Geometría', 'Funciones']);
   });
 

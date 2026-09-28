@@ -1,3 +1,5 @@
+import { paesScale } from '@/engine/score';
+
 /**
  * Modelo puro del onboarding: qué pantallas se ven según las respuestas, recomendaciones y búsqueda.
  * Sin React ni almacenamiento: se prueba con jest.
@@ -200,12 +202,12 @@ export function formatScore(n: number, decimals = 1): string {
 export const FULLSCREEN_STEPS: StepId[] = ['welcome', 'generating', 'plan', 'premium', 'done'];
 
 /**
- * Puntaje M1 estimado (orientativo). Con diagnóstico: 420 + aciertos/total × 480, redondeado a 10.
+ * Puntaje M1 estimado (orientativo) con la escala común de la app (`engine/score.paesScale`).
  * Sin diagnóstico: 600 como punto de partida neutro.
  */
 export function estimateM1(correct: number, total: number, done: boolean): number {
   if (!done || total === 0) return 600;
-  return Math.round((420 + (correct / total) * 480) / 10) * 10;
+  return paesScale(correct / total);
 }
 
 /** Semanas hasta la PAES (mínimo 1). Sin fecha: 30, una estimación que se cambia después. */

@@ -37,7 +37,7 @@ export function ChoiceInput({
       {options.map((opt, i) => {
         const isSel = selected === i;
         const showCorrect = (reveal === 'correct' && isSel) || (reveal === 'solution' && i === answer);
-        const showWrong = reveal === 'wrong' && isSel;
+        const showWrong = (reveal === 'wrong' || reveal === 'solution') && isSel && i !== answer;
         const tone = showCorrect ? 'correct' : showWrong ? 'wrong' : isSel ? 'selected' : 'idle';
         return (
           <Tappable

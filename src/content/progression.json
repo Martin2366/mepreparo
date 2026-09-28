@@ -5,7 +5,9 @@
     "stepWithHints": 5,
     "lessonComplete": 20,
     "practiceClean": 6,
-    "practiceWithHints": 3
+    "practiceWithHints": 3,
+    "examCorrect": 2,
+    "examComplete": 30
   },
   "activeDay": { "minCorrectSteps": 5 },
   "levels": [

@@ -139,7 +139,12 @@ export function HomeScreen() {
             subtitle="Repasos de 90 segundos para refrescar un concepto."
             onPress={() => router.push('/(tabs)/aprender')}
           />
-          <Suggestion icon="hourglass" title="Mini-ensayo de 30 minutos" subtitle="Muy pronto." tag="Pronto" />
+          <Suggestion
+            icon="hourglass"
+            title="Mini-ensayo de 30 minutos"
+            subtitle="15 preguntas de los 4 ejes, con tu puntaje estimado al final."
+            onPress={() => router.push({ pathname: '/ensayo/nuevo', params: { kind: 'mini' } })}
+          />
         </View>
       </Section>
 

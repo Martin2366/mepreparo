@@ -29,7 +29,7 @@ export type NotebookEntry = {
 
 export type AnswerInput = {
   ref: string;
-  kind: 'lesson' | 'practice' | 'review';
+  kind: 'lesson' | 'practice' | 'review' | 'exam';
   unitId?: string;
   lessonId?: string;
   stepIndex?: number;
@@ -66,6 +66,8 @@ type ProgressState = {
   answer: (input: AnswerInput) => number;
   setLessonStep: (lessonId: string, step: number) => void;
   completeLesson: (lessonId: string) => number;
+  /** Registra un ensayo terminado: cada respuesta cuenta para el dominio y los errores van al cuaderno. */
+  recordExam: (items: AnswerInput[]) => number;
   use: (feature: Feature) => void;
   setDifficulty: (unitId: string, d: Difficulty) => void;
   setSimScore: (key: ScoreKey, value: number) => void;
@@ -86,6 +88,70 @@ function recent<T>(rec: Record<DayKey, T>, today: DayKey): Record<DayKey, T> {
 function withActive(days: DayKey[], day: DayKey, stats: DayStats): DayKey[] {
   if (days.includes(day) || !isActiveDay(stats.lessons, stats.correct, progression.activeDay.minCorrectSteps)) return days;
   return [...days, day].sort();
+}
+
+type Data = Omit<
+  ProgressState,
+  'seedFromOnboarding' | 'answer' | 'setLessonStep' | 'completeLesson' | 'recordExam' | 'use' | 'setDifficulty' | 'setSimScore' | 'reset'
+>;
+
+function log(input: AnswerInput, today: DayKey, xp: number) {
+  logAttempt({
+    day: today,
+    ref: input.ref,
+    unitId: input.unitId,
+    lessonId: input.lessonId,
+    stepIndex: input.stepIndex,
+    kind: input.kind,
+    outcome: input.outcome,
+    hints: input.hints,
+    mistakeCode: input.mistakeCode,
+    answer: input.answer,
+    xp,
+  });
+}
+
+/** Agregados de una respuesta: XP, racha, dominio, cuaderno de errores y repaso espaciado. */
+function applyAnswer(s: Data, input: AnswerInput, today: DayKey, xp: number): Partial<Data> {
+  const correct = input.outcome !== 'wrong';
+  const stats = s.dayStats[today] ?? { lessons: 0, correct: 0 };
+  const nextStats = { ...stats, correct: stats.correct + (correct ? 1 : 0) };
+  const reviews = [...s.reviews];
+  const notebook = { ...s.notebook };
+  const i = reviews.findIndex((r) => r.ref === input.ref);
+  if (!correct) {
+    const item = scheduleNew(input.ref, today);
+    if (i >= 0) reviews[i] = { ...item, addedOn: reviews[i]!.addedOn };
+    else reviews.push(item);
+    const prev = notebook[input.ref];
+    notebook[input.ref] = {
+      ref: input.ref,
+      unitId: input.unitId,
+      lessonId: input.lessonId,
+      prompt: input.notebook?.prompt ?? prev?.prompt ?? '',
+      feedback: input.notebook?.feedback ?? prev?.feedback,
+      addedOn: prev?.addedOn ?? today,
+      lastWrongOn: today,
+    };
+  } else if (i >= 0 && input.kind === 'review') {
+    const after = afterReview(reviews[i]!, true, today);
+    if (after) reviews[i] = after;
+    else {
+      reviews.splice(i, 1);
+      delete notebook[input.ref];
+    }
+  }
+  return {
+    attempts: s.attempts + 1,
+    xp: s.xp + xp,
+    xpByDay: recent({ ...s.xpByDay, [today]: (s.xpByDay[today] ?? 0) + xp }, today),
+    dayStats: recent({ ...s.dayStats, [today]: nextStats }, today),
+    activeDays: withActive(s.activeDays, today, nextStats),
+    unitOutcomes: input.unitId ? { ...s.unitOutcomes, [input.unitId]: push(s.unitOutcomes[input.unitId], input.outcome) } : s.unitOutcomes,
+    skillOutcomes: input.skill ? { ...s.skillOutcomes, [input.skill]: push(s.skillOutcomes[input.skill], input.outcome) } : s.skillOutcomes,
+    reviews,
+    notebook,
+  };
 }
 
 const EMPTY = {
@@ -130,68 +196,30 @@ export const useProgress = create<ProgressState>()(
 
       answer: (input) => {
         const today = dayKey(new Date());
-        const xp = stepXp(input.outcome, input.kind === 'lesson' ? 'lesson' : 'practice');
-        // 1) Registro de intentos (síncrono, a prueba de cierres).
-        logAttempt({
-          day: today,
-          ref: input.ref,
-          unitId: input.unitId,
-          lessonId: input.lessonId,
-          stepIndex: input.stepIndex,
-          kind: input.kind,
-          outcome: input.outcome,
-          hints: input.hints,
-          mistakeCode: input.mistakeCode,
-          answer: input.answer,
-          xp,
-        });
-        // 2) Agregados.
+        // En un ensayo la XP se entrega al final (recordExam), no pregunta por pregunta.
+        const xp = input.kind === 'exam' ? 0 : stepXp(input.outcome, input.kind === 'lesson' ? 'lesson' : 'practice');
+        // 1) Registro de intentos (síncrono, a prueba de cierres). 2) Agregados.
+        log(input, today, xp);
+        set((s) => applyAnswer(s, input, today, xp));
+        return xp;
+      },
+
+      recordExam: (items) => {
+        const today = dayKey(new Date());
+        const correct = items.filter((it) => it.outcome !== 'wrong').length;
+        const bonus = correct * progression.xp.examCorrect + progression.xp.examComplete;
+        for (const it of items) log({ ...it, kind: 'exam' }, today, 0);
+        // Una sola escritura: cada respuesta cuenta para el dominio, la racha y el cuaderno, y la XP va al final.
         set((s) => {
-          const correct = input.outcome !== 'wrong';
-          const stats = s.dayStats[today] ?? { lessons: 0, correct: 0 };
-          const nextStats = { ...stats, correct: stats.correct + (correct ? 1 : 0) };
-          const reviews = [...s.reviews];
-          const notebook = { ...s.notebook };
-          const i = reviews.findIndex((r) => r.ref === input.ref);
-          if (!correct) {
-            const item = scheduleNew(input.ref, today);
-            if (i >= 0) reviews[i] = { ...item, addedOn: reviews[i]!.addedOn };
-            else reviews.push(item);
-            const prev = notebook[input.ref];
-            notebook[input.ref] = {
-              ref: input.ref,
-              unitId: input.unitId,
-              lessonId: input.lessonId,
-              prompt: input.notebook?.prompt ?? prev?.prompt ?? '',
-              feedback: input.notebook?.feedback ?? prev?.feedback,
-              addedOn: prev?.addedOn ?? today,
-              lastWrongOn: today,
-            };
-          } else if (i >= 0 && input.kind === 'review') {
-            const after = afterReview(reviews[i]!, true, today);
-            if (after) reviews[i] = after;
-            else {
-              reviews.splice(i, 1);
-              delete notebook[input.ref];
-            }
-          }
+          let acc: Data = s;
+          for (const it of items) acc = { ...acc, ...applyAnswer(acc, { ...it, kind: 'exam' }, today, 0) };
           return {
-            attempts: s.attempts + 1,
-            xp: s.xp + xp,
-            xpByDay: recent({ ...s.xpByDay, [today]: (s.xpByDay[today] ?? 0) + xp }, today),
-            dayStats: recent({ ...s.dayStats, [today]: nextStats }, today),
-            activeDays: withActive(s.activeDays, today, nextStats),
-            unitOutcomes: input.unitId
-              ? { ...s.unitOutcomes, [input.unitId]: push(s.unitOutcomes[input.unitId], input.outcome) }
-              : s.unitOutcomes,
-            skillOutcomes: input.skill
-              ? { ...s.skillOutcomes, [input.skill]: push(s.skillOutcomes[input.skill], input.outcome) }
-              : s.skillOutcomes,
-            reviews,
-            notebook,
+            ...acc,
+            xp: acc.xp + bonus,
+            xpByDay: { ...acc.xpByDay, [today]: (acc.xpByDay[today] ?? 0) + bonus },
           };
         });
-        return xp;
+        return bonus;
       },
 
       setLessonStep: (lessonId, step) =>
@@ -255,6 +283,7 @@ export const useProgress = create<ProgressState>()(
           answer: _b,
           setLessonStep: _c,
           completeLesson: _d,
+          recordExam: _i,
           use: _e,
           setDifficulty: _f,
           setSimScore: _h,

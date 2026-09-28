@@ -8,7 +8,7 @@ export type AttemptInput = {
   unitId?: string;
   lessonId?: string;
   stepIndex?: number;
-  kind: 'lesson' | 'practice' | 'review';
+  kind: 'lesson' | 'practice' | 'review' | 'exam';
   outcome: Outcome;
   hints: number;
   mistakeCode?: string;

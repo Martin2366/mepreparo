@@ -19,9 +19,9 @@ export function masteryOf(outcomes: readonly Outcome[], seed: number): number {
 export const isMastered = (outcomes: readonly Outcome[]): boolean =>
   outcomes.length >= WINDOW && masteryOf(outcomes, 0) >= 0.8;
 
-/** Semilla desde el diagnóstico: fracción de aciertos; sin diagnóstico, 0,375 (equivale a 600 puntos estimados). */
+/** Semilla desde el diagnóstico: fracción de aciertos; sin diagnóstico, 0,48 (equivale a ~600 puntos en `paesScale`). */
 export function seedFromDiagnostic(correct: number, total: number, done: boolean): number {
-  if (!done || total === 0) return 0.375;
+  if (!done || total === 0) return 0.48;
   return clamp01(correct / total);
 }
 

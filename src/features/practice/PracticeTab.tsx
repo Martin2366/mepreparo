@@ -8,25 +8,52 @@ import { ProgressBar } from '@/components/ui/ProgressBar';
 import { Text } from '@/components/ui/Text';
 import { pct } from '@/engine/mastery';
 import { allUnits } from '@/features/content/catalog';
+import type { ExamKind } from '@/engine/exam';
+import { useExams } from '@/features/exams/store';
 import { useAllowance } from '@/features/progress/allowance';
 import { unitMastery, useDashboard } from '@/features/progress/derived';
 import { Section, TabScreen } from '@/features/shell/TabScreen';
 import { colors, fonts } from '@/theme/tokens';
 
-/** Practicar (PRD §9): práctica por tema y cuaderno de errores ya funcionan; ensayos e intensivos llegan en el Hito 2. */
+/** Practicar (PRD §9): ensayos, práctica por tema, cuaderno de errores y más formas de practicar. */
 export function PracticeTab() {
   const d = useDashboard();
   const practice = useAllowance('practice');
   const units = allUnits.filter((u) => u.unit.generators.length > 0);
   const notebookCount = Object.keys(d.progress.notebook).length;
+  const activeExam = useExams((st) => st.active);
+  const lastExam = useExams((st) => st.history[0]);
 
   return (
     <TabScreen title="Practicar">
+      {activeExam ? (
+        <Card tone="sky" onPress={() => router.push('/ensayo/en-curso')} style={s.row} accessibilityLabel="Retomar ensayo en curso">
+          <View style={s.tile}>
+            <Icon name="play" size={22} color={colors.sky700} />
+          </View>
+          <View style={{ flex: 1 }}>
+            <Text style={s.strong}>Ensayo en curso</Text>
+            <Text style={s.caption}>
+              {activeExam.spec.title} · {activeExam.answers.filter((a) => a !== null).length} de {activeExam.questions.length} respondidas
+            </Text>
+          </View>
+          <Icon name="chevron-right" size={20} color={colors.graphite} />
+        </Card>
+      ) : null}
+
       <Section title="Ensayos PAES">
         <View style={{ gap: 10 }}>
-          <Soon icon="hourglass" title="Ensayo completo M1" subtitle="65 preguntas · 2 h 20 min · formato DEMRE 2027" note="1 gratis al mes" />
-          <Soon icon="timer" title="Mini-ensayo" subtitle="15 preguntas · 30 min · para la micro" note="1 gratis a la semana" />
-          <Soon icon="shuffle" title="Ensayo a tu medida" subtitle="Eliges temas, cantidad y tiempo" premium />
+          <ExamCard kind="full" icon="hourglass" title="Ensayo completo M1" subtitle="65 preguntas · 2 h 20 min · formato DEMRE 2027" note="1 gratis al mes" />
+          <ExamCard kind="mini" icon="timer" title="Mini-ensayo" subtitle="15 preguntas · 30 min · para la micro" note="1 gratis a la semana" />
+          <ExamCard kind="thematic" icon="target" title="Ensayo temático" subtitle="20 preguntas de un eje · 30 min" premium />
+          <ExamCard kind="custom" icon="shuffle" title="Ensayo a tu medida" subtitle="Eliges temas, cantidad y tiempo" premium />
+          {lastExam ? (
+            <Card onPress={() => router.push({ pathname: '/ensayo/resultado/[id]', params: { id: lastExam.id } })} style={s.row} accessibilityLabel="Ver tu último ensayo">
+              <Icon name="trending-up" size={20} color={colors.sky700} />
+              <Text style={[s.strong, { flex: 1 }]}>Último ensayo: {lastExam.result.score} puntos</Text>
+              <Icon name="chevron-right" size={20} color={colors.graphite} />
+            </Card>
+          ) : null}
         </View>
       </Section>
 
@@ -72,6 +99,36 @@ export function PracticeTab() {
         </View>
       </Section>
     </TabScreen>
+  );
+}
+
+function ExamCard({
+  kind,
+  icon,
+  title,
+  subtitle,
+  note,
+  premium,
+}: {
+  kind: ExamKind;
+  icon: IconName;
+  title: string;
+  subtitle: string;
+  note?: string;
+  premium?: boolean;
+}) {
+  return (
+    <Card onPress={() => router.push({ pathname: '/ensayo/nuevo', params: { kind } })} style={s.row} accessibilityLabel={title}>
+      <View style={s.tile}>
+        <Icon name={icon} size={22} color={colors.sky700} />
+      </View>
+      <View style={{ flex: 1, gap: 2 }}>
+        <Text style={s.strong}>{title}</Text>
+        <Text style={s.caption}>{subtitle}</Text>
+        {note ? <Text style={s.caption}>{note}</Text> : null}
+      </View>
+      {premium ? <PremiumTag /> : <Icon name="chevron-right" size={20} color={colors.graphite} />}
+    </Card>
   );
 }
 
