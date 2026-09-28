@@ -9,6 +9,9 @@ const UNIT_FILES: unknown[] = [
   require('./m1/proporcionalidad.json'),
   require('./m1/sistemas-2x2.json'),
   require('./m1/funcion-cuadratica.json'),
+  require('./m1/enteros-racionales.json'),
+  require('./m1/porcentaje.json'),
+  require('./m1/potencias-raices.json'),
 ];
 
 export default UNIT_FILES;

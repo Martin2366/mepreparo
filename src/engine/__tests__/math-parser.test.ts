@@ -41,6 +41,13 @@ describe('math-parser', () => {
     expect(() => parseMath(src)).toThrow(msg);
   });
 
+  it('la coma entre dígitos es decimal; en una lista es puntuación', () => {
+    const dec = parseMath('0,75');
+    expect(dec.map((n) => (n.type === 'sym' ? n.role : n.type))).toEqual(['ord', 'ord', 'ord', 'ord']);
+    const list = parseMath('(3,-2)');
+    expect(list.find((n) => n.type === 'sym' && n.value === ',')).toMatchObject({ role: 'punct' });
+  });
+
   it('separa prosa y matemática, y respeta el signo peso', () => {
     const segs = parseRich('Si $x=2$, cuesta \\$1.500.');
     expect(segs.map((s) => s.kind)).toEqual(['text', 'math', 'text']);

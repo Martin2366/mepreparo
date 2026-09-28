@@ -95,8 +95,10 @@ class Parser {
       } else if (ch === '_' || ch === '$') {
         throw this.error(`El símbolo "${ch}" no está permitido`);
       } else {
+        // Coma decimal chilena (0,75): entre dígitos es parte del número, no una coma de lista.
+        const decimalComma = ch === ',' && /\d/.test(this.src[this.i - 1] ?? '') && /\d/.test(this.src[this.i + 1] ?? '');
         this.i++;
-        nodes.push(sym(ch === '-' ? '−' : ch));
+        nodes.push(decimalComma ? { type: 'sym', value: ',', role: 'ord' } : sym(ch === '-' ? '−' : ch));
       }
     }
     if (insideGroup) throw this.error('Falta cerrar una llave "}"');

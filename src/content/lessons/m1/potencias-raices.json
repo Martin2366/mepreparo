@@ -1,0 +1,420 @@
+{
+  "unitId": "potencias-raices",
+  "lessons": [
+    {
+      "id": "m1-pr-1",
+      "title": "Multiplicar lo mismo muchas veces",
+      "version": 1,
+      "reviewStatus": "draft",
+      "estimatedMinutes": 5,
+      "skills": ["resolver", "representar"],
+      "steps": [
+        {
+          "id": "s1",
+          "type": "explain",
+          "title": "Potencia",
+          "body": "$a^{n}$ es multiplicar $a$ por sí mismo $n$ veces: $2^{5}=2\\cdot 2\\cdot 2\\cdot 2\\cdot 2=32$. El número de abajo es la base y el de arriba, el exponente.",
+          "mascot": "explicando"
+        },
+        {
+          "id": "s2",
+          "type": "numeric",
+          "skill": "resolver",
+          "difficulty": 1,
+          "prompt": "¿Cuánto es $3^{4}$?",
+          "answer": "81",
+          "mistakes": [{ "value": "12", "feedback": "Casi. No es $3\\cdot 4$: es $3\\cdot 3\\cdot 3\\cdot 3$." }],
+          "feedback": "Casi. Multiplica el 3 cuatro veces.",
+          "hints": ["$3\\cdot 3=9$, $9\\cdot 3=27$…"],
+          "solution": ["$3\\cdot 3\\cdot 3\\cdot 3=81$"]
+        },
+        {
+          "id": "s3",
+          "type": "choice",
+          "skill": "resolver",
+          "difficulty": 2,
+          "prompt": "¿Cuánto es $(-2)^{3}$?",
+          "options": ["$-8$", "$8$", "$-6$", "$6$"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. Tres factores negativos dan un resultado negativo.",
+            "2": "Casi. No es $-2\\cdot 3$: es $(-2)\\cdot(-2)\\cdot(-2)$.",
+            "3": "Casi. Es una potencia, no una multiplicación por 3."
+          },
+          "hints": ["$(-2)\\cdot(-2)=4$, y después por $-2$."],
+          "solution": ["$(-2)\\cdot(-2)\\cdot(-2)=-8$"]
+        },
+        {
+          "id": "s4",
+          "type": "choice",
+          "skill": "argumentar",
+          "difficulty": 3,
+          "prompt": "¿Cuál afirmación es correcta?",
+          "options": ["$(-3)^{2}=9$ y $-3^{2}=-9$", "Ambos valen 9", "Ambos valen $-9$", "$(-3)^{2}=-9$ y $-3^{2}=9$"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. En $-3^{2}$ solo el 3 está al cuadrado; el menos queda afuera.",
+            "2": "Casi. $(-3)^{2}=(-3)\\cdot(-3)=9$, positivo.",
+            "3": "Casi. Es al revés: con paréntesis el negativo también se eleva."
+          },
+          "hints": ["El paréntesis decide qué se eleva al cuadrado."],
+          "explanation": "$(-3)^{2}=9$, pero $-3^{2}=-(3^{2})=-9$."
+        },
+        {
+          "id": "s5",
+          "type": "explain",
+          "title": "Potencias de 10",
+          "body": "$10^{3}=1000$: tantos ceros como indica el exponente. En notación científica, $3,2\\cdot 10^{5}=320000$: la coma se corre 5 lugares a la derecha.",
+          "mascot": "senalando"
+        },
+        {
+          "id": "s6",
+          "type": "numeric",
+          "skill": "representar",
+          "difficulty": 2,
+          "prompt": "¿Cuánto es $4,5\\cdot 10^{3}$?",
+          "answer": "4500",
+          "mistakes": [{ "value": "45000", "feedback": "Casi. La coma se corre 3 lugares, no 4." }],
+          "feedback": "Casi. Multiplica $4,5$ por 1000.",
+          "hints": ["$10^{3}=1000$"],
+          "solution": ["$4,5\\cdot 1000=4500$"]
+        },
+        {
+          "id": "s7",
+          "type": "choice",
+          "skill": "representar",
+          "difficulty": 3,
+          "prompt": "La distancia de la Tierra al Sol es aproximadamente 150.000.000 km. ¿Cómo se escribe en notación científica?",
+          "options": ["$1,5\\cdot 10^{8}$", "$15\\cdot 10^{7}$", "$1,5\\cdot 10^{7}$", "$1,5\\cdot 10^{9}$"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. Vale lo mismo, pero en notación científica el número de adelante debe estar entre 1 y 10.",
+            "2": "Casi. Cuenta los lugares que se corre la coma: son 8.",
+            "3": "Casi. $1,5\\cdot 10^{9}$ son 1.500 millones."
+          },
+          "hints": ["Desde 1,5 hasta 150.000.000, ¿cuántos lugares se corre la coma?"],
+          "explanation": "$150000000=1,5\\cdot 10^{8}$."
+        }
+      ]
+    },
+    {
+      "id": "m1-pr-2",
+      "title": "Propiedades de las potencias",
+      "version": 1,
+      "reviewStatus": "draft",
+      "estimatedMinutes": 6,
+      "skills": ["resolver"],
+      "steps": [
+        {
+          "id": "s1",
+          "type": "explain",
+          "title": "Tres reglas",
+          "body": "Con la misma base: al multiplicar se suman los exponentes, $a^{m}\\cdot a^{n}=a^{m+n}$; al dividir se restan, $\\frac{a^{m}}{a^{n}}=a^{m-n}$; y una potencia de una potencia los multiplica, $(a^{m})^{n}=a^{m\\cdot n}$.",
+          "mascot": "explicando"
+        },
+        {
+          "id": "s2",
+          "type": "choice",
+          "skill": "resolver",
+          "difficulty": 1,
+          "prompt": "¿A qué es igual $2^{3}\\cdot 2^{4}$?",
+          "options": ["$2^{7}$", "$2^{12}$", "$4^{7}$", "$4^{12}$"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. Al multiplicar potencias de igual base los exponentes se suman, no se multiplican.",
+            "2": "Casi. La base se mantiene: sigue siendo 2.",
+            "3": "Casi. La base se mantiene y los exponentes se suman."
+          },
+          "hints": ["$a^{m}\\cdot a^{n}=a^{m+n}$"],
+          "solution": ["$2^{3+4}=2^{7}$"]
+        },
+        {
+          "id": "s3",
+          "type": "choice",
+          "skill": "resolver",
+          "difficulty": 2,
+          "prompt": "¿A qué es igual $\\frac{5^{8}}{5^{3}}$?",
+          "options": ["$5^{5}$", "$5^{11}$", "$1^{5}$", "$5^{24}$"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. Al dividir, los exponentes se restan.",
+            "2": "Casi. La base se mantiene: sigue siendo 5.",
+            "3": "Casi. Al dividir no se multiplican los exponentes: se restan."
+          },
+          "hints": ["$\\frac{a^{m}}{a^{n}}=a^{m-n}$"],
+          "solution": ["$5^{8-3}=5^{5}$"]
+        },
+        {
+          "id": "s4",
+          "type": "numeric",
+          "skill": "resolver",
+          "difficulty": 2,
+          "prompt": "Escribe $(x^{3})^{4}$ como una sola potencia de $x$. ¿Cuál es el exponente?",
+          "answer": "12",
+          "mistakes": [{ "value": "7", "feedback": "Casi. Una potencia elevada a otra multiplica los exponentes: $3\\cdot 4$." }],
+          "feedback": "Casi. Usa $(a^{m})^{n}=a^{m\\cdot n}$.",
+          "hints": ["$(x^{3})^{4}=x^{3}\\cdot x^{3}\\cdot x^{3}\\cdot x^{3}$"],
+          "solution": ["$(x^{3})^{4}=x^{12}$"]
+        },
+        {
+          "id": "s5",
+          "type": "explain",
+          "title": "Exponente cero y negativo",
+          "body": "Para $a$ distinto de 0: $a^{0}=1$ y $a^{-n}=\\frac{1}{a^{n}}$. Un exponente negativo no hace negativo el resultado: indica el recíproco.",
+          "mascot": "aja"
+        },
+        {
+          "id": "s6",
+          "type": "numeric",
+          "skill": "resolver",
+          "difficulty": 2,
+          "prompt": "¿Cuánto es $2^{-3}$?",
+          "answer": "1/8",
+          "mistakes": [
+            { "value": "-8", "feedback": "Casi. El exponente negativo indica el recíproco, no un número negativo." },
+            { "value": "-1/8", "feedback": "Casi. El resultado es positivo: $\\frac{1}{2^{3}}$." }
+          ],
+          "feedback": "Casi. $2^{-3}=\\frac{1}{2^{3}}$.",
+          "hints": ["$a^{-n}=\\frac{1}{a^{n}}$"],
+          "solution": ["$2^{-3}=\\frac{1}{8}$"]
+        },
+        {
+          "id": "s7",
+          "type": "choice",
+          "skill": "resolver",
+          "difficulty": 3,
+          "prompt": "¿Cuál es el valor de $\\frac{3^{5}\\cdot 3^{2}}{3^{4}}$?",
+          "options": ["$27$", "$9$", "$81$", "$3^{14}$"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. $5+2-4=3$, no 2.",
+            "2": "Casi. El exponente final es 3: $3^{3}=27$.",
+            "3": "Casi. En la división los exponentes se restan."
+          },
+          "hints": ["Arriba: $3^{7}$. Después divide."],
+          "solution": ["$3^{5+2-4}=3^{3}=27$"]
+        }
+      ]
+    },
+    {
+      "id": "m1-pr-3",
+      "title": "Raíces como potencias",
+      "version": 1,
+      "reviewStatus": "draft",
+      "estimatedMinutes": 6,
+      "skills": ["resolver", "argumentar"],
+      "steps": [
+        {
+          "id": "s1",
+          "type": "explain",
+          "title": "La operación inversa",
+          "body": "La raíz cuadrada de $a$ es el número positivo que al cuadrado da $a$: $\\sqrt{49}=7$. La raíz cúbica es el número que al cubo da $a$. Y las raíces son potencias con exponente fraccionario: $\\sqrt{a}=a^{\\frac{1}{2}}$.",
+          "mascot": "explicando"
+        },
+        {
+          "id": "s2",
+          "type": "numeric",
+          "skill": "resolver",
+          "difficulty": 1,
+          "prompt": "¿Cuánto es $\\sqrt{144}$?",
+          "answer": "12",
+          "mistakes": [{ "value": "72", "feedback": "Casi. La raíz no es la mitad: es el número que al cuadrado da 144." }],
+          "feedback": "Casi. ¿Qué número multiplicado por sí mismo da 144?",
+          "hints": ["$12\\cdot 12$"],
+          "solution": ["$12^{2}=144$, entonces $\\sqrt{144}=12$"]
+        },
+        {
+          "id": "s3",
+          "type": "choice",
+          "skill": "resolver",
+          "difficulty": 2,
+          "prompt": "¿Cuánto es $8^{\\frac{1}{3}}$, es decir, la raíz cúbica de 8?",
+          "options": ["$2$", "$\\frac{8}{3}$", "$4$", "$24$"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. Un exponente fraccionario es una raíz, no una división.",
+            "2": "Casi. $4^{3}=64$, no 8.",
+            "3": "Casi. Eso es $8\\cdot 3$."
+          },
+          "hints": ["¿Qué número al cubo da 8?"],
+          "solution": ["$2^{3}=8$, entonces $8^{\\frac{1}{3}}=2$"]
+        },
+        {
+          "id": "s4",
+          "type": "explain",
+          "title": "Simplificar raíces",
+          "body": "Como $\\sqrt{a\\cdot b}=\\sqrt{a}\\cdot\\sqrt{b}$, puedes sacar de la raíz los cuadrados perfectos: $\\sqrt{50}=\\sqrt{25\\cdot 2}=5\\sqrt{2}$.",
+          "mascot": "senalando"
+        },
+        {
+          "id": "s5",
+          "type": "choice",
+          "skill": "resolver",
+          "difficulty": 2,
+          "prompt": "Simplifica $\\sqrt{12}$.",
+          "options": ["$2\\sqrt{3}$", "$3\\sqrt{2}$", "$4\\sqrt{3}$", "$6\\sqrt{2}$"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. $3\\sqrt{2}=\\sqrt{18}$, no $\\sqrt{12}$.",
+            "2": "Casi. Sale la raíz de 4, que es 2, no el 4.",
+            "3": "Casi. Busca el cuadrado perfecto que divide a 12: es 4."
+          },
+          "hints": ["$12=4\\cdot 3$"],
+          "solution": ["$\\sqrt{12}=\\sqrt{4}\\cdot\\sqrt{3}=2\\sqrt{3}$"]
+        },
+        {
+          "id": "s6",
+          "type": "choice",
+          "skill": "resolver",
+          "difficulty": 2,
+          "prompt": "¿Cuánto es $\\sqrt{2}\\cdot\\sqrt{8}$?",
+          "options": ["$4$", "$\\sqrt{10}$", "$16$", "$2\\sqrt{2}$"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. Las raíces se multiplican adentro, no se suman: $\\sqrt{2\\cdot 8}$.",
+            "2": "Casi. $\\sqrt{16}=4$: falta sacar la raíz.",
+            "3": "Casi. $2\\sqrt{2}=\\sqrt{8}$; falta multiplicar por $\\sqrt{2}$."
+          },
+          "hints": ["$\\sqrt{a}\\cdot\\sqrt{b}=\\sqrt{a\\cdot b}$"],
+          "solution": ["$\\sqrt{16}=4$"]
+        },
+        {
+          "id": "s7",
+          "type": "choice",
+          "skill": "argumentar",
+          "difficulty": 3,
+          "prompt": "¿Es cierto que $\\sqrt{9+16}=\\sqrt{9}+\\sqrt{16}$?",
+          "options": ["No: la izquierda vale 5 y la derecha, 7", "Sí, ambos lados valen 7", "Sí, ambos lados valen 5", "No se puede calcular"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. $\\sqrt{9+16}=\\sqrt{25}=5$: primero se suma y después se saca la raíz.",
+            "2": "Casi. $\\sqrt{9}+\\sqrt{16}=3+4=7$, no 5.",
+            "3": "Casi. Ambos lados se pueden calcular: 5 y 7."
+          },
+          "hints": ["Calcula cada lado por separado."],
+          "explanation": "La raíz de una suma no es la suma de las raíces: $\\sqrt{9+16}=5$, pero $\\sqrt{9}+\\sqrt{16}=7$."
+        }
+      ]
+    },
+    {
+      "id": "m1-pr-4",
+      "title": "Simplificar expresiones",
+      "version": 1,
+      "reviewStatus": "draft",
+      "estimatedMinutes": 5,
+      "skills": ["resolver", "argumentar"],
+      "steps": [
+        {
+          "id": "s1",
+          "type": "explain",
+          "title": "Paso a paso",
+          "body": "Combina las propiedades de a una: primero lo que está entre paréntesis, después agrupa las potencias de igual base y al final suma o resta sus exponentes.",
+          "mascot": "explicando"
+        },
+        {
+          "id": "s2",
+          "type": "choice",
+          "skill": "resolver",
+          "difficulty": 1,
+          "prompt": "Simplifica $x^{2}\\cdot x^{5}\\cdot x$.",
+          "options": ["$x^{8}$", "$x^{7}$", "$x^{10}$", "$3x^{7}$"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. La $x$ sola es $x^{1}$: suma también ese 1.",
+            "2": "Casi. Los exponentes se suman, no se multiplican.",
+            "3": "Casi. No aparece un 3 adelante: es una multiplicación de potencias, no una suma."
+          },
+          "hints": ["$x=x^{1}$"],
+          "solution": ["$x^{2+5+1}=x^{8}$"]
+        },
+        {
+          "id": "s3",
+          "type": "choice",
+          "skill": "resolver",
+          "difficulty": 2,
+          "prompt": "Simplifica $(2a^{3})^{2}$.",
+          "options": ["$4a^{6}$", "$2a^{6}$", "$4a^{5}$", "$2a^{5}$"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. El 2 también se eleva: $2^{2}=4$.",
+            "2": "Casi. $(a^{3})^{2}=a^{6}$: los exponentes se multiplican.",
+            "3": "Casi. Se eleva el 2 ($2^{2}=4$) y se multiplican los exponentes ($3\\cdot 2$)."
+          },
+          "hints": ["$(2a^{3})^{2}=2^{2}\\cdot(a^{3})^{2}$"],
+          "solution": ["$2^{2}\\cdot a^{6}=4a^{6}$"]
+        },
+        {
+          "id": "s4",
+          "type": "numeric",
+          "skill": "resolver",
+          "difficulty": 2,
+          "prompt": "Si $2^{x}=32$, ¿cuánto vale $x$?",
+          "answer": "5",
+          "mistakes": [{ "value": "16", "feedback": "Casi. No es $32\\div 2$: busca cuántas veces se multiplica el 2 para llegar a 32." }],
+          "feedback": "Casi. Escribe 32 como potencia de 2.",
+          "hints": ["$2,4,8,16,32$"],
+          "solution": ["$32=2^{5}$, entonces $x=5$"]
+        },
+        {
+          "id": "s5",
+          "type": "find-error",
+          "skill": "argumentar",
+          "difficulty": 2,
+          "prompt": "Así simplificaron $\\frac{a^{6}}{a^{2}}$. ¿En qué línea está el error?",
+          "lines": ["$\\frac{a^{6}}{a^{2}}$", "$=a^{3}$"],
+          "wrong": 1,
+          "feedback": "Casi. La primera línea es solo el enunciado.",
+          "hints": ["¿Los exponentes se dividen o se restan?"],
+          "explanation": "Al dividir potencias de igual base los exponentes se restan: $a^{6-2}=a^{4}$."
+        },
+        {
+          "id": "s6",
+          "type": "choice",
+          "skill": "resolver",
+          "difficulty": 4,
+          "prompt": "¿Cuál es el valor de $\\frac{2^{10}}{4^{3}}$?",
+          "options": ["$16$", "$8$", "$\\frac{10}{3}$", "$256$"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. $4^{3}=2^{6}$, entonces queda $2^{10-6}=2^{4}$.",
+            "2": "Casi. Los exponentes no se dividen; escribe todo en base 2.",
+            "3": "Casi. Revisa: $4^{3}=64$ y $1024\\div 64=16$."
+          },
+          "hints": ["$4=2^{2}$, entonces $4^{3}=2^{6}$."],
+          "solution": ["$\\frac{2^{10}}{2^{6}}=2^{4}=16$"]
+        }
+      ]
+    }
+  ],
+  "miniClasses": [
+    {
+      "id": "mc-pr-1",
+      "title": "Propiedades de las potencias",
+      "reviewStatus": "draft",
+      "cards": [
+        { "title": "Igual base", "body": "Multiplicar suma exponentes; dividir los resta.", "formula": "$a^{m}\\cdot a^{n}=a^{m+n}$" },
+        { "title": "Potencia de potencia", "body": "Se multiplican los exponentes.", "formula": "$(a^{m})^{n}=a^{m\\cdot n}$" },
+        { "title": "Cero y negativos", "body": "$a^{0}=1$ y $a^{-n}=\\frac{1}{a^{n}}$ (con $a$ distinto de 0)." }
+      ]
+    },
+    {
+      "id": "mc-pr-2",
+      "title": "Raíces",
+      "reviewStatus": "draft",
+      "cards": [
+        { "title": "Raíz cuadrada", "body": "El número positivo que al cuadrado da el de adentro.", "example": ["$\\sqrt{81}=9$"] },
+        { "title": "Producto", "body": "La raíz de un producto es el producto de las raíces.", "formula": "$\\sqrt{a\\cdot b}=\\sqrt{a}\\cdot\\sqrt{b}$" },
+        { "title": "Ojo con la suma", "body": "La raíz de una suma no es la suma de las raíces: $\\sqrt{9+16}=5$, no 7." }
+      ]
+    },
+    {
+      "id": "mc-pr-3",
+      "title": "Notación científica",
+      "reviewStatus": "draft",
+      "cards": [
+        { "title": "Forma", "body": "Un número entre 1 y 10 multiplicado por una potencia de 10.", "example": ["$320000=3,2\\cdot 10^{5}$"] },
+        { "title": "Números chicos", "body": "Con exponente negativo.", "example": ["$0,0045=4,5\\cdot 10^{-3}$"] }
+      ]
+    }
+  ]
+}
