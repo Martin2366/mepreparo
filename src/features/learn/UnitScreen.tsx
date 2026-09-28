@@ -6,6 +6,7 @@ import { Card } from '@/components/ui/Card';
 import { Chip, PremiumTag } from '@/components/ui/Chip';
 import { Icon } from '@/components/ui/Icon';
 import { ProgressBar } from '@/components/ui/ProgressBar';
+import { Tappable } from '@/components/ui/Tappable';
 import { Text } from '@/components/ui/Text';
 import { SKILL_LABEL } from '@/content/schema';
 import { pct } from '@/engine/mastery';
@@ -45,12 +46,16 @@ export function UnitScreen({ unitId }: { unitId: string }) {
       {hasPractice(unit.id) ? (
         <View style={{ gap: 10 }}>
           <Button label="Practicar esta unidad" arrow onPress={() => router.push(`/practica/${unit.id}`)} />
-          <Card tone="paper" style={s.row}>
-            <Icon name="hourglass" size={20} color={colors.graphite} />
-            <Text style={[s.small, { flex: 1 }]}>Ensayo temático de esta unidad</Text>
-            <PremiumTag />
-            <Chip label="Pronto" tone="neutral" />
-          </Card>
+          <Tappable
+            onPress={() => router.push({ pathname: '/ensayo/nuevo', params: { kind: 'custom', unit: unit.id } })}
+            accessibilityLabel="Ensayo de esta unidad"
+          >
+            <Card tone="paper" style={s.row}>
+              <Icon name="hourglass" size={20} color={colors.graphite} />
+              <Text style={[s.small, { flex: 1 }]}>Ensayo de esta unidad</Text>
+              <PremiumTag />
+            </Card>
+          </Tappable>
         </View>
       ) : null}
 

@@ -34,13 +34,13 @@ const INFO: Record<ExamKind, { title: string; lines: string[] }> = {
 type TimeMode = 'real' | 'none' | 'own';
 
 /** Antes de empezar: formato, reglas claras y (en temático / a tu medida) la configuración. */
-export function ExamSetupScreen({ kind }: { kind: ExamKind }) {
+export function ExamSetupScreen({ kind, initialUnits = [] }: { kind: ExamKind; initialUnits?: string[] }) {
   const allowance = useAllowance(FEATURE[kind]);
   const active = useExams((s) => s.active);
   const start = useExams((s) => s.start);
   const discard = useExams((s) => s.discard);
   const [axisId, setAxisId] = useState(curriculum.axes[0]!.id);
-  const [units, setUnits] = useState<string[]>([]);
+  const [units, setUnits] = useState<string[]>(initialUnits);
   const [count, setCount] = useState(20);
   const [timeMode, setTimeMode] = useState<TimeMode>('real');
   const [ownMinutes, setOwnMinutes] = useState(30);
