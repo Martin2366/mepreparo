@@ -16,6 +16,9 @@ const UNIT_FILES: unknown[] = [
   require('./m1/cuerpos.json'),
   require('./m1/transformaciones.json'),
   require('./m1/semejanza.json'),
+  require('./m1/tablas-graficos.json'),
+  require('./m1/medidas-posicion.json'),
+  require('./m1/reglas-probabilidad.json'),
 ];
 
 export default UNIT_FILES;

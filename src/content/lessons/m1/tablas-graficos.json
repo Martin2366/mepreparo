@@ -1,0 +1,386 @@
+{
+  "unitId": "tablas-graficos",
+  "lessons": [
+    {
+      "id": "m1-tg-1",
+      "title": "Tablas de frecuencia",
+      "version": 1,
+      "reviewStatus": "draft",
+      "estimatedMinutes": 6,
+      "skills": ["representar"],
+      "steps": [
+        {
+          "id": "s1",
+          "type": "explain",
+          "title": "Contar y ordenar",
+          "body": "Una tabla de frecuencias resume datos. La frecuencia absoluta es cuántas veces aparece un valor. La relativa es esa cantidad dividida por el total (en fracción o en %). La acumulada suma las frecuencias hasta ese valor.",
+          "mascot": "explicando"
+        },
+        {
+          "id": "s2",
+          "type": "numeric",
+          "skill": "representar",
+          "difficulty": 1,
+          "prompt": "Se preguntó a 20 estudiantes cuántas mascotas tienen: 0 mascotas, 6 estudiantes; 1 mascota, 8; 2 mascotas, 4; 3 mascotas, el resto. ¿Cuántos estudiantes tienen 3 mascotas?",
+          "answer": "2",
+          "mistakes": [{ "value": "18", "feedback": "Casi. 18 es la suma de los otros grupos; falta restarla del total." }],
+          "feedback": "Casi. Resta al total los que ya conoces: $20-6-8-4$.",
+          "hints": ["Las frecuencias suman el total, 20."],
+          "solution": ["$20-18=2$"]
+        },
+        {
+          "id": "s3",
+          "type": "choice",
+          "skill": "representar",
+          "difficulty": 1,
+          "prompt": "Con esos mismos datos, ¿cuál es la frecuencia relativa de los estudiantes con 1 mascota?",
+          "options": ["$40$ %", "$8$ %", "$\\frac{8}{12}$", "$80$ %"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. 8 es la frecuencia absoluta; hay que dividir por el total.",
+            "2": "Casi. Se divide por el total de estudiantes, 20.",
+            "3": "Casi. $\\frac{8}{20}=0,4$, que es el 40 %."
+          },
+          "hints": ["$\\frac{8}{20}$"],
+          "solution": ["$\\frac{8}{20}=0,4=40$ %"]
+        },
+        {
+          "id": "s4",
+          "type": "numeric",
+          "skill": "representar",
+          "difficulty": 2,
+          "prompt": "¿Cuál es la frecuencia acumulada hasta 1 mascota? Es decir, ¿cuántos tienen 1 mascota o menos?",
+          "answer": "14",
+          "mistakes": [{ "value": "8", "feedback": "Casi. La acumulada incluye también a los que tienen 0 mascotas." }],
+          "feedback": "Casi. Suma los que tienen 0 y los que tienen 1.",
+          "hints": ["$6+8$"],
+          "solution": ["$6+8=14$"]
+        },
+        {
+          "id": "s5",
+          "type": "choice",
+          "skill": "argumentar",
+          "difficulty": 2,
+          "prompt": "¿Qué porcentaje de los estudiantes tiene al menos 2 mascotas?",
+          "options": ["$30$ %", "$20$ %", "$10$ %", "$70$ %"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. Ese es solo el grupo de 2 mascotas; \"al menos 2\" incluye también el de 3.",
+            "2": "Casi. Ese es solo el grupo de 3 mascotas.",
+            "3": "Casi. 70 % es el grupo con menos de 2 mascotas."
+          },
+          "hints": ["Al menos 2 = 2 o 3 mascotas."],
+          "solution": ["$4+2=6$", "$\\frac{6}{20}=30$ %"]
+        },
+        {
+          "id": "s6",
+          "type": "numeric",
+          "skill": "resolver",
+          "difficulty": 3,
+          "prompt": "En otra tabla, la frecuencia relativa de un valor es 25 % y su frecuencia absoluta es 12. ¿Cuántos datos hay en total?",
+          "answer": "48",
+          "mistakes": [{ "value": "3", "feedback": "Casi. El 25 % de 12 es 3, pero aquí 12 es el 25 % del total." }],
+          "feedback": "Casi. 12 es la cuarta parte del total.",
+          "hints": ["25 % es un cuarto."],
+          "solution": ["$12\\cdot 4=48$"]
+        }
+      ]
+    },
+    {
+      "id": "m1-tg-2",
+      "title": "Gráficos de barras y circulares",
+      "version": 1,
+      "reviewStatus": "draft",
+      "estimatedMinutes": 6,
+      "skills": ["representar", "resolver"],
+      "steps": [
+        {
+          "id": "s1",
+          "type": "explain",
+          "title": "Dos formas de mostrar",
+          "body": "El gráfico de barras compara cantidades por su altura. El circular muestra partes de un total: cada sector ocupa un ángulo proporcional a su frecuencia, y el círculo completo son 360°.",
+          "mascot": "explicando"
+        },
+        {
+          "id": "s2",
+          "type": "numeric",
+          "skill": "representar",
+          "difficulty": 2,
+          "prompt": "En un gráfico circular, un sector representa el 25 % de los datos. ¿Cuántos grados mide su ángulo?",
+          "answer": "90",
+          "suffix": "°",
+          "mistakes": [{ "value": "25", "feedback": "Casi. El porcentaje no es el ángulo: el 25 % de 360° es 90°." }],
+          "feedback": "Casi. Calcula el 25 % de 360°.",
+          "hints": ["Un cuarto del círculo."],
+          "solution": ["$\\frac{1}{4}\\cdot 360=90$"]
+        },
+        {
+          "id": "s3",
+          "type": "choice",
+          "skill": "representar",
+          "difficulty": 2,
+          "prompt": "En una encuesta a 40 personas, 10 prefieren el té. ¿Qué ángulo tiene el sector del té en un gráfico circular?",
+          "options": ["$90°$", "$10°$", "$40°$", "$36°$"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. 10 es la cantidad de personas, no los grados.",
+            "2": "Casi. 40 es el total de personas.",
+            "3": "Casi. 36° corresponde a una persona de cada 10, pero aquí es una de cada 4."
+          },
+          "hints": ["$\\frac{10}{40}$ del círculo."],
+          "solution": ["$\\frac{10}{40}\\cdot 360=90°$"]
+        },
+        {
+          "id": "s4",
+          "type": "numeric",
+          "skill": "resolver",
+          "difficulty": 3,
+          "prompt": "En un gráfico circular de 200 encuestados, el sector \"fútbol\" mide 108°. ¿Cuántas personas eligieron fútbol?",
+          "answer": "60",
+          "mistakes": [{ "value": "108", "feedback": "Casi. 108 son grados, no personas." }],
+          "feedback": "Casi. Calcula qué fracción del círculo es 108° y aplícala a 200.",
+          "hints": ["$\\frac{108}{360}=0,3$"],
+          "solution": ["$\\frac{108}{360}=0,3$", "$0,3\\cdot 200=60$"]
+        },
+        {
+          "id": "s5",
+          "type": "choice",
+          "skill": "argumentar",
+          "difficulty": 2,
+          "prompt": "Quieres mostrar cómo cambió la temperatura día a día durante un mes. ¿Qué gráfico es más adecuado?",
+          "options": ["Un gráfico de líneas", "Un gráfico circular", "Una tabla de una sola fila", "Un pictograma de emojis"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. El circular muestra partes de un total, no cambios en el tiempo.",
+            "2": "Casi. Con 30 datos seguidos, una fila no deja ver la tendencia.",
+            "3": "Casi. Los pictogramas sirven para comparar pocas cantidades, no una evolución."
+          },
+          "hints": ["¿Qué gráfico muestra cómo algo sube y baja en el tiempo?"],
+          "explanation": "El gráfico de líneas muestra la evolución en el tiempo."
+        },
+        {
+          "id": "s6",
+          "type": "choice",
+          "skill": "representar",
+          "difficulty": 3,
+          "prompt": "Un gráfico de barras muestra las ventas de tres meses: marzo 30, abril 45 y mayo 60 unidades. ¿En qué porcentaje aumentaron las ventas de marzo a mayo?",
+          "options": ["$100$ %", "$30$ %", "$50$ %", "$200$ %"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. 30 es el aumento en unidades; en porcentaje se compara con 30.",
+            "2": "Casi. 50 % fue el aumento de marzo a abril.",
+            "3": "Casi. En mayo se vende el 200 % de marzo, pero el aumento es del 100 %."
+          },
+          "hints": ["Aumento: $60-30=30$, comparado con 30."],
+          "solution": ["$\\frac{30}{30}=1=100$ %"]
+        }
+      ]
+    },
+    {
+      "id": "m1-tg-3",
+      "title": "Gráficos que engañan",
+      "version": 1,
+      "reviewStatus": "draft",
+      "estimatedMinutes": 5,
+      "skills": ["argumentar"],
+      "steps": [
+        {
+          "id": "s1",
+          "type": "explain",
+          "title": "Mira el eje",
+          "body": "Un gráfico puede ser correcto y aun así engañar. El truco más común es un eje vertical que no parte en 0: una diferencia pequeña parece enorme. Antes de concluir, lee siempre los números de los ejes.",
+          "mascot": "pensando"
+        },
+        {
+          "id": "s2",
+          "type": "choice",
+          "skill": "argumentar",
+          "difficulty": 2,
+          "prompt": "Un gráfico de barras muestra que la marca A vende 102 y la B vende 100. El eje vertical parte en 99, así que la barra de A se ve el triple de alta. ¿Qué se puede concluir?",
+          "options": ["A vende solo un 2 % más que B", "A vende el triple que B", "B vende el triple que A", "No se puede comparar"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. La altura engaña porque el eje parte en 99: compara los números, 102 y 100.",
+            "2": "Casi. Es al revés, y además las ventas son casi iguales.",
+            "3": "Casi. Los números del eje sí permiten comparar."
+          },
+          "hints": ["Compara 102 con 100, no las alturas."],
+          "explanation": "$\\frac{102-100}{100}=2$ %: la diferencia real es pequeña."
+        },
+        {
+          "id": "s3",
+          "type": "choice",
+          "skill": "argumentar",
+          "difficulty": 2,
+          "prompt": "Un gráfico circular muestra sectores de 50 %, 30 % y 30 %. ¿Qué problema tiene?",
+          "options": ["Los porcentajes suman más de 100 %", "Tiene muy pocos sectores", "Debería ser de barras", "No tiene problema"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. Tres sectores está bien; el problema es la suma.",
+            "2": "Casi. Un circular puede servir aquí, si los datos cuadran.",
+            "3": "Casi. Revisa la suma: $50+30+30$."
+          },
+          "hints": ["Suma los porcentajes."],
+          "explanation": "Suman 110 %: un gráfico circular siempre debe sumar 100 %."
+        },
+        {
+          "id": "s4",
+          "type": "choice",
+          "skill": "argumentar",
+          "difficulty": 3,
+          "prompt": "El colegio A tiene 50 estudiantes con puntaje sobre 700 y el B, 30. El A tiene 1.000 estudiantes y el B, 300. ¿Qué afirmación es correcta?",
+          "options": ["En proporción, a B le va mejor", "A B le va peor porque tiene menos", "A los dos les va igual", "A A le va mejor en proporción"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. B tiene menos estudiantes en total; hay que comparar proporciones.",
+            "2": "Casi. A tiene un 5 % y B un 10 %.",
+            "3": "Casi. $\\frac{50}{1000}=5$ % y $\\frac{30}{300}=10$ %."
+          },
+          "hints": ["Calcula el porcentaje de cada colegio."],
+          "explanation": "A: $\\frac{50}{1000}=5$ %. B: $\\frac{30}{300}=10$ %. En proporción, a B le va mejor."
+        },
+        {
+          "id": "s5",
+          "type": "find-error",
+          "skill": "argumentar",
+          "difficulty": 3,
+          "prompt": "Un titular dice: \"Los accidentes subieron de 20 a 25: ¡aumentaron un 25 % y ahora son el doble!\". ¿Qué parte del razonamiento está mal?",
+          "lines": ["Aumento: $25-20=5$ accidentes", "En porcentaje: $\\frac{5}{20}=25$ %", "Ahora son el doble que antes"],
+          "wrong": 2,
+          "feedback": "Casi. Esa parte está bien. Revisa la conclusión final.",
+          "hints": ["El doble de 20 sería 40."],
+          "explanation": "El doble de 20 es 40, no 25: aumentaron un 25 %, pero no se duplicaron."
+        }
+      ]
+    },
+    {
+      "id": "m1-tg-4",
+      "title": "Promedio, mediana y moda",
+      "version": 1,
+      "reviewStatus": "draft",
+      "estimatedMinutes": 6,
+      "skills": ["resolver", "argumentar"],
+      "steps": [
+        {
+          "id": "s1",
+          "type": "explain",
+          "title": "Tres centros",
+          "body": "El promedio es la suma de los datos dividida por la cantidad. La mediana es el dato del medio una vez ordenados (si son pares, el promedio de los dos centrales). La moda es el dato que más se repite.",
+          "mascot": "explicando"
+        },
+        {
+          "id": "s2",
+          "type": "numeric",
+          "skill": "resolver",
+          "difficulty": 1,
+          "prompt": "¿Cuál es el promedio de 4, 7, 9 y 12?",
+          "answer": "8",
+          "mistakes": [{ "value": "32", "feedback": "Casi. 32 es la suma; falta dividir por la cantidad de datos." }],
+          "feedback": "Casi. Suma los datos y divide por 4.",
+          "hints": ["$\\frac{4+7+9+12}{4}$"],
+          "solution": ["$\\frac{32}{4}=8$"]
+        },
+        {
+          "id": "s3",
+          "type": "numeric",
+          "skill": "resolver",
+          "difficulty": 2,
+          "prompt": "¿Cuál es la mediana de 15, 3, 8, 10, 6?",
+          "answer": "8",
+          "mistakes": [{ "value": "10", "feedback": "Casi. Primero hay que ordenar los datos: 3, 6, 8, 10, 15." }],
+          "feedback": "Casi. Ordena y toma el dato del centro.",
+          "hints": ["3, 6, 8, 10, 15"],
+          "solution": ["Ordenados: 3, 6, 8, 10, 15", "Mediana: 8"]
+        },
+        {
+          "id": "s4",
+          "type": "numeric",
+          "skill": "resolver",
+          "difficulty": 2,
+          "prompt": "¿Cuál es la mediana de 2, 5, 7, 11?",
+          "answer": "6",
+          "mistakes": [{ "value": "25/4", "feedback": "Casi. Ese es el promedio. La mediana es el promedio de los dos datos centrales." }],
+          "feedback": "Casi. Con datos pares, promedia los dos centrales.",
+          "hints": ["Los centrales son 5 y 7."],
+          "solution": ["$\\frac{5+7}{2}=6$"]
+        },
+        {
+          "id": "s5",
+          "type": "choice",
+          "skill": "argumentar",
+          "difficulty": 3,
+          "prompt": "Los sueldos de 5 personas, en miles de pesos, son 400, 450, 500, 550 y 5.000. ¿Qué medida representa mejor un sueldo típico?",
+          "options": ["La mediana", "El promedio", "La moda", "El máximo"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. El sueldo de 5.000 infla el promedio a 1.380, más que casi todos.",
+            "2": "Casi. Aquí no hay datos repetidos: no hay moda.",
+            "3": "Casi. El máximo es un caso extremo, no uno típico."
+          },
+          "hints": ["¿Qué medida no se deja arrastrar por un dato extremo?"],
+          "explanation": "La mediana (500) no se ve afectada por el dato extremo; el promedio sí."
+        },
+        {
+          "id": "s6",
+          "type": "numeric",
+          "skill": "modelar",
+          "difficulty": 3,
+          "prompt": "Tienes notas 5,0, 6,0 y 5,5. ¿Qué nota necesitas en la cuarta prueba para quedar con promedio 6,0?",
+          "answer": "15/2",
+          "mistakes": [{ "value": "6", "feedback": "Casi. Con un 6,0 el promedio queda bajo 6,0, porque las otras notas son más bajas." }],
+          "feedback": "Casi. Las 4 notas deben sumar $4\\cdot 6,0=24$.",
+          "hints": ["Ya sumas 16,5."],
+          "solution": ["$24-16,5=7,5$"]
+        },
+        {
+          "id": "s7",
+          "type": "choice",
+          "skill": "argumentar",
+          "difficulty": 3,
+          "prompt": "En Chile la nota máxima es 7,0. Con ese resultado, ¿qué puedes concluir?",
+          "options": ["No es posible llegar a promedio 6,0 con una sola prueba más", "Hay que sacar un 7,0 y queda exactamente 6,0", "Basta con un 6,0", "El promedio no depende de la cuarta nota"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. Con un 7,0 la suma es 23,5 y el promedio queda en 5,875.",
+            "2": "Casi. Con un 6,0 el promedio queda en 5,625.",
+            "3": "Casi. Cada nota cuenta en el promedio."
+          },
+          "hints": ["Prueba con la nota máxima, 7,0."],
+          "explanation": "Incluso con un 7,0 el promedio es $\\frac{23,5}{4}$, menos que 6,0."
+        }
+      ]
+    }
+  ],
+  "miniClasses": [
+    {
+      "id": "mc-tg-1",
+      "title": "Frecuencias",
+      "reviewStatus": "draft",
+      "cards": [
+        { "title": "Absoluta", "body": "Cuántas veces aparece un valor." },
+        { "title": "Relativa", "body": "Absoluta dividida por el total.", "example": ["$8$ de $20$", "$\\frac{8}{20}=40$ %"] },
+        { "title": "Acumulada", "body": "Suma de las frecuencias hasta ese valor." }
+      ]
+    },
+    {
+      "id": "mc-tg-2",
+      "title": "Gráfico circular",
+      "reviewStatus": "draft",
+      "cards": [
+        { "title": "Ángulo", "body": "Fracción del total por 360°.", "formula": "$\\frac{f}{n}\\cdot 360°$" },
+        { "title": "Revisa", "body": "Los porcentajes deben sumar 100 % y los ángulos, 360°." }
+      ]
+    },
+    {
+      "id": "mc-tg-3",
+      "title": "Promedio, mediana y moda",
+      "reviewStatus": "draft",
+      "cards": [
+        { "title": "Promedio", "body": "Suma dividida por la cantidad de datos." },
+        { "title": "Mediana", "body": "Dato central después de ordenar. Con datos pares, promedio de los dos centrales." },
+        { "title": "Moda", "body": "El que más se repite. Puede haber más de una, o ninguna." },
+        { "title": "Datos extremos", "body": "Arrastran el promedio, pero casi no mueven la mediana." }
+      ]
+    }
+  ]
+}
