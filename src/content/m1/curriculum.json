@@ -22,7 +22,7 @@
             { "id": "m1-er-3", "title": "Operar con fracciones" },
             { "id": "m1-er-4", "title": "Decimales y fracciones: la misma cosa" }
           ],
-          "generators": []
+          "generators": ["integer-ops", "fraction-ops"]
         },
         {
           "id": "porcentaje",
@@ -35,7 +35,7 @@
             { "id": "m1-pc-3", "title": "Porcentaje de un porcentaje" },
             { "id": "m1-pc-4", "title": "Problemas con porcentajes" }
           ],
-          "generators": []
+          "generators": ["percent-of", "percent-change", "successive-percent"]
         },
         {
           "id": "potencias-raices",
@@ -48,7 +48,7 @@
             { "id": "m1-pr-3", "title": "Raíces como potencias" },
             { "id": "m1-pr-4", "title": "Simplificar expresiones" }
           ],
-          "generators": []
+          "generators": ["power-rules", "negative-exponent", "simplify-root"]
         }
       ]
     },
@@ -159,7 +159,7 @@
             { "id": "m1-fg-3", "title": "Áreas de figuras planas" },
             { "id": "m1-fg-4", "title": "Figuras compuestas" }
           ],
-          "generators": []
+          "generators": ["pythagoras", "area-perimeter"]
         },
         {
           "id": "cuerpos",
@@ -172,7 +172,7 @@
             { "id": "m1-cg-3", "title": "Volumen" },
             { "id": "m1-cg-4", "title": "Problemas de capacidad" }
           ],
-          "generators": []
+          "generators": ["volume"]
         },
         {
           "id": "transformaciones",
@@ -185,7 +185,7 @@
             { "id": "m1-ti-3", "title": "Rotar" },
             { "id": "m1-ti-4", "title": "Componer transformaciones" }
           ],
-          "generators": []
+          "generators": ["transform-point"]
         },
         {
           "id": "semejanza",
@@ -198,7 +198,7 @@
             { "id": "m1-sm-3", "title": "Teorema de Thales" },
             { "id": "m1-sm-4", "title": "Escalas y sombras" }
           ],
-          "generators": []
+          "generators": ["similarity"]
         }
       ]
     },
@@ -220,7 +220,7 @@
             { "id": "m1-tg-3", "title": "Gráficos que engañan" },
             { "id": "m1-tg-4", "title": "Promedio, mediana y moda" }
           ],
-          "generators": []
+          "generators": ["central-tendency"]
         },
         {
           "id": "medidas-posicion",
@@ -233,7 +233,7 @@
             { "id": "m1-mp-3", "title": "Percentiles" },
             { "id": "m1-mp-4", "title": "El diagrama de cajón" }
           ],
-          "generators": []
+          "generators": ["boxplot-read", "central-tendency"]
         },
         {
           "id": "reglas-probabilidad",
@@ -246,7 +246,7 @@
             { "id": "m1-rp-3", "title": "Regla aditiva" },
             { "id": "m1-rp-4", "title": "Regla multiplicativa" }
           ],
-          "generators": []
+          "generators": ["classic-probability", "dice-probability"]
         }
       ]
     }

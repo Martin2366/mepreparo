@@ -262,7 +262,8 @@ console.log(
     (production ? ' · modo producción' : ''),
 );
 if (errors.length > 0) {
-  console.error(`\n${errors.length} problema(s):\n- ${errors.join('\n- ')}`);
+  const shown = errors.slice(0, 40);
+  console.error(`\n${errors.length} problema(s):\n- ${shown.join('\n- ')}${errors.length > shown.length ? `\n… y ${errors.length - shown.length} más` : ''}`);
   process.exit(1);
 }
 console.log('OK');

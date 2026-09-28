@@ -9,6 +9,9 @@ import {
 } from './algebra';
 import type { Difficulty, Exercise, Generator } from './core';
 import { affineEvaluate, affineFromPoints, quadraticEvaluate, quadraticVertex, slopeTwoPoints } from './functions';
+import { areaPerimeter, pythagoras, similarity, transformPoint, volume } from './geometry';
+import { fractionOps, integerOps, negativeExponent, percentChange, percentOf, powerRules, simplifyRoot, successivePercent } from './numbers';
+import { boxplotRead, centralTendency, classicProbability, diceProbability } from './stats';
 
 export type { Difficulty, Exercise, Generator } from './core';
 
@@ -26,6 +29,23 @@ export const GENERATORS: Record<string, Generator> = Object.fromEntries(
     affineFromPoints,
     quadraticEvaluate,
     quadraticVertex,
+    fractionOps,
+    integerOps,
+    percentOf,
+    percentChange,
+    successivePercent,
+    powerRules,
+    negativeExponent,
+    simplifyRoot,
+    pythagoras,
+    areaPerimeter,
+    volume,
+    transformPoint,
+    similarity,
+    centralTendency,
+    boxplotRead,
+    classicProbability,
+    diceProbability,
   ].map((g) => [g.id, g]),
 );
 
