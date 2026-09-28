@@ -211,3 +211,14 @@ export const UnitContentSchema = z.object({
 export type UnitContent = z.infer<typeof UnitContentSchema>;
 
 export const isEvaluable = (s: Step): boolean => s.type !== 'explain';
+
+// ─── Fórmulas ──────────────────────────────────────────────────────────────
+
+export const FormulaSchema = z.object({ id: z.string(), title: z.string(), formula: z.string(), note: z.string().optional() });
+export type Formula = z.infer<typeof FormulaSchema>;
+
+export const FormulasSchema = z.object({
+  reviewStatus: ReviewStatusSchema,
+  _nota: z.string().optional(),
+  units: z.record(z.string(), z.array(FormulaSchema)),
+});

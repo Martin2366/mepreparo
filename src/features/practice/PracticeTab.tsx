@@ -2,7 +2,7 @@ import { router } from 'expo-router';
 import { StyleSheet, View } from 'react-native';
 
 import { Card } from '@/components/ui/Card';
-import { Chip, PremiumTag } from '@/components/ui/Chip';
+import { PremiumTag } from '@/components/ui/Chip';
 import { Icon, type IconName } from '@/components/ui/Icon';
 import { ProgressBar } from '@/components/ui/ProgressBar';
 import { Text } from '@/components/ui/Text';
@@ -10,6 +10,7 @@ import { pct } from '@/engine/mastery';
 import { allUnits } from '@/features/content/catalog';
 import type { ExamKind } from '@/engine/exam';
 import { useExams } from '@/features/exams/store';
+import { programById, useIntensives } from '@/features/intensives/store';
 import { useAllowance } from '@/features/progress/allowance';
 import { unitMastery, useDashboard } from '@/features/progress/derived';
 import { Section, TabScreen } from '@/features/shell/TabScreen';
@@ -23,6 +24,8 @@ export function PracticeTab() {
   const notebookCount = Object.keys(d.progress.notebook).length;
   const activeExam = useExams((st) => st.active);
   const lastExam = useExams((st) => st.history[0]);
+  const activeIntensive = useIntensives((st) => st.active);
+  const flashBest = d.progress.flashBest;
 
   return (
     <TabScreen title="Practicar">
@@ -93,9 +96,38 @@ export function PracticeTab() {
 
       <Section title="Más formas de practicar">
         <View style={{ gap: 10 }}>
-          <Soon icon="flame" title="Intensivo: recta final" subtitle="Un plan guiado hasta tu PAES, con ensayo de entrada y de salida" premium />
-          <Soon icon="zap" title="Reto relámpago" subtitle="60 segundos de cálculo mental" note="1 gratis al día" />
-          <Soon icon="book-marked" title="Fórmulas" subtitle="Tarjetas por unidad para repasar" />
+          <Card onPress={() => router.push('/intensivos')} style={s.row} accessibilityLabel="Intensivos">
+            <View style={s.tile}>
+              <Icon name="flame" size={22} color={colors.sky700} />
+            </View>
+            <View style={{ flex: 1, gap: 2 }}>
+              <Text style={s.strong}>Intensivos</Text>
+              <Text style={s.caption}>
+                {activeIntensive ? `En curso: ${programById(activeIntensive.id)?.title ?? ''} · día ${activeIntensive.doneDates.length + 1}` : 'Planes de 7 a 30 días con ensayo de entrada y de salida'}
+              </Text>
+            </View>
+            <PremiumTag />
+          </Card>
+          <Card onPress={() => router.push('/reto')} style={s.row} accessibilityLabel="Reto relámpago">
+            <View style={s.tile}>
+              <Icon name="zap" size={22} color={colors.sky700} />
+            </View>
+            <View style={{ flex: 1, gap: 2 }}>
+              <Text style={s.strong}>Reto relámpago</Text>
+              <Text style={s.caption}>60 segundos de cálculo mental · récord: {flashBest}</Text>
+            </View>
+            <Icon name="chevron-right" size={20} color={colors.graphite} />
+          </Card>
+          <Card onPress={() => router.push('/formulas')} style={s.row} accessibilityLabel="Fórmulas">
+            <View style={s.tile}>
+              <Icon name="book-marked" size={22} color={colors.sky700} />
+            </View>
+            <View style={{ flex: 1, gap: 2 }}>
+              <Text style={s.strong}>Fórmulas</Text>
+              <Text style={s.caption}>Tarjetas por unidad para repasar y guardar</Text>
+            </View>
+            <Icon name="chevron-right" size={20} color={colors.graphite} />
+          </Card>
         </View>
       </Section>
     </TabScreen>
@@ -128,25 +160,6 @@ function ExamCard({
         {note ? <Text style={s.caption}>{note}</Text> : null}
       </View>
       {premium ? <PremiumTag /> : <Icon name="chevron-right" size={20} color={colors.graphite} />}
-    </Card>
-  );
-}
-
-function Soon({ icon, title, subtitle, note, premium }: { icon: IconName; title: string; subtitle: string; note?: string; premium?: boolean }) {
-  return (
-    <Card style={s.row}>
-      <View style={s.tile}>
-        <Icon name={icon} size={22} color={colors.graphite} />
-      </View>
-      <View style={{ flex: 1, gap: 2 }}>
-        <Text style={s.strong}>{title}</Text>
-        <Text style={s.caption}>{subtitle}</Text>
-        {note ? <Text style={s.caption}>{note}</Text> : null}
-      </View>
-      <View style={{ gap: 4, alignItems: 'flex-end' }}>
-        {premium ? <PremiumTag /> : null}
-        <Chip label="Pronto" tone="neutral" />
-      </View>
     </Card>
   );
 }

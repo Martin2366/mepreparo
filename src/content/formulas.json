@@ -1,0 +1,97 @@
+{
+  "reviewStatus": "draft",
+  "_nota": "Tarjetas de fórmulas por unidad (PRD §5.1). Notación del contenido: $…$. Revisión del fundador pendiente.",
+  "units": {
+    "enteros-racionales": [
+      { "id": "fr-suma", "title": "Suma de fracciones", "formula": "$\\frac{a}{b}+\\frac{c}{d}=\\frac{a\\cdot d+b\\cdot c}{b\\cdot d}$" },
+      { "id": "fr-mult", "title": "Multiplicación de fracciones", "formula": "$\\frac{a}{b}\\cdot\\frac{c}{d}=\\frac{a\\cdot c}{b\\cdot d}$" },
+      { "id": "fr-div", "title": "División de fracciones", "formula": "$\\frac{a}{b}\\div\\frac{c}{d}=\\frac{a}{b}\\cdot\\frac{d}{c}$", "note": "Dividir es multiplicar por el recíproco." },
+      { "id": "fr-signos", "title": "Signos al multiplicar", "formula": "$(-a)\\cdot(-b)=a\\cdot b$", "note": "Signos iguales dan positivo; signos distintos, negativo." }
+    ],
+    "porcentaje": [
+      { "id": "pc-de", "title": "El p % de N", "formula": "$\\frac{p}{100}\\cdot N$" },
+      { "id": "pc-aumento", "title": "Aumentar un p %", "formula": "$N\\cdot(1+\\frac{p}{100})$" },
+      { "id": "pc-descuento", "title": "Descontar un p %", "formula": "$N\\cdot(1-\\frac{p}{100})$" },
+      { "id": "pc-que", "title": "Qué porcentaje es a de b", "formula": "$\\frac{a}{b}\\cdot 100$" }
+    ],
+    "potencias-raices": [
+      { "id": "pw-mult", "title": "Multiplicar potencias de igual base", "formula": "$a^{m}\\cdot a^{n}=a^{m+n}$" },
+      { "id": "pw-div", "title": "Dividir potencias de igual base", "formula": "$\\frac{a^{m}}{a^{n}}=a^{m-n}$" },
+      { "id": "pw-pow", "title": "Potencia de una potencia", "formula": "$(a^{m})^{n}=a^{m\\cdot n}$" },
+      { "id": "pw-neg", "title": "Exponente negativo", "formula": "$a^{-n}=\\frac{1}{a^{n}}$", "note": "Y $a^{0}=1$ si $a$ no es 0." },
+      { "id": "pw-raiz", "title": "Raíz de un producto", "formula": "$\\sqrt{a\\cdot b}=\\sqrt{a}\\cdot\\sqrt{b}$", "note": "Con $a$ y $b$ mayores o iguales que 0." }
+    ],
+    "ecuaciones-inecuaciones": [
+      { "id": "eq-despeje", "title": "Despejar la x", "formula": "$ax+b=c$ → $x=\\frac{c-b}{a}$", "note": "Con $a$ distinto de 0." },
+      { "id": "eq-inec", "title": "Dividir por un negativo", "formula": "$-2x<6$ → $x>-3$", "note": "Al multiplicar o dividir por un número negativo, la desigualdad se da vuelta." }
+    ],
+    "funcion-lineal-afin": [
+      { "id": "fl-afin", "title": "Función afín", "formula": "$f(x)=mx+n$", "note": "$m$: pendiente. $n$: coeficiente de posición (corte con el eje $y$)." },
+      { "id": "fl-pend", "title": "Pendiente entre dos puntos", "formula": "$m=\\frac{Δy}{Δx}$", "note": "Cambio en $y$ dividido por el cambio en $x$." },
+      { "id": "fl-corte", "title": "Corte con el eje x", "formula": "$x=-\\frac{n}{m}$", "note": "Se obtiene resolviendo $mx+n=0$." },
+      { "id": "fl-paral", "title": "Rectas paralelas", "formula": "$y=mx+n$ y $y=mx+k$", "note": "Misma pendiente, distinto coeficiente de posición." }
+    ],
+    "expresiones-algebraicas": [
+      { "id": "ea-cuad-suma", "title": "Cuadrado de binomio (suma)", "formula": "$(a+b)^{2}=a^{2}+2ab+b^{2}$" },
+      { "id": "ea-cuad-resta", "title": "Cuadrado de binomio (resta)", "formula": "$(a-b)^{2}=a^{2}-2ab+b^{2}$" },
+      { "id": "ea-suma-dif", "title": "Suma por diferencia", "formula": "$(a+b)(a-b)=a^{2}-b^{2}$" },
+      { "id": "ea-comun", "title": "Binomios con término común", "formula": "$(x+a)(x+b)=x^{2}+(a+b)x+ab$" }
+    ],
+    "proporcionalidad": [
+      { "id": "pp-directa", "title": "Proporcionalidad directa", "formula": "$\\frac{y}{x}=k$", "note": "Si una se duplica, la otra también." },
+      { "id": "pp-inversa", "title": "Proporcionalidad inversa", "formula": "$x\\cdot y=k$", "note": "Si una se duplica, la otra se reduce a la mitad." },
+      { "id": "pp-tres", "title": "Regla de tres (directa)", "formula": "$\\frac{a}{b}=\\frac{c}{x}$ → $x=\\frac{b\\cdot c}{a}$" }
+    ],
+    "sistemas-2x2": [
+      { "id": "se-red", "title": "Método de reducción", "formula": "$(x+y)+(x-y)=2x$", "note": "Suma o resta las ecuaciones para que una incógnita se cancele." },
+      { "id": "se-sus", "title": "Método de sustitución", "formula": "$y=5-x$ → $2x+(5-x)=8$", "note": "Despeja una incógnita y reemplázala en la otra ecuación." }
+    ],
+    "funcion-cuadratica": [
+      { "id": "fc-forma", "title": "Función cuadrática", "formula": "$f(x)=ax^{2}+bx+c$", "note": "Si $a>0$ la parábola abre hacia arriba; si $a<0$, hacia abajo." },
+      { "id": "fc-vertice", "title": "Coordenada x del vértice", "formula": "$x=-\\frac{b}{2a}$" },
+      { "id": "fc-disc", "title": "Discriminante", "formula": "$Δ=b^{2}-4ac$", "note": "Mayor que 0: dos ceros. Igual a 0: uno. Menor que 0: ninguno real." },
+      { "id": "fc-raices", "title": "Ceros de la función", "formula": "$x=\\frac{-b±\\sqrt{b^{2}-4ac}}{2a}$" }
+    ],
+    "figuras": [
+      { "id": "fg-pit", "title": "Teorema de Pitágoras", "formula": "$a^{2}+b^{2}=c^{2}$", "note": "$c$: hipotenusa (opuesta al ángulo recto)." },
+      { "id": "fg-tri", "title": "Área del triángulo", "formula": "$\\frac{b\\cdot h}{2}$" },
+      { "id": "fg-trap", "title": "Área del trapecio", "formula": "$\\frac{(B+b)\\cdot h}{2}$" },
+      { "id": "fg-circ-a", "title": "Área del círculo", "formula": "$πr^{2}$" },
+      { "id": "fg-circ-p", "title": "Perímetro de la circunferencia", "formula": "$2πr$" }
+    ],
+    "cuerpos": [
+      { "id": "cg-prisma", "title": "Volumen del prisma", "formula": "$V=B\\cdot h$", "note": "$B$: área de la base." },
+      { "id": "cg-cubo", "title": "Cubo de arista a", "formula": "$V=a^{3}$", "note": "Área total: $6a^{2}$." },
+      { "id": "cg-cil", "title": "Volumen del cilindro", "formula": "$V=πr^{2}h$" },
+      { "id": "cg-cono", "title": "Volumen del cono", "formula": "$V=\\frac{πr^{2}h}{3}$", "note": "Un tercio del cilindro de igual base y altura." }
+    ],
+    "transformaciones": [
+      { "id": "ti-ejex", "title": "Reflexión en el eje x", "formula": "$(x,y)$ → $(x,-y)$" },
+      { "id": "ti-ejey", "title": "Reflexión en el eje y", "formula": "$(x,y)$ → $(-x,y)$" },
+      { "id": "ti-origen", "title": "Simetría respecto del origen", "formula": "$(x,y)$ → $(-x,-y)$" },
+      { "id": "ti-rot", "title": "Rotación de 90° antihoraria (centro en el origen)", "formula": "$(x,y)$ → $(-y,x)$" },
+      { "id": "ti-tras", "title": "Traslación según el vector (a, b)", "formula": "$(x,y)$ → $(x+a,y+b)$" }
+    ],
+    "semejanza": [
+      { "id": "sm-razon", "title": "Razón de semejanza", "formula": "$\\frac{A}{a}=\\frac{B}{b}=k$", "note": "$A$, $B$: lados de la figura grande; $a$, $b$: sus homólogos en la pequeña." },
+      { "id": "sm-areas", "title": "Razón de las áreas", "formula": "$k^{2}$", "note": "Si los lados están en razón $k$, las áreas están en razón $k^{2}$." },
+      { "id": "sm-thales", "title": "Teorema de Thales", "formula": "$\\frac{a}{b}=\\frac{c}{d}$", "note": "Rectas paralelas cortan segmentos proporcionales en dos transversales." }
+    ],
+    "tablas-graficos": [
+      { "id": "tg-prom", "title": "Promedio", "formula": "$\\frac{S}{n}$", "note": "$S$: suma de los datos. $n$: cantidad de datos." },
+      { "id": "tg-fr", "title": "Frecuencia relativa", "formula": "$\\frac{f}{n}$", "note": "Multiplica por 100 para expresarla en porcentaje." },
+      { "id": "tg-mediana", "title": "Mediana", "formula": "$\\frac{n+1}{2}$", "note": "Posición del dato central con los datos ordenados (si $n$ es impar). Si $n$ es par, se promedian los dos centrales." }
+    ],
+    "medidas-posicion": [
+      { "id": "mp-rango", "title": "Rango", "formula": "$M-m$", "note": "$M$: dato mayor. $m$: dato menor." },
+      { "id": "mp-ric", "title": "Rango intercuartil", "formula": "$Q3-Q1$", "note": "Entre el primer y el tercer cuartil está el 50 % central de los datos." },
+      { "id": "mp-cuartiles", "title": "Cuartiles", "formula": "$Q1$, $Q2$, $Q3$", "note": "Dividen los datos ordenados en 4 partes con el 25 % cada una. $Q2$ es la mediana." }
+    ],
+    "reglas-probabilidad": [
+      { "id": "rp-laplace", "title": "Probabilidad clásica", "formula": "$P(A)=\\frac{f}{n}$", "note": "$f$: casos favorables. $n$: casos posibles (igualmente probables)." },
+      { "id": "rp-comp", "title": "Probabilidad de que no ocurra A", "formula": "$1-P(A)$" },
+      { "id": "rp-suma", "title": "A o B (excluyentes)", "formula": "$P(A)+P(B)$", "note": "Si no pueden ocurrir a la vez." },
+      { "id": "rp-mult", "title": "A y B (independientes)", "formula": "$P(A)\\cdot P(B)$", "note": "Si uno no afecta al otro." }
+    ]
+  }
+}

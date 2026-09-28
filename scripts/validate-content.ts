@@ -16,7 +16,7 @@
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { join, relative } from 'node:path';
 
-import { CurriculumSchema, type Step, type StepOf, UnitContentSchema } from '../src/content/schema';
+import { CurriculumSchema, FormulasSchema, type Step, type StepOf, UnitContentSchema } from '../src/content/schema';
 import { GENERATORS } from '../src/engine/generators';
 import { gradeGraph } from '../src/engine/grading';
 import { MathParseError, parseRich } from '../src/engine/math-parser';
@@ -234,6 +234,31 @@ for (const file of files) {
 
 if (production && lessonCount === 0) err('lessons', 'no hay lecciones: un build de producción no puede salir vacío');
 
+// ─── Fórmulas ──────────────────────────────────────────────────────────────
+
+let formulaCount = 0;
+{
+  const raw = JSON.parse(readFileSync(join(CONTENT, 'formulas.json'), 'utf8'));
+  checkStrings(raw, 'formulas.json');
+  const parsed = FormulasSchema.safeParse(raw);
+  if (!parsed.success) err('formulas.json', parsed.error.message);
+  else {
+    const ids = new Set<string>();
+    for (const [unitId, list] of Object.entries(parsed.data.units)) {
+      if (!units.has(unitId)) err('formulas.json', `unidad inexistente: ${unitId}`);
+      for (const fo of list) {
+        if (ids.has(fo.id)) err('formulas.json', `id repetido: ${fo.id}`);
+        ids.add(fo.id);
+        formulaCount++;
+      }
+    }
+    if (parsed.data.reviewStatus === 'draft') {
+      drafts++;
+      if (production) err('formulas.json', 'está en "draft"; producción solo acepta contenido aprobado');
+    }
+  }
+}
+
 // ─── Generadores ───────────────────────────────────────────────────────────
 
 let generated = 0;
@@ -258,7 +283,7 @@ for (const [unitId, gens] of units) {
 }
 
 console.log(
-  `Contenido: ${lessonCount} lecciones · ${miniCount} mini-clases (${drafts} en draft) · ${generated} ejercicios generados revisados` +
+  `Contenido: ${lessonCount} lecciones · ${miniCount} mini-clases · ${formulaCount} fórmulas (${drafts} en draft) · ${generated} ejercicios generados revisados` +
     (production ? ' · modo producción' : ''),
 );
 if (errors.length > 0) {

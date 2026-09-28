@@ -1,5 +1,5 @@
 import { router } from 'expo-router';
-import { useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { Button } from '@/components/ui/Button';
@@ -15,6 +15,7 @@ import type { Outcome } from '@/engine/xp';
 import { unitRef } from '@/features/content/catalog';
 import { type GradedEvent, StepView } from '@/features/lesson-player/StepView';
 import { Shell } from '@/features/lesson-player/LessonScreen';
+import { useIntensives } from '@/features/intensives/store';
 import { useAllowance } from '@/features/progress/allowance';
 import { useProgress } from '@/features/progress/store';
 import { clp } from '@/lib/format';
@@ -26,7 +27,16 @@ const newSeed = () => Math.floor(Math.random() * 2_000_000_000);
  * Práctica por tema (PRD §9): ejercicios generados sin fin por las plantillas de la unidad, verificados por
  * el motor, con dificultad adaptativa (3 limpios suben, 2 errores bajan). Gratis: 20 al día.
  */
-export function PracticeScreen({ unitId, count }: { unitId: string; count?: number }) {
+export function PracticeScreen({
+  unitId,
+  count,
+  intensive,
+}: {
+  unitId: string;
+  count?: number;
+  /** Sesión de un intensivo: al llegar a la meta se marca el día como completado. */
+  intensive?: { id: string; day: number };
+}) {
   const ref = unitRef(unitId);
   const generators = useMemo(() => (ref?.unit.generators ?? []).map((id) => GENERATORS[id]).filter((g) => !!g), [ref]);
   const savedDifficulty = useProgress((s) => s.practiceDifficulty[unitId]);
@@ -43,6 +53,12 @@ export function PracticeScreen({ unitId, count }: { unitId: string; count?: numb
   const recent = useRef<Outcome[]>([]);
   const turn = useRef(0);
   const target = count && count > 0 ? count : undefined;
+  const reachedTarget = target !== undefined && done >= target;
+
+  // Sesión de intensivo cumplida: se registra una sola vez (el store ignora duplicados).
+  useEffect(() => {
+    if (reachedTarget && intensive) useIntensives.getState().completeDay(intensive.id, intensive.day);
+  }, [reachedTarget, intensive]);
 
   if (!ref || generators.length === 0 || !exercise) {
     return (
@@ -102,7 +118,7 @@ export function PracticeScreen({ unitId, count }: { unitId: string; count?: numb
     setExercise(make(generators, turn.current, difficulty));
   };
 
-  const reachedTarget = target !== undefined && done >= target;
+
   const blocked = stopped;
 
   if (reachedTarget || blocked) {
@@ -127,7 +143,10 @@ export function PracticeScreen({ unitId, count }: { unitId: string; count?: numb
         ) : null}
         <View style={{ flex: 1 }} />
         <View style={{ gap: 8, marginTop: 16 }}>
-          {!blocked ? <Button label="Seguir practicando" onPress={() => router.setParams({ count: String(done + (target ?? 5)) })} /> : null}
+          {intensive && reachedTarget ? (
+            <Button label={`Día ${intensive.day} completado · volver al intensivo`} onPress={() => router.back()} />
+          ) : null}
+          {!blocked && !intensive ? <Button label="Seguir practicando" onPress={() => router.setParams({ count: String(done + (target ?? 5)) })} /> : null}
           <Button label="Volver" variant={blocked ? 'primary' : 'ghost'} onPress={() => router.back()} />
         </View>
       </Shell>

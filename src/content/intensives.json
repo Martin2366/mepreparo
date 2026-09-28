@@ -1,0 +1,46 @@
+{
+  "_nota": "Intensivos (PRD §5.1): programas guiados con una sesión diaria y ensayo de entrada y de salida. El día 1 es gratis.",
+  "programs": [
+    {
+      "id": "recta-final",
+      "title": "Recta final PAES",
+      "summary": "Un repaso guiado de los 4 ejes, una unidad por día, para llegar afilado a tu PAES.",
+      "days": 30,
+      "dailyPractice": 10,
+      "exam": { "count": 15, "minutes": 30 },
+      "unitIds": [
+        "ecuaciones-inecuaciones", "enteros-racionales", "figuras", "tablas-graficos",
+        "funcion-lineal-afin", "porcentaje", "cuerpos", "medidas-posicion",
+        "expresiones-algebraicas", "potencias-raices", "transformaciones", "reglas-probabilidad",
+        "proporcionalidad", "semejanza", "sistemas-2x2", "funcion-cuadratica"
+      ]
+    },
+    {
+      "id": "funciones-7",
+      "title": "Funciones en 7 días",
+      "summary": "Función afín, cuadrática y proporcionalidad: lo que más pesa en Álgebra y funciones.",
+      "days": 7,
+      "dailyPractice": 8,
+      "exam": { "count": 10, "minutes": 20 },
+      "unitIds": ["funcion-lineal-afin", "funcion-cuadratica", "proporcionalidad"]
+    },
+    {
+      "id": "geometria-14",
+      "title": "Geometría en 14 días",
+      "summary": "Pitágoras, áreas, volúmenes, transformaciones y semejanza, paso a paso.",
+      "days": 14,
+      "dailyPractice": 8,
+      "exam": { "count": 10, "minutes": 20 },
+      "unitIds": ["figuras", "cuerpos", "transformaciones", "semejanza"]
+    },
+    {
+      "id": "algebra-21",
+      "title": "Álgebra desde cero",
+      "summary": "Si el álgebra te cuesta desde la base: fracciones, expresiones, ecuaciones y sistemas.",
+      "days": 21,
+      "dailyPractice": 8,
+      "exam": { "count": 10, "minutes": 20 },
+      "unitIds": ["enteros-racionales", "expresiones-algebraicas", "ecuaciones-inecuaciones", "proporcionalidad", "sistemas-2x2"]
+    }
+  ]
+}

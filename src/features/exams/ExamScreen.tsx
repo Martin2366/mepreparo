@@ -12,6 +12,7 @@ import { Tappable } from '@/components/ui/Tappable';
 import { Text } from '@/components/ui/Text';
 import { questionOf } from '@/engine/exam';
 import { ChoiceInput } from '@/features/lesson-player/inputs';
+import { useIntensives } from '@/features/intensives/store';
 import { useProgress } from '@/features/progress/store';
 import { confirm } from '@/lib/confirm';
 import { colors, fonts } from '@/theme/tokens';
@@ -101,6 +102,7 @@ export function ExamScreen() {
         };
       }),
     );
+    if (record.intensive) useIntensives.getState().setExam(record.intensive.id, record.intensive.stage, record.result.score, record.id);
     router.replace({ pathname: '/ensayo/resultado/[id]', params: { id: record.id } });
   };
 
