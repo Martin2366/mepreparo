@@ -13,6 +13,8 @@ type OnboardingState = {
   goTo: (step: StepId) => void;
   complete: () => void;
   reset: () => void;
+  /** Volver a responder el onboarding desde el perfil, conservando la prueba Premium y el XP ya entregado. */
+  restart: () => void;
 };
 
 /**
@@ -29,6 +31,8 @@ export const useOnboarding = create<OnboardingState>()(
       goTo: (step) => set({ step }),
       complete: () => set({ completed: true }),
       reset: () => set({ answers: EMPTY_ANSWERS, step: 'welcome', completed: false }),
+      // Las respuestas se conservan (quedan preseleccionadas), igual que la prueba y el XP.
+      restart: () => set({ step: 'name', completed: false }),
     }),
     {
       name: 'mp.onboarding.v1',

@@ -396,6 +396,7 @@
             { "name": "n", "min": 0, "max": 8, "step": "1", "start": "0" }
           ],
           "target": { "kind": "params", "values": { "m": "2", "n": "4" } },
+          "window": { "x": [0, 6], "y": [0, 18] },
           "feedback": "Casi. $n$ es lo que hay al comienzo ($t=0$) y $m$ lo que aumenta cada hora.",
           "hints": ["¿Cuánta agua hay cuando $t=0$?", "¿Cuánto aumenta por hora?"],
           "explanation": "Al comienzo hay 4 ($n=4$) y sube 2 por hora ($m=2$): $V(t)=2t+4$."

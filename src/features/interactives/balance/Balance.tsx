@@ -24,14 +24,14 @@ import {
   type Operation,
   side,
   type SideName,
+  solve,
   weight,
 } from '@/engine/balance';
 import { cmp, isInteger, rat, type Rational, sub, toNumber, toString } from '@/engine/rational';
 import { colors, fonts } from '@/theme/tokens';
 
-// 3x + 1 = x + 5  →  x = 2. La solución solo se usa para inclinar la balanza (física), nunca se muestra.
-const START = equation(side(3, 1), side(1, 5));
-const HIDDEN_X = rat(2);
+// Ecuación del spike (pantalla de desarrollo): 3x + 1 = x + 5  →  x = 2.
+const SPIKE = equation(side(3, 1), side(1, 5));
 
 const ITEM = 48; // objetivo táctil mínimo
 const MAX_TILT = 14; // grados
@@ -53,8 +53,8 @@ function termLatex(s: Equation['left']): string {
 const toLatex = (e: Equation) => `$${termLatex(e.left)}=${termLatex(e.right)}$`;
 
 /** Inclinación en grados: positiva = baja el platillo derecho (más pesado). */
-function tiltOf(e: Equation): number {
-  const diff = toNumber(sub(weight(e.right, HIDDEN_X), weight(e.left, HIDDEN_X)));
+function tiltOf(e: Equation, hiddenX: Rational): number {
+  const diff = toNumber(sub(weight(e.right, hiddenX), weight(e.left, hiddenX)));
   return Math.max(-MAX_TILT, Math.min(MAX_TILT, diff * 5));
 }
 
@@ -62,25 +62,54 @@ function count(r: Rational): number {
   return isInteger(r) && r.n > 0 ? r.n : 0;
 }
 
-export function BalanceSpike() {
-  const [eq, setEq] = useState<Equation>(START);
+export type BalanceState = { equation: Equation; balanced: boolean; solved: boolean; oneSideMistakes: number };
+
+type BalanceProps = {
+  /** Ecuación inicial (del contenido). Debe tener solución única: el validador lo garantiza. */
+  start: Equation;
+  onChange?: (state: BalanceState) => void;
+  /** En una lección el feedback lo da el reproductor; en el spike, la propia balanza. */
+  showFeedback?: boolean;
+  disabled?: boolean;
+};
+
+/** Pantalla de desarrollo: la balanza del spike B. */
+export const BalanceSpike = () => <Balance start={SPIKE} showFeedback />;
+
+/**
+ * Balanza de ecuaciones (Spike B → componente de lección): arrastrar pesos fuera de los platillos o usar
+ * los botones (alternativa accesible). La solución se usa solo para inclinar la balanza; nunca se muestra.
+ */
+export function Balance({ start, onChange, showFeedback = false, disabled = false }: BalanceProps) {
+  const [eq, setEq] = useState<Equation>(start);
+  const [oneSide, setOneSide] = useState(0);
   const [width, setWidth] = useState(0);
   const tilt = useSharedValue(0);
+  const hiddenX = useMemo(() => {
+    const sol = solve(start);
+    return sol.kind === 'unique' ? sol.x : rat(0);
+  }, [start]);
 
-  const balanced = cmp(weight(eq.left, HIDDEN_X), weight(eq.right, HIDDEN_X)) === 0;
+  const balanced = cmp(weight(eq.left, hiddenX), weight(eq.right, hiddenX)) === 0;
   const solved = balanced && isSolved(eq);
 
   useEffect(() => {
-    tilt.value = withSpring(tiltOf(eq), { damping: 12, stiffness: 90, mass: 0.9 });
-  }, [eq, tilt]);
+    tilt.value = withSpring(tiltOf(eq, hiddenX), { damping: 12, stiffness: 90, mass: 0.9 });
+  }, [eq, tilt, hiddenX]);
+
+  useEffect(() => {
+    onChange?.({ equation: eq, balanced, solved, oneSideMistakes: oneSide });
+  }, [eq, balanced, solved, oneSide, onChange]);
 
   useEffect(() => {
     if (solved && Platform.OS !== 'web') Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
   }, [solved]);
 
   const removeOne = (which: SideName, kind: Kind) => {
+    if (disabled) return;
     const op: Operation = { kind: 'sub', x: rat(kind === 'x' ? 1 : 0), c: rat(kind === 'unit' ? 1 : 0) };
     setEq((e) => applyToOneSide(e, which, op).equation);
+    setOneSide((n) => n + 1);
     if (Platform.OS !== 'web') Haptics.selectionAsync();
   };
 
@@ -107,7 +136,13 @@ export function BalanceSpike() {
         {width > 0 && <Scale width={width} tilt={tilt} eq={eq} onRemove={removeOne} />}
       </View>
 
-      <Feedback solved={solved} balanced={balanced} />
+      {showFeedback ? (
+        <Feedback solved={solved} balanced={balanced} />
+      ) : !balanced ? (
+        <Text variant="small">La balanza se inclinó: lo que quitas de un lado, quítalo también del otro. Puedes reiniciar.</Text>
+      ) : (
+        <Text variant="small">Arrastra un peso fuera de su platillo, o usa los botones.</Text>
+      )}
 
       <View className="gap-3">
         <Text variant="overline">Con botones (a ambos lados)</Text>
@@ -115,23 +150,31 @@ export function BalanceSpike() {
           <Button
             variant="secondary"
             label="Quitar x de cada lado"
-            disabled={!balanced || !canRemove('x')}
+            disabled={disabled || !balanced || !canRemove('x')}
             onPress={() => both({ kind: 'sub', x: rat(1), c: rat(0) })}
           />
           <Button
             variant="secondary"
             label="Quitar 1 de cada lado"
-            disabled={!balanced || !canRemove('unit')}
+            disabled={disabled || !balanced || !canRemove('unit')}
             onPress={() => both({ kind: 'sub', x: rat(0), c: rat(1) })}
           />
           <Button
             variant="secondary"
             label={divisor ? `Dividir ambos lados por ${divisor}` : 'Dividir ambos lados'}
-            disabled={!balanced || divisor === null}
+            disabled={disabled || !balanced || divisor === null}
             onPress={() => divisor && both({ kind: 'div', k: rat(divisor) })}
           />
         </View>
-        <Button variant="ghost" label="Reiniciar" onPress={() => setEq(START)} />
+        <Button
+          variant="ghost"
+          label="Reiniciar"
+          disabled={disabled}
+          onPress={() => {
+            setEq(start);
+            setOneSide(0);
+          }}
+        />
       </View>
     </View>
   );

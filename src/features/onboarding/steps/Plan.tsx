@@ -172,9 +172,10 @@ const PERKS: { icon: IconName; text: string }[] = [
 
 export function PremiumStep({ next }: StepProps) {
   const update = useOnboarding((st) => st.update);
-  // La prueba la gestiona la app: sin tarjeta y sin cobro automático al terminar.
+  const startedAt = useOnboarding((st) => st.answers.trialStartedAt);
+  // La prueba la gestiona la app: sin tarjeta y sin cobro automático al terminar. Se activa una sola vez.
   const start = () => {
-    update({ trialStartedAt: new Date().toISOString() });
+    update({ trialStartedAt: startedAt ?? new Date().toISOString() });
     next();
   };
   const google = () =>
@@ -332,7 +333,7 @@ const s = StyleSheet.create({
     fontFamily: fonts['poppins-semibold'],
     fontSize: 12,
     lineHeight: 16,
-    color: '#C2410C',
+    color: colors.coral700,
     backgroundColor: colors.coral50,
     paddingHorizontal: 10,
     paddingVertical: 3,

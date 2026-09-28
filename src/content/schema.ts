@@ -150,6 +150,8 @@ export const GraphStep = z.object({
   target: GraphTarget,
   /** Puntos de referencia dibujados en el plano. */
   marks: z.array(z.tuple([RationalText, RationalText])).optional(),
+  /** Ventana visible del plano (por defecto x e y de −6 a 6). */
+  window: z.object({ x: z.tuple([z.number(), z.number()]), y: z.tuple([z.number(), z.number()]) }).optional(),
   feedback: z.string(),
   explanation: z.string().optional(),
 });

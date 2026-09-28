@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/Button';
 import { Screen } from '@/components/ui/Screen';
 import { Text } from '@/components/ui/Text';
 import { FpsMeter } from '@/features/dev/FpsMeter';
-import { BalanceSpike } from '@/features/interactives/balance/BalanceSpike';
+import { BalanceSpike } from '@/features/interactives/balance/Balance';
 
 export default function BalanceSpikeScreen() {
   return (
