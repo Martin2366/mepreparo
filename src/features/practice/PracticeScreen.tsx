@@ -19,6 +19,7 @@ import { useIntensives } from '@/features/intensives/store';
 import { useAllowance } from '@/features/progress/allowance';
 import { useProgress } from '@/features/progress/store';
 import { clp } from '@/lib/format';
+import { goBack } from '@/lib/nav';
 import { colors, fonts } from '@/theme/tokens';
 
 const newSeed = () => Math.floor(Math.random() * 2_000_000_000);
@@ -62,7 +63,7 @@ export function PracticeScreen({
 
   if (!ref || generators.length === 0 || !exercise) {
     return (
-      <Shell onClose={() => router.back()} progress={0}>
+      <Shell onClose={() => goBack()} progress={0}>
         <Text style={s.body}>Todavía no hay práctica para esta unidad. Muy pronto.</Text>
       </Shell>
     );
@@ -123,7 +124,7 @@ export function PracticeScreen({
 
   if (reachedTarget || blocked) {
     return (
-      <Shell onClose={() => router.back()} progress={1}>
+      <Shell onClose={() => goBack()} progress={1}>
         <View style={s.center}>
           <Mascot pose={blocked ? 'descansando' : 'celebrando'} height={150} />
           <Text style={s.title}>{blocked ? 'Por hoy, suficiente práctica gratis' : '¡Buen trabajo!'}</Text>
@@ -144,10 +145,10 @@ export function PracticeScreen({
         <View style={{ flex: 1 }} />
         <View style={{ gap: 8, marginTop: 16 }}>
           {intensive && reachedTarget ? (
-            <Button label={`Día ${intensive.day} completado · volver al intensivo`} onPress={() => router.back()} />
+            <Button label={`Día ${intensive.day} completado · volver al intensivo`} onPress={() => goBack()} />
           ) : null}
           {!blocked && !intensive ? <Button label="Seguir practicando" onPress={() => router.setParams({ count: String(done + (target ?? 5)) })} /> : null}
-          <Button label="Volver" variant={blocked ? 'primary' : 'ghost'} onPress={() => router.back()} />
+          <Button label="Volver" variant={blocked ? 'primary' : 'ghost'} onPress={() => goBack()} />
         </View>
       </Shell>
     );
@@ -155,7 +156,7 @@ export function PracticeScreen({
 
   return (
     <Shell
-      onClose={() => router.back()}
+      onClose={() => goBack()}
       progress={target ? done / target : 0}
       label={target ? `${done + 1}/${target}` : `#${done + 1}`}
     >

@@ -10,6 +10,7 @@ import { questionOf } from '@/engine/exam';
 import { unitRef } from '@/features/content/catalog';
 import { ChoiceInput } from '@/features/lesson-player/inputs';
 import { FullScreen } from '@/features/shell/FullScreen';
+import { goBack } from '@/lib/nav';
 import { colors, fonts } from '@/theme/tokens';
 
 import { useExams } from './store';
@@ -40,7 +41,7 @@ export function ExamReviewScreen({ id, index }: { id: string; index: number }) {
             <Button label="Anterior" variant="secondary" disabled={index === 0} onPress={() => go(index - 1)} />
           </View>
           <View style={{ flex: 1 }}>
-            {index < total - 1 ? <Button label="Siguiente" onPress={() => go(index + 1)} /> : <Button label="Listo" onPress={() => router.back()} />}
+            {index < total - 1 ? <Button label="Siguiente" onPress={() => go(index + 1)} /> : <Button label="Listo" onPress={() => goBack('/practicar')} />}
           </View>
         </View>
       }

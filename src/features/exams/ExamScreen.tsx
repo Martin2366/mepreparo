@@ -15,6 +15,7 @@ import { ChoiceInput } from '@/features/lesson-player/inputs';
 import { useIntensives } from '@/features/intensives/store';
 import { useProgress } from '@/features/progress/store';
 import { confirm } from '@/lib/confirm';
+import { goBack } from '@/lib/nav';
 import { colors, fonts } from '@/theme/tokens';
 
 import { useExams } from './store';
@@ -131,7 +132,7 @@ export function ExamScreen() {
       <GridBackground />
       <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>
         <View style={s.header}>
-          <IconButton icon="x" label="Pausar y salir (tu avance queda guardado)" onPress={() => router.back()} />
+          <IconButton icon="x" label="Pausar y salir (tu avance queda guardado)" onPress={() => goBack('/practicar')} />
           <View style={{ flex: 1, alignItems: 'center' }}>
             <Text style={s.title} numberOfLines={1}>
               {exam.spec.title}

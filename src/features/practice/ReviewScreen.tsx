@@ -1,4 +1,3 @@
-import { router } from 'expo-router';
 import { useMemo, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
@@ -13,6 +12,7 @@ import { Shell } from '@/features/lesson-player/LessonScreen';
 import { type GradedEvent, StepView } from '@/features/lesson-player/StepView';
 import { useOnboarding } from '@/features/onboarding/store';
 import { useProgress } from '@/features/progress/store';
+import { goBack } from '@/lib/nav';
 import { colors, fonts } from '@/theme/tokens';
 
 import { freeNotebookFrom, stepFromRef } from './review';
@@ -41,7 +41,7 @@ export function ReviewScreen() {
 
   if (!current) {
     return (
-      <Shell onClose={() => router.back()} progress={1}>
+      <Shell onClose={() => goBack()} progress={1}>
         <View style={s.center}>
           <Mascot pose={items.length ? 'celebrando' : 'descansando'} height={150} />
           <Text style={s.title}>{items.length ? 'Repaso listo' : 'Nada que repasar hoy'}</Text>
@@ -52,7 +52,7 @@ export function ReviewScreen() {
           </Text>
         </View>
         <View style={{ flex: 1 }} />
-        <Button label="Volver" onPress={() => router.back()} />
+        <Button label="Volver" onPress={() => goBack()} />
       </Shell>
     );
   }
@@ -77,7 +77,7 @@ export function ReviewScreen() {
   };
 
   return (
-    <Shell onClose={() => router.back()} progress={i / items.length} label={`${i + 1}/${items.length}`}>
+    <Shell onClose={() => goBack()} progress={i / items.length} label={`${i + 1}/${items.length}`}>
       <Text style={s.overline}>CUADERNO DE ERRORES · REPASO</Text>
       <StepView key={current.ref} step={current.step} onGraded={onGraded} onContinue={() => setI(i + 1)} continueLabel="Siguiente" />
     </Shell>

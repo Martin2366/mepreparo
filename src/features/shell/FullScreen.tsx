@@ -1,4 +1,3 @@
-import { router } from 'expo-router';
 import type { ReactNode } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -6,6 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { GridBackground } from '@/components/ui/GridBackground';
 import { IconButton } from '@/components/ui/IconButton';
 import { Text } from '@/components/ui/Text';
+import { goBack } from '@/lib/nav';
 import { colors, fonts } from '@/theme/tokens';
 
 type Props = {
@@ -21,7 +21,7 @@ type Props = {
 
 /** Pantalla completa (sin barra de pestañas) con botón volver y título. */
 export function FullScreen({ title, children, scroll = true, right, footer, onBack, backIcon = 'arrow-left' }: Props) {
-  const back = onBack ?? (() => (router.canGoBack() ? router.back() : router.replace('/')));
+  const back = onBack ?? (() => goBack());
   return (
     <View style={s.root}>
       <GridBackground />

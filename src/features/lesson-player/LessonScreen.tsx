@@ -18,6 +18,7 @@ import { hasPractice, lessonById, lessonsOf } from '@/features/content/catalog';
 import { useOnboarding } from '@/features/onboarding/store';
 import { unitMastery } from '@/features/progress/derived';
 import { useProgress } from '@/features/progress/store';
+import { goBack } from '@/lib/nav';
 import { maybeAskForReminder, syncReminders } from '@/lib/notifications';
 import { colors, fonts } from '@/theme/tokens';
 
@@ -46,7 +47,7 @@ export function LessonScreen({ lessonId }: { lessonId: string }) {
 
   if (!found) {
     return (
-      <Shell onClose={() => router.back()} progress={0}>
+      <Shell onClose={() => goBack()} progress={0}>
         <Text style={s.body}>No encontramos esta lección.</Text>
       </Shell>
     );
@@ -107,7 +108,7 @@ export function LessonScreen({ lessonId }: { lessonId: string }) {
     const list = lessonsOf(unit.id);
     const nextLesson = list[list.findIndex((l) => l.id === lesson.id) + 1];
     return (
-      <Shell onClose={() => router.back()} progress={1}>
+      <Shell onClose={() => goBack()} progress={1}>
         <Animated.View entering={FadeIn.duration(320)} style={s.doneWrap}>
           <Mascot pose="celebrando" height={170} pop cheer label="Equis celebra" />
           <Text style={s.doneTitle}>¡Lección completada!</Text>
@@ -137,14 +138,14 @@ export function LessonScreen({ lessonId }: { lessonId: string }) {
               onPress={() => router.replace({ pathname: '/practica/[unit]', params: { unit: unit.id, count: '5' } })}
             />
           ) : null}
-          <Button label="Volver" variant="ghost" onPress={() => router.back()} />
+          <Button label="Volver" variant="ghost" onPress={() => goBack()} />
         </View>
       </Shell>
     );
   }
 
   return (
-    <Shell onClose={() => router.back()} progress={index / lesson.steps.length} label={`${index + 1}/${lesson.steps.length}`}>
+    <Shell onClose={() => goBack()} progress={index / lesson.steps.length} label={`${index + 1}/${lesson.steps.length}`}>
       <StepView key={step.id} step={step} onGraded={onGraded} onContinue={next} />
     </Shell>
   );

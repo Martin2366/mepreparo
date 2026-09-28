@@ -1,5 +1,4 @@
 import * as Haptics from 'expo-haptics';
-import { router } from 'expo-router';
 import { useEffect, useRef, useState } from 'react';
 import { Platform, StyleSheet, View } from 'react-native';
 import Animated, { ZoomIn } from 'react-native-reanimated';
@@ -15,6 +14,7 @@ import { DURATION_MS, flashQuestion, flashXp, levelFor, pointsFor } from '@/engi
 import { Shell } from '@/features/lesson-player/LessonScreen';
 import { useAllowance } from '@/features/progress/allowance';
 import { useProgress } from '@/features/progress/store';
+import { goBack } from '@/lib/nav';
 import { colors, fonts } from '@/theme/tokens';
 
 type Phase = 'intro' | 'play' | 'end';
@@ -92,7 +92,7 @@ export function FlashScreen() {
 
   if (phase === 'intro') {
     return (
-      <Shell onClose={() => router.back()} progress={0}>
+      <Shell onClose={() => goBack()} progress={0}>
         <View style={s.center}>
           <Mascot pose="senalando" height={140} />
           <Text style={s.title}>Reto relámpago</Text>
@@ -118,7 +118,7 @@ export function FlashScreen() {
   if (phase === 'end') {
     const record = score > prevBest;
     return (
-      <Shell onClose={() => router.back()} progress={1}>
+      <Shell onClose={() => goBack()} progress={1}>
         <View style={s.center}>
           <Mascot pose={record ? 'celebrando' : 'aja'} height={140} pop={record} />
           <Text style={s.title}>{record ? '¡Nuevo récord!' : 'Tiempo'}</Text>
@@ -131,7 +131,7 @@ export function FlashScreen() {
         <View style={{ flex: 1, minHeight: 24 }} />
         <View style={{ gap: 8 }}>
           {allowance.ok ? <Button label="Jugar otra vez" onPress={start} /> : null}
-          <Button label="Volver" variant={allowance.ok ? 'ghost' : 'primary'} onPress={() => router.back()} />
+          <Button label="Volver" variant={allowance.ok ? 'ghost' : 'primary'} onPress={() => goBack()} />
         </View>
       </Shell>
     );

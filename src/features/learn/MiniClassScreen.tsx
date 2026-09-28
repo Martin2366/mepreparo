@@ -9,6 +9,7 @@ import { MathText } from '@/components/ui/MathText';
 import { Text } from '@/components/ui/Text';
 import { hasPractice, miniClassById } from '@/features/content/catalog';
 import { Shell } from '@/features/lesson-player/LessonScreen';
+import { goBack } from '@/lib/nav';
 import { colors, fonts } from '@/theme/tokens';
 
 /** Mini-clase (D15): 90 segundos en tarjetas, sin video, funciona sin red. */
@@ -17,7 +18,7 @@ export function MiniClassScreen({ id }: { id: string }) {
   const [i, setI] = useState(0);
   if (!found) {
     return (
-      <Shell onClose={() => router.back()} progress={0}>
+      <Shell onClose={() => goBack()} progress={0}>
         <Text style={s.body}>No encontramos esta mini-clase.</Text>
       </Shell>
     );
@@ -27,7 +28,7 @@ export function MiniClassScreen({ id }: { id: string }) {
   const last = i === mini.cards.length - 1;
 
   return (
-    <Shell onClose={() => router.back()} progress={(i + 1) / mini.cards.length} label={`${i + 1}/${mini.cards.length}`}>
+    <Shell onClose={() => goBack()} progress={(i + 1) / mini.cards.length} label={`${i + 1}/${mini.cards.length}`}>
       <Text style={s.overline}>MINI-CLASE · {mini.title.toUpperCase()}</Text>
       <Animated.View key={i} entering={FadeInRight.duration(240)}>
         <Card padding={20} style={{ gap: 14 }}>
@@ -59,7 +60,7 @@ export function MiniClassScreen({ id }: { id: string }) {
                 onPress={() => router.replace({ pathname: '/practica/[unit]', params: { unit: unitId, count: '3' } })}
               />
             ) : null}
-            <Button label="Listo" variant={hasPractice(unitId) ? 'ghost' : 'primary'} onPress={() => router.back()} />
+            <Button label="Listo" variant={hasPractice(unitId) ? 'ghost' : 'primary'} onPress={() => goBack()} />
           </>
         ) : (
           <Button label="Siguiente" arrow onPress={() => setI(i + 1)} />
