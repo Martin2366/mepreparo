@@ -1,0 +1,527 @@
+{
+  "unitId": "ecuaciones-inecuaciones",
+  "lessons": [
+    {
+      "id": "m1-ei-1",
+      "title": "La balanza: dejar la x sola",
+      "version": 1,
+      "reviewStatus": "draft",
+      "estimatedMinutes": 5,
+      "skills": ["resolver"],
+      "steps": [
+        {
+          "id": "s1",
+          "type": "explain",
+          "title": "Una ecuación es una balanza",
+          "body": "Lo que hay a la izquierda pesa exactamente lo mismo que lo de la derecha. La $x$ es un peso que no conocemos. Resolver es descubrir cuánto pesa.",
+          "note": "Lo que haces en un lado, hazlo en el otro.",
+          "mascot": "explicando"
+        },
+        {
+          "id": "s2",
+          "type": "balance",
+          "skill": "resolver",
+          "difficulty": 1,
+          "prompt": "Deja la $x$ sola. Quita pesos de los dos platillos sin que la balanza se incline.",
+          "equation": { "left": ["1", "3"], "right": ["0", "7"] },
+          "hints": ["Hay 3 pesos de 1 junto a la $x$. ¿Qué pasa si los quitas?", "Quita 3 pesos de cada lado: así la balanza sigue en equilibrio."],
+          "explanation": "Quitamos 3 de cada lado: $x+3=7$ se convierte en $x=4$."
+        },
+        {
+          "id": "s3",
+          "type": "balance",
+          "skill": "resolver",
+          "difficulty": 2,
+          "prompt": "Ahora hay dos $x$. Deja una sola $x$ en un platillo.",
+          "equation": { "left": ["2", "1"], "right": ["0", "7"] },
+          "hints": ["Primero quita el peso de 1 que acompaña a las $x$ (de ambos lados).", "Te quedan $2x$ y 6. Si dos $x$ pesan 6, ¿cuánto pesa una? Divide ambos lados por 2."],
+          "explanation": "$2x+1=7$ → quitamos 1 de cada lado: $2x=6$ → dividimos por 2: $x=3$."
+        },
+        {
+          "id": "s4",
+          "type": "explain",
+          "title": "Despejar",
+          "body": "Despejar es dejar la $x$ sola usando la operación inversa a ambos lados: si un número suma, lo restamos; si multiplica, dividimos.",
+          "note": "$2x+1=7$ → $2x=6$ → $x=3$",
+          "mascot": "senalando"
+        },
+        {
+          "id": "s5",
+          "type": "choice",
+          "skill": "resolver",
+          "difficulty": 1,
+          "prompt": "Para resolver $x+5=12$, ¿qué haces a ambos lados?",
+          "options": ["Restar $5$", "Sumar $5$", "Restar $12$", "Dividir por $5$"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. El 5 ya está sumando: si sumas otro 5, la $x$ queda más lejos de estar sola.",
+            "2": "Casi. Queremos quitar lo que acompaña a la $x$, y eso es el 5, no el 12.",
+            "3": "Casi. El 5 no multiplica a la $x$, la suma: la operación inversa es restar."
+          },
+          "hints": ["¿Qué número acompaña a la $x$ y con qué operación?"],
+          "explanation": "El 5 suma, así que restamos 5 a ambos lados: $x=7$."
+        },
+        {
+          "id": "s6",
+          "type": "numeric",
+          "skill": "resolver",
+          "difficulty": 1,
+          "prompt": "Resuelve $x-4=9$. ¿Cuánto vale $x$?",
+          "answer": "13",
+          "mistakes": [{ "value": "5", "feedback": "Casi. El 4 está restando: para dejar la $x$ sola, suma 4 a ambos lados." }],
+          "feedback": "Casi. Pregúntate qué operación deshace el $-4$ y aplícala a ambos lados.",
+          "hints": ["El 4 está restando. ¿Cuál es la operación inversa?", "Suma 4 a ambos lados: $x=9+4$."],
+          "solution": ["$x-4=9$", "$x=9+4$", "$x=13$"]
+        },
+        {
+          "id": "s7",
+          "type": "numeric",
+          "skill": "resolver",
+          "difficulty": 2,
+          "prompt": "Resuelve $3x=21$. ¿Cuánto vale $x$?",
+          "answer": "7",
+          "mistakes": [
+            { "value": "18", "feedback": "Casi. El 3 multiplica a la $x$: hay que dividir ambos lados por 3, no restar." },
+            { "value": "63", "feedback": "Casi. El 3 ya está multiplicando: la operación inversa es dividir." }
+          ],
+          "feedback": "Casi. Si tres $x$ pesan 21, ¿cuánto pesa una $x$?",
+          "hints": ["$3x$ significa 3 por $x$.", "Divide ambos lados por 3."],
+          "solution": ["$3x=21$", "$x=21\\div 3$", "$x=7$"]
+        },
+        {
+          "id": "s8",
+          "type": "order",
+          "skill": "argumentar",
+          "difficulty": 2,
+          "prompt": "Ordena los pasos para resolver $4x+2=18$.",
+          "items": ["$4x+2=18$", "$4x=16$", "$x=4$", "Comprobar: $4\\cdot 4+2=18$"],
+          "feedback": "Casi. Primero se quita lo que suma o resta, después lo que multiplica, y al final se comprueba.",
+          "hints": ["¿Qué se hace primero: quitar el 2 o dividir por 4?"],
+          "explanation": "Restamos 2 a ambos lados ($4x=16$), dividimos por 4 ($x=4$) y comprobamos reemplazando."
+        },
+        {
+          "id": "s9",
+          "type": "choice",
+          "skill": "resolver",
+          "difficulty": 3,
+          "prompt": "¿Cuál es el valor de $x$ en la ecuación $7x+4=39$?",
+          "options": ["$5$", "$\\frac{43}{7}$", "$35$", "$6$"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. El 4 está sumando: pasa al otro lado restando, no sumando.",
+            "2": "Casi. $35$ es el valor de $7x$; falta dividir por 7.",
+            "3": "Casi. Comprueba: $7\\cdot 6+4=46$, no 39."
+          },
+          "hints": ["Primero resta 4 a ambos lados.", "Te queda $7x=35$. Ahora divide por 7."],
+          "solution": ["$7x+4=39$", "$7x=35$", "$x=5$"]
+        }
+      ]
+    },
+    {
+      "id": "m1-ei-2",
+      "title": "Ecuaciones con x en ambos lados",
+      "version": 1,
+      "reviewStatus": "draft",
+      "estimatedMinutes": 6,
+      "skills": ["resolver", "argumentar"],
+      "steps": [
+        {
+          "id": "s1",
+          "type": "explain",
+          "title": "La x en los dos platillos",
+          "body": "A veces hay $x$ a ambos lados. Primero juntamos todas las $x$ en un solo platillo, quitando la misma cantidad de $x$ de los dos.",
+          "mascot": "pensando"
+        },
+        {
+          "id": "s2",
+          "type": "balance",
+          "skill": "resolver",
+          "difficulty": 2,
+          "prompt": "Resuelve $3x+1=x+5$ con la balanza.",
+          "equation": { "left": ["3", "1"], "right": ["1", "5"] },
+          "hints": ["Quita una $x$ de cada platillo.", "Después quita el 1 y divide."],
+          "explanation": "$3x+1=x+5$ → $2x+1=5$ → $2x=4$ → $x=2$."
+        },
+        {
+          "id": "s3",
+          "type": "balance",
+          "skill": "resolver",
+          "difficulty": 3,
+          "prompt": "Ahora $4x+2=2x+8$.",
+          "equation": { "left": ["4", "2"], "right": ["2", "8"] },
+          "hints": ["Quita dos $x$ de cada lado.", "Te queda $2x+2=8$: sigue igual que antes."],
+          "explanation": "$4x+2=2x+8$ → $2x+2=8$ → $2x=6$ → $x=3$."
+        },
+        {
+          "id": "s4",
+          "type": "explain",
+          "title": "Pasar al otro lado",
+          "body": "\"Pasar un término al otro lado\" es restarlo (o sumarlo) a ambos lados. Por eso cambia de signo: $5x=2x+9$ → $5x-2x=9$ → $3x=9$ → $x=3$.",
+          "note": "Si suma, pasa restando. Si resta, pasa sumando.",
+          "mascot": "explicando"
+        },
+        {
+          "id": "s5",
+          "type": "find-error",
+          "skill": "argumentar",
+          "difficulty": 3,
+          "prompt": "Tomás resolvió $6x-4=2x+8$. ¿En qué línea se equivocó?",
+          "lines": ["$6x-4=2x+8$", "$6x+2x=8+4$", "$8x=12$", "$x=\\frac{3}{2}$"],
+          "wrong": 1,
+          "feedback": "Casi. Esa línea sigue bien desde la anterior. Busca el término que cambió mal de signo.",
+          "hints": ["Mira qué le pasó al $2x$ cuando cambió de lado."],
+          "explanation": "El $2x$ estaba sumando a la derecha, así que pasa restando: $6x-2x=8+4$, es decir, $4x=12$ y $x=3$."
+        },
+        {
+          "id": "s6",
+          "type": "numeric",
+          "skill": "resolver",
+          "difficulty": 3,
+          "prompt": "Resuelve $5x+3=2x+18$. ¿Cuánto vale $x$?",
+          "answer": "5",
+          "mistakes": [
+            { "value": "15/7", "feedback": "Casi. El $2x$ pasa a la izquierda restando: queda $3x$, no $7x$." },
+            { "value": "7", "feedback": "Casi. El 3 pasa al otro lado restando: $3x=18-3$." }
+          ],
+          "feedback": "Casi. Junta las $x$ a la izquierda y los números a la derecha, cambiando el signo de lo que pasa.",
+          "hints": ["Resta $2x$ a ambos lados.", "Te queda $3x+3=18$."],
+          "solution": ["$5x+3=2x+18$", "$3x+3=18$", "$3x=15$", "$x=5$"]
+        },
+        {
+          "id": "s7",
+          "type": "numeric",
+          "skill": "resolver",
+          "difficulty": 3,
+          "prompt": "Resuelve $2(x+3)=x+10$. ¿Cuánto vale $x$?",
+          "answer": "4",
+          "mistakes": [{ "value": "7", "feedback": "Casi. El 2 multiplica a todo el paréntesis: $2(x+3)=2x+6$." }],
+          "feedback": "Casi. Primero elimina el paréntesis multiplicando el 2 por cada término.",
+          "hints": ["$2(x+3)=2x+6$.", "Te queda $2x+6=x+10$."],
+          "solution": ["$2(x+3)=x+10$", "$2x+6=x+10$", "$x=4$"]
+        },
+        {
+          "id": "s8",
+          "type": "choice",
+          "skill": "argumentar",
+          "difficulty": 3,
+          "prompt": "¿Cuál ecuación es equivalente a $7x-5=3x+11$?",
+          "options": ["$4x=16$", "$10x=16$", "$4x=6$", "$4x=-16$"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. El $3x$ pasa a la izquierda restando, no sumando.",
+            "2": "Casi. El $-5$ pasa a la derecha sumando: $11+5=16$.",
+            "3": "Casi. Revisa el signo: $11+5$ es positivo."
+          },
+          "hints": ["Junta las $x$ a la izquierda: $7x-3x$.", "Y los números a la derecha: $11+5$."],
+          "explanation": "$7x-3x=11+5$, es decir, $4x=16$."
+        },
+        {
+          "id": "s9",
+          "type": "choice",
+          "skill": "resolver",
+          "difficulty": 4,
+          "prompt": "Si $3(x-2)=x+4$, entonces $x$ es igual a:",
+          "options": ["$5$", "$3$", "$-1$", "$\\frac{5}{2}$"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. El 3 multiplica también al $-2$: $3(x-2)=3x-6$.",
+            "2": "Casi. El $-6$ pasa al otro lado sumando: $2x=4+6$.",
+            "3": "Casi. La $x$ de la derecha pasa restando: $3x-x=2x$."
+          },
+          "hints": ["Primero distribuye: $3(x-2)=3x-6$.", "Te queda $3x-6=x+4$."],
+          "solution": ["$3(x-2)=x+4$", "$3x-6=x+4$", "$2x=10$", "$x=5$"]
+        }
+      ]
+    },
+    {
+      "id": "m1-ei-3",
+      "title": "De palabras a ecuaciones",
+      "version": 1,
+      "reviewStatus": "draft",
+      "estimatedMinutes": 6,
+      "skills": ["modelar", "resolver"],
+      "steps": [
+        {
+          "id": "s1",
+          "type": "explain",
+          "title": "Traducir",
+          "body": "Muchos problemas de la PAES vienen en palabras. El truco: nombra con una letra lo que no sabes y traduce frase por frase.",
+          "note": "El doble de un número: $2x$. Un número aumentado en 5: $x+5$.",
+          "mascot": "explicando"
+        },
+        {
+          "id": "s2",
+          "type": "choice",
+          "skill": "modelar",
+          "difficulty": 1,
+          "prompt": "¿Qué expresión representa \"el triple de un número, disminuido en 4\"?",
+          "options": ["$3x-4$", "$3(x-4)$", "$x^{3}-4$", "$4-3x$"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. Así primero restas 4 y después triplicas; el enunciado triplica primero.",
+            "2": "Casi. El triple es multiplicar por 3, no elevar al cubo.",
+            "3": "Casi. \"Disminuido en 4\" significa restarle 4 al triple: $3x-4$."
+          },
+          "hints": ["Primero el triple: $3x$. Después, ¿qué le pasa?"],
+          "explanation": "El triple de $x$ es $3x$, y disminuido en 4 queda $3x-4$."
+        },
+        {
+          "id": "s3",
+          "type": "choice",
+          "skill": "modelar",
+          "difficulty": 2,
+          "prompt": "\"La mitad de un número, más 6, es 15.\" ¿Qué ecuación lo representa?",
+          "options": ["$\\frac{x}{2}+6=15$", "$\\frac{x+6}{2}=15$", "$2x+6=15$", "$\\frac{x}{2}=15+6$"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. Así se saca la mitad de $x+6$; el enunciado suma 6 a la mitad del número.",
+            "2": "Casi. La mitad es dividir por 2, no multiplicar.",
+            "3": "Casi. El 6 se suma a la mitad del número, no al 15."
+          },
+          "hints": ["La mitad de $x$ es $\\frac{x}{2}$."],
+          "explanation": "La mitad del número es $\\frac{x}{2}$; más 6 es $\\frac{x}{2}+6$, y eso es igual a 15."
+        },
+        {
+          "id": "s4",
+          "type": "numeric",
+          "skill": "resolver",
+          "difficulty": 2,
+          "prompt": "Resuelve $\\frac{x}{2}+6=15$. ¿Cuál es el número?",
+          "answer": "18",
+          "mistakes": [{ "value": "9", "feedback": "Casi. $\\frac{x}{2}=9$ dice que la mitad es 9; el número es el doble." }],
+          "feedback": "Casi. Primero resta 6 a ambos lados y después deshaz la división por 2.",
+          "hints": ["Resta 6: $\\frac{x}{2}=9$.", "Multiplica ambos lados por 2."],
+          "solution": ["$\\frac{x}{2}+6=15$", "$\\frac{x}{2}=9$", "$x=18$"]
+        },
+        {
+          "id": "s5",
+          "type": "explain",
+          "title": "Cuatro pasos",
+          "body": "1. Elige la incógnita. 2. Traduce el enunciado a una ecuación. 3. Resuelve. 4. Comprueba tu respuesta en el enunciado, no solo en la ecuación.",
+          "mascot": "senalando"
+        },
+        {
+          "id": "s6",
+          "type": "order",
+          "skill": "modelar",
+          "difficulty": 2,
+          "prompt": "Sofía tiene el doble de años que Diego y entre los dos suman 36. Ordena la resolución.",
+          "items": ["Diego: $x$ años; Sofía: $2x$ años", "$x+2x=36$", "$3x=36$", "$x=12$: Diego tiene 12 años"],
+          "feedback": "Casi. Primero se nombra la incógnita, luego se plantea la ecuación y al final se resuelve.",
+          "hints": ["¿Qué necesitas antes de poder escribir la ecuación?"],
+          "explanation": "Nombramos las edades, planteamos $x+2x=36$, reducimos a $3x=36$ y obtenemos $x=12$."
+        },
+        {
+          "id": "s7",
+          "type": "numeric",
+          "skill": "modelar",
+          "difficulty": 3,
+          "prompt": "Un plan de celular cobra \\$5.000 fijos más \\$1.500 por cada GB extra. Este mes pagaste \\$14.000. ¿Cuántos GB extra usaste?",
+          "answer": "6",
+          "suffix": "GB",
+          "mistakes": [{ "value": "38/3", "feedback": "Casi. Los \\$5.000 fijos se restan del total, no se suman." }],
+          "feedback": "Casi. Plantea $5000+1500x=14000$ y despeja la $x$.",
+          "hints": ["Llama $x$ a los GB extra: $5000+1500x=14000$.", "Resta 5000: $1500x=9000$."],
+          "solution": ["$5000+1500x=14000$", "$1500x=9000$", "$x=6$"]
+        },
+        {
+          "id": "s8",
+          "type": "choice",
+          "skill": "modelar",
+          "difficulty": 3,
+          "prompt": "En un curso hay 38 estudiantes y hay 6 mujeres más que hombres. ¿Cuántos hombres hay?",
+          "options": ["$16$", "$22$", "$19$", "$32$"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. 22 son las mujeres; la pregunta es por los hombres.",
+            "2": "Casi. Si fueran iguales serían 19 y 19, pero hay 6 mujeres más.",
+            "3": "Casi. $2h=32$; falta dividir por 2."
+          },
+          "hints": ["Hombres: $h$. Mujeres: $h+6$.", "$h+h+6=38$."],
+          "solution": ["$h+(h+6)=38$", "$2h=32$", "$h=16$"]
+        }
+      ]
+    },
+    {
+      "id": "m1-ei-4",
+      "title": "Inecuaciones: cuando la balanza no se equilibra",
+      "version": 1,
+      "reviewStatus": "draft",
+      "estimatedMinutes": 6,
+      "skills": ["resolver", "representar"],
+      "steps": [
+        {
+          "id": "s1",
+          "type": "explain",
+          "title": "Un lado pesa más",
+          "body": "Una inecuación es una balanza desequilibrada: un lado pesa más que el otro. Su solución no es un solo número, sino todos los números que la cumplen.",
+          "note": "$<$ menor · $>$ mayor · $\\le$ menor o igual · $\\ge$ mayor o igual",
+          "mascot": "explicando"
+        },
+        {
+          "id": "s2",
+          "type": "choice",
+          "skill": "representar",
+          "difficulty": 1,
+          "prompt": "¿Cuál de estos valores cumple $x+3>7$?",
+          "options": ["$5$", "$4$", "$2$", "$0$"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. $4+3=7$, y 7 no es mayor que 7.",
+            "2": "Casi. $2+3=5$, que es menor que 7.",
+            "3": "Casi. $0+3=3$, que es menor que 7."
+          },
+          "hints": ["Reemplaza cada valor y revisa si el resultado es mayor que 7."],
+          "explanation": "$5+3=8$ y $8>7$. En realidad, cualquier $x>4$ cumple."
+        },
+        {
+          "id": "s3",
+          "type": "explain",
+          "title": "La regla extra",
+          "body": "Se resuelven igual que las ecuaciones, con una sola regla nueva: si multiplicas o divides por un número negativo, la desigualdad se da vuelta. Por ejemplo, $-2x<6$ da $x>-3$.",
+          "note": "Pruébalo: $x=0$ cumple $-2\\cdot 0<6$ y también $0>-3$.",
+          "mascot": "aja"
+        },
+        {
+          "id": "s4",
+          "type": "choice",
+          "skill": "resolver",
+          "difficulty": 2,
+          "prompt": "Resuelve $2x-1\\le 9$.",
+          "options": ["$x\\le 5$", "$x\\ge 5$", "$x\\le 4$", "$x\\le 10$"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. Dividiste por 2, que es positivo: el sentido de la desigualdad se mantiene.",
+            "2": "Casi. El $-1$ pasa sumando: $2x\\le 10$.",
+            "3": "Casi. Falta dividir por 2."
+          },
+          "hints": ["Suma 1 a ambos lados.", "Divide por 2 (es positivo: no se da vuelta)."],
+          "solution": ["$2x-1\\le 9$", "$2x\\le 10$", "$x\\le 5$"]
+        },
+        {
+          "id": "s5",
+          "type": "choice",
+          "skill": "resolver",
+          "difficulty": 3,
+          "prompt": "Resuelve $-3x+2>11$.",
+          "options": ["$x<-3$", "$x>-3$", "$x<3$", "$x<-\\frac{13}{3}$"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. Al dividir por $-3$ la desigualdad se da vuelta.",
+            "2": "Casi. $9\\div(-3)=-3$: revisa el signo.",
+            "3": "Casi. El 2 pasa restando: $-3x>9$."
+          },
+          "hints": ["Resta 2: $-3x>9$.", "Divide por $-3$, que es negativo."],
+          "solution": ["$-3x+2>11$", "$-3x>9$", "$x<-3$ (dividimos por $-3$: se da vuelta)"]
+        },
+        {
+          "id": "s6",
+          "type": "find-error",
+          "skill": "argumentar",
+          "difficulty": 3,
+          "prompt": "Ana resolvió $4-2x\\ge 10$. ¿En qué línea se equivocó?",
+          "lines": ["$4-2x\\ge 10$", "$-2x\\ge 6$", "$x\\ge -3$"],
+          "wrong": 2,
+          "feedback": "Casi. Esa línea está bien. Revisa qué pasa al dividir por un número negativo.",
+          "hints": ["¿Por qué número se dividió en el último paso?"],
+          "explanation": "Al dividir por $-2$, la desigualdad se da vuelta: la solución es $x\\le -3$."
+        },
+        {
+          "id": "s7",
+          "type": "choice",
+          "skill": "representar",
+          "difficulty": 3,
+          "prompt": "¿Qué números enteros cumplen $x\\ge -2$ y $x<3$ a la vez?",
+          "options": ["$-2, -1, 0, 1, 2$", "$-1, 0, 1, 2$", "$-2, -1, 0, 1, 2, 3$", "$-1, 0, 1, 2, 3$"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. $\\ge$ incluye al $-2$.",
+            "2": "Casi. $<3$ no incluye al 3.",
+            "3": "Casi. Revisa los dos extremos: el $-2$ sí está y el 3 no."
+          },
+          "hints": ["\"Mayor o igual\" incluye el borde; \"menor\" no lo incluye."],
+          "explanation": "Desde $-2$ (incluido) hasta 3 (sin incluir): $-2, -1, 0, 1, 2$."
+        },
+        {
+          "id": "s8",
+          "type": "choice",
+          "skill": "modelar",
+          "difficulty": 4,
+          "prompt": "Un estacionamiento cobra \\$500 fijos más \\$30 por minuto. Si tienes \\$2.000, ¿cuántos minutos puedes estacionar como máximo?",
+          "options": ["$50$", "$66$", "$83$", "$51$"],
+          "answer": 0,
+          "feedback": {
+            "1": "Casi. Los \\$500 fijos también se pagan: te quedan \\$1.500 para los minutos.",
+            "2": "Casi. Los \\$500 se restan de tu dinero, no se suman.",
+            "3": "Casi. Con 51 minutos pagarías $500+30\\cdot 51=2030$, más de lo que tienes."
+          },
+          "hints": ["Plantea $500+30m\\le 2000$.", "Resta 500: $30m\\le 1500$."],
+          "solution": ["$500+30m\\le 2000$", "$30m\\le 1500$", "$m\\le 50$"]
+        }
+      ]
+    }
+  ],
+  "miniClasses": [
+    {
+      "id": "mc-ei-1",
+      "title": "Despejar en 90 segundos",
+      "reviewStatus": "draft",
+      "cards": [
+        { "title": "La idea", "body": "Despejar es dejar la incógnita sola. Para eso deshacemos, una por una, las operaciones que la acompañan." },
+        { "title": "Operación inversa", "body": "Suma ↔ resta. Multiplicación ↔ división. Siempre a ambos lados de la igualdad.", "formula": "$x+a=b$ → $x=b-a$" },
+        { "title": "Ejemplo", "body": "Primero lo que suma o resta; después lo que multiplica o divide.", "example": ["$5x-2=18$", "$5x=20$", "$x=4$"] },
+        { "title": "Comprueba", "body": "Reemplaza tu resultado: $5\\cdot 4-2=18$. Si se cumple, está bien." }
+      ]
+    },
+    {
+      "id": "mc-ei-2",
+      "title": "Cambiar de lado es cambiar de signo",
+      "reviewStatus": "draft",
+      "cards": [
+        { "title": "No es magia", "body": "\"Pasar\" un término al otro lado es sumar o restar lo mismo a ambos lados. Por eso cambia de signo." },
+        { "title": "Ejemplo", "body": "El $3x$ suma a la derecha, así que pasa restando a la izquierda.", "example": ["$7x+1=3x+9$", "$7x-3x=9-1$", "$4x=8$", "$x=2$"] },
+        { "title": "Ojo", "body": "Lo que multiplica no cambia de signo al pasar: se divide. $-2x=8$ da $x=-4$, no $x=4$." }
+      ]
+    },
+    {
+      "id": "mc-ei-3",
+      "title": "Paréntesis: distribuir primero",
+      "reviewStatus": "draft",
+      "cards": [
+        { "title": "Regla", "body": "El número de afuera multiplica a cada término de adentro.", "formula": "$a(b+c)=ab+ac$" },
+        { "title": "Con signo menos", "body": "Un menos delante del paréntesis cambia todos los signos de adentro.", "formula": "$-(x-3)=-x+3$" },
+        { "title": "Ejemplo", "body": "Distribuye y resuelve como siempre.", "example": ["$4(x-1)=2x+6$", "$4x-4=2x+6$", "$2x=10$", "$x=5$"] }
+      ]
+    },
+    {
+      "id": "mc-ei-4",
+      "title": "Ecuaciones con fracciones",
+      "reviewStatus": "draft",
+      "cards": [
+        { "title": "Quita el denominador", "body": "Si la $x$ está dividida, multiplica ambos lados por ese número." },
+        { "title": "Ejemplo", "body": "Primero lo que suma, después lo que divide.", "example": ["$\\frac{x}{3}+2=5$", "$\\frac{x}{3}=3$", "$x=9$"] },
+        { "title": "Varias fracciones", "body": "Multiplica todo por el mínimo común múltiplo de los denominadores y desaparecen todas a la vez.", "example": ["$\\frac{x}{2}+\\frac{x}{3}=5$", "$3x+2x=30$", "$x=6$"] }
+      ]
+    },
+    {
+      "id": "mc-ei-5",
+      "title": "Diccionario de palabras a álgebra",
+      "reviewStatus": "draft",
+      "cards": [
+        { "title": "Operaciones", "body": "Aumentado en, más: suma. Disminuido en, menos: resta. Doble, triple: $2x$, $3x$. Mitad, tercio: $\\frac{x}{2}$, $\\frac{x}{3}$." },
+        { "title": "Consecutivos", "body": "Dos números consecutivos: $x$ y $x+1$. Dos pares consecutivos: $x$ y $x+2$." },
+        { "title": "El orden importa", "body": "\"El doble de un número aumentado en 3\" puede ser $2x+3$ o $2(x+3)$. Lee con calma: ¿qué se hace primero?" }
+      ]
+    },
+    {
+      "id": "mc-ei-6",
+      "title": "La regla de oro de las inecuaciones",
+      "reviewStatus": "draft",
+      "cards": [
+        { "title": "Casi igual que una ecuación", "body": "Puedes sumar, restar, multiplicar y dividir a ambos lados, como siempre." },
+        { "title": "La excepción", "body": "Al multiplicar o dividir por un número negativo, el signo de la desigualdad se da vuelta.", "formula": "$-2x<6$ → $x>-3$" },
+        { "title": "Los bordes", "body": "$<$ y $>$ no incluyen el borde. $\\le$ y $\\ge$ sí lo incluyen." }
+      ]
+    }
+  ]
+}
