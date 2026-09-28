@@ -9,38 +9,15 @@ import { Icon, type IconName } from '@/components/ui/Icon';
 import { Mascot } from '@/components/ui/Mascot';
 import { ProgressBar } from '@/components/ui/ProgressBar';
 import { Text } from '@/components/ui/Text';
-import content from '@/content/onboarding-tests.json';
-import paes from '@/content/paes-config.json';
+import { planOf } from '@/features/plan/context';
 import { dur, easeOut } from '@/theme/motion';
 import { colors, fonts } from '@/theme/tokens';
 
 import { CountUp, StepLayout } from '../components';
-import { type Answers, daysUntil, estimateM1, formatScore, ONBOARDING_XP, planFocus, weeksUntil } from '../model';
+import { formatScore, ONBOARDING_XP } from '../model';
 import { useOnboarding } from '../store';
 import { QUESTIONS } from './Diagnostic';
 import type { StepProps } from './types';
-
-const TOPIC_LABEL: Record<string, string> = Object.fromEntries(
-  Object.values(content.topics).flatMap((g) => g.items.map((t) => [t.id, t.label])),
-);
-
-/** Todo lo que el plan necesita, derivado de las respuestas (funciones puras del modelo). */
-function planOf(a: Answers) {
-  const session = a.session && a.session !== 'unknown' ? paes.sessions[a.session] : undefined;
-  const days = session?.start ? daysUntil(session.start, new Date()) : undefined;
-  const weeks = weeksUntil(days);
-  const diag = a.diag;
-  const correct = diag?.answers.filter((x) => x === true).length ?? 0;
-  const done = !!diag?.done;
-  const est = estimateM1(correct, QUESTIONS.length, done);
-  const missed = done ? QUESTIONS.filter((_, i) => diag?.answers[i] !== true).map((q) => q.focus) : [];
-  const focus = planFocus(
-    a.topics.map((t) => TOPIC_LABEL[t]).filter((x): x is string => !!x),
-    missed,
-  );
-  const target = a.target ?? 700;
-  return { days, weeks, hasDate: !!days, correct, done, est, focus, target, minutes: a.minutes ?? 20 };
-}
 
 export function GeneratingStep({ next }: StepProps) {
   const a = useOnboarding((st) => st.answers);

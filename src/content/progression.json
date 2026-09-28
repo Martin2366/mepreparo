@@ -1,0 +1,24 @@
+{
+  "_nota": "Valores ajustables por OTA. XP: PRD §13. Niveles con nombre: PRD §11.",
+  "xp": {
+    "stepClean": 10,
+    "stepWithHints": 5,
+    "lessonComplete": 20,
+    "practiceClean": 6,
+    "practiceWithHints": 3
+  },
+  "activeDay": { "minCorrectSteps": 5 },
+  "levels": [
+    { "min": 0, "name": "Primeros pasos" },
+    { "min": 150, "name": "Explorador de números" },
+    { "min": 500, "name": "Cazador de incógnitas" },
+    { "min": 1000, "name": "Aprendiz de la x" },
+    { "min": 1800, "name": "Domador de fracciones" },
+    { "min": 2800, "name": "Equilibrista de ecuaciones" },
+    { "min": 4000, "name": "Lector de gráficos" },
+    { "min": 5500, "name": "Arquitecto de funciones" },
+    { "min": 7500, "name": "Maestro del vértice" },
+    { "min": 10000, "name": "Leyenda PAES" }
+  ],
+  "dailyGoalXp": { "5": 20, "10": 30, "20": 60, "30": 90, "45": 130 }
+}

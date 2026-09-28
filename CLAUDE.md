@@ -37,7 +37,7 @@ npx eas-cli build --profile development|preview|production --platform android
 - El progreso se guarda **localmente en cada paso antes del feedback**; la sincronización es idempotente y nunca bloquea la UI.
 - Corrección de respuestas **determinista, local y con aritmética racional exacta**.
 - El contenido vive en `src/content/*.json`; solo `reviewStatus: "approved"` puede ir a producción (`content:validate` lo impone en el perfil `production`). Nada de contenido de estudiantes sin aprobación del fundador.
-- Notación matemática en el contenido: `$…$` con `\frac{}{}`, `^{}`, `\sqrt{}`, `\cdot`, `\le`, `\ge`. Signo peso literal: `\$`.
+- Notación matemática en el contenido: `$…$` con `\frac{}{}`, `^{}`, `\sqrt{}`, `\cdot`, `\div`, `\le`, `\ge`. Signo peso literal: `\$`.
 - Feedback de error amable y específico por error ("Casi…"), nunca "Incorrecto ❌". Español de Chile correcto, sin faltas. Tuteo, sin emoji.
 - Marca: fondo papel `#FBF8F2` + cuadrícula de cuaderno; tinta `#1E2A4A`, celeste `#4FB3E8`, coral `#FF7A59` (**solo** momento "ajá"), grafito `#5B6475`, verde `#2FBF71` (solo correcto; no hay rojo: el error es grafito). Poppins; matemática en STIX Two Text; notas de Equis en Kalam. Mascota: Equis. Solo modo claro en v1, todo por tokens (paleta cerrada en Tailwind: no existen `bg-red-500` ni similares).
 

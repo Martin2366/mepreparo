@@ -1,7 +1,7 @@
 /**
  * Notación matemática del contenido: subconjunto mínimo tipo LaTeX.
  *
- *   \frac{a}{b}   \sqrt{x}   x^{2} (o x^2)   \cdot   \le   \ge
+ *   \frac{a}{b}   \sqrt{x}   x^{2} (o x^2)   \cdot   \div   \le   \ge
  *
  * En los textos de las lecciones la matemática va entre `$…$`; un signo peso literal se escribe `\$`
  * (ej.: "cuesta \$1.500"). Cualquier cosa fuera del subconjunto es un error: el validador de
@@ -30,10 +30,10 @@ export class MathParseError extends Error {
   }
 }
 
-const SYMBOL_COMMANDS: Record<string, string> = { cdot: '·', le: '≤', ge: '≥' };
+const SYMBOL_COMMANDS: Record<string, string> = { cdot: '·', div: '÷', le: '≤', ge: '≥' };
 export const SUPPORTED_COMMANDS = ['frac', 'sqrt', ...Object.keys(SYMBOL_COMMANDS)] as const;
 
-const BIN = new Set(['+', '−', '·', '±']);
+const BIN = new Set(['+', '−', '·', '÷', '±']);
 const REL = new Set(['=', '<', '>', '≤', '≥']);
 const OPEN = new Set(['(', '[']);
 const CLOSE = new Set([')', ']']);

@@ -1,0 +1,254 @@
+{
+  "test": "m1",
+  "name": "Matemática 1 (M1)",
+  "version": 1,
+  "_fuente": "Temario PAES Regular M1, Admisión 2027 (DEMRE, docs/temarios). Las proporciones `share` son aproximadas: verificar con la tabla de especificaciones oficial antes de calibrar el puntaje estimado.",
+  "axes": [
+    {
+      "id": "numeros",
+      "name": "Números",
+      "icon": "sigma",
+      "share": 0.23,
+      "focus": ["Números"],
+      "units": [
+        {
+          "id": "enteros-racionales",
+          "name": "Enteros y racionales",
+          "summary": "Operaciones, orden y problemas con enteros, fracciones y decimales.",
+          "skills": ["resolver", "representar"],
+          "lessons": [
+            { "id": "m1-er-1", "title": "La recta numérica" },
+            { "id": "m1-er-2", "title": "Fracciones que se comparan" },
+            { "id": "m1-er-3", "title": "Operar con fracciones" },
+            { "id": "m1-er-4", "title": "Decimales y fracciones: la misma cosa" }
+          ],
+          "generators": []
+        },
+        {
+          "id": "porcentaje",
+          "name": "Porcentaje",
+          "summary": "Calcular, aumentar, descontar y comparar porcentajes en contextos reales.",
+          "skills": ["resolver", "modelar"],
+          "lessons": [
+            { "id": "m1-pc-1", "title": "Qué significa un porcentaje" },
+            { "id": "m1-pc-2", "title": "Descuentos y aumentos" },
+            { "id": "m1-pc-3", "title": "Porcentaje de un porcentaje" },
+            { "id": "m1-pc-4", "title": "Problemas con porcentajes" }
+          ],
+          "generators": []
+        },
+        {
+          "id": "potencias-raices",
+          "name": "Potencias y raíces enésimas",
+          "summary": "Propiedades de potencias y raíces, y su relación.",
+          "skills": ["resolver", "argumentar"],
+          "lessons": [
+            { "id": "m1-pr-1", "title": "Multiplicar lo mismo muchas veces" },
+            { "id": "m1-pr-2", "title": "Propiedades de las potencias" },
+            { "id": "m1-pr-3", "title": "Raíces como potencias" },
+            { "id": "m1-pr-4", "title": "Simplificar expresiones" }
+          ],
+          "generators": []
+        }
+      ]
+    },
+    {
+      "id": "algebra",
+      "name": "Álgebra y funciones",
+      "icon": "scale",
+      "tile": "balanza",
+      "share": 0.37,
+      "focus": ["Álgebra", "Funciones"],
+      "units": [
+        {
+          "id": "ecuaciones-inecuaciones",
+          "name": "Ecuaciones e inecuaciones de primer grado",
+          "summary": "Despejar la incógnita manteniendo el equilibrio, y resolver desigualdades.",
+          "skills": ["resolver", "modelar"],
+          "lessons": [
+            { "id": "m1-ei-1", "title": "La balanza: dejar la x sola" },
+            { "id": "m1-ei-2", "title": "Ecuaciones con x en ambos lados" },
+            { "id": "m1-ei-3", "title": "De palabras a ecuaciones" },
+            { "id": "m1-ei-4", "title": "Inecuaciones: cuando la balanza no se equilibra" }
+          ],
+          "generators": ["linear-equation", "linear-equation-both-sides", "linear-inequality"]
+        },
+        {
+          "id": "funcion-lineal-afin",
+          "name": "Función lineal y afín",
+          "summary": "Pendiente, coeficiente de posición y el gráfico de una recta.",
+          "skills": ["representar", "modelar"],
+          "lessons": [
+            { "id": "m1-fl-1", "title": "Qué es una función" },
+            { "id": "m1-fl-2", "title": "La pendiente: cuánto sube la recta" },
+            { "id": "m1-fl-3", "title": "Mover la recta: el coeficiente de posición" },
+            { "id": "m1-fl-4", "title": "Modelar con funciones afines" }
+          ],
+          "generators": ["affine-evaluate", "slope-two-points", "affine-from-points"]
+        },
+        {
+          "id": "expresiones-algebraicas",
+          "name": "Expresiones algebraicas",
+          "summary": "Reducir, productos notables y factorización.",
+          "skills": ["resolver", "representar"],
+          "lessons": [
+            { "id": "m1-ea-1", "title": "Términos semejantes" },
+            { "id": "m1-ea-2", "title": "El modelo de área" },
+            { "id": "m1-ea-3", "title": "Productos notables" },
+            { "id": "m1-ea-4", "title": "Factorizar: volver al rectángulo" }
+          ],
+          "generators": ["square-binomial"]
+        },
+        {
+          "id": "proporcionalidad",
+          "name": "Proporcionalidad",
+          "summary": "Proporcionalidad directa e inversa, razones y tablas.",
+          "skills": ["modelar", "representar"],
+          "lessons": [
+            { "id": "m1-pp-1", "title": "Razones y proporciones" },
+            { "id": "m1-pp-2", "title": "Proporcionalidad directa" },
+            { "id": "m1-pp-3", "title": "Proporcionalidad inversa" },
+            { "id": "m1-pp-4", "title": "¿Directa o inversa?" }
+          ],
+          "generators": ["direct-proportion", "inverse-proportion"]
+        },
+        {
+          "id": "sistemas-2x2",
+          "name": "Sistemas de ecuaciones 2×2",
+          "summary": "Dos ecuaciones, dos incógnitas: sustitución, reducción y gráfico.",
+          "skills": ["resolver", "modelar"],
+          "lessons": [
+            { "id": "m1-se-1", "title": "Dos condiciones a la vez" },
+            { "id": "m1-se-2", "title": "Sustitución" },
+            { "id": "m1-se-3", "title": "Reducción" },
+            { "id": "m1-se-4", "title": "Dos rectas que se cruzan" }
+          ],
+          "generators": ["system-2x2"]
+        },
+        {
+          "id": "funcion-cuadratica",
+          "name": "Función cuadrática",
+          "summary": "La parábola: vértice, raíces, concavidad y problemas de máximos.",
+          "skills": ["representar", "resolver"],
+          "lessons": [
+            { "id": "m1-fc-1", "title": "La forma de la parábola" },
+            { "id": "m1-fc-2", "title": "El vértice" },
+            { "id": "m1-fc-3", "title": "Dónde corta al eje x" },
+            { "id": "m1-fc-4", "title": "Máximos y mínimos en problemas" }
+          ],
+          "generators": ["quadratic-evaluate", "quadratic-vertex"]
+        }
+      ]
+    },
+    {
+      "id": "geometria",
+      "name": "Geometría",
+      "icon": "triangle",
+      "tile": "triangulo",
+      "share": 0.2,
+      "focus": ["Geometría"],
+      "units": [
+        {
+          "id": "figuras",
+          "name": "Figuras geométricas",
+          "summary": "Teorema de Pitágoras, perímetros y áreas.",
+          "skills": ["resolver", "representar"],
+          "lessons": [
+            { "id": "m1-fg-1", "title": "Pitágoras con cuadrados" },
+            { "id": "m1-fg-2", "title": "Perímetros" },
+            { "id": "m1-fg-3", "title": "Áreas de figuras planas" },
+            { "id": "m1-fg-4", "title": "Figuras compuestas" }
+          ],
+          "generators": []
+        },
+        {
+          "id": "cuerpos",
+          "name": "Cuerpos geométricos",
+          "summary": "Área y volumen de prismas, cilindros, pirámides y conos.",
+          "skills": ["resolver", "modelar"],
+          "lessons": [
+            { "id": "m1-cg-1", "title": "Desarmar un cuerpo" },
+            { "id": "m1-cg-2", "title": "Área de superficie" },
+            { "id": "m1-cg-3", "title": "Volumen" },
+            { "id": "m1-cg-4", "title": "Problemas de capacidad" }
+          ],
+          "generators": []
+        },
+        {
+          "id": "transformaciones",
+          "name": "Transformaciones isométricas",
+          "summary": "Traslaciones, reflexiones y rotaciones en el plano.",
+          "skills": ["representar", "argumentar"],
+          "lessons": [
+            { "id": "m1-ti-1", "title": "Trasladar" },
+            { "id": "m1-ti-2", "title": "Reflejar" },
+            { "id": "m1-ti-3", "title": "Rotar" },
+            { "id": "m1-ti-4", "title": "Componer transformaciones" }
+          ],
+          "generators": []
+        },
+        {
+          "id": "semejanza",
+          "name": "Semejanza y proporcionalidad",
+          "summary": "Figuras semejantes, razón de semejanza y teorema de Thales.",
+          "skills": ["resolver", "argumentar"],
+          "lessons": [
+            { "id": "m1-sm-1", "title": "Misma forma, otro tamaño" },
+            { "id": "m1-sm-2", "title": "Criterios de semejanza" },
+            { "id": "m1-sm-3", "title": "Teorema de Thales" },
+            { "id": "m1-sm-4", "title": "Escalas y sombras" }
+          ],
+          "generators": []
+        }
+      ]
+    },
+    {
+      "id": "probabilidad",
+      "name": "Probabilidad y estadística",
+      "icon": "chart",
+      "share": 0.2,
+      "focus": ["Probabilidad", "Probabilidad y estadística"],
+      "units": [
+        {
+          "id": "tablas-graficos",
+          "name": "Tablas y gráficos",
+          "summary": "Leer, construir e interpretar tablas de frecuencia y gráficos.",
+          "skills": ["representar", "argumentar"],
+          "lessons": [
+            { "id": "m1-tg-1", "title": "Tablas de frecuencia" },
+            { "id": "m1-tg-2", "title": "Gráficos de barras y circulares" },
+            { "id": "m1-tg-3", "title": "Gráficos que engañan" },
+            { "id": "m1-tg-4", "title": "Promedio, mediana y moda" }
+          ],
+          "generators": []
+        },
+        {
+          "id": "medidas-posicion",
+          "name": "Medidas de posición",
+          "summary": "Cuartiles, percentiles y diagrama de cajón.",
+          "skills": ["representar", "resolver"],
+          "lessons": [
+            { "id": "m1-mp-1", "title": "Ordenar para entender" },
+            { "id": "m1-mp-2", "title": "Cuartiles" },
+            { "id": "m1-mp-3", "title": "Percentiles" },
+            { "id": "m1-mp-4", "title": "El diagrama de cajón" }
+          ],
+          "generators": []
+        },
+        {
+          "id": "reglas-probabilidad",
+          "name": "Reglas de probabilidad",
+          "summary": "Probabilidad clásica, regla aditiva y multiplicativa.",
+          "skills": ["modelar", "resolver"],
+          "lessons": [
+            { "id": "m1-rp-1", "title": "Casos favorables y posibles" },
+            { "id": "m1-rp-2", "title": "Lanzar mil veces" },
+            { "id": "m1-rp-3", "title": "Regla aditiva" },
+            { "id": "m1-rp-4", "title": "Regla multiplicativa" }
+          ],
+          "generators": []
+        }
+      ]
+    }
+  ]
+}

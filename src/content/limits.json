@@ -1,0 +1,21 @@
+{
+  "_nota": "Límites del plan gratis (PRD §4.2). Ajustables por OTA sin build. null = sin acceso gratis.",
+  "trialDays": 7,
+  "free": {
+    "practice": { "per": "day", "max": 20 },
+    "extraHints": { "per": "day", "max": 5 },
+    "solutions": { "per": "day", "max": 3 },
+    "tutor": { "per": "day", "max": 3 },
+    "photo": { "per": "week", "max": 1 },
+    "fullExam": { "per": "month", "max": 1 },
+    "miniExam": { "per": "week", "max": 1 },
+    "customExam": null,
+    "flash": { "per": "day", "max": 1 }
+  },
+  "premium": {
+    "tutor": { "per": "day", "max": 60 },
+    "photo": { "per": "day", "max": 20 }
+  },
+  "errorNotebookFreeDays": 7,
+  "prices": { "monthly": 3990, "pass": 12990, "offerPct": 50, "offerHours": 48 }
+}
