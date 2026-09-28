@@ -1,8 +1,9 @@
 import { Image } from 'expo-image';
 import * as Haptics from 'expo-haptics';
 import { useEffect } from 'react';
-import { Platform, Pressable, StyleSheet, Switch, View } from 'react-native';
+import { Platform, StyleSheet, Switch, View } from 'react-native';
 
+import { Tappable } from '@/components/ui/Tappable';
 import { Text } from '@/components/ui/Text';
 import { colors, fonts } from '@/theme/tokens';
 
@@ -49,7 +50,7 @@ export function MinutesStep({ next }: StepProps) {
           {MINS.map((o) => {
             const on = o.m === m;
             return (
-              <Pressable
+              <Tappable
                 key={o.m}
                 accessibilityRole="radio"
                 accessibilityState={{ checked: on }}
@@ -57,11 +58,12 @@ export function MinutesStep({ next }: StepProps) {
                   tap();
                   update({ minutes: o.m });
                 }}
-                style={({ pressed }) => [s.minCard, on && s.on, pressed && { transform: [{ scale: 0.97 }] }]}
+                style={[s.minCard, on && s.on]}
+                pressedStyle={s.pressed}
               >
                 <Text style={s.minBig}>{o.m} min</Text>
                 <Text style={s.minSub}>{o.sub}</Text>
-              </Pressable>
+              </Tappable>
             );
           })}
         </View>
@@ -102,7 +104,7 @@ export function ReminderStep({ next }: StepProps) {
           {TIMES.map((t) => {
             const on = t === r.time;
             return (
-              <Pressable
+              <Tappable
                 key={t}
                 accessibilityRole="radio"
                 accessibilityState={{ checked: on }}
@@ -113,7 +115,7 @@ export function ReminderStep({ next }: StepProps) {
                 style={[s.chip, on && s.on]}
               >
                 <Text style={s.chipText}>{t}</Text>
-              </Pressable>
+              </Tappable>
             );
           })}
         </View>
@@ -158,6 +160,7 @@ const s = StyleSheet.create({
     backgroundColor: colors.white,
   },
   on: { borderColor: colors.sky, backgroundColor: colors.sky100 },
+  pressed: { transform: [{ scale: 0.97 }] },
   minBig: { fontFamily: fonts['poppins-bold'], fontSize: 24, lineHeight: 30, color: colors.ink },
   minSub: { fontFamily: fonts['poppins-medium'], fontSize: 13, lineHeight: 18, color: colors.graphite },
   note: { fontFamily: fonts.poppins, fontSize: 14, lineHeight: 21, color: colors.graphite },

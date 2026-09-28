@@ -1,6 +1,5 @@
 import { Image } from 'expo-image';
 import * as Haptics from 'expo-haptics';
-import { router } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { Alert, Platform, StyleSheet, View } from 'react-native';
 import Animated, { FadeIn, FadeInUp, ZoomIn } from 'react-native-reanimated';
@@ -211,8 +210,8 @@ export function PremiumStep({ next }: StepProps) {
   return (
     <SafeAreaView style={{ flex: 1 }} edges={[]}>
       <StepLayout
-        primary={{ label: 'Guardar con Google', onPress: google, arrow: false }}
-        secondary={{ label: 'Continuar sin cuenta', onPress: start }}
+        primary={{ label: 'Iniciar con Google', onPress: google, arrow: false }}
+        secondary={{ label: 'Continuar sin cuenta', onPress: start, variant: 'secondary' }}
       >
         <View style={{ alignItems: 'center', gap: 6, paddingTop: 16 }}>
           <Image
@@ -250,15 +249,7 @@ export function DoneStep({ next }: StepProps) {
   const name = a.name.trim();
   return (
     <SafeAreaView style={{ flex: 1 }} edges={[]}>
-      <StepLayout
-        primary={{
-          label: 'Comenzar primer ejercicio',
-          onPress: () => {
-            next();
-            router.push('/dev/balance');
-          },
-        }}
-      >
+      <StepLayout primary={{ label: 'Ir a hoy', onPress: next, arrow: false }}>
         <View style={s.center}>
           <Mascot pose="celebrando" height={230} pop cheer label="Equis celebra" />
           <Animated.View entering={FadeIn.duration(dur.slow).delay(200)} style={{ alignItems: 'center', gap: 10 }}>

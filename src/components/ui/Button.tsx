@@ -1,9 +1,10 @@
 import * as Haptics from 'expo-haptics';
-import { Platform, Pressable, type PressableProps, StyleSheet, View } from 'react-native';
+import { Platform, type PressableProps, StyleSheet, View } from 'react-native';
 
 import { colors, fonts } from '@/theme/tokens';
 
 import { Icon } from './Icon';
+import { Tappable } from './Tappable';
 import { Text } from './Text';
 
 type Variant = 'primary' | 'secondary' | 'ghost';
@@ -22,7 +23,7 @@ type Props = Omit<PressableProps, 'children' | 'style'> & {
 export function Button({ label, variant = 'primary', arrow = false, disabled, onPress, ...rest }: Props) {
   const fg = disabled ? colors.graphite300 : variant === 'ghost' ? colors.sky700 : colors.ink;
   return (
-    <Pressable
+    <Tappable
       accessibilityRole="button"
       accessibilityLabel={label}
       accessibilityState={{ disabled: !!disabled }}
@@ -31,23 +32,20 @@ export function Button({ label, variant = 'primary', arrow = false, disabled, on
         if (Platform.OS !== 'web' && variant === 'primary') Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
         onPress?.(e);
       }}
-      style={({ pressed }) => [
+      style={[
         s.base,
         variant === 'primary' && (disabled ? s.primaryOff : s.primary),
-        variant === 'primary' && pressed && !disabled && s.primaryPressed,
         variant === 'secondary' && (disabled ? s.secondaryOff : s.secondary),
-        variant === 'secondary' && pressed && s.softPressed,
         variant === 'ghost' && s.ghost,
-        variant === 'ghost' && pressed && s.softPressed,
-        pressed && !disabled && { transform: [{ scale: 0.97 }] },
       ]}
+      pressedStyle={[variant === 'primary' ? s.primaryPressed : s.softPressed, s.pressed]}
       {...rest}
     >
       <View style={s.row}>
         <Text style={[s.label, { color: fg }]}>{label}</Text>
         {arrow ? <Icon name="arrow-right" size={20} color={fg} /> : null}
       </View>
-    </Pressable>
+    </Tappable>
   );
 }
 
@@ -60,6 +58,7 @@ const s = StyleSheet.create({
   secondaryOff: { backgroundColor: colors.graphite100, borderWidth: 2, borderColor: colors.graphite100 },
   ghost: { backgroundColor: 'transparent', minHeight: 48 },
   softPressed: { backgroundColor: colors.sky50 },
+  pressed: { transform: [{ scale: 0.97 }] },
   row: { flexDirection: 'row', alignItems: 'center', gap: 8 },
   label: { fontFamily: fonts['poppins-semibold'], fontSize: 18, lineHeight: 26 },
 });

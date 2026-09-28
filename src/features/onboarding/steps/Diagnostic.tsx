@@ -1,11 +1,12 @@
 import { Image } from 'expo-image';
 import * as Haptics from 'expo-haptics';
 import { useState } from 'react';
-import { Platform, Pressable, StyleSheet, View } from 'react-native';
+import { Platform, StyleSheet, View } from 'react-native';
 
 import { Icon, type IconName } from '@/components/ui/Icon';
 import { HandNote, Mascot } from '@/components/ui/Mascot';
 import { MathText } from '@/components/ui/MathText';
+import { Tappable } from '@/components/ui/Tappable';
 import { Text } from '@/components/ui/Text';
 import diagnostic from '@/content/diagnostic.json';
 import { colors, fonts } from '@/theme/tokens';
@@ -97,7 +98,7 @@ export function DiagnosticStep({ next }: StepProps) {
             {q.options.map((o, k) => {
               const on = sel === k;
               return (
-                <Pressable
+                <Tappable
                   key={o}
                   accessibilityRole="radio"
                   accessibilityState={{ checked: on }}
@@ -106,7 +107,8 @@ export function DiagnosticStep({ next }: StepProps) {
                     if (Platform.OS !== 'web') Haptics.selectionAsync();
                     setSel(k);
                   }}
-                  style={({ pressed }) => [s.opt, on && s.optOn, pressed && { transform: [{ scale: 0.985 }] }]}
+                  style={[s.opt, on && s.optOn]}
+                  pressedStyle={s.pressed}
                 >
                   <View style={[s.letter, on && s.letterOn]}>
                     <Text style={[s.letterText, on && { color: colors.white }]}>{'ABCD'[k]}</Text>
@@ -114,7 +116,7 @@ export function DiagnosticStep({ next }: StepProps) {
                   <View style={{ flex: 1 }}>
                     <MathText source={o} size={17} />
                   </View>
-                </Pressable>
+                </Tappable>
               );
             })}
           </View>
@@ -133,6 +135,7 @@ export function DiagnosticStep({ next }: StepProps) {
 }
 
 const s = StyleSheet.create({
+  pressed: { transform: [{ scale: 0.985 }] },
   overline: {
     fontFamily: fonts['poppins-semibold'],
     fontSize: 12,

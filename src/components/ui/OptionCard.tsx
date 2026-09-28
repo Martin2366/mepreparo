@@ -1,11 +1,12 @@
 import * as Haptics from 'expo-haptics';
 import { memo, type ReactNode } from 'react';
-import { Platform, Pressable, StyleSheet, View } from 'react-native';
+import { Platform, StyleSheet, View } from 'react-native';
 import Animated, { ZoomIn } from 'react-native-reanimated';
 
 import { colors, fonts } from '@/theme/tokens';
 
 import { Icon } from './Icon';
+import { Tappable } from './Tappable';
 import { Text } from './Text';
 
 type Props = {
@@ -38,7 +39,7 @@ export const OptionCard = memo(function OptionCard({
   disabled = false,
 }: Props) {
   return (
-    <Pressable
+    <Tappable
       accessibilityRole={kind === 'radio' ? 'radio' : 'checkbox'}
       accessibilityState={{ checked: selected, disabled }}
       accessibilityLabel={hint ? `${label}. ${hint}` : label}
@@ -47,13 +48,8 @@ export const OptionCard = memo(function OptionCard({
         if (Platform.OS !== 'web') Haptics.selectionAsync();
         onPress();
       }}
-      style={({ pressed }) => [
-        s.card,
-        selected && s.cardOn,
-        pressed && !selected && s.cardPressed,
-        pressed && { transform: [{ scale: 0.985 }] },
-        disabled && s.cardOff,
-      ]}
+      style={[s.card, selected && s.cardOn, disabled && s.cardOff]}
+      pressedStyle={[!selected && s.cardPressed, s.pressed]}
     >
       {leading}
       <View style={s.body}>
@@ -72,7 +68,7 @@ export const OptionCard = memo(function OptionCard({
           </Animated.View>
         ) : null}
       </View>
-    </Pressable>
+    </Tappable>
   );
 });
 
@@ -98,6 +94,7 @@ const s = StyleSheet.create({
   cardOn: { backgroundColor: colors.sky100, borderColor: colors.sky },
   cardPressed: { backgroundColor: colors.sky50 },
   cardOff: { opacity: 0.55 },
+  pressed: { transform: [{ scale: 0.985 }] },
   body: { flex: 1, gap: 2 },
   label: { fontFamily: fonts['poppins-medium'], fontSize: 17, lineHeight: 24, color: colors.ink },
   hint: { fontFamily: fonts.poppins, fontSize: 14, lineHeight: 20, color: colors.graphite },

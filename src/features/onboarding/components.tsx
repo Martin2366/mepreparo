@@ -11,7 +11,14 @@ import { Text } from '@/components/ui/Text';
 import { dur, easeOut } from '@/theme/motion';
 import { colors, fonts } from '@/theme/tokens';
 
-type Action = { label: string; onPress: () => void; disabled?: boolean; arrow?: boolean };
+type Action = {
+  label: string;
+  onPress: () => void;
+  disabled?: boolean;
+  arrow?: boolean;
+  /** Solo la secundaria: `secondary` la muestra como pastilla blanca en vez de enlace. */
+  variant?: 'secondary' | 'ghost';
+};
 
 /**
  * Estructura de cada paso: contenido arriba y la acción principal fija abajo (una sola por pantalla),
@@ -50,7 +57,9 @@ export function StepLayout({
           disabled={primary.disabled}
           arrow={primary.arrow ?? true}
         />
-        {secondary ? <Button variant="ghost" label={secondary.label} onPress={secondary.onPress} /> : null}
+        {secondary ? (
+          <Button variant={secondary.variant ?? 'ghost'} label={secondary.label} onPress={secondary.onPress} />
+        ) : null}
       </View>
     </View>
   );
@@ -213,7 +222,7 @@ export function Donut({
 const s = StyleSheet.create({
   scroll: { flexGrow: 1, paddingHorizontal: 20, paddingTop: 8, paddingBottom: 24 },
   footer: {
-    gap: 4,
+    gap: 10,
     paddingHorizontal: 20,
     paddingTop: 12,
     borderTopWidth: 1,
