@@ -1,0 +1,21 @@
+{
+  "_nota": "Logros (PRD §11). Reglas declarativas evaluadas en engine/badges.ts. premium = logro de maestría (solo Premium).",
+  "badges": [
+    { "id": "primera-leccion", "title": "Primer paso", "description": "Completaste tu primera lección.", "icon": "book", "rule": { "type": "lessons", "min": 1 } },
+    { "id": "racha-3", "title": "Tres seguidos", "description": "Estudiaste 3 días seguidos.", "icon": "flame", "rule": { "type": "streak", "min": 3 } },
+    { "id": "racha-7", "title": "Una semana", "description": "Una semana completa de racha.", "icon": "flame", "rule": { "type": "streak", "min": 7 } },
+    { "id": "racha-30", "title": "Constancia", "description": "30 días de racha. Eso es un hábito.", "icon": "flame", "rule": { "type": "streak", "min": 30 } },
+    { "id": "aja", "title": "¡Ajá!", "description": "Acertaste justo después de equivocarte: lo entendiste.", "icon": "sparkles", "rule": { "type": "ahas", "min": 1 } },
+    { "id": "ejercicios-100", "title": "Cien ejercicios", "description": "Respondiste 100 ejercicios.", "icon": "target", "rule": { "type": "attempts", "min": 100 } },
+    { "id": "ejercicios-500", "title": "Quinientos", "description": "500 ejercicios respondidos.", "icon": "target", "rule": { "type": "attempts", "min": 500 } },
+    { "id": "primer-ensayo", "title": "Primer ensayo", "description": "Terminaste tu primer ensayo.", "icon": "hourglass", "rule": { "type": "exams", "min": 1 } },
+    { "id": "ensayo-completo", "title": "Maratón PAES", "description": "Terminaste un ensayo completo de 65 preguntas.", "icon": "trophy", "rule": { "type": "fullExams", "min": 1 } },
+    { "id": "repaso-10", "title": "Borrón y cuenta nueva", "description": "Corregiste 10 errores de tu cuaderno.", "icon": "notebook-pen", "rule": { "type": "reviewCorrect", "min": 10 } },
+    { "id": "cuatro-ejes", "title": "Explorador", "description": "Practicaste en los 4 ejes de M1.", "icon": "map", "rule": { "type": "axesPracticed", "min": 4 } },
+    { "id": "unidad-dominada", "title": "Dominio", "description": "Dominaste tu primera unidad.", "icon": "star", "rule": { "type": "masteredUnits", "min": 1 } },
+    { "id": "nivel-5", "title": "Domador de fracciones", "description": "Llegaste al nivel 5.", "icon": "graduation-cap", "rule": { "type": "level", "min": 5 } },
+    { "id": "maestria-eje", "title": "Maestría de eje", "description": "Dominaste todas las unidades de un eje.", "icon": "trophy", "premium": true, "rule": { "type": "masteredAxes", "min": 1 } },
+    { "id": "maestria-800", "title": "Sobre 800", "description": "Sacaste 800 o más en un ensayo.", "icon": "star", "premium": true, "rule": { "type": "bestExamScore", "min": 800 } },
+    { "id": "maestria-racha-100", "title": "Cien días", "description": "100 días de racha.", "icon": "flame", "premium": true, "rule": { "type": "streak", "min": 100 } }
+  ]
+}

@@ -17,6 +17,7 @@ import { useEffect } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
+import { BadgeWatcher } from '@/features/progress/badges';
 import { initSentry, Sentry } from '@/lib/sentry';
 import { colors } from '@/theme/tokens';
 
@@ -46,6 +47,7 @@ function RootLayout() {
       <SafeAreaProvider>
         <StatusBar style="dark" />
         <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: colors.paper } }} />
+        <BadgeWatcher />
       </SafeAreaProvider>
     </GestureHandlerRootView>
   );

@@ -2,13 +2,15 @@ import { router } from 'expo-router';
 import { StyleSheet, View } from 'react-native';
 
 import { Card } from '@/components/ui/Card';
-import { Chip } from '@/components/ui/Chip';
+import { Chip, PremiumTag } from '@/components/ui/Chip';
 import { Icon } from '@/components/ui/Icon';
 import { IconButton } from '@/components/ui/IconButton';
 import { ProgressBar } from '@/components/ui/ProgressBar';
+import { Tappable } from '@/components/ui/Tappable';
 import { Text } from '@/components/ui/Text';
 import { SKILL_LABEL, SKILLS } from '@/content/schema';
-import { addDays, weekStart } from '@/engine/dates';
+import { BADGES } from '@/engine/badges';
+import { addDays, dayKey, weekStart } from '@/engine/dates';
 import { pct } from '@/engine/mastery';
 import { levers, type ScoreKey, weightedScore } from '@/engine/weighted';
 import { careerById, institutionById, isGeneric } from '@/features/onboarding/admission';
@@ -16,6 +18,9 @@ import { formatScore } from '@/features/onboarding/model';
 import { Section, TabScreen } from '@/features/shell/TabScreen';
 import { colors, fonts } from '@/theme/tokens';
 
+import { useExams } from '@/features/exams/store';
+
+import { BadgeMedal } from './badges';
 import { useDashboard } from './derived';
 import { useProgress } from './store';
 
@@ -104,12 +109,113 @@ export function ProgressTab() {
         </Card>
       </Section>
 
+      <WeekSummary />
+
+      <ExamHistory />
+
+      <Section title="Logros">
+        <Card style={{ gap: 12 }}>
+          <View style={s.badgeGrid}>
+            {BADGES.map((b) => {
+              const earned = b.id in d.progress.badges;
+              return (
+                <View key={b.id} style={s.badgeCell} accessible accessibilityLabel={`${b.title}: ${earned ? 'ganado' : b.description}`}>
+                  <BadgeMedal badge={b} earned={earned} />
+                  <Text style={[s.badgeTitle, !earned && { color: colors.graphite }]} numberOfLines={2}>
+                    {b.title}
+                  </Text>
+                  {b.premium ? <PremiumTag /> : null}
+                </View>
+              );
+            })}
+          </View>
+          <Text style={s.caption}>
+            {Object.keys(d.progress.badges).length} de {BADGES.length} logros. Los que ganas son tuyos para siempre.
+          </Text>
+        </Card>
+      </Section>
+
       <Card onPress={() => router.push('/cuaderno')} style={s.row} accessibilityLabel="Abrir cuaderno de errores">
         <Icon name="notebook-pen" size={22} color={colors.sky700} />
         <Text style={[s.strong, { flex: 1 }]}>Cuaderno de errores</Text>
         <Icon name="chevron-right" size={20} color={colors.graphite} />
       </Card>
     </TabScreen>
+  );
+}
+
+/** Resumen semanal (PRD §13): esta semana frente a la anterior. */
+function WeekSummary() {
+  const p = useProgress();
+  const today = dayKey(new Date());
+  const start = weekStart(today);
+  const days = (from: string, n: number) => Array.from({ length: n }, (_, i) => addDays(from, i));
+  const thisWeek = days(start, 7).filter((d) => d <= today);
+  const lastWeek = days(addDays(start, -7), 7);
+  const sum = (ds: string[], f: (d: string) => number) => ds.reduce((acc, d) => acc + f(d), 0);
+  const xp = sum(thisWeek, (d) => p.xpByDay[d] ?? 0);
+  const xpLast = sum(lastWeek, (d) => p.xpByDay[d] ?? 0);
+  const correct = sum(thisWeek, (d) => p.dayStats[d]?.correct ?? 0);
+  const lessons = sum(thisWeek, (d) => p.dayStats[d]?.lessons ?? 0);
+  const active = thisWeek.filter((d) => p.activeDays.includes(d)).length;
+  return (
+    <Section title="Esta semana">
+      <Card style={{ gap: 10 }}>
+        <View style={s.weekRow}>
+          <Stat value={String(active)} label={active === 1 ? 'día activo' : 'días activos'} />
+          <Stat value={String(lessons)} label={lessons === 1 ? 'lección' : 'lecciones'} />
+          <Stat value={String(correct)} label="aciertos" />
+          <Stat value={String(xp)} label="XP" />
+        </View>
+        <Text style={s.caption}>
+          {xpLast === 0
+            ? 'Tu primera semana: cada día cuenta.'
+            : xp >= xpLast
+              ? `${xp - xpLast} XP más que la semana pasada. Vas bien.`
+              : `La semana pasada hiciste ${xpLast} XP. Un poco cada día y lo alcanzas.`}
+        </Text>
+      </Card>
+    </Section>
+  );
+}
+
+function Stat({ value, label }: { value: string; label: string }) {
+  return (
+    <View style={{ flex: 1, alignItems: 'center' }}>
+      <Text style={s.big}>{value}</Text>
+      <Text style={s.caption}>{label}</Text>
+    </View>
+  );
+}
+
+/** Historial de ensayos con su evolución. */
+function ExamHistory() {
+  const history = useExams((st) => st.history);
+  if (history.length === 0) return null;
+  const last = history.slice(0, 5);
+  return (
+    <Section title="Tus ensayos">
+      <Card style={{ gap: 10 }}>
+        {last.map((r) => (
+          <Tappable
+            key={r.id}
+            accessibilityRole="button"
+            accessibilityLabel={`${r.spec.title}: ${r.result.score} puntos`}
+            onPress={() => router.push({ pathname: '/ensayo/resultado/[id]', params: { id: r.id } })}
+            style={s.historyRow}
+          >
+            <View style={{ flex: 1 }}>
+              <Text style={s.strong}>{r.spec.title}</Text>
+              <Text style={s.caption}>
+                {r.finishedAt.slice(8, 10)}/{r.finishedAt.slice(5, 7)} · {r.result.correct}/{r.result.total} correctas
+              </Text>
+            </View>
+            <Text style={s.big}>{r.result.score}</Text>
+            <Icon name="chevron-right" size={18} color={colors.graphite} />
+          </Tappable>
+        ))}
+      </Card>
+    </Section>
   );
 }
 
@@ -275,4 +381,9 @@ const s = StyleSheet.create({
   calRow: { flexDirection: 'row', justifyContent: 'space-between' },
   calCell: { width: 32, textAlign: 'center' },
   dot: { height: 32, borderRadius: 16, backgroundColor: colors.graphite100 },
+  weekRow: { flexDirection: 'row' },
+  historyRow: { flexDirection: 'row', alignItems: 'center', gap: 10, minHeight: 48 },
+  badgeGrid: { flexDirection: 'row', flexWrap: 'wrap', rowGap: 16 },
+  badgeCell: { width: '33.33%', alignItems: 'center', gap: 6, paddingHorizontal: 4 },
+  badgeTitle: { fontFamily: fonts['poppins-medium'], fontSize: 12, lineHeight: 16, color: colors.ink, textAlign: 'center' },
 });

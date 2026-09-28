@@ -23,6 +23,7 @@ import {
 import type { Outcome } from '@/engine/xp';
 import { Graph, type GraphValues } from '@/features/interactives/graph/Graph';
 import { useAllowance } from '@/features/progress/allowance';
+import { useProgress } from '@/features/progress/store';
 import { dur, easeOut } from '@/theme/motion';
 import { colors, fonts } from '@/theme/tokens';
 
@@ -138,6 +139,7 @@ export function StepView({ step, onGraded, onContinue, continueLabel = 'Continua
     if (grade.correct) {
       setReveal('correct');
       setAha(isAha);
+      if (isAha) useProgress.getState().countAha();
       if (Platform.OS !== 'web') Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
     } else {
       setReveal('wrong');

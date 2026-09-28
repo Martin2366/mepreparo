@@ -61,6 +61,16 @@ type ProgressState = {
   seeded: boolean;
   /** Puntajes que el estudiante ingresa en el simulador (NEM, Ranking y pruebas que no son M1). */
   simScores: Scores;
+  /** Contadores para logros. */
+  counters: { ahas: number; reviewCorrect: number };
+  /** Logros ganados: id → fecha. */
+  badges: Record<string, DayKey>;
+  /** Logros ganados que el estudiante aún no ha visto celebrar. */
+  unseenBadges: string[];
+  /** Mejor puntaje del reto relámpago. */
+  flashBest: number;
+  /** Fórmulas guardadas por el estudiante. */
+  savedFormulas: string[];
 
   seedFromOnboarding: (xp: number) => void;
   answer: (input: AnswerInput) => number;
@@ -71,6 +81,12 @@ type ProgressState = {
   use: (feature: Feature) => void;
   setDifficulty: (unitId: string, d: Difficulty) => void;
   setSimScore: (key: ScoreKey, value: number) => void;
+  countAha: () => void;
+  earnBadges: (ids: string[]) => void;
+  markBadgeSeen: (id: string) => void;
+  addXp: (xp: number) => void;
+  setFlashBest: (score: number) => void;
+  toggleFormula: (id: string) => void;
   reset: () => void;
 };
 
@@ -92,7 +108,21 @@ function withActive(days: DayKey[], day: DayKey, stats: DayStats): DayKey[] {
 
 type Data = Omit<
   ProgressState,
-  'seedFromOnboarding' | 'answer' | 'setLessonStep' | 'completeLesson' | 'recordExam' | 'use' | 'setDifficulty' | 'setSimScore' | 'reset'
+  | 'seedFromOnboarding'
+  | 'answer'
+  | 'setLessonStep'
+  | 'completeLesson'
+  | 'recordExam'
+  | 'use'
+  | 'setDifficulty'
+  | 'setSimScore'
+  | 'countAha'
+  | 'earnBadges'
+  | 'markBadgeSeen'
+  | 'addXp'
+  | 'setFlashBest'
+  | 'toggleFormula'
+  | 'reset'
 >;
 
 function log(input: AnswerInput, today: DayKey, xp: number) {
@@ -141,7 +171,9 @@ function applyAnswer(s: Data, input: AnswerInput, today: DayKey, xp: number): Pa
       delete notebook[input.ref];
     }
   }
+  const counters = input.kind === 'review' && correct ? { ...s.counters, reviewCorrect: s.counters.reviewCorrect + 1 } : s.counters;
   return {
+    counters,
     attempts: s.attempts + 1,
     xp: s.xp + xp,
     xpByDay: recent({ ...s.xpByDay, [today]: (s.xpByDay[today] ?? 0) + xp }, today),
@@ -170,6 +202,11 @@ const EMPTY = {
   attempts: 0,
   seeded: false,
   simScores: {},
+  counters: { ahas: 0, reviewCorrect: 0 },
+  badges: {},
+  unseenBadges: [],
+  flashBest: 0,
+  savedFormulas: [],
 } satisfies Partial<ProgressState>;
 
 /**
@@ -272,10 +309,35 @@ export const useProgress = create<ProgressState>()(
       setSimScore: (key, value) =>
         set((s) => ({ simScores: { ...s.simScores, [key]: Math.max(100, Math.min(1000, Math.round(value))) } })),
 
+      countAha: () => set((s) => ({ counters: { ...s.counters, ahas: s.counters.ahas + 1 } })),
+
+      earnBadges: (ids) => {
+        const today = dayKey(new Date());
+        set((s) => ({
+          badges: { ...s.badges, ...Object.fromEntries(ids.map((id) => [id, s.badges[id] ?? today])) },
+          unseenBadges: [...s.unseenBadges, ...ids.filter((id) => !(id in s.badges))],
+        }));
+      },
+
+      markBadgeSeen: (id) => set((s) => ({ unseenBadges: s.unseenBadges.filter((x) => x !== id) })),
+
+      addXp: (xp) => {
+        if (xp <= 0) return;
+        const today = dayKey(new Date());
+        set((s) => ({ xp: s.xp + xp, xpByDay: { ...s.xpByDay, [today]: (s.xpByDay[today] ?? 0) + xp } }));
+      },
+
+      setFlashBest: (score) => set((s) => ({ flashBest: Math.max(s.flashBest, score) })),
+
+      toggleFormula: (id) =>
+        set((s) => ({ savedFormulas: s.savedFormulas.includes(id) ? s.savedFormulas.filter((x) => x !== id) : [...s.savedFormulas, id] })),
+
       reset: () => set({ ...EMPTY }),
     }),
     {
       name: 'mp.progress.v1',
+      // Estados guardados antes de agregar campos nuevos: se completan con los valores vacíos.
+      merge: (persisted, current) => ({ ...current, ...EMPTY, ...(persisted as object) }),
       storage: createJSONStorage(() => kv),
       partialize: (s) => {
         const {
@@ -287,6 +349,12 @@ export const useProgress = create<ProgressState>()(
           use: _e,
           setDifficulty: _f,
           setSimScore: _h,
+          countAha: _j,
+          earnBadges: _k,
+          markBadgeSeen: _o,
+          addXp: _l,
+          setFlashBest: _m,
+          toggleFormula: _n,
           reset: _g,
           ...data
         } = s;
