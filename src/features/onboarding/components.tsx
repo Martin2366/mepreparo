@@ -44,7 +44,12 @@ export function StepLayout({
         <View style={{ flex: 1 }}>{children}</View>
       )}
       <View style={[s.footer, { paddingBottom: Math.max(insets.bottom, 12) + 4 }]}>
-        <Button label={primary.label} onPress={primary.onPress} disabled={primary.disabled} arrow={primary.arrow ?? true} />
+        <Button
+          label={primary.label}
+          onPress={primary.onPress}
+          disabled={primary.disabled}
+          arrow={primary.arrow ?? true}
+        />
         {secondary ? <Button variant="ghost" label={secondary.label} onPress={secondary.onPress} /> : null}
       </View>
     </View>
@@ -80,7 +85,11 @@ const TILES = {
 export function TopicTile({ icon, size = 44 }: { icon: string; size?: number }) {
   if (icon in TILES) {
     return (
-      <Image source={TILES[icon as keyof typeof TILES]} style={{ width: size, height: size, borderRadius: 12 }} contentFit="cover" />
+      <Image
+        source={TILES[icon as keyof typeof TILES]}
+        style={{ width: size, height: size, borderRadius: 12 }}
+        contentFit="cover"
+      />
     );
   }
   return (
@@ -153,7 +162,17 @@ export function CountUp({
 export type DonutSlice = { key: string; value: number; color: string };
 
 /** Dona de ponderaciones: se dibuja en sentido horario desde arriba, en ~0,9 s. */
-export function Donut({ slices, size = 200, stroke = 30, children }: { slices: DonutSlice[]; size?: number; stroke?: number; children?: ReactNode }) {
+export function Donut({
+  slices,
+  size = 200,
+  stroke = 30,
+  children,
+}: {
+  slices: DonutSlice[];
+  size?: number;
+  stroke?: number;
+  children?: ReactNode;
+}) {
   const p = useProgress(900, 120);
   const total = slices.reduce((sum, x) => sum + x.value, 0) || 1;
   const r = (size - stroke) / 2;
@@ -204,7 +223,13 @@ const s = StyleSheet.create({
   title: { fontFamily: fonts['poppins-bold'], fontSize: 28, lineHeight: 36, color: colors.ink },
   subtitle: { fontFamily: fonts.poppins, fontSize: 15, lineHeight: 22, color: colors.graphite },
   section: { backgroundColor: colors.paper, paddingTop: 16, paddingBottom: 8 },
-  sectionText: { fontFamily: fonts['poppins-semibold'], fontSize: 12, lineHeight: 16, letterSpacing: 1.6, color: colors.graphite },
+  sectionText: {
+    fontFamily: fonts['poppins-semibold'],
+    fontSize: 12,
+    lineHeight: 16,
+    letterSpacing: 1.6,
+    color: colors.graphite,
+  },
   tile: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -213,6 +238,14 @@ const s = StyleSheet.create({
     borderColor: colors.sky200,
     backgroundColor: colors.white,
   },
-  callout: { flexDirection: 'row', alignItems: 'flex-start', gap: 12, borderRadius: 20, backgroundColor: colors.sky50, paddingHorizontal: 16, paddingVertical: 12 },
+  callout: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: 12,
+    borderRadius: 20,
+    backgroundColor: colors.sky50,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+  },
   calloutText: { flex: 1, fontFamily: fonts.poppins, fontSize: 16, lineHeight: 24, color: colors.ink },
 });

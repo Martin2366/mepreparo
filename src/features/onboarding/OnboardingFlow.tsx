@@ -11,9 +11,12 @@ import { ProgressBar } from '@/components/ui/ProgressBar';
 import { Text } from '@/components/ui/Text';
 
 import { careerById, institutionById } from './admission';
-import { progressOf, type StepId, visibleSteps } from './model';
+import { FULLSCREEN_STEPS, progressOf, type StepId, visibleSteps } from './model';
 import { useOnboarding } from './store';
 import { CareerStep } from './steps/Career';
+import { DiagInviteStep, DiagnosticStep, QUESTIONS } from './steps/Diagnostic';
+import { MinutesStep, ReminderStep } from './steps/Habits';
+import { DoneStep, GeneratingStep, PlanStep, PremiumStep } from './steps/Plan';
 import { Cheer } from './steps/Cheer';
 import { InstitutionStep } from './steps/Institution';
 import { Name } from './steps/Name';
@@ -38,6 +41,14 @@ const SCREENS: Record<StepId, ComponentType<StepProps>> = {
   tests: Tests,
   topics: Topics,
   blockers: Blockers,
+  minutes: MinutesStep,
+  reminder: ReminderStep,
+  diagInvite: DiagInviteStep,
+  diagnostic: DiagnosticStep,
+  generating: GeneratingStep,
+  plan: PlanStep,
+  premium: PremiumStep,
+  done: DoneStep,
 };
 
 // Transición calma: la pantalla nueva entra deslizándose 24 dp y apareciendo. Sin animación de salida:
@@ -81,8 +92,17 @@ export function OnboardingFlow() {
   }, [goTo, complete]);
 
   const back = useCallback(() => {
+    const st = useOnboarding.getState();
+    // En el diagnóstico, atrás vuelve a la pregunta anterior.
+    if (st.step === 'diagnostic' && st.answers.diag && st.answers.diag.qi > 0) {
+      const d = st.answers.diag;
+      st.update({ diag: { ...d, qi: d.qi - 1, answers: d.answers.slice(0, d.qi - 1) } });
+      return true;
+    }
+    // Desde la pantalla generando o las de cierre no se retrocede (el plan ya se armó).
+    if (st.step === 'generating' || st.step === 'done') return true;
     const list = currentSteps();
-    const i = list.indexOf(useOnboarding.getState().step);
+    const i = list.indexOf(st.step);
     if (i <= 0) return false;
     setDir(-1);
     goTo(list[i - 1]!);
@@ -101,7 +121,15 @@ export function OnboardingFlow() {
       <GridBackground />
       <SafeAreaView className="flex-1" edges={['top']}>
         <KeyboardAvoidingView className="flex-1" behavior="padding">
-          {active !== 'welcome' ? <Header onBack={back} progress={progressOf(active, steps)} /> : null}
+          {!FULLSCREEN_STEPS.includes(active) ? (
+            <Header
+              onBack={back}
+              progress={
+                active === 'diagnostic' ? ((answers.diag?.qi ?? 0) + 1) / QUESTIONS.length : progressOf(active, steps)
+              }
+              right={active === 'diagnostic' ? `${(answers.diag?.qi ?? 0) + 1}/${QUESTIONS.length}` : undefined}
+            />
+          ) : null}
           <View className="flex-1">
             <Animated.View
               key={active}
@@ -117,7 +145,7 @@ export function OnboardingFlow() {
   );
 }
 
-function Header({ onBack, progress }: { onBack: () => void; progress: number }) {
+function Header({ onBack, progress, right }: { onBack: () => void; progress: number; right?: string }) {
   return (
     <View className="gap-3 px-5 pb-3 pt-1">
       <View className="flex-row items-center">
@@ -130,11 +158,18 @@ function Header({ onBack, progress }: { onBack: () => void; progress: number }) 
         >
           <Icon name="arrow-left" size={24} />
         </Pressable>
-        <View className="flex-1 flex-row items-center justify-center gap-2 pr-12">
-          <Image source={require('@/assets/images/logo/mepreparo-icon.png')} style={{ width: 28, height: 27 }} contentFit="contain" />
+        <View className={`flex-1 flex-row items-center justify-center gap-2 ${right ? '' : 'pr-12'}`}>
+          <Image
+            source={require('@/assets/images/logo/mepreparo-icon.png')}
+            style={{ width: 28, height: 27 }}
+            contentFit="contain"
+          />
           <Text className="font-poppins-bold text-lead text-ink">MePreparo</Text>
-          <Text className="rounded-full bg-sky-100 px-2.5 py-0.5 font-poppins-semibold text-caption text-sky-700">PAES</Text>
+          <Text className="rounded-full bg-sky-100 px-2.5 py-0.5 font-poppins-semibold text-caption text-sky-700">
+            PAES
+          </Text>
         </View>
+        {right ? <Text className="w-12 text-right font-poppins-semibold text-small text-graphite">{right}</Text> : null}
       </View>
       <ProgressBar value={progress} />
     </View>

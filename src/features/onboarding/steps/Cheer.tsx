@@ -25,33 +25,39 @@ export function Cheer({ next }: StepProps) {
       <View className="flex-1 justify-center gap-6">
         <Animated.View entering={FadeInUp.duration(dur.slow).easing(easeOut)}>
           <View className="gap-2">
-          <Text accessibilityRole="header" className="font-poppins-bold text-h2 text-ink">
-            {a.name ? `¡Vamos por tu meta, ${a.name}!` : '¡Vamos por tu meta!'}
-          </Text>
-          {career ? (
-            <View className="gap-0.5">
-              <Text className="font-poppins-semibold text-lead text-sky-700">{career.name}</Text>
-              <Text variant="small">
-                {where}
-                {a.target ? ` · meta ${formatScore(a.target)} puntos` : ''}
-              </Text>
-            </View>
-          ) : (
-            <View className="gap-0.5">
-              <Text className="font-poppins-semibold text-lead text-sky-700">Carrera por definir</Text>
-              <Text variant="small">Puedes elegirla más adelante.</Text>
-            </View>
-          )}
+            <Text accessibilityRole="header" className="font-poppins-bold text-h2 text-ink">
+              {a.name ? `¡Vamos por tu meta, ${a.name}!` : '¡Vamos por tu meta!'}
+            </Text>
+            {career ? (
+              <View className="gap-0.5">
+                <Text className="font-poppins-semibold text-lead text-sky-700">{career.name}</Text>
+                <Text variant="small">
+                  {where}
+                  {a.target ? ` · meta ${formatScore(a.target)} puntos` : ''}
+                </Text>
+              </View>
+            ) : (
+              <View className="gap-0.5">
+                <Text className="font-poppins-semibold text-lead text-sky-700">Carrera por definir</Text>
+                <Text variant="small">Puedes elegirla más adelante.</Text>
+              </View>
+            )}
           </View>
         </Animated.View>
 
         <View className="items-center">
           <View>
             <Mascot pose="celebrando" height={210} pop cheer label="Equis celebra" />
-            <Animated.View entering={ZoomIn.springify().delay(400)} style={{ position: 'absolute', top: 6, right: -18 }}>
+            <Animated.View
+              entering={ZoomIn.springify().delay(400)}
+              style={{ position: 'absolute', top: 6, right: -18 }}
+            >
               <Icon name="sparkle" size={30} color={colors.coral} />
             </Animated.View>
-            <Animated.View entering={ZoomIn.springify().delay(650)} style={{ position: 'absolute', top: 60, left: -22 }}>
+            <Animated.View
+              entering={ZoomIn.springify().delay(650)}
+              style={{ position: 'absolute', top: 60, left: -22 }}
+            >
               <Icon name="sparkle" size={20} color={colors.coral} />
             </Animated.View>
           </View>

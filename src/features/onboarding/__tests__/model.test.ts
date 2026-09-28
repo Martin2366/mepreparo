@@ -20,26 +20,57 @@ describe('visibleSteps', () => {
     expect(steps).not.toContain('weights');
     expect(steps).not.toContain('target');
     expect(steps).not.toContain('session');
-    expect(steps.at(-1)).toBe('blockers');
+    expect(steps.at(-1)).toBe('done');
   });
 
   it('con carrera PAES muestra ponderaciones, sesión y meta', () => {
-    const steps = visibleSteps({ ...EMPTY_ANSWERS, careerId: '11001', year: 'this' }, { career: { w: ING }, institutionPaes: true });
+    const steps = visibleSteps(
+      { ...EMPTY_ANSWERS, careerId: '11001', year: 'this' },
+      { career: { w: ING }, institutionPaes: true },
+    );
     expect(steps).toEqual([
-      'welcome', 'name', 'institution', 'career', 'weights', 'year', 'session', 'target', 'cheer', 'tests', 'topics', 'blockers',
+      'welcome',
+      'name',
+      'institution',
+      'career',
+      'weights',
+      'year',
+      'session',
+      'target',
+      'cheer',
+      'tests',
+      'topics',
+      'blockers',
+      'minutes',
+      'reminder',
+      'diagInvite',
+      'diagnostic',
+      'generating',
+      'plan',
+      'premium',
+      'done',
     ]);
   });
 
   it('en una institución sin PAES no pide puntaje meta', () => {
-    const steps = visibleSteps({ ...EMPTY_ANSWERS, careerId: 'o1-3', year: 'next' }, { career: {}, institutionPaes: false });
+    const steps = visibleSteps(
+      { ...EMPTY_ANSWERS, careerId: 'o1-3', year: 'next' },
+      { career: {}, institutionPaes: false },
+    );
     expect(steps).toContain('weights');
     expect(steps).not.toContain('target');
+  });
+
+  it('saltar el diagnóstico quita la pantalla de preguntas', () => {
+    const steps = visibleSteps({ ...EMPTY_ANSWERS, diag: { qi: 0, answers: [], done: false, skipped: true } });
+    expect(steps).not.toContain('diagnostic');
+    expect(steps).toContain('generating');
   });
 
   it('la barra de progreso avanza de 0 a 1', () => {
     const steps = visibleSteps(EMPTY_ANSWERS);
     expect(progressOf('welcome', steps)).toBe(0);
-    expect(progressOf('blockers', steps)).toBe(1);
+    expect(progressOf('done', steps)).toBe(1);
     expect(progressOf('name', steps)).toBeGreaterThan(0);
   });
 });

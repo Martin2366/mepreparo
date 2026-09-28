@@ -18,7 +18,15 @@ const POPULAR = ['UC', 'UCH', 'USACH', 'UDEC', 'USM', 'UV', 'INACAP', 'DUOC'];
 
 export const shortOf = (i: Institution): string | null => i.short ?? (i.search ? i.search.split(' ')[0]! : null);
 
-const Row = memo(function Row({ item, selected, onChoose }: { item: Institution; selected: boolean; onChoose: (id: string) => void }) {
+const Row = memo(function Row({
+  item,
+  selected,
+  onChoose,
+}: {
+  item: Institution;
+  selected: boolean;
+  onChoose: (id: string) => void;
+}) {
   return (
     <View style={{ paddingBottom: 8 }}>
       <OptionCard
@@ -38,7 +46,10 @@ export function InstitutionStep({ next }: StepProps) {
   const deferred = useDeferredValue(query);
   const sections = useMemo(() => institutionSections(deferred), [deferred]);
   const popular = useMemo(
-    () => POPULAR.map((s) => allInstitutions().find((i) => i.search.split(' ').includes(s))).filter((i): i is Institution => !!i),
+    () =>
+      POPULAR.map((s) => allInstitutions().find((i) => i.search.split(' ').includes(s))).filter(
+        (i): i is Institution => !!i,
+      ),
     [],
   );
 
@@ -53,10 +64,19 @@ export function InstitutionStep({ next }: StepProps) {
     <StepLayout
       scroll={false}
       primary={{ label, onPress: next, disabled: !current }}
-      secondary={{ label: 'Aún no lo sé', onPress: () => (update({ institutionId: null, careerId: undefined, target: undefined, tests: undefined }), next()) }}
+      secondary={{
+        label: 'Aún no lo sé',
+        onPress: () => (
+          update({ institutionId: null, careerId: undefined, target: undefined, tests: undefined }),
+          next()
+        ),
+      }}
     >
       <View style={s.head}>
-        <StepTitle title="¿Dónde te gustaría estudiar?" subtitle="Universidades, institutos y escuelas de todo Chile." />
+        <StepTitle
+          title="¿Dónde te gustaría estudiar?"
+          subtitle="Universidades, institutos y escuelas de todo Chile."
+        />
         <SearchField value={query} onChangeText={setQuery} placeholder="Busca por nombre o sigla" />
       </View>
 
@@ -77,7 +97,11 @@ export function InstitutionStep({ next }: StepProps) {
           !query ? (
             <View style={{ paddingTop: 6 }}>
               <SectionLabel>Más buscadas</SectionLabel>
-              <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 8, paddingRight: 20 }}>
+              <ScrollView
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                contentContainerStyle={{ gap: 8, paddingRight: 20 }}
+              >
                 {popular.map((i) => {
                   const on = i.id === selected;
                   return (
@@ -102,7 +126,9 @@ export function InstitutionStep({ next }: StepProps) {
         ListEmptyComponent={
           <View style={{ alignItems: 'center', gap: 12, paddingVertical: 40 }}>
             <Mascot pose="pensando" height={110} float={false} />
-            <Text className="text-center text-graphite">No encontramos «{query}». Prueba con la sigla o con otra palabra.</Text>
+            <Text className="text-center text-graphite">
+              No encontramos «{query}». Prueba con la sigla o con otra palabra.
+            </Text>
           </View>
         }
       />

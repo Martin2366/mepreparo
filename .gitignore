@@ -57,3 +57,10 @@ example
 assets/brand/design-system/*.zip
 assets/brand/design-system/MePreparo App (1).html
 scripts/admission/data/
+
+# Export de Claude Design: solo se versiona el HTML y las capturas (el resto duplica el design system)
+docs/referencias/onboarding/_ds/
+docs/referencias/onboarding/assets/
+docs/referencias/onboarding/uploads/
+docs/referencias/onboarding/support.js
+docs/referencias/onboarding/.thumbnail

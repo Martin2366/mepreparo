@@ -58,6 +58,15 @@ export type Answers = {
   topics: string[];
   /** Un freno por grupo (matemática, lectora…). */
   blockers: Partial<Record<TopicGroup, string>>;
+  /** Minutos diarios (meta). */
+  minutes?: number;
+  reminder?: { on: boolean; time: string };
+  /** Diagnóstico: respuesta por pregunta (true/false; null = «No lo sé»). */
+  diag?: { qi: number; answers: (boolean | null)[]; done: boolean; skipped: boolean };
+  /** XP ganados en el onboarding (recompensa de «Tu plan»; se entrega una sola vez). */
+  xp?: number;
+  /** Prueba Premium de 7 días (la gestiona la app: sin tarjeta, sin cobro automático). */
+  trialStartedAt?: string;
 };
 
 export const EMPTY_ANSWERS: Answers = { name: '', topics: [], blockers: {} };
@@ -74,7 +83,15 @@ export type StepId =
   | 'cheer'
   | 'tests'
   | 'topics'
-  | 'blockers';
+  | 'blockers'
+  | 'minutes'
+  | 'reminder'
+  | 'diagInvite'
+  | 'diagnostic'
+  | 'generating'
+  | 'plan'
+  | 'premium'
+  | 'done';
 
 /** Contexto derivado de los datos (carrera elegida) que decide qué pantallas aplican. */
 export type FlowContext = { career?: Pick<Career, 'w'> | Pick<GenericCareer, 'w'> | null; institutionPaes?: boolean };
@@ -90,7 +107,9 @@ export function visibleSteps(a: Answers, ctx: FlowContext = {}): StepId[] {
   steps.push('year');
   if (a.year === 'this' || a.year === 'next') steps.push('session');
   if (hasCareer && ctx.institutionPaes !== false && ctx.career?.w) steps.push('target');
-  steps.push('cheer', 'tests', 'topics', 'blockers');
+  steps.push('cheer', 'tests', 'topics', 'blockers', 'minutes', 'reminder', 'diagInvite');
+  if (!a.diag?.skipped) steps.push('diagnostic');
+  steps.push('generating', 'plan', 'premium', 'done');
   return steps;
 }
 
@@ -176,3 +195,29 @@ export function daysUntil(date: string, today: Date): number {
 export function formatScore(n: number, decimals = 1): string {
   return n.toLocaleString('es-CL', { minimumFractionDigits: decimals, maximumFractionDigits: 2 });
 }
+
+/** Pantallas sin encabezado (momentos de cierre, como en el diseño). */
+export const FULLSCREEN_STEPS: StepId[] = ['welcome', 'generating', 'plan', 'premium', 'done'];
+
+/**
+ * Puntaje M1 estimado (orientativo). Con diagnóstico: 420 + aciertos/total × 480, redondeado a 10.
+ * Sin diagnóstico: 600 como punto de partida neutro.
+ */
+export function estimateM1(correct: number, total: number, done: boolean): number {
+  if (!done || total === 0) return 600;
+  return Math.round((420 + (correct / total) * 480) / 10) * 10;
+}
+
+/** Semanas hasta la PAES (mínimo 1). Sin fecha: 30, una estimación que se cambia después. */
+export function weeksUntil(days: number | undefined): number {
+  return days && days > 0 ? Math.max(1, Math.round(days / 7)) : 30;
+}
+
+/** Foco del plan: temas marcados + temas fallados en el diagnóstico, sin repetir, máximo 3. */
+export function planFocus(marked: string[], missed: string[]): string[] {
+  const focus = [...new Set([...marked, ...missed])].slice(0, 3);
+  return focus.length > 0 ? focus : ['Funciones', 'Álgebra'];
+}
+
+/** XP de recompensa por completar el onboarding. */
+export const ONBOARDING_XP = 50;

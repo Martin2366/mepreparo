@@ -14,11 +14,20 @@ import type { StepProps } from './types';
 
 type Item = Career | GenericCareer;
 
-const hintOf = (c: Item): string => ('count' in c ? `En ${c.count} ${c.count === 1 ? 'universidad' : 'universidades'}` : c.place);
+const hintOf = (c: Item): string =>
+  'count' in c ? `En ${c.count} ${c.count === 1 ? 'universidad' : 'universidades'}` : c.place;
 const badgeOf = (c: Item): string | undefined =>
   'cut' in c && c.cut ? `Último ${c.cut.kind} ${c.cut.year}: ${formatScore(c.cut.score)}` : undefined;
 
-const Row = memo(function Row({ item, selected, onChoose }: { item: Item; selected: boolean; onChoose: (id: string) => void }) {
+const Row = memo(function Row({
+  item,
+  selected,
+  onChoose,
+}: {
+  item: Item;
+  selected: boolean;
+  onChoose: (id: string) => void;
+}) {
   return (
     <View style={{ paddingBottom: 8 }}>
       <OptionCard
@@ -50,10 +59,16 @@ export function CareerStep({ next }: StepProps) {
     <StepLayout
       scroll={false}
       primary={{ label: 'Vamos por esa carrera', onPress: next, disabled: !selected }}
-      secondary={{ label: 'Aún no lo sé', onPress: () => (update({ careerId: null, target: undefined, tests: undefined }), next()) }}
+      secondary={{
+        label: 'Aún no lo sé',
+        onPress: () => (update({ careerId: null, target: undefined, tests: undefined }), next()),
+      }}
     >
       <View style={s.head}>
-        <StepTitle title="¿Qué te gustaría estudiar?" subtitle={inst ? inst.name : 'Carreras de las universidades del Sistema de Acceso'} />
+        <StepTitle
+          title="¿Qué te gustaría estudiar?"
+          subtitle={inst ? inst.name : 'Carreras de las universidades del Sistema de Acceso'}
+        />
         <SearchField value={query} onChangeText={setQuery} placeholder="Busca tu carrera" />
       </View>
       <SectionList
@@ -74,7 +89,9 @@ export function CareerStep({ next }: StepProps) {
         ListEmptyComponent={
           <View style={{ alignItems: 'center', gap: 12, paddingVertical: 40 }}>
             <Mascot pose="pensando" height={110} float={false} />
-            <Text className="text-center text-graphite">No encontramos «{query}». Prueba con una palabra más corta.</Text>
+            <Text className="text-center text-graphite">
+              No encontramos «{query}». Prueba con una palabra más corta.
+            </Text>
           </View>
         }
       />

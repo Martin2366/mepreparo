@@ -24,7 +24,8 @@ export function Topics({ next }: StepProps) {
   const topics = useOnboarding((s) => s.answers.topics);
   const update = useOnboarding((s) => s.update);
   const groups = groupsFor(tests);
-  const toggle = (id: string) => update({ topics: topics.includes(id) ? topics.filter((t) => t !== id) : [...topics, id] });
+  const toggle = (id: string) =>
+    update({ topics: topics.includes(id) ? topics.filter((t) => t !== id) : [...topics, id] });
 
   return (
     <StepLayout primary={{ label: topics.length ? 'Continuar' : 'Saltar por ahora', onPress: next }}>
@@ -72,7 +73,12 @@ export function Blockers({ next }: StepProps) {
 
   return (
     <StepLayout scroll={false} primary={{ label: 'Continuar', onPress: next, disabled: answered === 0 }}>
-      <ScrollView ref={scroll} className="flex-1" contentContainerClassName="px-5 pb-6 pt-2" showsVerticalScrollIndicator={false}>
+      <ScrollView
+        ref={scroll}
+        className="flex-1"
+        contentContainerClassName="px-5 pb-6 pt-2"
+        showsVerticalScrollIndicator={false}
+      >
         <StepTitle
           title="¿Qué es lo que más te frena?"
           subtitle={groups.length > 1 ? 'Elige una opción por prueba.' : 'Elige la que más se parezca a ti.'}

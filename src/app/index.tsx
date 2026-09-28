@@ -44,6 +44,7 @@ export default function Home() {
           {a.target ? <Row label="Puntaje meta" value={`${formatScore(a.target)} puntos`} /> : null}
           <Row label="PAES" value={session ? `${session.label}${days && days > 0 ? ` · faltan ${days} días` : ''}` : 'Por definir'} />
           <Row label="Pruebas" value={a.tests?.length ? a.tests.join(', ').toUpperCase() : 'Por definir'} />
+          <Row label="XP" value={`${a.xp ?? 0} XP${a.trialStartedAt ? ' · Premium de prueba activo' : ''}`} />
           <Row label="Temas a reforzar" value={a.topics.length ? `${a.topics.length} marcados` : 'Ninguno marcado'} />
         </View>
 

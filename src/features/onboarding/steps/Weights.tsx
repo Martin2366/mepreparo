@@ -47,11 +47,13 @@ export function Weights({ next }: StepProps) {
           <StepTitle title="¡Buena elección!" subtitle={career ? `${career.name} · ${inst?.name ?? ''}` : undefined} />
           <Animated.View entering={FadeInUp.duration(dur.slow).delay(150).easing(easeOut)}>
             <View className="gap-4">
-            <Text className="text-ink">
-              {inst?.name ?? 'Esta institución'} tiene admisión directa: no usa la postulación con PAES del Sistema de
-              Acceso. Revisa sus requisitos en su sitio oficial.
-            </Text>
-            <Callout>Igual te ayudo con la PAES: te abre más puertas si después quieres postular a una universidad.</Callout>
+              <Text className="text-ink">
+                {inst?.name ?? 'Esta institución'} tiene admisión directa: no usa la postulación con PAES del Sistema de
+                Acceso. Revisa sus requisitos en su sitio oficial.
+              </Text>
+              <Callout>
+                Igual te ayudo con la PAES: te abre más puertas si después quieres postular a una universidad.
+              </Callout>
             </View>
           </Animated.View>
         </View>
@@ -69,17 +71,36 @@ export function Weights({ next }: StepProps) {
       <View className="gap-5">
         <StepTitle
           title="Esto es lo que pesa para entrar a tu carrera"
-          subtitle={generic ? `${career.name} · promedio de ${career.count} universidades` : `${career.name} · ${inst?.name ?? ''}`}
+          subtitle={
+            generic
+              ? `${career.name} · promedio de ${career.count} universidades`
+              : `${career.name} · ${inst?.name ?? ''}`
+          }
         />
         <View className="items-center py-1">
-          <Donut slices={slices.map((s) => ({ key: s.key, value: s.value, color: SLICE_COLOR[s.key] ?? colors.graphite300 }))}>
-            <CountUp to={math} format={(n) => `${Math.round(n)} %`} style={{ fontFamily: fonts['poppins-bold'], fontSize: 36, lineHeight: 42, color: colors.ink }} />
+          <Donut
+            slices={slices.map((s) => ({
+              key: s.key,
+              value: s.value,
+              color: SLICE_COLOR[s.key] ?? colors.graphite300,
+            }))}
+          >
+            <CountUp
+              to={math}
+              format={(n) => `${Math.round(n)} %`}
+              style={{ fontFamily: fonts['poppins-bold'], fontSize: 36, lineHeight: 42, color: colors.ink }}
+            />
             <Text variant="small">matemática</Text>
           </Donut>
         </View>
         <View className="gap-2.5">
           {slices.map((s, i) => (
-            <Animated.View key={s.key} entering={FadeInUp.duration(dur.slow).delay(300 + i * 60).easing(easeOut)}>
+            <Animated.View
+              key={s.key}
+              entering={FadeInUp.duration(dur.slow)
+                .delay(300 + i * 60)
+                .easing(easeOut)}
+            >
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
                 <View style={{ width: 12, height: 12, borderRadius: 6, backgroundColor: SLICE_COLOR[s.key] }} />
                 <Text className={`flex-1 ${s.math ? 'font-poppins-semibold text-ink' : 'text-ink'}`}>{s.label}</Text>
@@ -90,12 +111,12 @@ export function Weights({ next }: StepProps) {
         </View>
         <Animated.View entering={FadeInUp.duration(dur.slow).delay(750).easing(easeOut)}>
           <View className="gap-2">
-          <Callout>{mathMessage(w.m1, w.m2)}</Callout>
-          <Text variant="caption">
-            {generic
-              ? 'Referencia: cada universidad define sus ponderaciones.'
-              : 'Fuente: DEMRE, Oferta Definitiva de Carreras, Admisión 2027.'}
-          </Text>
+            <Callout>{mathMessage(w.m1, w.m2)}</Callout>
+            <Text variant="caption">
+              {generic
+                ? 'Referencia: cada universidad define sus ponderaciones.'
+                : 'Fuente: DEMRE, Oferta Definitiva de Carreras, Admisión 2027.'}
+            </Text>
           </View>
         </Animated.View>
       </View>

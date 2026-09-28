@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/mepreparo-design-system-20851d40-b474-4467-a893-83ffb4c2b0ec/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/mepreparo-design-system-20851d40-b474-4467-a893-83ffb4c2b0ec/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/mepreparo-design-system-20851d40-b474-4467-a893-83ffb4c2b0ec/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/mepreparo-design-system-20851d40-b474-4467-a893-83ffb4c2b0ec/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/mepreparo-design-system-20851d40-b474-4467-a893-83ffb4c2b0ec/tokens/effects.css">
+  <link rel="stylesheet" href="_ds/mepreparo-design-system-20851d40-b474-4467-a893-83ffb4c2b0ec/tokens/base.css">
+  <link rel="stylesheet" href="_ds/mepreparo-design-system-20851d40-b474-4467-a893-83ffb4c2b0ec/styles.css">
+  <script src="_ds/mepreparo-design-system-20851d40-b474-4467-a893-83ffb4c2b0ec/_ds_bundle.js"></script>
+  <style>body{margin:0;background:#F5F0E6;} a{color:#1F86C0;} a:hover{color:#1E2A4A;}</style>
+</helmet>
+<div style="min-height:100vh;display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:center;gap:40px;padding:32px 20px;box-sizing:border-box;font-family:var(--font-sans);color:var(--mp-ink)">
+
+  <sc-if value="{{ showRail }}" hint-placeholder-val="{{ true }}">
+    <div style="width:230px;display:flex;flex-direction:column;gap:4px;padding-top:12px">
+      <div style="font:600 12px/1.2 var(--font-sans);letter-spacing:.14em;text-transform:uppercase;color:var(--mp-graphite);padding:0 12px 10px">Onboarding · pantallas</div>
+      <sc-for list="{{ railItems }}" as="r" hint-placeholder-count="17">
+        <button onClick="{{ r.go }}" style="display:flex;align-items:center;gap:10px;padding:7px 12px;border:0;border-radius:10px;background:{{ r.bg }};color:var(--mp-ink);font:500 14px/1.3 var(--font-sans);text-align:left;cursor:pointer" style-hover="background:var(--mp-sky-50)">
+          <span style="width:24px;height:24px;border-radius:999px;display:flex;align-items:center;justify-content:center;flex:none;font:600 11px/1 var(--font-sans);background:{{ r.numBg }};color:{{ r.numFg }}">{{ r.n }}</span>
+          <span>{{ r.label }}</span>
+        </button>
+      </sc-for>
+    </div>
+  </sc-if>
+
+  <div data-screen-label="{{ screenLabel }}" style="width:390px;max-width:100%;height:844px;border-radius:44px;background:var(--bg-grid), var(--mp-paper);border:1px solid var(--mp-line);box-shadow:var(--shadow-raised);overflow:hidden;display:flex;flex-direction:column;position:relative;flex:none">
+
+    <sc-if value="{{ showHeader }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;align-items:center;gap:8px;padding:16px 12px 4px;flex:none">
+        <x-import component-from-global-scope="MePreparoDesignSystem_20851d.IconButton" icon="arrow-left" label="Volver" onClick="{{ back }}" hint-size="44px,44px"></x-import>
+        <div style="flex:1;min-width:0">
+          <x-import component-from-global-scope="MePreparoDesignSystem_20851d.ProgressBar" value="{{ progress }}" max="{{ progressMax }}" hint-size="100%,8px"></x-import>
+        </div>
+        <button onClick="{{ headerRight }}" style="min-width:52px;height:44px;border:0;background:transparent;font:600 14px/1 var(--font-sans);color:{{ headerRightColor }};cursor:pointer;padding:0 8px">{{ headerRightLabel }}</button>
+      </div>
+    </sc-if>
+
+    <div ref="{{ bodyRef }}" style="flex:1;min-height:0;overflow-y:auto;padding:8px 20px 12px;display:flex;flex-direction:column">
+
+      <!-- 01 Bienvenida -->
+      <sc-if value="{{ s0 }}" hint-placeholder-val="{{ true }}">
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;padding-top:32px">
+          <x-import component-from-global-scope="MePreparoDesignSystem_20851d.Logo" variant="wordmark" height="{{ 38 }}" assetBase="assets/" hint-size="160px,38px"></x-import>
+          <div style="flex:1;display:flex;align-items:center;justify-content:center;min-height:0">
+            <x-import component-from-global-scope="MePreparoDesignSystem_20851d.Mascot" pose="saludo" size="{{ 300 }}" assetBase="assets/" hint-size="240px,300px"></x-import>
+          </div>
+          <h1 style="margin:0;font:700 32px/1.15 var(--font-sans);letter-spacing:-0.02em">Hola, soy Equis.</h1>
+          <p style="margin:0;font:400 16px/1.5 var(--font-sans);color:var(--mp-graphite);max-width:300px;text-wrap:pretty">La incógnita que aprendes a resolver. Te acompaño a entender la matemática de la PAES, paso a paso.</p>
+        </div>
+      </sc-if>
+
+      <!-- 02 Balanza -->
+      <sc-if value="{{ s1 }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:8px;padding-top:12px">
+          <div style="font:600 12px/1.2 var(--font-sans);letter-spacing:.14em;text-transform:uppercase;color:var(--mp-sky-700)">Antes de empezar · 20 segundos</div>
+          <h2 style="margin:0;font:700 26px/1.2 var(--font-sans);letter-spacing:-0.01em;text-wrap:balance">Equilibra la balanza.</h2>
+          <p style="margin:0;font:400 15px/1.5 var(--font-sans);color:var(--mp-graphite);text-wrap:pretty">Toca una pesa para quitarla. Equis quita otra igual del lado contrario.</p>
+        </div>
+        <div style="margin-top:20px;background:var(--mp-white);border:1px solid var(--mp-line);border-radius:20px;box-shadow:var(--shadow-card);padding:16px 8px 18px;display:flex;flex-direction:column;align-items:center;gap:6px">
+          <div style="position:relative;width:320px;max-width:100%;height:210px">
+            <div style="position:absolute;left:157px;top:120px;width:6px;height:70px;background:var(--mp-ink);border-radius:3px"></div>
+            <div style="position:absolute;left:110px;top:186px;width:100px;height:10px;background:var(--mp-ink);border-radius:999px"></div>
+            <div style="position:absolute;left:30px;top:117px;width:260px;height:6px;background:var(--mp-ink);border-radius:999px;transform:rotate({{ beamDeg }}deg);transition:transform .45s cubic-bezier(.2,.7,.2,1)"></div>
+            <div style="position:absolute;left:151px;top:111px;width:18px;height:18px;border-radius:999px;background:var(--mp-sky);border:2px solid var(--mp-ink);box-sizing:border-box"></div>
+            <div style="position:absolute;left:0;bottom:93px;width:110px;display:flex;flex-direction:column;align-items:center;transform:translateY({{ leftDy }}px);transition:transform .45s cubic-bezier(.2,.7,.2,1)">
+              <div style="display:flex;flex-wrap:wrap-reverse;justify-content:center;align-items:flex-end;gap:4px;width:110px;padding-bottom:4px">
+                <div style="width:40px;height:40px;border-radius:10px;background:var(--mp-sky);border:2px solid var(--mp-ink);box-sizing:border-box;display:flex;align-items:center;justify-content:center;font:italic 400 24px/1 var(--font-math);color:var(--mp-ink)">x</div>
+                <sc-for list="{{ leftUnits }}" as="u" hint-placeholder-count="3">
+                  <button onClick="{{ u.tap }}" aria-label="Quitar pesa" style="width:26px;height:26px;padding:0;border-radius:7px;background:var(--mp-white);border:2px solid var(--mp-ink);box-sizing:border-box;font:400 15px/1 var(--font-math);color:var(--mp-ink);cursor:pointer" style-hover="background:var(--mp-sky-100)">1</button>
+                </sc-for>
+              </div>
+              <div style="width:110px;height:8px;background:var(--mp-ink);border-radius:999px"></div>
+              <div style="width:4px;height:12px;background:var(--mp-ink)"></div>
+            </div>
+            <div style="position:absolute;left:210px;bottom:93px;width:110px;display:flex;flex-direction:column;align-items:center;transform:translateY({{ rightDy }}px);transition:transform .45s cubic-bezier(.2,.7,.2,1)">
+              <div style="display:flex;flex-wrap:wrap-reverse;justify-content:center;align-items:flex-end;gap:4px;width:110px;padding-bottom:4px">
+                <sc-for list="{{ rightUnits }}" as="u" hint-placeholder-count="7">
+                  <button onClick="{{ u.tap }}" aria-label="Quitar pesa" style="width:26px;height:26px;padding:0;border-radius:7px;background:var(--mp-white);border:2px solid var(--mp-ink);box-sizing:border-box;font:400 15px/1 var(--font-math);color:var(--mp-ink);cursor:pointer" style-hover="background:var(--mp-sky-100)">1</button>
+                </sc-for>
+              </div>
+              <div style="width:110px;height:8px;background:var(--mp-ink);border-radius:999px"></div>
+              <div style="width:4px;height:12px;background:var(--mp-ink)"></div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:baseline;gap:8px;font:400 32px/1 var(--font-math);color:var(--mp-ink)">
+            <span style="font-style:italic">x</span><span>{{ eqLeft }}</span><span>=</span><span>{{ eqRight }}</span>
+          </div>
+        </div>
+        <div style="margin-top:14px">
+          <sc-if value="{{ balSolved }}" hint-placeholder-val="{{ false }}">
+            <x-import component-from-global-scope="MePreparoDesignSystem_20851d.FeedbackBanner" tone="aja" title="¡Ajá! x = 4" sparkle="{{ true }}" hint-size="100%,72px">Lo que haces a un lado, lo haces al otro. Eso es despejar.</x-import>
+          </sc-if>
+          <sc-if value="{{ balPending }}" hint-placeholder-val="{{ true }}">
+            <div style="display:flex;align-items:center;gap:10px">
+              <x-import component-from-global-scope="MePreparoDesignSystem_20851d.Mascot" pose="curioso" size="{{ 60 }}" assetBase="assets/" hint-size="60px,60px"></x-import>
+              <div style="font:400 21px/1.2 var(--font-hand);transform:rotate(-3deg)">¿Cuánto pesa x?</div>
+            </div>
+          </sc-if>
+        </div>
+      </sc-if>
+
+      <!-- 03 Pruebas -->
+      <sc-if value="{{ s2 }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:8px;padding-top:12px">
+          <h2 style="margin:0;font:700 26px/1.2 var(--font-sans);letter-spacing:-0.01em;text-wrap:balance">¿Qué pruebas vas a rendir?</h2>
+          <p style="margin:0;font:400 15px/1.5 var(--font-sans);color:var(--mp-graphite)">Elige todas las que apliquen.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:22px">
+          <sc-for list="{{ testItems }}" as="o" hint-placeholder-count="5">
+            <button onClick="{{ o.pick }}" style="display:flex;align-items:center;gap:14px;width:100%;min-height:60px;padding:12px 16px;border-radius:14px;border:2px solid {{ o.bd }};background:{{ o.bg }};cursor:pointer;text-align:left;font:inherit;color:inherit;box-sizing:border-box;transition:background .2s,border-color .2s">
+              <x-import component-from-global-scope="MePreparoDesignSystem_20851d.Badge" tone="{{ o.tone }}" hint-size="36px,24px">{{ o.badge }}</x-import>
+              <span style="flex:1;font:500 16px/1.3 var(--font-sans)">{{ o.label }}</span>
+              <span style="width:24px;height:24px;border-radius:6px;border:2px solid {{ o.ind }};background:{{ o.indBg }};box-sizing:border-box;display:flex;align-items:center;justify-content:center;flex:none">
+                <sc-if value="{{ o.sel }}"><x-import component-from-global-scope="MePreparoDesignSystem_20851d.Icon" name="check" size="{{ 14 }}" color="#FFFFFF" hint-size="14px,14px"></x-import></sc-if>
+              </span>
+            </button>
+          </sc-for>
+        </div>
+        <p style="margin:18px 4px 0;font:400 14px/1.5 var(--font-sans);color:var(--mp-graphite);text-wrap:pretty">MePreparo te prepara en M1 y M2. Las demás nos ayudan a repartir tu tiempo.</p>
+      </sc-if>
+
+      <!-- 04 Fecha -->
+      <sc-if value="{{ s3 }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:8px;padding-top:12px">
+          <h2 style="margin:0;font:700 26px/1.2 var(--font-sans);letter-spacing:-0.01em;text-wrap:balance">¿Cuándo das la PAES?</h2>
+          <p style="margin:0;font:400 15px/1.5 var(--font-sans);color:var(--mp-graphite)">La usamos para tu cuenta regresiva.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:22px">
+          <sc-for list="{{ examItems }}" as="o" hint-placeholder-count="4">
+            <button onClick="{{ o.pick }}" style="display:flex;align-items:center;gap:14px;width:100%;padding:13px 16px;border-radius:14px;border:2px solid {{ o.bd }};background:{{ o.bg }};cursor:pointer;text-align:left;font:inherit;color:inherit;box-sizing:border-box;transition:background .2s,border-color .2s">
+              <span style="flex:1;display:flex;flex-direction:column;gap:2px">
+                <span style="font:600 16px/1.3 var(--font-sans)">{{ o.label }}</span>
+                <span style="font:400 13px/1.4 var(--font-sans);color:var(--mp-graphite)">{{ o.sub }}</span>
+              </span>
+              <span style="width:24px;height:24px;border-radius:999px;border:2px solid {{ o.ind }};background:{{ o.indBg }};box-sizing:border-box;display:flex;align-items:center;justify-content:center;flex:none">
+                <sc-if value="{{ o.sel }}"><x-import component-from-global-scope="MePreparoDesignSystem_20851d.Icon" name="check" size="{{ 14 }}" color="#FFFFFF" hint-size="14px,14px"></x-import></sc-if>
+              </span>
+            </button>
+          </sc-for>
+        </div>
+        <sc-if value="{{ showCountdown }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-top:16px;background:var(--mp-sky-50);border-radius:20px;padding:16px 18px;display:flex;align-items:center;gap:16px">
+            <div style="font:700 44px/1 var(--font-sans);letter-spacing:-0.02em;color:var(--mp-ink)">{{ days }}</div>
+            <div style="display:flex;flex-direction:column;gap:2px">
+              <span style="font:600 15px/1.3 var(--font-sans)">días para tu PAES</span>
+              <span style="font:400 13px/1.4 var(--font-sans);color:var(--mp-graphite)">{{ weeksText }}</span>
+            </div>
+          </div>
+        </sc-if>
+      </sc-if>
+
+      <!-- 05 Curso -->
+      <sc-if value="{{ s4 }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:8px;padding-top:12px">
+          <h2 style="margin:0;font:700 26px/1.2 var(--font-sans);letter-spacing:-0.01em;text-wrap:balance">¿En qué curso estás?</h2>
+          <p style="margin:0;font:400 15px/1.5 var(--font-sans);color:var(--mp-graphite)">Así calibramos el ritmo de tu plan.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:22px">
+          <sc-for list="{{ courseItems }}" as="o" hint-placeholder-count="4">
+            <button onClick="{{ o.pick }}" style="height:96px;display:flex;align-items:center;justify-content:center;border-radius:20px;border:2px solid {{ o.bd }};background:{{ o.bg }};cursor:pointer;font:600 18px/1.2 var(--font-sans);color:var(--mp-ink);transition:background .2s,border-color .2s">{{ o.label }}</button>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <!-- 06 Puntaje -->
+      <sc-if value="{{ s5 }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:8px;padding-top:12px">
+          <h2 style="margin:0;font:700 26px/1.2 var(--font-sans);letter-spacing:-0.01em;text-wrap:balance">¿Qué puntaje quieres en M1?</h2>
+          <p style="margin:0;font:400 15px/1.5 var(--font-sans);color:var(--mp-graphite)">Es tu meta. La puedes cambiar cuando quieras.</p>
+        </div>
+        <div style="margin-top:40px;display:flex;flex-direction:column;align-items:center;gap:10px">
+          <div style="font:700 76px/1 var(--font-sans);letter-spacing:-0.03em;font-variant-numeric:tabular-nums">{{ score }}</div>
+          <x-import component-from-global-scope="MePreparoDesignSystem_20851d.Badge" tone="sky" hint-size="90px,24px">{{ scoreTier }}</x-import>
+        </div>
+        <div style="margin-top:36px;display:flex;align-items:center;gap:10px">
+          <x-import component-from-global-scope="MePreparoDesignSystem_20851d.IconButton" icon="minus" label="Bajar 10" variant="outline" onClick="{{ scoreDown }}" hint-size="44px,44px"></x-import>
+          <div ref="{{ trackRef }}" onPointerDown="{{ sliderDown }}" onPointerMove="{{ sliderMove }}" onPointerUp="{{ sliderUp }}" onPointerCancel="{{ sliderUp }}" role="slider" aria-label="Puntaje meta M1" aria-valuemin="400" aria-valuemax="1000" aria-valuenow="{{ score }}" style="flex:1;position:relative;height:44px;touch-action:none;cursor:pointer">
+            <div style="position:absolute;left:0;right:0;top:18px;height:8px;border-radius:999px;background:var(--mp-graphite-100)"></div>
+            <div style="position:absolute;left:0;top:18px;height:8px;border-radius:999px;background:var(--mp-sky);width:{{ scorePct }}%"></div>
+            <div style="position:absolute;top:8px;left:{{ scorePct }}%;width:28px;height:28px;margin-left:-14px;border-radius:999px;background:var(--mp-white);border:3px solid var(--mp-sky);box-shadow:var(--shadow-card);box-sizing:border-box"></div>
+          </div>
+          <x-import component-from-global-scope="MePreparoDesignSystem_20851d.IconButton" icon="plus" label="Subir 10" variant="outline" onClick="{{ scoreUp }}" hint-size="44px,44px"></x-import>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:4px 54px 0;font:500 13px/1 var(--font-sans);color:var(--mp-graphite)"><span>400</span><span>1000</span></div>
+        <div style="margin-top:auto;padding-top:28px;display:flex;align-items:center;gap:10px">
+          <x-import component-from-global-scope="MePreparoDesignSystem_20851d.Mascot" pose="tranquilo" size="{{ 60 }}" assetBase="assets/" hint-size="60px,60px"></x-import>
+          <div style="font:400 20px/1.2 var(--font-hand);transform:rotate(-3deg);text-wrap:pretty">Después del diagnóstico te digo qué tan cerca estás.</div>
+        </div>
+      </sc-if>
+
+      <!-- 07 Relación -->
+      <sc-if value="{{ s6 }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:8px;padding-top:12px">
+          <h2 style="margin:0;font:700 26px/1.2 var(--font-sans);letter-spacing:-0.01em;text-wrap:balance">¿Cómo te llevas con la matemática?</h2>
+          <p style="margin:0;font:400 15px/1.5 var(--font-sans);color:var(--mp-graphite)">Solo para saber cómo acompañarte.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:22px">
+          <sc-for list="{{ relItems }}" as="o" hint-placeholder-count="4">
+            <button onClick="{{ o.pick }}" style="display:flex;align-items:center;gap:14px;width:100%;min-height:58px;padding:12px 16px;border-radius:14px;border:2px solid {{ o.bd }};background:{{ o.bg }};cursor:pointer;text-align:left;font:inherit;color:inherit;box-sizing:border-box;transition:background .2s,border-color .2s">
+              <span style="flex:1;font:500 16px/1.3 var(--font-sans)">{{ o.label }}</span>
+              <span style="width:24px;height:24px;border-radius:999px;border:2px solid {{ o.ind }};background:{{ o.indBg }};box-sizing:border-box;display:flex;align-items:center;justify-content:center;flex:none">
+                <sc-if value="{{ o.sel }}"><x-import component-from-global-scope="MePreparoDesignSystem_20851d.Icon" name="check" size="{{ 14 }}" color="#FFFFFF" hint-size="14px,14px"></x-import></sc-if>
+              </span>
+            </button>
+          </sc-for>
+        </div>
+        <div style="margin-top:auto;padding-top:24px;display:flex;align-items:center;gap:10px">
+          <x-import component-from-global-scope="MePreparoDesignSystem_20851d.Mascot" pose="apoyo" size="{{ 64 }}" assetBase="assets/" hint-size="64px,64px"></x-import>
+          <div style="font:400 21px/1.2 var(--font-hand);transform:rotate(-3deg)">Aquí no hay respuestas malas.</div>
+        </div>
+      </sc-if>
+
+      <!-- 08 Dificultades -->
+      <sc-if value="{{ s7 }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:8px;padding-top:12px">
+          <h2 style="margin:0;font:700 26px/1.2 var(--font-sans);letter-spacing:-0.01em;text-wrap:balance">¿Qué te complica más?</h2>
+          <p style="margin:0;font:400 15px/1.5 var(--font-sans);color:var(--mp-graphite)">Puedes elegir varias. Cada una ajusta tu plan.</p>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;white-space:nowrap">
+          <sc-for list="{{ hardItems }}" as="o" hint-placeholder-count="8">
+            <x-import component-from-global-scope="MePreparoDesignSystem_20851d.Tag" selected="{{ o.sel }}" onClick="{{ o.pick }}" hint-size="120px,40px" style="white-space:nowrap">{{ o.label }}</x-import>
+          </sc-for>
+        </div>
+        <div style="margin-top:22px;background:var(--mp-white);border:1px solid var(--mp-line);border-radius:20px;box-shadow:var(--shadow-card);padding:16px 18px;display:flex;flex-direction:column;gap:10px">
+          <div style="font:600 12px/1.2 var(--font-sans);letter-spacing:.14em;text-transform:uppercase;color:var(--mp-graphite)">Tu plan, hasta ahora</div>
+          <sc-if value="{{ noHard }}" hint-placeholder-val="{{ true }}">
+            <div style="font:400 14px/1.5 var(--font-sans);color:var(--mp-graphite)">Elige lo que te cuesta y verás cómo cambia.</div>
+          </sc-if>
+          <sc-for list="{{ adjItems }}" as="a" hint-placeholder-count="0">
+            <div style="display:flex;align-items:flex-start;gap:10px;font:400 14px/1.45 var(--font-sans)">
+              <x-import component-from-global-scope="MePreparoDesignSystem_20851d.Icon" name="plus" size="{{ 18 }}" color="var(--mp-sky-700)" hint-size="18px,18px" style="margin-top:1px;flex:none"></x-import>
+              <span>{{ a.text }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <!-- 09 Tiempo -->
+      <sc-if value="{{ s8 }}" hint-placeholder-val="{{ false }}">
+        <div style="height:300px;margin:-8px -20px 0;overflow:hidden;flex:none">
+          <img src="assets/illustrations/estudiante-micro.png" alt="Estudiante practicando en la micro" style="width:100%;height:auto;margin-top:-100px;display:block">
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;padding-top:4px">
+          <h2 style="margin:0;font:700 26px/1.2 var(--font-sans);letter-spacing:-0.01em;text-wrap:balance">¿Cuánto tiempo al día?</h2>
+          <p style="margin:0;font:400 15px/1.5 var(--font-sans);color:var(--mp-graphite)">Tu meta diaria. Poco y seguido funciona mejor.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:18px">
+          <sc-for list="{{ minItems }}" as="o" hint-placeholder-count="4">
+            <button onClick="{{ o.pick }}" style="padding:12px 14px;display:flex;flex-direction:column;align-items:flex-start;gap:2px;border-radius:20px;border:2px solid {{ o.bd }};background:{{ o.bg }};cursor:pointer;text-align:left;color:var(--mp-ink);transition:background .2s,border-color .2s">
+              <span style="font:700 24px/1.1 var(--font-sans)">{{ o.label }}</span>
+              <span style="font:500 13px/1.3 var(--font-sans);color:var(--mp-graphite)">{{ o.sub }}</span>
+            </button>
+          </sc-for>
+        </div>
+        <p style="margin:14px 4px 0;font:400 14px/1.5 var(--font-sans);color:var(--mp-graphite)">{{ weeklyText }}</p>
+      </sc-if>
+
+      <!-- 10 Hora -->
+      <sc-if value="{{ s9 }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:8px;padding-top:12px">
+          <h2 style="margin:0;font:700 26px/1.2 var(--font-sans);letter-spacing:-0.01em;text-wrap:balance">¿A qué hora te recordamos?</h2>
+          <p style="margin:0;font:400 15px/1.5 var(--font-sans);color:var(--mp-graphite)">Un aviso al día, cuando te acomode.</p>
+        </div>
+        <div style="margin-top:22px;background:var(--mp-white);border:1px solid var(--mp-line);border-radius:20px;padding:14px 18px">
+          <x-import component-from-global-scope="MePreparoDesignSystem_20851d.Switch" checked="{{ remindOn }}" onChange="{{ toggleRemind }}" label="Recordatorio diario" hint-size="100%,28px"></x-import>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;opacity:{{ timesOpacity }};pointer-events:{{ timesPointer }};transition:opacity .2s">
+          <sc-for list="{{ timeItems }}" as="o" hint-placeholder-count="6">
+            <x-import component-from-global-scope="MePreparoDesignSystem_20851d.Tag" selected="{{ o.sel }}" onClick="{{ o.pick }}" hint-size="72px,40px">{{ o.label }}</x-import>
+          </sc-for>
+        </div>
+        <div style="margin-top:28px;font:600 12px/1.2 var(--font-sans);letter-spacing:.14em;text-transform:uppercase;color:var(--mp-graphite)">Así se verá</div>
+        <div style="margin-top:10px;background:var(--mp-white);border:1px solid var(--mp-line);border-radius:20px;box-shadow:var(--shadow-card);padding:14px;display:flex;gap:12px;align-items:flex-start;opacity:{{ timesOpacity }}">
+          <img src="assets/logo/mepreparo-icon.png" alt="" style="width:40px;height:40px;border-radius:10px;flex:none;object-fit:contain;background:var(--mp-paper)">
+          <div style="flex:1;display:flex;flex-direction:column;gap:3px">
+            <div style="display:flex;justify-content:space-between;font:600 13px/1.2 var(--font-sans)"><span>MePreparo</span><span style="font-weight:400;color:var(--mp-graphite)">{{ time }}</span></div>
+            <div style="font:400 14px/1.4 var(--font-sans)">{{ notifText }}</div>
+          </div>
+        </div>
+      </sc-if>
+
+      <!-- 11 Apodo -->
+      <sc-if value="{{ s10 }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:8px;padding-top:12px">
+          <h2 style="margin:0;font:700 26px/1.2 var(--font-sans);letter-spacing:-0.01em;text-wrap:balance">¿Cómo te llamo?</h2>
+          <p style="margin:0;font:400 15px/1.5 var(--font-sans);color:var(--mp-graphite)">Opcional. Un apodo basta.</p>
+        </div>
+        <div style="margin-top:22px">
+          <x-import component-from-global-scope="MePreparoDesignSystem_20851d.Input" label="Tu apodo" placeholder="Ej: Cata" value="{{ name }}" onChange="{{ setName }}" hint-size="100%,76px"></x-import>
+        </div>
+        <div style="margin-top:12px;display:flex;align-items:center;gap:8px;font:400 13px/1.4 var(--font-sans);color:var(--mp-graphite)">
+          <x-import component-from-global-scope="MePreparoDesignSystem_20851d.Icon" name="lock" size="{{ 16 }}" hint-size="16px,16px"></x-import>
+          <span>Solo se guarda en este teléfono. No lo enviamos a ningún lado.</span>
+        </div>
+        <div style="margin-top:auto;padding-top:28px;display:flex;align-items:flex-end;gap:6px">
+          <x-import component-from-global-scope="MePreparoDesignSystem_20851d.Mascot" pose="saludo" size="{{ 130 }}" assetBase="assets/" hint-size="110px,130px"></x-import>
+          <div style="margin-bottom:70px;background:var(--mp-white);border:1px solid var(--mp-line);border-radius:20px 20px 20px 6px;box-shadow:var(--shadow-card);padding:12px 18px;font:400 26px/1.1 var(--font-hand);transform:rotate(-3deg)">{{ greet }}</div>
+        </div>
+      </sc-if>
+
+      <!-- 12 Invitación diagnóstico -->
+      <sc-if value="{{ s11 }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;justify-content:center;padding-top:4px">
+          <img src="assets/illustrations/equis-cuaderno-abierto.png" alt="Equis con un cuaderno abierto" style="height:250px;width:auto;display:block">
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;align-items:center;text-align:center">
+          <div style="font:600 12px/1.2 var(--font-sans);letter-spacing:.14em;text-transform:uppercase;color:var(--mp-sky-700)">Diagnóstico</div>
+          <h2 style="margin:0;font:700 26px/1.2 var(--font-sans);letter-spacing:-0.01em;text-wrap:balance">¿Vemos desde dónde partes?</h2>
+          <p style="margin:0;font:400 15px/1.5 var(--font-sans);color:var(--mp-graphite);text-wrap:pretty;max-width:320px">No es una prueba. Nadie ve tu resultado: solo sirve para ajustar tu plan.</p>
+        </div>
+        <div style="margin-top:20px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px">
+          <div style="background:var(--mp-white);border:1px solid var(--mp-line);border-radius:14px;padding:12px 8px;display:flex;flex-direction:column;align-items:center;gap:6px;font:500 13px/1.2 var(--font-sans);text-align:center">
+            <x-import component-from-global-scope="MePreparoDesignSystem_20851d.Icon" name="list-checks" size="{{ 20 }}" color="var(--mp-sky-700)" hint-size="20px,20px"></x-import>{{ diagCountText }}
+          </div>
+          <div style="background:var(--mp-white);border:1px solid var(--mp-line);border-radius:14px;padding:12px 8px;display:flex;flex-direction:column;align-items:center;gap:6px;font:500 13px/1.2 var(--font-sans);text-align:center">
+            <x-import component-from-global-scope="MePreparoDesignSystem_20851d.Icon" name="clock" size="{{ 20 }}" color="var(--mp-sky-700)" hint-size="20px,20px"></x-import>{{ diagTimeText }}
+          </div>
+          <div style="background:var(--mp-white);border:1px solid var(--mp-line);border-radius:14px;padding:12px 8px;display:flex;flex-direction:column;align-items:center;gap:6px;font:500 13px/1.2 var(--font-sans);text-align:center">
+            <x-import component-from-global-scope="MePreparoDesignSystem_20851d.Icon" name="eye-off" size="{{ 20 }}" color="var(--mp-sky-700)" hint-size="20px,20px"></x-import>Sin nota
+          </div>
+        </div>
+      </sc-if>
+
+      <!-- 13 Diagnóstico -->
+      <sc-if value="{{ s12 }}" hint-placeholder-val="{{ false }}">
+        <div style="padding-top:10px;display:flex;flex-direction:column;gap:14px">
+          <x-import component-from-global-scope="MePreparoDesignSystem_20851d.ExerciseCard" axis="M1" topic="{{ q.t }}" question="{{ q.q }}" hint-size="100%,420px" style="padding:22px">
+            <sc-for list="{{ qOpts }}" as="o" hint-placeholder-count="4">
+              <x-import component-from-global-scope="MePreparoDesignSystem_20851d.AnswerOption" letter="{{ o.letter }}" state="{{ o.state }}" onClick="{{ o.pick }}" hint-size="100%,52px">{{ o.text }}</x-import>
+            </sc-for>
+          </x-import>
+          <div style="display:flex;align-items:center;gap:10px">
+            <x-import component-from-global-scope="MePreparoDesignSystem_20851d.Mascot" pose="pensando" size="{{ 60 }}" assetBase="assets/" hint-size="60px,60px"></x-import>
+            <div style="font:400 20px/1.2 var(--font-hand);transform:rotate(-3deg);text-wrap:pretty">Si no sabes, marca «No lo sé». Me ayuda igual.</div>
+          </div>
+        </div>
+      </sc-if>
+
+      <!-- 14 Generando -->
+      <sc-if value="{{ s13 }}" hint-placeholder-val="{{ false }}">
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;text-align:center">
+          <x-import component-from-global-scope="MePreparoDesignSystem_20851d.Mascot" pose="estudiando" size="{{ 210 }}" assetBase="assets/" hint-size="200px,210px"></x-import>
+          <h2 style="margin:0;font:700 26px/1.2 var(--font-sans);letter-spacing:-0.01em">Generando tu plan</h2>
+          <div style="width:240px">
+            <x-import component-from-global-scope="MePreparoDesignSystem_20851d.ProgressBar" value="{{ genPct }}" max="{{ 100 }}" hint-size="100%,8px"></x-import>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px;align-items:flex-start;margin-top:6px">
+            <sc-for list="{{ genItems }}" as="g" hint-placeholder-count="4">
+              <div style="display:flex;align-items:center;gap:10px;font:500 15px/1.3 var(--font-sans);color:{{ g.color }};transition:color .3s">
+                <x-import component-from-global-scope="MePreparoDesignSystem_20851d.Icon" name="{{ g.icon }}" size="{{ 18 }}" color="{{ g.iconColor }}" hint-size="18px,18px"></x-import>
+                <span>{{ g.label }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+
+      <!-- 15 Tu plan -->
+      <sc-if value="{{ s14 }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;align-items:center;gap:8px;padding-top:16px">
+          <div style="flex:1;display:flex;flex-direction:column;gap:6px">
+            <div style="font:600 12px/1.2 var(--font-sans);letter-spacing:.14em;text-transform:uppercase;color:var(--mp-sky-700)">Tu plan M1</div>
+            <h2 style="margin:0;font:700 26px/1.2 var(--font-sans);letter-spacing:-0.01em;text-wrap:balance">{{ planTitle }}</h2>
+          </div>
+          <img src="assets/illustrations/equis-cuaderno-coral.png" alt="Equis con su cuaderno" style="height:120px;width:auto;flex:none;margin-right:-8px">
+        </div>
+        <div style="margin-top:12px;background:var(--mp-white);border:1px solid var(--mp-line);border-radius:20px;box-shadow:var(--shadow-card);padding:18px;display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;align-items:flex-end;gap:12px">
+            <div style="flex:1;display:flex;flex-direction:column;gap:4px">
+              <span style="font:500 13px/1.2 var(--font-sans);color:var(--mp-graphite)">Puntaje estimado</span>
+              <span style="font:700 40px/1 var(--font-sans);letter-spacing:-0.02em">{{ est }}</span>
+            </div>
+            <x-import component-from-global-scope="MePreparoDesignSystem_20851d.Icon" name="arrow-right" size="{{ 22 }}" color="var(--mp-graphite)" hint-size="22px,22px" style="margin-bottom:8px"></x-import>
+            <div style="flex:1;display:flex;flex-direction:column;gap:4px;align-items:flex-end">
+              <span style="font:500 13px/1.2 var(--font-sans);color:var(--mp-graphite)">Tu meta</span>
+              <span style="font:700 40px/1 var(--font-sans);letter-spacing:-0.02em;color:var(--mp-sky-700)">{{ score }}</span>
+            </div>
+          </div>
+          <div style="position:relative;height:10px;border-radius:999px;background:var(--mp-graphite-100)">
+            <div style="position:absolute;left:0;top:0;bottom:0;border-radius:999px;background:var(--mp-sky);width:{{ estPct }}%"></div>
+            <div style="position:absolute;top:-5px;width:4px;height:20px;margin-left:-2px;border-radius:2px;background:var(--mp-ink);left:{{ metaPct }}%"></div>
+          </div>
+          <div style="font:400 13px/1.45 var(--font-sans);color:var(--mp-graphite);text-wrap:pretty">{{ estCaption }}</div>
+        </div>
+        <div style="margin-top:10px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px">
+          <div style="background:var(--mp-white);border:1px solid var(--mp-line);border-radius:20px;padding:14px 16px;display:flex;flex-direction:column;gap:2px">
+            <span style="font:700 28px/1.1 var(--font-sans)">{{ weeks }}</span>
+            <span style="font:400 13px/1.3 var(--font-sans);color:var(--mp-graphite)">{{ weeksLabel }}</span>
+          </div>
+          <div style="background:var(--mp-white);border:1px solid var(--mp-line);border-radius:20px;padding:14px 16px;display:flex;flex-direction:column;gap:2px">
+            <span style="font:700 28px/1.1 var(--font-sans)">{{ minutesText }}</span>
+            <span style="font:400 13px/1.3 var(--font-sans);color:var(--mp-graphite)">{{ dailyLabel }}</span>
+          </div>
+        </div>
+        <div style="margin-top:10px;background:var(--mp-sky-50);border-radius:20px;padding:14px 16px;display:flex;flex-direction:column;gap:10px">
+          <div style="font:600 12px/1.2 var(--font-sans);letter-spacing:.14em;text-transform:uppercase;color:var(--mp-graphite)">Foco</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px">
+            <sc-for list="{{ focusItems }}" as="f" hint-placeholder-count="3">
+              <x-import component-from-global-scope="MePreparoDesignSystem_20851d.Badge" tone="sky" hint-size="80px,24px">{{ f.label }}</x-import>
+            </sc-for>
+          </div>
+          <div style="font:400 14px/1.45 var(--font-sans);text-wrap:pretty">{{ gapText }}</div>
+        </div>
+      </sc-if>
+
+      <!-- 16 Premium -->
+      <sc-if value="{{ s15 }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;justify-content:center;padding-top:8px">
+          <img src="assets/illustrations/equis-cuaderno-abrazo.png" alt="Equis abrazando su cuaderno" style="height:220px;width:auto;display:block">
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px;align-items:center;text-align:center">
+          <x-import component-from-global-scope="MePreparoDesignSystem_20851d.Badge" tone="coral" hint-size="80px,24px">Premium</x-import>
+          <h2 style="margin:4px 0 0;font:700 28px/1.15 var(--font-sans);letter-spacing:-0.02em;text-wrap:balance">7 días de Premium gratis. Sin tarjeta.</h2>
+        </div>
+        <div style="margin-top:18px;background:var(--mp-white);border:1px solid var(--mp-line);border-radius:20px;box-shadow:var(--shadow-card);padding:16px 18px;display:flex;flex-direction:column;gap:12px">
+          <sc-for list="{{ perks }}" as="p" hint-placeholder-count="3">
+            <div style="display:flex;align-items:center;gap:12px;font:500 15px/1.35 var(--font-sans)">
+              <span style="width:28px;height:28px;border-radius:999px;background:var(--mp-sky-100);display:flex;align-items:center;justify-content:center;flex:none">
+                <x-import component-from-global-scope="MePreparoDesignSystem_20851d.Icon" name="{{ p.icon }}" size="{{ 16 }}" color="var(--mp-sky-700)" hint-size="16px,16px"></x-import>
+              </span>
+              <span>{{ p.text }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <p style="margin:14px 8px 0;text-align:center;font:400 13px/1.45 var(--font-sans);color:var(--mp-graphite);text-wrap:pretty">Sin cuenta, tu progreso queda solo en este teléfono.</p>
+      </sc-if>
+
+      <!-- 17 Listo -->
+      <sc-if value="{{ s16 }}" hint-placeholder-val="{{ false }}">
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center">
+          <x-import component-from-global-scope="MePreparoDesignSystem_20851d.Mascot" pose="celebrando" size="{{ 240 }}" assetBase="assets/" hint-size="220px,240px"></x-import>
+          <h2 style="margin:0;font:700 30px/1.15 var(--font-sans);letter-spacing:-0.02em">{{ doneTitle }}</h2>
+          <p style="margin:0;font:400 16px/1.5 var(--font-sans);color:var(--mp-graphite);max-width:300px">{{ doneSub }}</p>
+          <sc-if value="{{ endNote }}" hint-placeholder-val="{{ false }}">
+            <div style="font:400 20px/1.2 var(--font-hand);transform:rotate(-3deg);color:var(--mp-graphite)">Aquí termina el onboarding.</div>
+          </sc-if>
+        </div>
+      </sc-if>
+    </div>
+
+    <sc-if value="{{ showFooter }}" hint-placeholder-val="{{ true }}">
+      <div style="padding:10px 20px 26px;display:flex;flex-direction:column;gap:6px;flex:none">
+        <x-import component-from-global-scope="MePreparoDesignSystem_20851d.Button" size="lg" fullWidth="{{ true }}" iconRight="{{ ctaIcon }}" disabled="{{ ctaDisabled }}" onClick="{{ next }}" hint-size="100%,56px">{{ ctaLabel }}</x-import>
+        <sc-if value="{{ s0 }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;align-items:center;justify-content:center;gap:2px;flex-wrap:wrap;padding-top:4px">
+            <span style="font:400 14px/1.3 var(--font-sans);color:var(--mp-graphite)">¿Ya tienes progreso?</span>
+            <x-import component-from-global-scope="MePreparoDesignSystem_20851d.Button" variant="ghost" size="sm" onClick="{{ googleLogin }}" hint-size="150px,36px">Entrar con Google</x-import>
+          </div>
+        </sc-if>
+        <sc-if value="{{ showSecondary }}" hint-placeholder-val="{{ false }}">
+          <x-import component-from-global-scope="MePreparoDesignSystem_20851d.Button" variant="ghost" size="lg" fullWidth="{{ true }}" onClick="{{ secondary }}" hint-size="100%,56px">{{ secondaryLabel }}</x-import>
+        </sc-if>
+      </div>
+    </sc-if>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;startStep&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:1,&quot;min&quot;:1,&quot;max&quot;:17,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Prototipo&quot;},&quot;diagCount&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;8&quot;,&quot;10&quot;],&quot;default&quot;:&quot;10&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Prototipo&quot;},&quot;showRail&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Prototipo&quot;}}">
+const TESTS=[{id:'m1',label:'Competencia Matemática 1',badge:'M1',tone:'sky'},{id:'m2',label:'Competencia Matemática 2',badge:'M2',tone:'sky'},{id:'lec',label:'Competencia Lectora',badge:'CL',tone:'neutral'},{id:'cie',label:'Ciencias',badge:'CI',tone:'neutral'},{id:'his',label:'Historia y Ciencias Sociales',badge:'HI',tone:'neutral'}];
+const EXAMS=[{id:'r26',label:'PAES regular 2026',sub:'Fines de noviembre o inicio de diciembre',date:'2026-11-30'},{id:'i27',label:'PAES de invierno 2027',sub:'A mitad de año',date:'2027-06-14'},{id:'r27',label:'PAES regular 2027',sub:'Fines de 2027',date:'2027-11-29'},{id:'nose',label:'Todavía no lo sé',sub:'Usamos una fecha estimada y la cambias después',date:null}];
+const COURSES=[{id:'3m',label:'3° medio'},{id:'4m',label:'4° medio'},{id:'egr',label:'Ya egresé'},{id:'otro',label:'Otro'}];
+const RELS=[{id:0,label:'Me cuesta, pero quiero entenderla',est:520},{id:1,label:'Depende del tema',est:580},{id:2,label:'Me llevo bien',est:650},{id:3,label:'Me gusta harto',est:700}];
+const HARD=[{id:'alg',label:'Álgebra y ecuaciones',focus:'Álgebra',adj:'Despeje paso a paso con la balanza'},{id:'fun',label:'Funciones',focus:'Funciones',adj:'Gráficos que puedes mover con el dedo'},{id:'geo',label:'Geometría',focus:'Geometría',adj:'Figuras interactivas para áreas y Pitágoras'},{id:'pro',label:'Probabilidad y estadística',focus:'Probabilidad',adj:'Simulaciones con dados y datos reales'},{id:'num',label:'Números y porcentajes',focus:'Números',adj:'Repaso corto de fracciones, potencias y %'},{id:'enu',label:'Problemas con texto',focus:'Enunciados',adj:'Práctica para pasar del texto a la ecuación'},{id:'tie',label:'El tiempo en la prueba',focus:null,adj:'Mini ensayos cronometrados cada semana'},{id:'ner',label:'Los nervios',focus:null,adj:'Sesiones cortas, sin puntaje a la vista'}];
+const MINS=[{m:10,sub:'Suave'},{m:20,sub:'Constante'},{m:30,sub:'Intenso'},{m:45,sub:'A fondo'}];
+const TIMES=['07:30','13:30','17:00','19:00','20:30','22:00'];
+const QS=[
+{q:'Si 3x − 5 = 10, ¿cuánto vale x?',o:['3','5','15','−5'],a:1,t:'Ecuaciones lineales',f:'Álgebra'},
+{q:'¿Cuánto es el 25% de 80?',o:['16','20','25','40'],a:1,t:'Porcentajes',f:'Números'},
+{q:'La función f(x) = x² − 4x + 3, ¿cuál es su vértice?',o:['(1, 2)','(2, −1)','(2, 3)','(4, −1)'],a:1,t:'Funciones cuadráticas',f:'Funciones'},
+{q:'Un triángulo rectángulo tiene catetos de 6 y 8 cm. ¿Cuánto mide la hipotenusa?',o:['10 cm','12 cm','14 cm','48 cm'],a:0,t:'Teorema de Pitágoras',f:'Geometría'},
+{q:'Al lanzar un dado, ¿cuál es la probabilidad de obtener un número par?',o:['1/6','1/3','1/2','2/3'],a:2,t:'Probabilidad',f:'Probabilidad'},
+{q:'¿A qué es igual 2³ · 2²?',o:['2⁵','2⁶','4⁵','4⁶'],a:0,t:'Potencias',f:'Números'},
+{q:'Si 4 cuadernos cuestan $6.000, ¿cuánto cuestan 6?',o:['$8.000','$9.000','$10.000','$12.000'],a:1,t:'Proporcionalidad',f:'Enunciados'},
+{q:'¿Cuál es la pendiente de la recta que pasa por (0, 1) y (2, 5)?',o:['1','2','3','4'],a:1,t:'Función lineal',f:'Funciones'},
+{q:'¿Cuál es el promedio de 4, 6, 8 y 10?',o:['6','7','8','9'],a:1,t:'Estadística',f:'Probabilidad'},
+{q:'¿Cuál es el área de un círculo de radio 3?',o:['3π','6π','9π','12π'],a:2,t:'Áreas',f:'Geometría'}];
+const STEPS=['Bienvenida','Balanza','Pruebas','Fecha PAES','Curso','Puntaje M1','Matemática y tú','Qué te complica','Tiempo al día','Recordatorio','Apodo','Invitación','Diagnóstico','Generando plan','Tu plan','Premium','Listo'];
+const clampStep=v=>Math.max(0,Math.min(16,(parseInt(v)||1)-1));
+const INIT={L:3,R:7,busy:false,tests:{m1:true},exam:null,course:null,score:700,rel:null,hard:{},minutes:20,remindOn:true,time:'19:00',name:'',qi:0,qsel:null,answers:[],diagDone:false,gen:0,endNote:false};
+const SEL={bg:'var(--mp-sky-100)',bd:'var(--mp-sky)',ind:'var(--mp-sky)',indBg:'var(--mp-sky)'};
+const UNSEL={bg:'var(--mp-white)',bd:'var(--mp-line)',ind:'var(--mp-graphite-200)',indBg:'transparent'};
+
+class Component extends DCLogic {
+  state = {...INIT, step: clampStep(this.props.startStep)};
+  bodyRef = React.createRef();
+  trackRef = React.createRef();
+  componentDidMount(){ if(this.state.step===13) this.startGen(); }
+  componentDidUpdate(pp,ps){
+    if(pp.startStep!==this.props.startStep) this.go(clampStep(this.props.startStep));
+    const qChanged=this.state.step===12&&ps.qi!==this.state.qi;
+    if(ps.step!==this.state.step||qChanged){
+      const b=this.bodyRef.current;
+      if(b){b.scrollTop=0;b.animate&&b.animate([{opacity:0,transform:'translateY(6px)'},{opacity:1,transform:'none'}],{duration:320,easing:'cubic-bezier(.2,.7,.2,1)'});}
+      if(this.state.step===13&&ps.step!==13) this.startGen();
+    }
+  }
+  componentWillUnmount(){clearInterval(this.gt);clearTimeout(this.bt);}
+  go(n){ if(n!==13) clearInterval(this.gt); this.setState({step:n,endNote:false}); }
+  startGen(){
+    clearInterval(this.gt); let g=0; this.setState({gen:0});
+    this.gt=setInterval(()=>{ g++; if(g>4){clearInterval(this.gt); this.setState({step:14}); } else this.setState({gen:g}); },800);
+  }
+  tap(side){
+    const s=this.state; if(s.busy||s.L===0) return;
+    this.setState(side==='L'?{L:s.L-1,busy:true}:{R:s.R-1,busy:true});
+    this.bt=setTimeout(()=>this.setState(t=>side==='L'?{R:t.R-1,busy:false}:{L:t.L-1,busy:false}),480);
+  }
+  setScoreFromX(e){
+    const el=this.trackRef.current; if(!el) return; const r=el.getBoundingClientRect();
+    const p=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width));
+    this.setState({score:Math.round((400+p*600)/10)*10});
+  }
+  diagN(){ return parseInt(this.props.diagCount??10)===8?8:10; }
+  questions(){ const n=this.diagN(); return n===8?QS.filter((_,i)=>i!==5&&i!==8):QS; }
+  next(){
+    const s=this.state, N=this.diagN();
+    if(s.step===11) return this.setState({step:12,qi:0,qsel:null,answers:[]});
+    if(s.step===12) return this.answer(s.qsel===this.questions()[s.qi].a);
+    if(s.step===16) return this.setState({endNote:true});
+    this.go(s.step+1);
+  }
+  answer(ok){
+    const s=this.state, N=this.diagN(); const answers=[...s.answers,ok];
+    if(s.qi+1<N) this.setState({answers,qi:s.qi+1,qsel:null});
+    else this.setState({answers,diagDone:true,step:13});
+  }
+  back(){
+    const s=this.state;
+    if(s.step===12&&s.qi>0) return this.setState({qi:s.qi-1,answers:s.answers.slice(0,-1),qsel:null});
+    this.go(Math.max(0,s.step-1));
+  }
+  secondary(){
+    const s=this.state;
+    if(s.step===11){ this.setState({diagDone:false}); return this.go(13); }
+    if(s.step===12) return this.answer(false);
+    if(s.step===15) return this.go(16);
+    if(s.step===16){ clearInterval(this.gt); this.setState({...INIT,tests:{m1:true},hard:{},answers:[],step:0}); }
+  }
+  pickStyle(sel){ return sel?SEL:UNSEL; }
+  renderVals(){
+    const s=this.state, st=s.step, N=this.diagN(), QL=this.questions();
+    const exam=EXAMS.find(e=>e.id===s.exam);
+    const days=exam&&exam.date?Math.max(1,Math.ceil((new Date(exam.date+'T09:00:00')-new Date())/864e5)):null;
+    const weeks=days?Math.max(1,Math.round(days/7)):30;
+    const correct=s.answers.filter(Boolean).length;
+    const relObj=RELS.find(r=>r.id===s.rel);
+    const est=s.diagDone?Math.round((420+(correct/N)*480)/10)*10:(relObj?relObj.est:600);
+    const missed=s.diagDone?QL.filter((q,i)=>s.answers[i]===false).map(q=>q.f):[];
+    const hardSel=HARD.filter(h=>s.hard[h.id]);
+    let focus=[...new Set([...hardSel.map(h=>h.focus).filter(Boolean),...missed])].slice(0,3);
+    if(!focus.length) focus=['Funciones','Álgebra'];
+    const gap=Math.max(0,s.score-est);
+    const nm=s.name.trim();
+    const q=QL[Math.min(s.qi,N-1)];
+    const solved=s.L===0&&!s.busy;
+    const diff=(4+s.L)-s.R; const deg=Math.max(-14,Math.min(14,-diff*6)); const rad=deg*Math.PI/180;
+    const weekly=s.minutes*7, wh=Math.floor(weekly/60), wm=weekly%60;
+    const tier=s.score<600?'Base sólida':s.score<750?'Buen avance':s.score<900?'Exigente':'Muy exigente';
+    const ctaDisabled=(st===1&&!solved)||(st===2&&!Object.values(s.tests).some(Boolean))||(st===3&&!s.exam)||(st===4&&!s.course)||(st===6&&s.rel===null)||(st===12&&s.qsel===null);
+    const ctaLabel=['Empezar','Continuar','Continuar','Continuar','Continuar','Continuar','Continuar','Continuar','Continuar','Continuar',nm?'Continuar':'Seguir sin apodo','Comenzar diagnóstico',s.qi+1<N?'Siguiente':'Terminar','','Continuar','Guardar con Google','Comenzar primer ejercicio'][st];
+    const secLabel={11:'Saltar por ahora',12:'No lo sé',15:'Continuar sin cuenta',16:'Ver el onboarding de nuevo'}[st]||'';
+    const rightLabel=st===1||st===10?'Saltar':st===12?`${s.qi+1}/${N}`:'';
+    const flags={}; for(let i=0;i<=16;i++) flags['s'+i]=st===i;
+    const single=(list,cur,key)=>list.map(o=>({...o,...this.pickStyle(cur===o.id),sel:cur===o.id,pick:()=>this.setState({[key]:o.id})}));
+    return {
+      ...flags,
+      screenLabel:String(st+1).padStart(2,'0')+' '+STEPS[st],
+      showRail:this.props.showRail??true,
+      railItems:STEPS.map((l,i)=>({n:i+1,label:l,go:()=>this.go(i),bg:i===st?'var(--mp-sky-100)':'transparent',numBg:i===st?'var(--mp-sky)':'var(--mp-white)',numFg:i===st?'#FFFFFF':'var(--mp-graphite)'})),
+      showHeader:st>=1&&st<=12, showFooter:st!==13,
+      bodyRef:this.bodyRef, trackRef:this.trackRef,
+      back:()=>this.back(),
+      progress:st===12?s.qi+1:st, progressMax:st===12?N:11,
+      headerRightLabel:rightLabel,
+      headerRightColor:st===12?'var(--mp-graphite)':'var(--mp-sky-700)',
+      headerRight:()=>{ if(st===1) this.go(2); else if(st===10){this.setState({name:''});this.go(11);} },
+      // balanza
+      beamDeg:deg, leftDy:-105*Math.sin(rad), rightDy:105*Math.sin(rad),
+      leftUnits:Array.from({length:s.L},(_,i)=>({i,tap:()=>this.tap('L')})),
+      rightUnits:Array.from({length:s.R},(_,i)=>({i,tap:()=>this.tap('R')})),
+      eqLeft:s.L>0?`+ ${s.L}`:'', eqRight:String(s.R),
+      balSolved:solved, balPending:!solved,
+      // pruebas
+      testItems:TESTS.map(o=>{const sel=!!s.tests[o.id];return {...o,...this.pickStyle(sel),sel,pick:()=>this.setState(t=>({tests:{...t.tests,[o.id]:!t.tests[o.id]}}))};}),
+      examItems:single(EXAMS,s.exam,'exam'),
+      showCountdown:!!days, days:days?String(days):'', weeksText:`Unas ${weeks} semanas. La verás en tu inicio.`,
+      courseItems:single(COURSES,s.course,'course'),
+      // puntaje
+      score:s.score, scoreTier:tier, scorePct:(s.score-400)/6,
+      scoreDown:()=>this.setState(t=>({score:Math.max(400,t.score-10)})),
+      scoreUp:()=>this.setState(t=>({score:Math.min(1000,t.score+10)})),
+      sliderDown:e=>{this.drag=true;try{e.currentTarget.setPointerCapture(e.pointerId)}catch(_){ } this.setScoreFromX(e);},
+      sliderMove:e=>{if(this.drag) this.setScoreFromX(e);},
+      sliderUp:()=>{this.drag=false;},
+      relItems:single(RELS,s.rel,'rel'),
+      hardItems:HARD.map(h=>({...h,sel:!!s.hard[h.id],pick:()=>this.setState(t=>({hard:{...t.hard,[h.id]:!t.hard[h.id]}}))})),
+      noHard:hardSel.length===0, adjItems:hardSel.map(h=>({text:h.adj})),
+      minItems:MINS.map(o=>({label:`${o.m} min`,sub:o.sub,...this.pickStyle(s.minutes===o.m),pick:()=>this.setState({minutes:o.m})})),
+      weeklyText:`Son ${wh?wh+' h ':''}${wm?wm+' min':''} a la semana. Lo puedes cambiar después.`.replace('  ',' '),
+      remindOn:s.remindOn, toggleRemind:v=>this.setState({remindOn:typeof v==='boolean'?v:!s.remindOn}),
+      timesOpacity:s.remindOn?1:.4, timesPointer:s.remindOn?'auto':'none',
+      timeItems:TIMES.map(t=>({label:t,sel:s.time===t,pick:()=>this.setState({time:t})})),
+      time:s.time, notifText:`Hola${nm?', '+nm:''}. Tus ${s.minutes} minutos de hoy te esperan.`,
+      name:s.name, setName:e=>this.setState({name:(e&&e.target?e.target.value:e)||''}), greet:nm?`Hola, ${nm}.`:'Hola.',
+      diagCountText:`${N} preguntas`, diagTimeText:N===8?'~6 min':'~8 min',
+      q, qOpts:q.o.map((t,k)=>({letter:'ABCD'[k],text:t,state:s.qsel===k?'selected':'idle',pick:()=>this.setState({qsel:k})})),
+      genPct:s.gen/4*100,
+      genItems:[s.diagDone?'Revisando tu diagnóstico':'Leyendo tus respuestas',`Ajustando a tu meta de ${s.score}`,`Priorizando ${focus.slice(0,2).join(' y ')}`,`Repartiendo ${weeks} semanas`].map((l,i)=>{const d=s.gen>i;return {label:l,icon:d?'check':'circle-dashed',iconColor:d?'var(--mp-sky-700)':'var(--mp-graphite-300)',color:d?'var(--mp-ink)':'var(--mp-graphite-300)'};}),
+      planTitle:nm?`${nm}, tu plan está listo.`:'Tu plan está listo.',
+      est, estPct:(est-400)/6, metaPct:(s.score-400)/6,
+      estCaption:s.diagDone?`Según tu diagnóstico: ${correct} de ${N} correctas. Se afina a medida que practicas.`:'Estimado inicial. Cuando hagas el diagnóstico lo afinamos.',
+      weeks:String(weeks), weeksLabel:exam&&exam.date?'semanas hasta tu PAES':'semanas (fecha estimada)',
+      minutesText:`${s.minutes} min`, dailyLabel:s.remindOn?`al día · aviso ${s.time}`:'al día',
+      focusItems:focus.map(f=>({label:f})),
+      gapText:gap>0?`Para subir ${gap} puntos, apuntamos a unos ${Math.max(1,Math.round(gap/weeks))} por semana. Un paso a la vez.`:'Ya estás en tu meta. Vamos a asegurarla con práctica constante.',
+      perks:[{icon:'calendar-check',text:'Tu plan completo, semana a semana'},{icon:'lightbulb',text:'Explicaciones paso a paso en cada ejercicio'},{icon:'timer',text:'Ensayos PAES con tiempo real'}],
+      doneTitle:nm?`Todo listo, ${nm}.`:'Todo listo.',
+      doneSub:`Hoy toca ${focus[0].toLowerCase()}. ${s.minutes} minutos, a tu ritmo.`,
+      endNote:s.endNote,
+      ctaLabel, ctaDisabled, ctaIcon:st===15?undefined:'arrow-right',
+      next:()=>this.next(),
+      showSecondary:!!secLabel, secondaryLabel:secLabel, secondary:()=>this.secondary(),
+      googleLogin:()=>this.go(16)
+    };
+  }
+}
+</script>
+</body>
+</html>

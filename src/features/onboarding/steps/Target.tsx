@@ -22,15 +22,19 @@ function BigScore({ value, animate }: { value: number; animate: boolean }) {
     <View className="items-center">
       <View className="flex-row items-start">
         {animate ? (
-          <CountUp to={value} format={(n) => formatScore(n)} style={{ fontFamily: fonts["poppins-bold"], color: colors.ink, fontSize: 64, lineHeight: 74 }} />
+          <CountUp
+            to={value}
+            format={(n) => formatScore(n)}
+            style={{ fontFamily: fonts['poppins-bold'], color: colors.ink, fontSize: 64, lineHeight: 74 }}
+          />
         ) : (
-          <Text style={{ fontFamily: fonts["poppins-bold"], color: colors.ink, fontSize: 64, lineHeight: 74 }}>
+          <Text style={{ fontFamily: fonts['poppins-bold'], color: colors.ink, fontSize: 64, lineHeight: 74 }}>
             {formatScore(value)}
           </Text>
         )}
         <Animated.View entering={ZoomIn.springify().delay(1300)}>
           <View className="-mt-1 ml-1">
-          <Icon name="sparkle" size={26} color={colors.coral} />
+            <Icon name="sparkle" size={26} color={colors.coral} />
           </View>
         </Animated.View>
       </View>
@@ -61,22 +65,22 @@ export function Target({ next }: StepProps) {
           <BigScore value={cut.score} animate />
           <Animated.View entering={FadeInUp.duration(dur.slow).delay(500).easing(easeOut)}>
             <View className="items-center gap-2">
-            <Text variant="small" className="text-center">
-              Puntaje del último {cut.kind === 'seleccionado' ? 'seleccionado' : 'matriculado'} en {career?.name}
-            </Text>
-            <Text className="rounded-full bg-paper-2 px-3 py-1 font-poppins-semibold text-caption text-graphite">
-              Admisión {cut.year}
-            </Text>
-            <Text variant="small" className="px-4 text-center">
-              El corte cambia cada año. Lo usaremos como referencia para tu preparación.
-            </Text>
+              <Text variant="small" className="text-center">
+                Puntaje del último {cut.kind === 'seleccionado' ? 'seleccionado' : 'matriculado'} en {career?.name}
+              </Text>
+              <Text className="rounded-full bg-paper-2 px-3 py-1 font-poppins-semibold text-caption text-graphite">
+                Admisión {cut.year}
+              </Text>
+              <Text variant="small" className="px-4 text-center">
+                El corte cambia cada año. Lo usaremos como referencia para tu preparación.
+              </Text>
             </View>
           </Animated.View>
           <View className="mt-auto flex-row items-end gap-2">
             <Mascot pose="senalando" height={120} />
             <Animated.View entering={FadeIn.duration(dur.slow).delay(900)}>
               <View className="pb-8">
-              <HandNote>Vamos paso a paso.</HandNote>
+                <HandNote>Vamos paso a paso.</HandNote>
               </View>
             </Animated.View>
           </View>
@@ -90,7 +94,10 @@ export function Target({ next }: StepProps) {
   return (
     <StepLayout primary={{ label: 'Vamos por ese puntaje', onPress: next }}>
       <View className="flex-1 gap-6">
-        <StepTitle title="¿A qué puntaje apuntas?" subtitle="Puntaje ponderado de 100 a 1.000. Puedes cambiarlo cuando quieras." />
+        <StepTitle
+          title="¿A qué puntaje apuntas?"
+          subtitle="Puntaje ponderado de 100 a 1.000. Puedes cambiarlo cuando quieras."
+        />
         <View className="flex-row items-center justify-center gap-4">
           <Stepper icon="minus" label="Bajar 10 puntos" onPress={() => set(value - 10)} />
           <BigScore value={value} animate={false} />

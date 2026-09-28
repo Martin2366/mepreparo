@@ -66,7 +66,9 @@ export function Tests({ next }: StepProps) {
         </View>
         {rec.eitherHistoriaOCiencias ? (
           <Animated.View entering={FadeInUp.duration(dur.slow).delay(400).easing(easeOut)}>
-            <Callout>Tu carrera acepta Historia o Ciencias: se considera la que te vaya mejor. Elige una o ambas.</Callout>
+            <Callout>
+              Tu carrera acepta Historia o Ciencias: se considera la que te vaya mejor. Elige una o ambas.
+            </Callout>
           </Animated.View>
         ) : null}
       </View>
