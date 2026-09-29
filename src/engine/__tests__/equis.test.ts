@@ -39,8 +39,8 @@ describe('marco de la cámara', () => {
   it('pasa el marco de la pantalla a la foto (visor que cubre)', () => {
     // Foto 3000x4000 en una pantalla 400x800: se ve escalada ×0,2 y recortada a los lados.
     const r = frameToPhoto({ x: 0.1, y: 0.25, w: 0.8, h: 0.5 }, { w: 400, h: 800 }, { w: 3000, h: 4000 });
-    expect(r.y).toBeCloseTo(0.21, 2);
-    expect(r.h).toBeCloseTo(0.58, 2);
+    expect(r.y).toBeCloseTo(0.23, 2);
+    expect(r.h).toBeCloseTo(0.54, 2);
     expect(r.x).toBeGreaterThan(0.2);
     expect(r.x + r.w).toBeLessThanOrEqual(1);
   });

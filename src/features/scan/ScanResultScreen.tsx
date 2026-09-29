@@ -80,7 +80,7 @@ export function ScanResultScreen() {
 
   return (
     <FullScreen title="Tu ejercicio" footer={footer}>
-      {imageUri ? <Image source={{ uri: imageUri }} style={s.photo} contentFit="cover" accessibilityLabel="Tu foto" /> : null}
+      {imageUri ? <Image source={{ uri: imageUri }} style={s.photo} contentFit="contain" accessibilityLabel="Lo que leyó Equis" /> : null}
       <Card style={{ gap: 10 }}>
         <View style={s.row}>
           <Text style={[s.strong, { flex: 1 }]}>Leí esto</Text>

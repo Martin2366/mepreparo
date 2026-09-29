@@ -62,7 +62,8 @@ export const clampDiff = (d: number) => Math.max(1, Math.min(5, Math.round(Numbe
 /** Región relativa (0–1) de una imagen. */
 export type Region = { x: number; y: number; w: number; h: number };
 
-const PAD = 0.04;
+/** Margen extra alrededor del marco (que no se corte el borde del ejercicio). */
+const PAD = 0.02;
 
 /**
  * Pasa el marco (coordenadas de la vista) a la foto. El visor muestra la foto «cubriendo» la pantalla,

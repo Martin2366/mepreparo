@@ -12,6 +12,7 @@ import { FullScreen } from '@/features/shell/FullScreen';
 import { goBack } from '@/lib/nav';
 import { colors, fonts } from '@/theme/tokens';
 
+import type { Prepared } from './image';
 import { scanAvailable, useScan } from './store';
 
 type Phase = { kind: 'camera' } | { kind: 'reading' } | { kind: 'error'; text: string };
@@ -41,7 +42,7 @@ export function ScanScreen() {
     );
   }
 
-  const onImage = async (base64: string, uri: string) => {
+  const onImage = async ({ base64, uri }: Prepared) => {
     setPhase({ kind: 'reading' });
     const r = await scanImage(base64);
     if (!r.ok) return setPhase({ kind: 'error', text: ERROR_TEXT[r.error] });
