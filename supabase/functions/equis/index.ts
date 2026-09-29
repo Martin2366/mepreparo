@@ -99,7 +99,7 @@ Deno.serve(async (req) => {
   await admin.rpc('tutor_bump', { p_user: uid, p_day: today, p_mode: mode, p_cost: cost });
 
   try {
-    return json({ ok: true, data: JSON.parse(text) });
+    return json({ ok: true, data: JSON.parse(repairLatex(text)) });
   } catch {
     return json({ error: 'bad_output' }, 502);
   }
@@ -145,6 +145,14 @@ function buildParts(mode: Mode, b: Record<string, unknown>): Part[] | null {
         .join('\n'),
     },
   ];
+}
+
+/**
+ * El modelo a veces escribe `\frac` sin escapar dentro del JSON: `\f` se leería como un carácter de control
+ * y `\$` es inválido. Se duplica la barra de nuestros comandos cuando viene sola.
+ */
+export function repairLatex(text: string): string {
+  return text.replace(/(?<!\\)\\(frac|sqrt|cdot|div|le|ge|\$)/g, '\\\\$1');
 }
 
 function json(body: unknown, status = 200) {
