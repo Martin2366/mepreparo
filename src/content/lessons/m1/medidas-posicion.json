@@ -7,7 +7,9 @@
       "version": 1,
       "reviewStatus": "approved",
       "estimatedMinutes": 5,
-      "skills": ["representar"],
+      "skills": [
+        "representar"
+      ],
       "steps": [
         {
           "id": "s1",
@@ -22,7 +24,13 @@
           "skill": "representar",
           "difficulty": 1,
           "prompt": "Ordena estos puntajes de menor a mayor.",
-          "items": ["$480$", "$515$", "$550$", "$602$", "$640$"],
+          "items": [
+            "$480$",
+            "$515$",
+            "$550$",
+            "$602$",
+            "$640$"
+          ],
           "feedback": "Casi. Compara primero las centenas y después las decenas.",
           "explanation": "480 < 515 < 550 < 602 < 640."
         },
@@ -33,10 +41,20 @@
           "difficulty": 1,
           "prompt": "Datos: 12, 7, 15, 9, 7, 20, 11. Una vez ordenados, ¿qué dato queda en la posición 5?",
           "answer": "12",
-          "mistakes": [{ "value": "7", "feedback": "Casi. Ese es el quinto dato sin ordenar; primero ordena." }],
+          "mistakes": [
+            {
+              "value": "7",
+              "feedback": "Casi. Ese es el quinto dato sin ordenar; primero ordena."
+            }
+          ],
           "feedback": "Casi. Ordena: 7, 7, 9, 11, 12, 15, 20.",
-          "hints": ["7, 7, 9, 11, …"],
-          "solution": ["Ordenados: 7, 7, 9, 11, 12, 15, 20", "Posición 5: 12"]
+          "hints": [
+            "7, 7, 9, 11, …"
+          ],
+          "solution": [
+            "Ordenados: 7, 7, 9, 11, 12, 15, 20",
+            "Posición 5: 12"
+          ]
         },
         {
           "id": "s4",
@@ -45,10 +63,19 @@
           "difficulty": 2,
           "prompt": "¿Cuál es la mediana de esos mismos datos?",
           "answer": "11",
-          "mistakes": [{ "value": "9", "feedback": "Casi. Con 7 datos, el central es el cuarto." }],
+          "mistakes": [
+            {
+              "value": "9",
+              "feedback": "Casi. Con 7 datos, el central es el cuarto."
+            }
+          ],
           "feedback": "Casi. Con 7 datos ordenados, la mediana es el cuarto.",
-          "hints": ["Quedan 3 datos a cada lado."],
-          "solution": ["7, 7, 9, 11, 12, 15, 20: el cuarto dato es 11"]
+          "hints": [
+            "Quedan 3 datos a cada lado."
+          ],
+          "solution": [
+            "7, 7, 9, 11, 12, 15, 20: el cuarto dato es 11"
+          ]
         },
         {
           "id": "s5",
@@ -57,10 +84,19 @@
           "difficulty": 2,
           "prompt": "¿Cuál es el rango (máximo menos mínimo) de esos datos?",
           "answer": "13",
-          "mistakes": [{ "value": "8", "feedback": "Casi. Usaste los datos en su orden original; el rango usa el mayor y el menor." }],
+          "mistakes": [
+            {
+              "value": "8",
+              "feedback": "Casi. Usaste los datos en su orden original; el rango usa el mayor y el menor."
+            }
+          ],
           "feedback": "Casi. Resta el mayor menos el menor.",
-          "hints": ["$20-7$"],
-          "solution": ["$20-7=13$"]
+          "hints": [
+            "$20-7$"
+          ],
+          "solution": [
+            "$20-7=13$"
+          ]
         },
         {
           "id": "s6",
@@ -68,14 +104,21 @@
           "skill": "argumentar",
           "difficulty": 2,
           "prompt": "En un curso de 31 estudiantes, Sofía tiene la mediana de las notas. ¿Cuántos compañeros tienen una nota mayor o igual a la de ella, sin contarla?",
-          "options": ["15", "16", "31", "30"],
+          "options": [
+            "15",
+            "16",
+            "31",
+            "30"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. Sin contar a Sofía quedan 30 estudiantes, repartidos 15 y 15.",
             "2": "Casi. Ese es el total del curso.",
             "3": "Casi. La mediana deja la mitad de los datos a cada lado."
           },
-          "hints": ["La mediana queda justo al medio de los datos ordenados."],
+          "hints": [
+            "La mediana queda justo al medio de los datos ordenados."
+          ],
           "explanation": "Quedan 30 estudiantes: 15 bajo la mediana y 15 sobre ella."
         }
       ]
@@ -86,7 +129,10 @@
       "version": 1,
       "reviewStatus": "approved",
       "estimatedMinutes": 6,
-      "skills": ["resolver", "representar"],
+      "skills": [
+        "resolver",
+        "representar"
+      ],
       "steps": [
         {
           "id": "s1",
@@ -102,10 +148,21 @@
           "difficulty": 2,
           "prompt": "Datos ordenados: 2, 4, 4, 6, 8, 8, 9. ¿Cuál es el primer cuartil?",
           "answer": "4",
-          "mistakes": [{ "value": "6", "feedback": "Casi. 6 es la mediana (Q2). Q1 es el centro de la mitad inferior." }],
+          "mistakes": [
+            {
+              "value": "6",
+              "feedback": "Casi. 6 es la mediana (Q2). Q1 es el centro de la mitad inferior."
+            }
+          ],
           "feedback": "Casi. Toma la mitad inferior (2, 4, 4) y busca su centro.",
-          "hints": ["Mitad inferior: 2, 4, 4."],
-          "solution": ["Mediana: 6", "Mitad inferior: 2, 4, 4", "Q1 = 4"]
+          "hints": [
+            "Mitad inferior: 2, 4, 4."
+          ],
+          "solution": [
+            "Mediana: 6",
+            "Mitad inferior: 2, 4, 4",
+            "Q1 = 4"
+          ]
         },
         {
           "id": "s3",
@@ -114,10 +171,19 @@
           "difficulty": 2,
           "prompt": "Con los mismos datos, ¿cuál es el tercer cuartil?",
           "answer": "8",
-          "mistakes": [{ "value": "9", "feedback": "Casi. 9 es el máximo. Q3 es el centro de la mitad superior." }],
+          "mistakes": [
+            {
+              "value": "9",
+              "feedback": "Casi. 9 es el máximo. Q3 es el centro de la mitad superior."
+            }
+          ],
           "feedback": "Casi. Toma la mitad superior (8, 8, 9) y busca su centro.",
-          "hints": ["Mitad superior: 8, 8, 9."],
-          "solution": ["Q3 = 8"]
+          "hints": [
+            "Mitad superior: 8, 8, 9."
+          ],
+          "solution": [
+            "Q3 = 8"
+          ]
         },
         {
           "id": "s4",
@@ -126,10 +192,19 @@
           "difficulty": 2,
           "prompt": "El rango intercuartil es Q3 − Q1. ¿Cuánto vale para esos datos?",
           "answer": "4",
-          "mistakes": [{ "value": "7", "feedback": "Casi. Ese es el rango (máximo menos mínimo)." }],
+          "mistakes": [
+            {
+              "value": "7",
+              "feedback": "Casi. Ese es el rango (máximo menos mínimo)."
+            }
+          ],
           "feedback": "Casi. Resta los cuartiles: $8-4$.",
-          "hints": ["Q3 = 8 y Q1 = 4."],
-          "solution": ["$8-4=4$"]
+          "hints": [
+            "Q3 = 8 y Q1 = 4."
+          ],
+          "solution": [
+            "$8-4=4$"
+          ]
         },
         {
           "id": "s5",
@@ -139,12 +214,22 @@
           "prompt": "Datos ordenados: 3, 5, 5, 7, 9, 11, 11, 14. ¿Cuál es la mediana?",
           "answer": "8",
           "mistakes": [
-            { "value": "7", "feedback": "Casi. Con 8 datos hay dos centrales: 7 y 9." },
-            { "value": "9", "feedback": "Casi. Con 8 datos hay dos centrales: 7 y 9." }
+            {
+              "value": "7",
+              "feedback": "Casi. Con 8 datos hay dos centrales: 7 y 9."
+            },
+            {
+              "value": "9",
+              "feedback": "Casi. Con 8 datos hay dos centrales: 7 y 9."
+            }
           ],
           "feedback": "Casi. Promedia los dos datos centrales.",
-          "hints": ["$\\frac{7+9}{2}$"],
-          "solution": ["$\\frac{7+9}{2}=8$"]
+          "hints": [
+            "$\\frac{7+9}{2}$"
+          ],
+          "solution": [
+            "$\\frac{7+9}{2}=8$"
+          ]
         },
         {
           "id": "s6",
@@ -152,15 +237,25 @@
           "skill": "resolver",
           "difficulty": 3,
           "prompt": "Con esos 8 datos, ¿cuáles son Q1 y Q3?",
-          "options": ["Q1 = 5 y Q3 = 11", "Q1 = 3 y Q3 = 14", "Q1 = 7 y Q3 = 9", "Q1 = 5 y Q3 = 9"],
+          "options": [
+            "Q1 = 5 y Q3 = 11",
+            "Q1 = 3 y Q3 = 14",
+            "Q1 = 7 y Q3 = 9",
+            "Q1 = 5 y Q3 = 9"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. Esos son el mínimo y el máximo.",
             "2": "Casi. Esos son los datos centrales, que forman la mediana.",
             "3": "Casi. La mitad superior es 9, 11, 11, 14: su centro es 11."
           },
-          "hints": ["Mitades: 3, 5, 5, 7 y 9, 11, 11, 14."],
-          "solution": ["Q1: $\\frac{5+5}{2}=5$", "Q3: $\\frac{11+11}{2}=11$"]
+          "hints": [
+            "Mitades: 3, 5, 5, 7 y 9, 11, 11, 14."
+          ],
+          "solution": [
+            "Q1: $\\frac{5+5}{2}=5$",
+            "Q3: $\\frac{11+11}{2}=11$"
+          ]
         },
         {
           "id": "s7",
@@ -168,14 +263,21 @@
           "skill": "argumentar",
           "difficulty": 2,
           "prompt": "¿Qué porcentaje de los datos queda entre Q1 y Q3?",
-          "options": ["$50$ %", "$25$ %", "$75$ %", "$100$ %"],
+          "options": [
+            "$50$ %",
+            "$25$ %",
+            "$75$ %",
+            "$100$ %"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. Entre Q1 y Q3 hay dos de las cuatro partes.",
             "2": "Casi. Bajo Q3 queda el 75 %, pero hay que descontar el 25 % bajo Q1.",
             "3": "Casi. Fuera de ese tramo quedan los extremos."
           },
-          "hints": ["Cada parte tiene el 25 %."],
+          "hints": [
+            "Cada parte tiene el 25 %."
+          ],
           "explanation": "Dos partes de 25 %: el 50 % central."
         }
       ]
@@ -186,7 +288,10 @@
       "version": 1,
       "reviewStatus": "approved",
       "estimatedMinutes": 5,
-      "skills": ["argumentar", "resolver"],
+      "skills": [
+        "argumentar",
+        "resolver"
+      ],
       "steps": [
         {
           "id": "s1",
@@ -201,14 +306,21 @@
           "skill": "argumentar",
           "difficulty": 1,
           "prompt": "¿A qué medida corresponde el percentil 50?",
-          "options": ["A la mediana", "Al promedio", "A la moda", "Al primer cuartil"],
+          "options": [
+            "A la mediana",
+            "Al promedio",
+            "A la moda",
+            "Al primer cuartil"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. El promedio no siempre deja la mitad de los datos a cada lado.",
             "2": "Casi. La moda es el dato que más se repite.",
             "3": "Casi. El primer cuartil es el percentil 25."
           },
-          "hints": ["El 50 % de los datos queda bajo él."],
+          "hints": [
+            "El 50 % de los datos queda bajo él."
+          ],
           "explanation": "Deja la mitad de los datos bajo él: es la mediana."
         },
         {
@@ -218,10 +330,19 @@
           "difficulty": 2,
           "prompt": "Tu puntaje está en el percentil 90 entre 2.000 postulantes. Aproximadamente, ¿cuántos postulantes tienen un puntaje menor o igual al tuyo?",
           "answer": "1800",
-          "mistakes": [{ "value": "200", "feedback": "Casi. 200 es el 10 % que queda sobre ti." }],
+          "mistakes": [
+            {
+              "value": "200",
+              "feedback": "Casi. 200 es el 10 % que queda sobre ti."
+            }
+          ],
           "feedback": "Casi. Calcula el 90 % de 2.000.",
-          "hints": ["$0,9\\cdot 2000$"],
-          "solution": ["$0,9\\cdot 2000=1800$"]
+          "hints": [
+            "$0,9\\cdot 2000$"
+          ],
+          "solution": [
+            "$0,9\\cdot 2000=1800$"
+          ]
         },
         {
           "id": "s4",
@@ -229,14 +350,21 @@
           "skill": "argumentar",
           "difficulty": 2,
           "prompt": "Martina quedó en el percentil 80 de un ensayo. ¿Qué significa?",
-          "options": ["Le fue igual o mejor que al 80 % de los que rindieron", "Contestó bien el 80 % de las preguntas", "Sacó 80 puntos", "Le fue mejor que al 20 %"],
+          "options": [
+            "Le fue igual o mejor que al 80 % de los que rindieron",
+            "Contestó bien el 80 % de las preguntas",
+            "Sacó 80 puntos",
+            "Le fue mejor que al 20 %"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. El percentil compara con otras personas, no cuenta respuestas correctas.",
             "2": "Casi. El percentil no es un puntaje.",
             "3": "Casi. Es al revés: solo el 20 % queda sobre ella."
           },
-          "hints": ["El percentil es una posición respecto de los demás."],
+          "hints": [
+            "El percentil es una posición respecto de los demás."
+          ],
           "explanation": "El percentil 80 deja bajo él cerca del 80 % de los resultados."
         },
         {
@@ -245,14 +373,21 @@
           "skill": "argumentar",
           "difficulty": 3,
           "prompt": "En un grupo, P30 = 450 puntos y P70 = 620 puntos. ¿Qué porcentaje de los datos está entre 450 y 620 puntos?",
-          "options": ["Cerca del $40$ %", "Cerca del $30$ %", "Cerca del $70$ %", "Cerca del $100$ %"],
+          "options": [
+            "Cerca del $40$ %",
+            "Cerca del $30$ %",
+            "Cerca del $70$ %",
+            "Cerca del $100$ %"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. El 30 % queda bajo 450; lo que se pregunta está entre ambos percentiles.",
             "2": "Casi. El 70 % queda bajo 620, pero hay que restar el 30 % bajo 450.",
             "3": "Casi. Fuera del tramo quedan el 30 % de abajo y el 30 % de arriba."
           },
-          "hints": ["$70-30$"],
+          "hints": [
+            "$70-30$"
+          ],
           "explanation": "$70$ % $-30$ % $=40$ %."
         },
         {
@@ -262,10 +397,19 @@
           "difficulty": 3,
           "prompt": "En un curso de 40 estudiantes, ¿cuántos quedan aproximadamente sobre el tercer cuartil?",
           "answer": "10",
-          "mistakes": [{ "value": "30", "feedback": "Casi. 30 son los que quedan bajo Q3." }],
+          "mistakes": [
+            {
+              "value": "30",
+              "feedback": "Casi. 30 son los que quedan bajo Q3."
+            }
+          ],
           "feedback": "Casi. Sobre Q3 queda el 25 % de los datos.",
-          "hints": ["El 25 % de 40."],
-          "solution": ["$\\frac{40}{4}=10$"]
+          "hints": [
+            "El 25 % de 40."
+          ],
+          "solution": [
+            "$\\frac{40}{4}=10$"
+          ]
         }
       ]
     },
@@ -275,7 +419,10 @@
       "version": 1,
       "reviewStatus": "approved",
       "estimatedMinutes": 6,
-      "skills": ["representar", "argumentar"],
+      "skills": [
+        "representar",
+        "argumentar"
+      ],
       "steps": [
         {
           "id": "s1",
@@ -291,10 +438,19 @@
           "difficulty": 1,
           "prompt": "Un diagrama de cajón tiene mínimo 20, Q1 = 35, mediana 42, Q3 = 50 y máximo 70. ¿Cuánto mide la caja, es decir, el rango intercuartil?",
           "answer": "15",
-          "mistakes": [{ "value": "50", "feedback": "Casi. Ese es el rango (máximo menos mínimo)." }],
+          "mistakes": [
+            {
+              "value": "50",
+              "feedback": "Casi. Ese es el rango (máximo menos mínimo)."
+            }
+          ],
           "feedback": "Casi. La caja va de Q1 a Q3.",
-          "hints": ["$50-35$"],
-          "solution": ["$50-35=15$"]
+          "hints": [
+            "$50-35$"
+          ],
+          "solution": [
+            "$50-35=15$"
+          ]
         },
         {
           "id": "s3",
@@ -302,14 +458,21 @@
           "skill": "representar",
           "difficulty": 2,
           "prompt": "Con ese diagrama, ¿qué porcentaje de los datos es mayor que 50?",
-          "options": ["$25$ %", "$50$ %", "$75$ %", "$10$ %"],
+          "options": [
+            "$25$ %",
+            "$50$ %",
+            "$75$ %",
+            "$10$ %"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. 50 es Q3, no la mediana.",
             "2": "Casi. El 75 % queda bajo Q3; sobre él, el resto.",
             "3": "Casi. Cada tramo del diagrama tiene el 25 % de los datos."
           },
-          "hints": ["50 es el tercer cuartil."],
+          "hints": [
+            "50 es el tercer cuartil."
+          ],
           "explanation": "Sobre Q3 queda el 25 % de los datos."
         },
         {
@@ -318,14 +481,21 @@
           "skill": "argumentar",
           "difficulty": 3,
           "prompt": "El bigote derecho (de 50 a 70) es más largo que el izquierdo (de 20 a 35). ¿Qué significa?",
-          "options": ["El 25 % superior está más disperso que el 25 % inferior", "Hay más datos a la derecha", "El promedio es 70", "La mediana está mal calculada"],
+          "options": [
+            "El 25 % superior está más disperso que el 25 % inferior",
+            "Hay más datos a la derecha",
+            "El promedio es 70",
+            "La mediana está mal calculada"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. Cada bigote tiene la misma cantidad de datos (25 %); cambia cuán separados están.",
             "2": "Casi. El diagrama no muestra el promedio.",
             "3": "Casi. Los bigotes no tienen por qué medir lo mismo."
           },
-          "hints": ["Cada bigote contiene el 25 % de los datos."],
+          "hints": [
+            "Cada bigote contiene el 25 % de los datos."
+          ],
           "explanation": "Mismo porcentaje de datos en un tramo más largo: están más dispersos."
         },
         {
@@ -334,14 +504,21 @@
           "skill": "argumentar",
           "difficulty": 3,
           "prompt": "Dos cursos rindieron la misma prueba. El A tiene Q1 = 4,5 y Q3 = 5,0; el B tiene Q1 = 3,5 y Q3 = 6,5. ¿Qué curso tiene notas más parejas en su 50 % central?",
-          "options": ["El A", "El B", "Los dos por igual", "No se puede saber"],
+          "options": [
+            "El A",
+            "El B",
+            "Los dos por igual",
+            "No se puede saber"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. La caja del B mide 3,0; la del A, solo 0,5.",
             "2": "Casi. Compara los rangos intercuartiles: 0,5 y 3,0.",
             "3": "Casi. El rango intercuartil mide justamente eso."
           },
-          "hints": ["Calcula Q3 − Q1 en cada curso."],
+          "hints": [
+            "Calcula Q3 − Q1 en cada curso."
+          ],
           "explanation": "A: $5,0-4,5=0,5$. B: $6,5-3,5=3,0$. La caja del A es más angosta: notas más parejas."
         },
         {
@@ -350,10 +527,17 @@
           "skill": "argumentar",
           "difficulty": 3,
           "prompt": "Para los datos 1, 3, 3, 3, 6, 7, 8, 10, 10, 10, 12 hicieron este resumen. ¿En qué línea está el error?",
-          "lines": ["Mínimo 1 y máximo 12", "Mediana: 7", "Q1 = 3", "Q3 = 8"],
+          "lines": [
+            "Mínimo 1 y máximo 12",
+            "Mediana: 7",
+            "Q1 = 3",
+            "Q3 = 8"
+          ],
           "wrong": 3,
           "feedback": "Casi. Esa línea está bien. Revisa la mitad superior.",
-          "hints": ["Mitad superior: 8, 10, 10, 10, 12."],
+          "hints": [
+            "Mitad superior: 8, 10, 10, 10, 12."
+          ],
           "explanation": "La mitad superior es 8, 10, 10, 10, 12: su centro es 10, así que Q3 = 10."
         }
       ]
@@ -365,9 +549,22 @@
       "title": "Cuartiles paso a paso",
       "reviewStatus": "approved",
       "cards": [
-        { "title": "1. Ordena", "body": "Siempre de menor a mayor." },
-        { "title": "2. Mediana", "body": "El centro: Q2." },
-        { "title": "3. Mitades", "body": "Q1 es el centro de la mitad inferior y Q3, el de la superior.", "example": ["2, 4, 4, 6, 8, 8, 9", "Q1 = 4, Q3 = 8"] }
+        {
+          "title": "1. Ordena",
+          "body": "Siempre de menor a mayor."
+        },
+        {
+          "title": "2. Mediana",
+          "body": "El centro: Q2."
+        },
+        {
+          "title": "3. Mitades",
+          "body": "Q1 es el centro de la mitad inferior y Q3, el de la superior.",
+          "example": [
+            "2, 4, 4, 6, 8, 8, 9",
+            "Q1 = 4, Q3 = 8"
+          ]
+        }
       ]
     },
     {
@@ -375,9 +572,18 @@
       "title": "Percentiles",
       "reviewStatus": "approved",
       "cards": [
-        { "title": "Idea", "body": "Pk deja bajo él cerca del $k$ % de los datos." },
-        { "title": "Equivalencias", "body": "P25 = Q1, P50 = mediana, P75 = Q3." },
-        { "title": "Ojo", "body": "Percentil 80 no es el 80 % de respuestas correctas: es tu posición frente a los demás." }
+        {
+          "title": "Idea",
+          "body": "Pk deja bajo él cerca del $k$ % de los datos."
+        },
+        {
+          "title": "Equivalencias",
+          "body": "P25 = Q1, P50 = mediana, P75 = Q3."
+        },
+        {
+          "title": "Ojo",
+          "body": "Percentil 80 no es el 80 % de respuestas correctas: es tu posición frente a los demás."
+        }
       ]
     },
     {
@@ -385,9 +591,79 @@
       "title": "Diagrama de cajón",
       "reviewStatus": "approved",
       "cards": [
-        { "title": "Cinco números", "body": "Mínimo, Q1, mediana, Q3 y máximo." },
-        { "title": "Cuatro tramos", "body": "Cada tramo tiene el 25 % de los datos, aunque midan distinto." },
-        { "title": "Dispersión", "body": "Caja angosta: datos parejos. Rango intercuartil: Q3 − Q1." }
+        {
+          "title": "Cinco números",
+          "body": "Mínimo, Q1, mediana, Q3 y máximo."
+        },
+        {
+          "title": "Cuatro tramos",
+          "body": "Cada tramo tiene el 25 % de los datos, aunque midan distinto."
+        },
+        {
+          "title": "Dispersión",
+          "body": "Caja angosta: datos parejos. Rango intercuartil: Q3 − Q1."
+        }
+      ]
+    },
+    {
+      "id": "mc-mp-4",
+      "title": "Rango y rango intercuartil",
+      "reviewStatus": "approved",
+      "cards": [
+        {
+          "title": "Rango",
+          "body": "Dato mayor menos dato menor."
+        },
+        {
+          "title": "Rango intercuartil",
+          "body": "Tercer cuartil menos primer cuartil: mide el 50 % central de los datos."
+        },
+        {
+          "title": "Para qué",
+          "body": "Muestra qué tan dispersos están los datos centrales."
+        }
+      ]
+    },
+    {
+      "id": "mc-mp-5",
+      "title": "Promedio vs. mediana",
+      "reviewStatus": "approved",
+      "cards": [
+        {
+          "title": "Promedio",
+          "body": "Se mueve mucho con un dato extremo."
+        },
+        {
+          "title": "Mediana",
+          "body": "Es el dato del medio: casi no le afectan los extremos."
+        },
+        {
+          "title": "Ejemplo",
+          "body": "Sueldos: 5 personas ganan \\$500.000 y una \\$5.000.000.",
+          "example": [
+            "El promedio sube mucho",
+            "La mediana sigue en \\$500.000"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mc-mp-6",
+      "title": "Posición de un dato",
+      "reviewStatus": "approved",
+      "cards": [
+        {
+          "title": "Percentil",
+          "body": "Estar en el percentil 80 significa superar o igualar al 80 % de los datos."
+        },
+        {
+          "title": "Cuartiles",
+          "body": "El primer cuartil es el percentil 25, la mediana el 50 y el tercer cuartil el 75."
+        },
+        {
+          "title": "Ojo",
+          "body": "Percentil 80 no es tener 80 puntos: habla de posición, no de nota."
+        }
       ]
     }
   ]

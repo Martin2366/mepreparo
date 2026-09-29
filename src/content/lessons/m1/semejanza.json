@@ -7,7 +7,10 @@
       "version": 1,
       "reviewStatus": "approved",
       "estimatedMinutes": 5,
-      "skills": ["resolver", "argumentar"],
+      "skills": [
+        "resolver",
+        "argumentar"
+      ],
       "steps": [
         {
           "id": "s1",
@@ -22,14 +25,21 @@
           "skill": "argumentar",
           "difficulty": 1,
           "prompt": "Un triángulo tiene lados de 3, 4 y 5 cm. ¿Cuál de estos triángulos es semejante a él?",
-          "options": ["6, 8 y 10 cm", "4, 5 y 6 cm", "3, 4 y 6 cm", "6, 8 y 12 cm"],
+          "options": [
+            "6, 8 y 10 cm",
+            "4, 5 y 6 cm",
+            "3, 4 y 6 cm",
+            "6, 8 y 12 cm"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. Sumar 1 a cada lado no mantiene la proporción.",
             "2": "Casi. Dos lados son iguales, pero el tercero no es proporcional.",
             "3": "Casi. $\\frac{6}{3}=\\frac{8}{4}=2$, pero $\\frac{12}{5}$ no es 2."
           },
-          "hints": ["Busca el que tenga todos los lados multiplicados por el mismo número."],
+          "hints": [
+            "Busca el que tenga todos los lados multiplicados por el mismo número."
+          ],
           "explanation": "Todos los lados se multiplican por 2."
         },
         {
@@ -40,10 +50,20 @@
           "prompt": "Dos rectángulos son semejantes. El pequeño mide 4 cm × 6 cm y el grande tiene su lado menor de 10 cm. ¿Cuánto mide su lado mayor?",
           "answer": "15",
           "suffix": "cm",
-          "mistakes": [{ "value": "12", "feedback": "Casi. No se suma la diferencia: la razón es $\\frac{10}{4}=2,5$." }],
+          "mistakes": [
+            {
+              "value": "12",
+              "feedback": "Casi. No se suma la diferencia: la razón es $\\frac{10}{4}=2,5$."
+            }
+          ],
           "feedback": "Casi. Calcula la razón $k=\\frac{10}{4}$ y multiplica.",
-          "hints": ["$k=2,5$"],
-          "solution": ["$k=\\frac{10}{4}=2,5$", "$6\\cdot 2,5=15$"]
+          "hints": [
+            "$k=2,5$"
+          ],
+          "solution": [
+            "$k=\\frac{10}{4}=2,5$",
+            "$6\\cdot 2,5=15$"
+          ]
         },
         {
           "id": "s4",
@@ -60,10 +80,19 @@
           "prompt": "Dos cuadrados son semejantes con razón 3. Si el pequeño tiene 4 cm² de área, ¿cuál es el área del grande?",
           "answer": "36",
           "suffix": "cm²",
-          "mistakes": [{ "value": "12", "feedback": "Casi. Las áreas están en razón $k^{2}=9$, no 3." }],
+          "mistakes": [
+            {
+              "value": "12",
+              "feedback": "Casi. Las áreas están en razón $k^{2}=9$, no 3."
+            }
+          ],
           "feedback": "Casi. Multiplica el área por $k^{2}$.",
-          "hints": ["$k^{2}=9$"],
-          "solution": ["$4\\cdot 9=36$"]
+          "hints": [
+            "$k^{2}=9$"
+          ],
+          "solution": [
+            "$4\\cdot 9=36$"
+          ]
         },
         {
           "id": "s6",
@@ -71,14 +100,21 @@
           "skill": "argumentar",
           "difficulty": 3,
           "prompt": "Un mapa se amplía al doble. ¿Qué pasa con el área que ocupa un parque en el mapa?",
-          "options": ["Se multiplica por 4", "Se duplica", "Se multiplica por 8", "No cambia"],
+          "options": [
+            "Se multiplica por 4",
+            "Se duplica",
+            "Se multiplica por 8",
+            "No cambia"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. Se duplican el largo y el ancho: $2\\cdot 2=4$.",
             "2": "Casi. Por 8 se multiplicaría un volumen.",
             "3": "Casi. Si el dibujo crece, el área que ocupa también."
           },
-          "hints": ["Las áreas se multiplican por $k^{2}$."],
+          "hints": [
+            "Las áreas se multiplican por $k^{2}$."
+          ],
           "explanation": "$k=2$, así que las áreas se multiplican por $k^{2}=4$."
         }
       ]
@@ -89,7 +125,9 @@
       "version": 1,
       "reviewStatus": "approved",
       "estimatedMinutes": 6,
-      "skills": ["argumentar"],
+      "skills": [
+        "argumentar"
+      ],
       "steps": [
         {
           "id": "s1",
@@ -104,14 +142,21 @@
           "skill": "argumentar",
           "difficulty": 2,
           "prompt": "Un triángulo tiene ángulos de 50° y 60°; otro tiene ángulos de 60° y 70°. ¿Son semejantes?",
-          "options": ["Sí, por el criterio AA", "No, los ángulos dados son distintos", "No se puede saber", "Solo si tienen lados iguales"],
+          "options": [
+            "Sí, por el criterio AA",
+            "No, los ángulos dados son distintos",
+            "No se puede saber",
+            "Solo si tienen lados iguales"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. Calcula el tercer ángulo de cada uno: ambos tienen 50°, 60° y 70°.",
             "2": "Casi. Con dos ángulos se puede calcular el tercero: los ángulos de un triángulo suman 180°.",
             "3": "Casi. Semejantes no significa iguales: basta con los ángulos."
           },
-          "hints": ["Los ángulos de un triángulo suman 180°."],
+          "hints": [
+            "Los ángulos de un triángulo suman 180°."
+          ],
           "explanation": "El primero tiene 50°, 60° y 70°; el segundo, 60°, 70° y 50°. Son semejantes por AA."
         },
         {
@@ -120,14 +165,21 @@
           "skill": "argumentar",
           "difficulty": 2,
           "prompt": "¿Qué trío de lados es proporcional a 2, 3 y 4?",
-          "options": ["$5$, $7,5$ y $10$", "$4$, $5$ y $6$", "$3$, $4$ y $5$", "$4$, $6$ y $9$"],
+          "options": [
+            "$5$, $7,5$ y $10$",
+            "$4$, $5$ y $6$",
+            "$3$, $4$ y $5$",
+            "$4$, $6$ y $9$"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. Sumar 2 a cada lado no mantiene la proporción.",
             "2": "Casi. Sumar 1 no es multiplicar.",
             "3": "Casi. $\\frac{4}{2}=\\frac{6}{3}=2$, pero $\\frac{9}{4}$ no es 2."
           },
-          "hints": ["Busca el que tenga todos los lados multiplicados por el mismo número."],
+          "hints": [
+            "Busca el que tenga todos los lados multiplicados por el mismo número."
+          ],
           "explanation": "Todos se multiplican por $2,5$."
         },
         {
@@ -138,10 +190,20 @@
           "prompt": "Un triángulo de lados 5, 12 y 13 cm es semejante a otro cuyo lado mayor mide 39 cm. ¿Cuánto mide el lado menor del segundo triángulo?",
           "answer": "15",
           "suffix": "cm",
-          "mistakes": [{ "value": "31", "feedback": "Casi. No se suma la diferencia: la razón es $\\frac{39}{13}=3$." }],
+          "mistakes": [
+            {
+              "value": "31",
+              "feedback": "Casi. No se suma la diferencia: la razón es $\\frac{39}{13}=3$."
+            }
+          ],
           "feedback": "Casi. La razón es $\\frac{39}{13}$; multiplica el lado menor por ella.",
-          "hints": ["$k=3$"],
-          "solution": ["$k=\\frac{39}{13}=3$", "$5\\cdot 3=15$"]
+          "hints": [
+            "$k=3$"
+          ],
+          "solution": [
+            "$k=\\frac{39}{13}=3$",
+            "$5\\cdot 3=15$"
+          ]
         },
         {
           "id": "s5",
@@ -149,14 +211,21 @@
           "skill": "argumentar",
           "difficulty": 2,
           "prompt": "Si dos triángulos tienen sus lados proporcionales, entonces sus ángulos:",
-          "options": ["Son iguales", "Son proporcionales", "Suman 360°", "No se puede saber"],
+          "options": [
+            "Son iguales",
+            "Son proporcionales",
+            "Suman 360°",
+            "No se puede saber"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. Los ángulos no se agrandan con la figura: se mantienen iguales.",
             "2": "Casi. Los ángulos de un triángulo suman 180°.",
             "3": "Casi. Por el criterio LLL los triángulos son semejantes, y en figuras semejantes los ángulos son iguales."
           },
-          "hints": ["Una fotocopia ampliada, ¿cambia los ángulos?"],
+          "hints": [
+            "Una fotocopia ampliada, ¿cambia los ángulos?"
+          ],
           "explanation": "Figuras semejantes tienen ángulos iguales."
         },
         {
@@ -165,14 +234,21 @@
           "skill": "argumentar",
           "difficulty": 3,
           "prompt": "En el triángulo ABC se traza un segmento DE paralelo a BC, con D en AB y E en AC. ¿Por qué el triángulo ADE es semejante al ABC?",
-          "options": ["Porque tienen los mismos ángulos (criterio AA)", "Porque DE mide la mitad de BC", "Porque tienen un lado en común", "Porque son congruentes"],
+          "options": [
+            "Porque tienen los mismos ángulos (criterio AA)",
+            "Porque DE mide la mitad de BC",
+            "Porque tienen un lado en común",
+            "Porque son congruentes"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. No sabemos cuánto mide DE; la razón es de ángulos.",
             "2": "Casi. Compartir un lado no basta para la semejanza.",
             "3": "Casi. No son del mismo tamaño: ADE es más pequeño."
           },
-          "hints": ["Rectas paralelas forman ángulos correspondientes iguales."],
+          "hints": [
+            "Rectas paralelas forman ángulos correspondientes iguales."
+          ],
           "explanation": "Comparten el ángulo A y, por las paralelas, los ángulos en D y B son iguales: criterio AA."
         }
       ]
@@ -183,7 +259,10 @@
       "version": 1,
       "reviewStatus": "approved",
       "estimatedMinutes": 6,
-      "skills": ["resolver", "modelar"],
+      "skills": [
+        "resolver",
+        "modelar"
+      ],
       "steps": [
         {
           "id": "s1",
@@ -200,10 +279,21 @@
           "prompt": "Tres paralelas determinan en una transversal segmentos de 4 cm y 6 cm. En la otra transversal, el primer segmento mide 6 cm. ¿Cuánto mide el segundo?",
           "answer": "9",
           "suffix": "cm",
-          "mistakes": [{ "value": "8", "feedback": "Casi. No se suma la diferencia: plantea $\\frac{4}{6}=\\frac{6}{x}$." }],
+          "mistakes": [
+            {
+              "value": "8",
+              "feedback": "Casi. No se suma la diferencia: plantea $\\frac{4}{6}=\\frac{6}{x}$."
+            }
+          ],
           "feedback": "Casi. Plantea la proporción $\\frac{4}{6}=\\frac{6}{x}$.",
-          "hints": ["$4x=36$"],
-          "solution": ["$\\frac{4}{6}=\\frac{6}{x}$", "$4x=36$", "$x=9$"]
+          "hints": [
+            "$4x=36$"
+          ],
+          "solution": [
+            "$\\frac{4}{6}=\\frac{6}{x}$",
+            "$4x=36$",
+            "$x=9$"
+          ]
         },
         {
           "id": "s3",
@@ -213,10 +303,20 @@
           "prompt": "En un triángulo, una paralela a la base corta un lado en segmentos de 3 cm y 5 cm, y el otro lado en segmentos de 6 cm y $x$ cm, en el mismo orden. ¿Cuánto vale $x$?",
           "answer": "10",
           "suffix": "cm",
-          "mistakes": [{ "value": "8", "feedback": "Casi. No se suma la diferencia: $\\frac{3}{5}=\\frac{6}{x}$." }],
+          "mistakes": [
+            {
+              "value": "8",
+              "feedback": "Casi. No se suma la diferencia: $\\frac{3}{5}=\\frac{6}{x}$."
+            }
+          ],
           "feedback": "Casi. Plantea $\\frac{3}{5}=\\frac{6}{x}$.",
-          "hints": ["$3x=30$"],
-          "solution": ["$3x=5\\cdot 6$", "$x=10$"]
+          "hints": [
+            "$3x=30$"
+          ],
+          "solution": [
+            "$3x=5\\cdot 6$",
+            "$x=10$"
+          ]
         },
         {
           "id": "s4",
@@ -224,10 +324,17 @@
           "skill": "argumentar",
           "difficulty": 2,
           "prompt": "Así resolvieron $\\frac{3}{x}=\\frac{9}{12}$. ¿En qué línea está el error?",
-          "lines": ["$\\frac{3}{x}=\\frac{9}{12}$", "$9x=3\\cdot 12$", "$x=\\frac{36}{9}$", "$x=3$"],
+          "lines": [
+            "$\\frac{3}{x}=\\frac{9}{12}$",
+            "$9x=3\\cdot 12$",
+            "$x=\\frac{36}{9}$",
+            "$x=3$"
+          ],
           "wrong": 3,
           "feedback": "Casi. Esa línea está bien. Revisa la última división.",
-          "hints": ["¿Cuánto es $36\\div 9$?"],
+          "hints": [
+            "¿Cuánto es $36\\div 9$?"
+          ],
           "explanation": "$\\frac{36}{9}=4$, no 3."
         },
         {
@@ -236,15 +343,24 @@
           "skill": "modelar",
           "difficulty": 3,
           "prompt": "Un poste de 3 m proyecta una sombra de 2 m. A la misma hora, un árbol proyecta una sombra de 8 m. ¿Cuánto mide el árbol?",
-          "options": ["12 m", "9 m", "$\\frac{16}{3}$ m", "13 m"],
+          "options": [
+            "12 m",
+            "9 m",
+            "$\\frac{16}{3}$ m",
+            "13 m"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. No se suma la diferencia de sombras: la relación es proporcional.",
             "2": "Casi. Planteaste la proporción al revés.",
             "3": "Casi. Plantea $\\frac{3}{2}=\\frac{h}{8}$."
           },
-          "hints": ["Altura y sombra son proporcionales: $\\frac{3}{2}=\\frac{h}{8}$."],
-          "solution": ["$h=\\frac{3\\cdot 8}{2}=12$"]
+          "hints": [
+            "Altura y sombra son proporcionales: $\\frac{3}{2}=\\frac{h}{8}$."
+          ],
+          "solution": [
+            "$h=\\frac{3\\cdot 8}{2}=12$"
+          ]
         },
         {
           "id": "s6",
@@ -254,10 +370,19 @@
           "prompt": "A esa misma hora, ¿qué sombra proyecta una persona de 1,8 m? Responde en metros.",
           "answer": "6/5",
           "suffix": "m",
-          "mistakes": [{ "value": "27/10", "feedback": "Casi. Planteaste la proporción al revés: $\\frac{3}{2}=\\frac{1,8}{s}$." }],
+          "mistakes": [
+            {
+              "value": "27/10",
+              "feedback": "Casi. Planteaste la proporción al revés: $\\frac{3}{2}=\\frac{1,8}{s}$."
+            }
+          ],
           "feedback": "Casi. Plantea $\\frac{3}{2}=\\frac{1,8}{s}$.",
-          "hints": ["La sombra es $\\frac{2}{3}$ de la altura."],
-          "solution": ["$s=\\frac{2\\cdot 1,8}{3}=1,2$"]
+          "hints": [
+            "La sombra es $\\frac{2}{3}$ de la altura."
+          ],
+          "solution": [
+            "$s=\\frac{2\\cdot 1,8}{3}=1,2$"
+          ]
         }
       ]
     },
@@ -267,7 +392,9 @@
       "version": 1,
       "reviewStatus": "approved",
       "estimatedMinutes": 6,
-      "skills": ["modelar"],
+      "skills": [
+        "modelar"
+      ],
       "steps": [
         {
           "id": "s1",
@@ -284,10 +411,20 @@
           "prompt": "En un mapa a escala 1:50.000, dos ciudades están a 6 cm. ¿A cuántos kilómetros están en la realidad?",
           "answer": "3",
           "suffix": "km",
-          "mistakes": [{ "value": "300", "feedback": "Casi. 300.000 cm son 3.000 m, es decir, 3 km." }],
+          "mistakes": [
+            {
+              "value": "300",
+              "feedback": "Casi. 300.000 cm son 3.000 m, es decir, 3 km."
+            }
+          ],
           "feedback": "Casi. $6\\cdot 50000=300000$ cm; conviértelo a km.",
-          "hints": ["1 km = 100.000 cm"],
-          "solution": ["$6\\cdot 50000=300000$ cm", "$=3$ km"]
+          "hints": [
+            "1 km = 100.000 cm"
+          ],
+          "solution": [
+            "$6\\cdot 50000=300000$ cm",
+            "$=3$ km"
+          ]
         },
         {
           "id": "s3",
@@ -296,10 +433,19 @@
           "difficulty": 2,
           "prompt": "Una casa de 12 m de largo se dibuja con 6 cm en un plano. Si la escala es $1:n$, ¿cuánto vale $n$?",
           "answer": "200",
-          "mistakes": [{ "value": "2", "feedback": "Casi. Pasa todo a la misma unidad: 12 m son 1.200 cm." }],
+          "mistakes": [
+            {
+              "value": "2",
+              "feedback": "Casi. Pasa todo a la misma unidad: 12 m son 1.200 cm."
+            }
+          ],
           "feedback": "Casi. Divide la medida real por la del plano, en las mismas unidades.",
-          "hints": ["$1200\\div 6$"],
-          "solution": ["$1200\\div 6=200$"]
+          "hints": [
+            "$1200\\div 6$"
+          ],
+          "solution": [
+            "$1200\\div 6=200$"
+          ]
         },
         {
           "id": "s4",
@@ -307,15 +453,24 @@
           "skill": "modelar",
           "difficulty": 1,
           "prompt": "En una maqueta a escala 1:100, un edificio mide 30 cm. ¿Cuál es su altura real?",
-          "options": ["30 m", "3 m", "300 m", "0,3 m"],
+          "options": [
+            "30 m",
+            "3 m",
+            "300 m",
+            "0,3 m"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. $30\\cdot 100=3000$ cm, que son 30 m.",
             "2": "Casi. Revisa la conversión: 3.000 cm son 30 m.",
             "3": "Casi. El edificio real es más grande que la maqueta."
           },
-          "hints": ["$30\\cdot 100$ cm"],
-          "solution": ["$3000$ cm $=30$ m"]
+          "hints": [
+            "$30\\cdot 100$ cm"
+          ],
+          "solution": [
+            "$3000$ cm $=30$ m"
+          ]
         },
         {
           "id": "s5",
@@ -323,15 +478,24 @@
           "skill": "modelar",
           "difficulty": 3,
           "prompt": "En un plano a escala 1:200, una pieza rectangular mide 5 cm × 4 cm. ¿Cuál es su área real?",
-          "options": ["80 m²", "20 m²", "800 m²", "8 m²"],
+          "options": [
+            "80 m²",
+            "20 m²",
+            "800 m²",
+            "8 m²"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. Convierte cada medida y después multiplica: 10 m × 8 m.",
             "2": "Casi. Revisa: $5\\cdot 200=1000$ cm, que son 10 m.",
             "3": "Casi. Las medidas reales son 10 m y 8 m."
           },
-          "hints": ["Largo real: $5\\cdot 200$ cm."],
-          "solution": ["10 m × 8 m = 80 m²"]
+          "hints": [
+            "Largo real: $5\\cdot 200$ cm."
+          ],
+          "solution": [
+            "10 m × 8 m = 80 m²"
+          ]
         },
         {
           "id": "s6",
@@ -339,15 +503,24 @@
           "skill": "modelar",
           "difficulty": 3,
           "prompt": "Un edificio proyecta una sombra de 24 m y, al mismo tiempo, una persona de 1,5 m proyecta una sombra de 2 m. ¿Cuánto mide el edificio?",
-          "options": ["18 m", "32 m", "$25,5$ m", "36 m"],
+          "options": [
+            "18 m",
+            "32 m",
+            "$25,5$ m",
+            "36 m"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. Planteaste la proporción al revés.",
             "2": "Casi. No se suma la diferencia: la relación es proporcional.",
             "3": "Casi. Plantea $\\frac{1,5}{2}=\\frac{h}{24}$."
           },
-          "hints": ["$\\frac{1,5}{2}=\\frac{h}{24}$"],
-          "solution": ["$h=\\frac{1,5\\cdot 24}{2}=18$"]
+          "hints": [
+            "$\\frac{1,5}{2}=\\frac{h}{24}$"
+          ],
+          "solution": [
+            "$h=\\frac{1,5\\cdot 24}{2}=18$"
+          ]
         }
       ]
     }
@@ -358,8 +531,15 @@
       "title": "Razón de semejanza",
       "reviewStatus": "approved",
       "cards": [
-        { "title": "Razón", "body": "Divide un lado de la figura grande por su homólogo en la pequeña.", "formula": "$k=\\frac{A}{a}$" },
-        { "title": "Áreas", "body": "Si los lados están en razón $k$, las áreas están en razón $k^{2}$." }
+        {
+          "title": "Razón",
+          "body": "Divide un lado de la figura grande por su homólogo en la pequeña.",
+          "formula": "$k=\\frac{A}{a}$"
+        },
+        {
+          "title": "Áreas",
+          "body": "Si los lados están en razón $k$, las áreas están en razón $k^{2}$."
+        }
       ]
     },
     {
@@ -367,9 +547,18 @@
       "title": "Criterios",
       "reviewStatus": "approved",
       "cards": [
-        { "title": "AA", "body": "Dos ángulos iguales." },
-        { "title": "LLL", "body": "Tres lados proporcionales." },
-        { "title": "LAL", "body": "Dos lados proporcionales y el ángulo entre ellos igual." }
+        {
+          "title": "AA",
+          "body": "Dos ángulos iguales."
+        },
+        {
+          "title": "LLL",
+          "body": "Tres lados proporcionales."
+        },
+        {
+          "title": "LAL",
+          "body": "Dos lados proporcionales y el ángulo entre ellos igual."
+        }
       ]
     },
     {
@@ -377,8 +566,88 @@
       "title": "Thales y sombras",
       "reviewStatus": "approved",
       "cards": [
-        { "title": "Thales", "body": "Paralelas cortan segmentos proporcionales.", "formula": "$\\frac{a}{b}=\\frac{c}{d}$" },
-        { "title": "Sombras", "body": "A la misma hora, alturas y sombras son proporcionales.", "example": ["poste 2 m, sombra 3 m", "árbol con sombra 9 m: 6 m"] }
+        {
+          "title": "Thales",
+          "body": "Paralelas cortan segmentos proporcionales.",
+          "formula": "$\\frac{a}{b}=\\frac{c}{d}$"
+        },
+        {
+          "title": "Sombras",
+          "body": "A la misma hora, alturas y sombras son proporcionales.",
+          "example": [
+            "poste 2 m, sombra 3 m",
+            "árbol con sombra 9 m: 6 m"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mc-sm-4",
+      "title": "Áreas de figuras semejantes",
+      "reviewStatus": "approved",
+      "cards": [
+        {
+          "title": "La regla",
+          "body": "Si la razón de semejanza es $k$, las áreas están en razón $k^{2}$."
+        },
+        {
+          "title": "Ejemplo",
+          "body": "Lados en razón 1 : 3.",
+          "example": [
+            "Áreas en razón 1 : 9"
+          ]
+        },
+        {
+          "title": "Volúmenes",
+          "body": "En cuerpos semejantes, los volúmenes están en razón $k^{3}$."
+        }
+      ]
+    },
+    {
+      "id": "mc-sm-5",
+      "title": "Semejanza en el triángulo rectángulo",
+      "reviewStatus": "approved",
+      "cards": [
+        {
+          "title": "La altura",
+          "body": "La altura desde el ángulo recto divide el triángulo en dos triángulos semejantes al original."
+        },
+        {
+          "title": "Relación útil",
+          "body": "La altura al cuadrado es el producto de las proyecciones.",
+          "formula": "$h^{2}=p\\cdot q$"
+        },
+        {
+          "title": "Ejemplo",
+          "body": "Proyecciones 4 y 9.",
+          "example": [
+            "$h^{2}=36$",
+            "$h=6$"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mc-sm-6",
+      "title": "Plantear la proporción",
+      "reviewStatus": "approved",
+      "cards": [
+        {
+          "title": "Ordena",
+          "body": "Escribe los lados correspondientes en el mismo orden: chico con chico, grande con grande."
+        },
+        {
+          "title": "Ejemplo",
+          "body": "Un poste de 2 m da 3 m de sombra; un árbol da 12 m.",
+          "example": [
+            "$\\frac{2}{3}=\\frac{x}{12}$",
+            "$x=8$ m"
+          ]
+        },
+        {
+          "title": "Revisa",
+          "body": "¿Tiene sentido el resultado? Más sombra, más alto."
+        }
       ]
     }
   ]

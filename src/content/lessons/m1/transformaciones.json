@@ -7,7 +7,9 @@
       "version": 1,
       "reviewStatus": "approved",
       "estimatedMinutes": 5,
-      "skills": ["representar"],
+      "skills": [
+        "representar"
+      ],
       "steps": [
         {
           "id": "s1",
@@ -22,15 +24,24 @@
           "skill": "representar",
           "difficulty": 1,
           "prompt": "El punto $(2,-1)$ se traslada según el vector $(3,4)$. ¿Dónde queda?",
-          "options": ["$(5,3)$", "$(-1,-5)$", "$(6,-4)$", "$(5,-5)$"],
+          "options": [
+            "$(5,3)$",
+            "$(-1,-5)$",
+            "$(6,-4)$",
+            "$(5,-5)$"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. En una traslación el vector se suma, no se resta.",
             "2": "Casi. Las coordenadas se suman, no se multiplican.",
             "3": "Casi. $-1+4=3$."
           },
-          "hints": ["Suma coordenada a coordenada."],
-          "solution": ["$(2+3,-1+4)=(5,3)$"]
+          "hints": [
+            "Suma coordenada a coordenada."
+          ],
+          "solution": [
+            "$(2+3,-1+4)=(5,3)$"
+          ]
         },
         {
           "id": "s3",
@@ -38,15 +49,24 @@
           "skill": "representar",
           "difficulty": 2,
           "prompt": "¿Qué vector traslada el punto $(1,2)$ hasta $(4,-3)$?",
-          "options": ["$(3,-5)$", "$(-3,5)$", "$(5,-1)$", "$(4,-3)$"],
+          "options": [
+            "$(3,-5)$",
+            "$(-3,5)$",
+            "$(5,-1)$",
+            "$(4,-3)$"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. El vector es final menos inicial, no al revés.",
             "2": "Casi. Se restan las coordenadas, no se suman.",
             "3": "Casi. Ese es el punto final; el vector es el cambio."
           },
-          "hints": ["Vector = punto final − punto inicial."],
-          "solution": ["$(4-1,-3-2)=(3,-5)$"]
+          "hints": [
+            "Vector = punto final − punto inicial."
+          ],
+          "solution": [
+            "$(4-1,-3-2)=(3,-5)$"
+          ]
         },
         {
           "id": "s4",
@@ -54,14 +74,21 @@
           "skill": "argumentar",
           "difficulty": 1,
           "prompt": "Al trasladar un triángulo, ¿qué cambia?",
-          "options": ["Solo su posición", "Su tamaño", "Su orientación", "Sus ángulos"],
+          "options": [
+            "Solo su posición",
+            "Su tamaño",
+            "Su orientación",
+            "Sus ángulos"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. Las transformaciones isométricas no cambian el tamaño.",
             "2": "Casi. En una traslación la figura no gira ni se da vuelta.",
             "3": "Casi. Los ángulos se mantienen en toda isometría."
           },
-          "hints": ["Trasladar es deslizar."],
+          "hints": [
+            "Trasladar es deslizar."
+          ],
           "explanation": "La figura se desliza: mismo tamaño, misma forma, misma orientación."
         },
         {
@@ -71,10 +98,19 @@
           "difficulty": 2,
           "prompt": "Un vértice de un cuadrado está en $(-2,3)$. Si el cuadrado se traslada según $(5,-6)$, ¿cuál es la nueva coordenada $y$ de ese vértice?",
           "answer": "-3",
-          "mistakes": [{ "value": "9", "feedback": "Casi. $3+(-6)=-3$: el vector baja." }],
+          "mistakes": [
+            {
+              "value": "9",
+              "feedback": "Casi. $3+(-6)=-3$: el vector baja."
+            }
+          ],
           "feedback": "Casi. Suma la segunda coordenada del vector: $3+(-6)$.",
-          "hints": ["$3-6$"],
-          "solution": ["$3+(-6)=-3$"]
+          "hints": [
+            "$3-6$"
+          ],
+          "solution": [
+            "$3+(-6)=-3$"
+          ]
         },
         {
           "id": "s6",
@@ -82,15 +118,24 @@
           "skill": "resolver",
           "difficulty": 3,
           "prompt": "Un punto $P$ se traslada según $(2,-1)$ y queda en $(0,4)$. ¿Cuál era $P$?",
-          "options": ["$(-2,5)$", "$(2,3)$", "$(2,-5)$", "$(-2,3)$"],
+          "options": [
+            "$(-2,5)$",
+            "$(2,3)$",
+            "$(2,-5)$",
+            "$(-2,3)$"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. Para volver al punto original se resta el vector.",
             "2": "Casi. Revisa los signos: $0-2=-2$ y $4-(-1)=5$.",
             "3": "Casi. $4-(-1)=5$, no 3."
           },
-          "hints": ["$P+(2,-1)=(0,4)$"],
-          "solution": ["$P=(0-2,4+1)=(-2,5)$"]
+          "hints": [
+            "$P+(2,-1)=(0,4)$"
+          ],
+          "solution": [
+            "$P=(0-2,4+1)=(-2,5)$"
+          ]
         }
       ]
     },
@@ -100,7 +145,10 @@
       "version": 1,
       "reviewStatus": "approved",
       "estimatedMinutes": 6,
-      "skills": ["representar", "argumentar"],
+      "skills": [
+        "representar",
+        "argumentar"
+      ],
       "steps": [
         {
           "id": "s1",
@@ -115,15 +163,24 @@
           "skill": "representar",
           "difficulty": 1,
           "prompt": "¿Dónde queda el punto $(3,5)$ al reflejarlo respecto del eje $y$?",
-          "options": ["$(-3,5)$", "$(3,-5)$", "$(-3,-5)$", "$(5,3)$"],
+          "options": [
+            "$(-3,5)$",
+            "$(3,-5)$",
+            "$(-3,-5)$",
+            "$(5,3)$"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. Eso es reflejar respecto del eje $x$.",
             "2": "Casi. Eso es una simetría respecto del origen.",
             "3": "Casi. Intercambiar coordenadas no es una reflexión en los ejes."
           },
-          "hints": ["El eje $y$ es vertical: el punto pasa al otro lado, izquierda o derecha."],
-          "solution": ["$(3,5)$ → $(-3,5)$"]
+          "hints": [
+            "El eje $y$ es vertical: el punto pasa al otro lado, izquierda o derecha."
+          ],
+          "solution": [
+            "$(3,5)$ → $(-3,5)$"
+          ]
         },
         {
           "id": "s3",
@@ -131,15 +188,24 @@
           "skill": "representar",
           "difficulty": 1,
           "prompt": "¿Dónde queda el punto $(-4,2)$ al reflejarlo respecto del eje $x$?",
-          "options": ["$(-4,-2)$", "$(4,2)$", "$(4,-2)$", "$(2,-4)$"],
+          "options": [
+            "$(-4,-2)$",
+            "$(4,2)$",
+            "$(4,-2)$",
+            "$(2,-4)$"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. Eso es reflejar respecto del eje $y$.",
             "2": "Casi. Eso es una simetría respecto del origen.",
             "3": "Casi. Intercambiar coordenadas no es una reflexión en los ejes."
           },
-          "hints": ["El eje $x$ es horizontal: el punto pasa arriba o abajo."],
-          "solution": ["$(-4,2)$ → $(-4,-2)$"]
+          "hints": [
+            "El eje $x$ es horizontal: el punto pasa arriba o abajo."
+          ],
+          "solution": [
+            "$(-4,2)$ → $(-4,-2)$"
+          ]
         },
         {
           "id": "s4",
@@ -155,10 +221,19 @@
           "difficulty": 3,
           "prompt": "El punto $(6,1)$ se refleja respecto de la recta vertical $x=2$. ¿Cuál es su nueva coordenada $x$?",
           "answer": "-2",
-          "mistakes": [{ "value": "-6", "feedback": "Casi. El espejo es la recta $x=2$, no el eje $y$." }],
+          "mistakes": [
+            {
+              "value": "-6",
+              "feedback": "Casi. El espejo es la recta $x=2$, no el eje $y$."
+            }
+          ],
           "feedback": "Casi. El punto está 4 unidades a la derecha del espejo: queda 4 a la izquierda.",
-          "hints": ["Distancia al espejo: $6-2=4$."],
-          "solution": ["$2-4=-2$"]
+          "hints": [
+            "Distancia al espejo: $6-2=4$."
+          ],
+          "solution": [
+            "$2-4=-2$"
+          ]
         },
         {
           "id": "s6",
@@ -166,14 +241,21 @@
           "skill": "argumentar",
           "difficulty": 2,
           "prompt": "¿Cuál de estas letras tiene un eje de simetría vertical?",
-          "options": ["A", "F", "G", "R"],
+          "options": [
+            "A",
+            "F",
+            "G",
+            "R"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. Si doblas la F por la mitad vertical, las partes no coinciden.",
             "2": "Casi. La G no es igual a ambos lados de una línea vertical.",
             "3": "Casi. La R tiene una pata que no se repite al otro lado."
           },
-          "hints": ["Imagina doblar la letra por una línea vertical al centro."],
+          "hints": [
+            "Imagina doblar la letra por una línea vertical al centro."
+          ],
           "explanation": "La A es igual a ambos lados de su línea vertical central."
         },
         {
@@ -182,15 +264,24 @@
           "skill": "argumentar",
           "difficulty": 3,
           "prompt": "El punto $(a,b)$ se refleja respecto del eje $x$ y luego respecto del eje $y$. ¿Dónde queda?",
-          "options": ["$(-a,-b)$", "$(a,b)$", "$(-a,b)$", "$(b,a)$"],
+          "options": [
+            "$(-a,-b)$",
+            "$(a,b)$",
+            "$(-a,b)$",
+            "$(b,a)$"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. Cada reflexión cambia el signo de una coordenada distinta.",
             "2": "Casi. Falta la primera reflexión, que cambia el signo de $b$.",
             "3": "Casi. Intercambiar coordenadas no ocurre en estas reflexiones."
           },
-          "hints": ["Aplica una reflexión y después la otra."],
-          "solution": ["$(a,b)$ → $(a,-b)$ → $(-a,-b)$"]
+          "hints": [
+            "Aplica una reflexión y después la otra."
+          ],
+          "solution": [
+            "$(a,b)$ → $(a,-b)$ → $(-a,-b)$"
+          ]
         }
       ]
     },
@@ -200,7 +291,9 @@
       "version": 1,
       "reviewStatus": "approved",
       "estimatedMinutes": 6,
-      "skills": ["representar"],
+      "skills": [
+        "representar"
+      ],
       "steps": [
         {
           "id": "s1",
@@ -216,15 +309,24 @@
           "skill": "representar",
           "difficulty": 2,
           "prompt": "El punto $(4,1)$ se rota 90° en sentido antihorario con centro en el origen. ¿Dónde queda?",
-          "options": ["$(-1,4)$", "$(1,-4)$", "$(-4,-1)$", "$(1,4)$"],
+          "options": [
+            "$(-1,4)$",
+            "$(1,-4)$",
+            "$(-4,-1)$",
+            "$(1,4)$"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. Esa es una rotación de 90° en sentido horario.",
             "2": "Casi. Esa es una rotación de 180°.",
             "3": "Casi. Además de intercambiar coordenadas, la nueva $x$ cambia de signo."
           },
-          "hints": ["$(x,y)$ → $(-y,x)$"],
-          "solution": ["$(4,1)$ → $(-1,4)$"]
+          "hints": [
+            "$(x,y)$ → $(-y,x)$"
+          ],
+          "solution": [
+            "$(4,1)$ → $(-1,4)$"
+          ]
         },
         {
           "id": "s3",
@@ -232,15 +334,24 @@
           "skill": "representar",
           "difficulty": 1,
           "prompt": "El punto $(3,-2)$ se rota 180° con centro en el origen. ¿Dónde queda?",
-          "options": ["$(-3,2)$", "$(3,2)$", "$(-3,-2)$", "$(2,3)$"],
+          "options": [
+            "$(-3,2)$",
+            "$(3,2)$",
+            "$(-3,-2)$",
+            "$(2,3)$"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. En 180° cambian de signo las dos coordenadas.",
             "2": "Casi. Falta cambiar el signo de la $y$.",
             "3": "Casi. Esa es una rotación de 90°, no de 180°."
           },
-          "hints": ["$(x,y)$ → $(-x,-y)$"],
-          "solution": ["$(3,-2)$ → $(-3,2)$"]
+          "hints": [
+            "$(x,y)$ → $(-x,-y)$"
+          ],
+          "solution": [
+            "$(3,-2)$ → $(-3,2)$"
+          ]
         },
         {
           "id": "s4",
@@ -250,10 +361,19 @@
           "prompt": "¿Cuántos grados hay que girar una figura, como mínimo, para que vuelva siempre a su posición original?",
           "answer": "360",
           "suffix": "°",
-          "mistakes": [{ "value": "180", "feedback": "Casi. Con 180° la figura queda dada vuelta; una vuelta completa son 360°." }],
+          "mistakes": [
+            {
+              "value": "180",
+              "feedback": "Casi. Con 180° la figura queda dada vuelta; una vuelta completa son 360°."
+            }
+          ],
           "feedback": "Casi. Piensa en una vuelta completa.",
-          "hints": ["Una vuelta entera."],
-          "solution": ["Una vuelta completa: 360°."]
+          "hints": [
+            "Una vuelta entera."
+          ],
+          "solution": [
+            "Una vuelta completa: 360°."
+          ]
         },
         {
           "id": "s5",
@@ -261,14 +381,21 @@
           "skill": "argumentar",
           "difficulty": 2,
           "prompt": "Rotar 180° en torno al origen es lo mismo que:",
-          "options": ["Una simetría respecto del origen", "Reflejar en el eje $x$", "Reflejar en el eje $y$", "Trasladar según $(-1,-1)$"],
+          "options": [
+            "Una simetría respecto del origen",
+            "Reflejar en el eje $x$",
+            "Reflejar en el eje $y$",
+            "Trasladar según $(-1,-1)$"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. Reflejar en el eje $x$ solo cambia el signo de la $y$.",
             "2": "Casi. Reflejar en el eje $y$ solo cambia el signo de la $x$.",
             "3": "Casi. Una traslación suma un vector; aquí cambian los signos."
           },
-          "hints": ["Ambas llevan $(x,y)$ a $(-x,-y)$."],
+          "hints": [
+            "Ambas llevan $(x,y)$ a $(-x,-y)$."
+          ],
           "explanation": "Las dos llevan $(x,y)$ a $(-x,-y)$."
         },
         {
@@ -277,15 +404,24 @@
           "skill": "representar",
           "difficulty": 3,
           "prompt": "El punto $(2,5)$ se rota 90° en sentido horario con centro en el origen. ¿Dónde queda?",
-          "options": ["$(5,-2)$", "$(-5,2)$", "$(-2,-5)$", "$(5,2)$"],
+          "options": [
+            "$(5,-2)$",
+            "$(-5,2)$",
+            "$(-2,-5)$",
+            "$(5,2)$"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. Esa es la rotación en sentido antihorario.",
             "2": "Casi. Esa es una rotación de 180°.",
             "3": "Casi. Falta cambiar el signo de la nueva $y$."
           },
-          "hints": ["En sentido horario: $(x,y)$ → $(y,-x)$."],
-          "solution": ["$(2,5)$ → $(5,-2)$"]
+          "hints": [
+            "En sentido horario: $(x,y)$ → $(y,-x)$."
+          ],
+          "solution": [
+            "$(2,5)$ → $(5,-2)$"
+          ]
         }
       ]
     },
@@ -295,7 +431,10 @@
       "version": 1,
       "reviewStatus": "approved",
       "estimatedMinutes": 6,
-      "skills": ["argumentar", "representar"],
+      "skills": [
+        "argumentar",
+        "representar"
+      ],
       "steps": [
         {
           "id": "s1",
@@ -310,15 +449,24 @@
           "skill": "representar",
           "difficulty": 2,
           "prompt": "El punto $(1,2)$ se traslada según $(2,0)$ y luego se refleja respecto del eje $y$. ¿Dónde queda?",
-          "options": ["$(-3,2)$", "$(1,2)$", "$(3,-2)$", "$(-3,-2)$"],
+          "options": [
+            "$(-3,2)$",
+            "$(1,2)$",
+            "$(3,-2)$",
+            "$(-3,-2)$"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. Ese es el resultado si reflejas primero; aquí se traslada primero.",
             "2": "Casi. Reflejar en el eje $y$ cambia el signo de la $x$, no de la $y$.",
             "3": "Casi. Solo cambia el signo de la $x$."
           },
-          "hints": ["Primero $(1+2,2)=(3,2)$."],
-          "solution": ["$(1,2)$ → $(3,2)$ → $(-3,2)$"]
+          "hints": [
+            "Primero $(1+2,2)=(3,2)$."
+          ],
+          "solution": [
+            "$(1,2)$ → $(3,2)$ → $(-3,2)$"
+          ]
         },
         {
           "id": "s3",
@@ -326,14 +474,21 @@
           "skill": "argumentar",
           "difficulty": 1,
           "prompt": "Dos reflexiones seguidas respecto del mismo eje equivalen a:",
-          "options": ["No mover la figura", "Una rotación de 90°", "Una traslación", "Una reflexión en el otro eje"],
+          "options": [
+            "No mover la figura",
+            "Una rotación de 90°",
+            "Una traslación",
+            "Una reflexión en el otro eje"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. Reflejar dos veces en el mismo espejo devuelve la figura a su lugar.",
             "2": "Casi. No hay desplazamiento: vuelve al punto de partida.",
             "3": "Casi. Cada reflexión deshace a la otra."
           },
-          "hints": ["Refleja un punto dos veces en el eje $x$."],
+          "hints": [
+            "Refleja un punto dos veces en el eje $x$."
+          ],
           "explanation": "$(x,y)$ → $(x,-y)$ → $(x,y)$."
         },
         {
@@ -343,10 +498,19 @@
           "difficulty": 2,
           "prompt": "El punto $(2,3)$ se refleja respecto del eje $x$ y luego se traslada según $(0,5)$. ¿Cuál es su nueva coordenada $y$?",
           "answer": "2",
-          "mistakes": [{ "value": "8", "feedback": "Casi. Primero la reflexión: la $y$ pasa a $-3$; después $-3+5$." }],
+          "mistakes": [
+            {
+              "value": "8",
+              "feedback": "Casi. Primero la reflexión: la $y$ pasa a $-3$; después $-3+5$."
+            }
+          ],
           "feedback": "Casi. Aplica las transformaciones en orden.",
-          "hints": ["Reflexión: $(2,-3)$."],
-          "solution": ["$(2,3)$ → $(2,-3)$ → $(2,2)$"]
+          "hints": [
+            "Reflexión: $(2,-3)$."
+          ],
+          "solution": [
+            "$(2,3)$ → $(2,-3)$ → $(2,2)$"
+          ]
         },
         {
           "id": "s5",
@@ -354,10 +518,16 @@
           "skill": "argumentar",
           "difficulty": 3,
           "prompt": "Al punto $(4,1)$ le aplicaron una rotación de 90° antihoraria (centro en el origen) y luego una reflexión en el eje $x$. ¿En qué línea está el error?",
-          "lines": ["Rotación: $(4,1)$ → $(-1,4)$", "Reflexión en el eje $x$: $(-1,4)$ → $(1,4)$", "Resultado: $(1,4)$"],
+          "lines": [
+            "Rotación: $(4,1)$ → $(-1,4)$",
+            "Reflexión en el eje $x$: $(-1,4)$ → $(1,4)$",
+            "Resultado: $(1,4)$"
+          ],
           "wrong": 1,
           "feedback": "Casi. Esa línea está bien. Revisa qué coordenada cambia al reflejar en el eje $x$.",
-          "hints": ["Reflejar en el eje $x$ cambia el signo de la $y$."],
+          "hints": [
+            "Reflejar en el eje $x$ cambia el signo de la $y$."
+          ],
           "explanation": "Reflejar en el eje $x$ cambia el signo de la $y$: $(-1,4)$ → $(-1,-4)$."
         },
         {
@@ -366,14 +536,21 @@
           "skill": "argumentar",
           "difficulty": 3,
           "prompt": "Reflejar una figura respecto del eje $x$ y luego respecto del eje $y$ equivale a:",
-          "options": ["Rotarla 180° en torno al origen", "Trasladarla", "Rotarla 90° en torno al origen", "No moverla"],
+          "options": [
+            "Rotarla 180° en torno al origen",
+            "Trasladarla",
+            "Rotarla 90° en torno al origen",
+            "No moverla"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. En una traslación no cambian los signos de las coordenadas.",
             "2": "Casi. Con 90° las coordenadas se intercambian; aquí solo cambian de signo.",
             "3": "Casi. Las dos coordenadas cambian de signo: el punto sí se mueve."
           },
-          "hints": ["Sigue un punto: $(x,y)$ → $(x,-y)$ → $(-x,-y)$."],
+          "hints": [
+            "Sigue un punto: $(x,y)$ → $(x,-y)$ → $(-x,-y)$."
+          ],
           "explanation": "El resultado es $(-x,-y)$: una rotación de 180°."
         }
       ]
@@ -385,8 +562,19 @@
       "title": "Traslación",
       "reviewStatus": "approved",
       "cards": [
-        { "title": "Regla", "body": "Se suma el vector a cada punto.", "formula": "$(x,y)$ → $(x+a,y+b)$" },
-        { "title": "Vector", "body": "Punto final menos punto inicial.", "example": ["De $(1,1)$ a $(4,-2)$", "vector $(3,-3)$"] }
+        {
+          "title": "Regla",
+          "body": "Se suma el vector a cada punto.",
+          "formula": "$(x,y)$ → $(x+a,y+b)$"
+        },
+        {
+          "title": "Vector",
+          "body": "Punto final menos punto inicial.",
+          "example": [
+            "De $(1,1)$ a $(4,-2)$",
+            "vector $(3,-3)$"
+          ]
+        }
       ]
     },
     {
@@ -394,9 +582,20 @@
       "title": "Reflexiones",
       "reviewStatus": "approved",
       "cards": [
-        { "title": "Eje x", "body": "Cambia el signo de la $y$.", "formula": "$(x,y)$ → $(x,-y)$" },
-        { "title": "Eje y", "body": "Cambia el signo de la $x$.", "formula": "$(x,y)$ → $(-x,y)$" },
-        { "title": "Orientación", "body": "Una reflexión da vuelta la figura; traslaciones y rotaciones no." }
+        {
+          "title": "Eje x",
+          "body": "Cambia el signo de la $y$.",
+          "formula": "$(x,y)$ → $(x,-y)$"
+        },
+        {
+          "title": "Eje y",
+          "body": "Cambia el signo de la $x$.",
+          "formula": "$(x,y)$ → $(-x,y)$"
+        },
+        {
+          "title": "Orientación",
+          "body": "Una reflexión da vuelta la figura; traslaciones y rotaciones no."
+        }
       ]
     },
     {
@@ -404,9 +603,90 @@
       "title": "Rotaciones",
       "reviewStatus": "approved",
       "cards": [
-        { "title": "90° antihorario", "body": "Centro en el origen.", "formula": "$(x,y)$ → $(-y,x)$" },
-        { "title": "90° horario", "body": "Centro en el origen.", "formula": "$(x,y)$ → $(y,-x)$" },
-        { "title": "180°", "body": "Igual a la simetría respecto del origen.", "formula": "$(x,y)$ → $(-x,-y)$" }
+        {
+          "title": "90° antihorario",
+          "body": "Centro en el origen.",
+          "formula": "$(x,y)$ → $(-y,x)$"
+        },
+        {
+          "title": "90° horario",
+          "body": "Centro en el origen.",
+          "formula": "$(x,y)$ → $(y,-x)$"
+        },
+        {
+          "title": "180°",
+          "body": "Igual a la simetría respecto del origen.",
+          "formula": "$(x,y)$ → $(-x,-y)$"
+        }
+      ]
+    },
+    {
+      "id": "mc-ti-4",
+      "title": "Vectores de traslación",
+      "reviewStatus": "approved",
+      "cards": [
+        {
+          "title": "Qué indica",
+          "body": "El vector $(a,b)$ mueve $a$ en $x$ y $b$ en $y$."
+        },
+        {
+          "title": "Ejemplo",
+          "body": "$(2,-1)$ trasladado por $(3,4)$.",
+          "example": [
+            "$(2+3,-1+4)=(5,3)$"
+          ]
+        },
+        {
+          "title": "Encontrar el vector",
+          "body": "Resta la imagen menos el punto original."
+        }
+      ]
+    },
+    {
+      "id": "mc-ti-5",
+      "title": "Simetrías rápidas",
+      "reviewStatus": "approved",
+      "cards": [
+        {
+          "title": "Eje $x$",
+          "body": "Cambia el signo de la $y$.",
+          "example": [
+            "$(3,2)$ pasa a $(3,-2)$"
+          ]
+        },
+        {
+          "title": "Eje $y$",
+          "body": "Cambia el signo de la $x$.",
+          "example": [
+            "$(3,2)$ pasa a $(-3,2)$"
+          ]
+        },
+        {
+          "title": "Origen",
+          "body": "Cambian los dos signos.",
+          "example": [
+            "$(3,2)$ pasa a $(-3,-2)$"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mc-ti-6",
+      "title": "Isometrías: qué se conserva",
+      "reviewStatus": "approved",
+      "cards": [
+        {
+          "title": "Se conserva",
+          "body": "Traslaciones, reflexiones y rotaciones mantienen tamaño, forma, ángulos y distancias."
+        },
+        {
+          "title": "Puede cambiar",
+          "body": "La posición y la orientación (una reflexión la invierte)."
+        },
+        {
+          "title": "Pregunta tipo PAES",
+          "body": "Si la figura cambia de tamaño, no es isometría: es una homotecia."
+        }
       ]
     }
   ]

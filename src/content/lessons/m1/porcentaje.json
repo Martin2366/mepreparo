@@ -7,7 +7,10 @@
       "version": 1,
       "reviewStatus": "approved",
       "estimatedMinutes": 5,
-      "skills": ["resolver", "representar"],
+      "skills": [
+        "resolver",
+        "representar"
+      ],
       "steps": [
         {
           "id": "s1",
@@ -22,14 +25,21 @@
           "skill": "representar",
           "difficulty": 1,
           "prompt": "¿A qué fracción equivale el 20 %?",
-          "options": ["$\\frac{1}{5}$", "$\\frac{1}{20}$", "$\\frac{20}{10}$", "$\\frac{1}{2}$"],
+          "options": [
+            "$\\frac{1}{5}$",
+            "$\\frac{1}{20}$",
+            "$\\frac{20}{10}$",
+            "$\\frac{1}{2}$"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. 20 % es 20 de cada 100: $\\frac{20}{100}$, que se simplifica a $\\frac{1}{5}$.",
             "2": "Casi. El denominador de un porcentaje es 100, no 10.",
             "3": "Casi. $\\frac{1}{2}$ es el 50 %."
           },
-          "hints": ["Escribe $\\frac{20}{100}$ y simplifica."],
+          "hints": [
+            "Escribe $\\frac{20}{100}$ y simplifica."
+          ],
           "explanation": "$\\frac{20}{100}=\\frac{1}{5}$."
         },
         {
@@ -40,12 +50,22 @@
           "prompt": "¿Cuánto es el 15 % de 80?",
           "answer": "12",
           "mistakes": [
-            { "value": "1200", "feedback": "Casi. Falta dividir por 100: $\\frac{15}{100}\\cdot 80$." },
-            { "value": "68", "feedback": "Casi. Eso es lo que queda al quitar el 15 %; la pregunta es el 15 % mismo." }
+            {
+              "value": "1200",
+              "feedback": "Casi. Falta dividir por 100: $\\frac{15}{100}\\cdot 80$."
+            },
+            {
+              "value": "68",
+              "feedback": "Casi. Eso es lo que queda al quitar el 15 %; la pregunta es el 15 % mismo."
+            }
           ],
           "feedback": "Casi. Calcula $\\frac{15}{100}\\cdot 80$.",
-          "hints": ["El 10 % de 80 es 8 y el 5 % es la mitad de eso."],
-          "solution": ["$\\frac{15}{100}\\cdot 80=12$"]
+          "hints": [
+            "El 10 % de 80 es 8 y el 5 % es la mitad de eso."
+          ],
+          "solution": [
+            "$\\frac{15}{100}\\cdot 80=12$"
+          ]
         },
         {
           "id": "s4",
@@ -62,10 +82,19 @@
           "prompt": "En un curso de 40 estudiantes, 14 practican deporte. ¿Qué porcentaje practica deporte?",
           "answer": "35",
           "suffix": "%",
-          "mistakes": [{ "value": "14", "feedback": "Casi. 14 es la cantidad; como porcentaje es $\\frac{14}{40}\\cdot 100$." }],
+          "mistakes": [
+            {
+              "value": "14",
+              "feedback": "Casi. 14 es la cantidad; como porcentaje es $\\frac{14}{40}\\cdot 100$."
+            }
+          ],
           "feedback": "Casi. Calcula $\\frac{14}{40}\\cdot 100$.",
-          "hints": ["$\\frac{14}{40}=0,35$"],
-          "solution": ["$\\frac{14}{40}\\cdot 100=35$"]
+          "hints": [
+            "$\\frac{14}{40}=0,35$"
+          ],
+          "solution": [
+            "$\\frac{14}{40}\\cdot 100=35$"
+          ]
         },
         {
           "id": "s6",
@@ -73,15 +102,25 @@
           "skill": "resolver",
           "difficulty": 3,
           "prompt": "El 30 % de un número es 45. ¿Cuál es el número?",
-          "options": ["$150$", "$13,5$", "$15$", "$75$"],
+          "options": [
+            "$150$",
+            "$13,5$",
+            "$15$",
+            "$75$"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. Eso es el 30 % de 45; aquí 45 ya es el 30 % del número.",
             "2": "Casi. 15 es el 10 %; el número completo es diez veces eso.",
             "3": "Casi. No se suma: si el 30 % es 45, el 10 % es 15."
           },
-          "hints": ["Si el 30 % es 45, ¿cuánto es el 10 %?"],
-          "solution": ["10 %: $45\\div 3=15$", "100 %: $15\\cdot 10=150$"]
+          "hints": [
+            "Si el 30 % es 45, ¿cuánto es el 10 %?"
+          ],
+          "solution": [
+            "10 %: $45\\div 3=15$",
+            "100 %: $15\\cdot 10=150$"
+          ]
         }
       ]
     },
@@ -91,7 +130,9 @@
       "version": 1,
       "reviewStatus": "approved",
       "estimatedMinutes": 6,
-      "skills": ["modelar"],
+      "skills": [
+        "modelar"
+      ],
       "steps": [
         {
           "id": "s1",
@@ -108,12 +149,22 @@
           "prompt": "Una polera cuesta \\$12.000 y tiene 25 % de descuento. ¿Cuánto pagas? Escribe solo el número.",
           "answer": "9000",
           "mistakes": [
-            { "value": "3000", "feedback": "Casi. \\$3.000 es el descuento; se resta del precio." },
-            { "value": "11975", "feedback": "Casi. Es el 25 % del precio, no 25 pesos." }
+            {
+              "value": "3000",
+              "feedback": "Casi. \\$3.000 es el descuento; se resta del precio."
+            },
+            {
+              "value": "11975",
+              "feedback": "Casi. Es el 25 % del precio, no 25 pesos."
+            }
           ],
           "feedback": "Casi. Pagas el 75 %: $12000\\cdot 0,75$.",
-          "hints": ["El 25 % de 12.000 es 3.000."],
-          "solution": ["$12000\\cdot 0,75=9000$"]
+          "hints": [
+            "El 25 % de 12.000 es 3.000."
+          ],
+          "solution": [
+            "$12000\\cdot 0,75=9000$"
+          ]
         },
         {
           "id": "s3",
@@ -122,10 +173,19 @@
           "difficulty": 2,
           "prompt": "Un arriendo de \\$400.000 sube un 5 %. ¿Cuál es el nuevo valor? Escribe solo el número.",
           "answer": "420000",
-          "mistakes": [{ "value": "20000", "feedback": "Casi. \\$20.000 es el aumento; súmalo al arriendo." }],
+          "mistakes": [
+            {
+              "value": "20000",
+              "feedback": "Casi. \\$20.000 es el aumento; súmalo al arriendo."
+            }
+          ],
           "feedback": "Casi. Multiplica por $1,05$.",
-          "hints": ["El 5 % de 400.000 es 20.000."],
-          "solution": ["$400000\\cdot 1,05=420000$"]
+          "hints": [
+            "El 5 % de 400.000 es 20.000."
+          ],
+          "solution": [
+            "$400000\\cdot 1,05=420000$"
+          ]
         },
         {
           "id": "s4",
@@ -133,14 +193,21 @@
           "skill": "representar",
           "difficulty": 2,
           "prompt": "¿Por qué número se multiplica un precio para aplicarle un 15 % de descuento?",
-          "options": ["$0,85$", "$0,15$", "$1,15$", "$85$"],
+          "options": [
+            "$0,85$",
+            "$0,15$",
+            "$1,15$",
+            "$85$"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. Con $0,15$ obtienes el descuento, no lo que pagas.",
             "2": "Casi. $1,15$ es un aumento del 15 %.",
             "3": "Casi. Es el 85 %, o sea $\\frac{85}{100}=0,85$."
           },
-          "hints": ["Si te descuentan el 15 %, ¿qué porcentaje pagas?"],
+          "hints": [
+            "Si te descuentan el 15 %, ¿qué porcentaje pagas?"
+          ],
           "explanation": "Pagas el 85 %: multiplicas por $0,85$."
         },
         {
@@ -150,10 +217,20 @@
           "difficulty": 3,
           "prompt": "Con un 20 % de descuento, unas zapatillas quedan en \\$36.000. ¿Cuál era su precio original? Escribe solo el número.",
           "answer": "45000",
-          "mistakes": [{ "value": "43200", "feedback": "Casi. El 20 % se calcula sobre el precio original, no sobre \\$36.000: $0,8\\cdot P=36000$." }],
+          "mistakes": [
+            {
+              "value": "43200",
+              "feedback": "Casi. El 20 % se calcula sobre el precio original, no sobre \\$36.000: $0,8\\cdot P=36000$."
+            }
+          ],
           "feedback": "Casi. Plantea $0,8\\cdot P=36000$.",
-          "hints": ["\\$36.000 es el 80 % del precio original."],
-          "solution": ["$0,8\\cdot P=36000$", "$P=36000\\div 0,8=45000$"]
+          "hints": [
+            "\\$36.000 es el 80 % del precio original."
+          ],
+          "solution": [
+            "$0,8\\cdot P=36000$",
+            "$P=36000\\div 0,8=45000$"
+          ]
         },
         {
           "id": "s6",
@@ -161,15 +238,25 @@
           "skill": "modelar",
           "difficulty": 4,
           "prompt": "Un celular cuesta \\$200.000. La tienda A ofrece 30 % de descuento y la tienda B, \\$50.000 de descuento. ¿Dónde conviene comprar?",
-          "options": ["En A, que cuesta \\$10.000 menos", "En B, que cuesta \\$10.000 menos", "En A, que cuesta \\$20.000 menos", "Da lo mismo"],
+          "options": [
+            "En A, que cuesta \\$10.000 menos",
+            "En B, que cuesta \\$10.000 menos",
+            "En A, que cuesta \\$20.000 menos",
+            "Da lo mismo"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. En A pagas $200000\\cdot 0,7=140000$ y en B, 150.000.",
             "2": "Casi. La diferencia es $150000-140000=10000$.",
             "3": "Casi. El 30 % de 200.000 es 60.000, más que 50.000."
           },
-          "hints": ["Calcula el precio final en cada tienda."],
-          "solution": ["A: $200000\\cdot 0,7=140000$", "B: $200000-50000=150000$"]
+          "hints": [
+            "Calcula el precio final en cada tienda."
+          ],
+          "solution": [
+            "A: $200000\\cdot 0,7=140000$",
+            "B: $200000-50000=150000$"
+          ]
         }
       ]
     },
@@ -179,7 +266,10 @@
       "version": 1,
       "reviewStatus": "approved",
       "estimatedMinutes": 6,
-      "skills": ["argumentar", "modelar"],
+      "skills": [
+        "argumentar",
+        "modelar"
+      ],
       "steps": [
         {
           "id": "s1",
@@ -194,15 +284,25 @@
           "skill": "argumentar",
           "difficulty": 2,
           "prompt": "Un precio sube un 10 % y después baja un 10 %. Respecto del precio original:",
-          "options": ["Baja un 1 %", "Queda igual", "Sube un 1 %", "Baja un 10 %"],
+          "options": [
+            "Baja un 1 %",
+            "Queda igual",
+            "Sube un 1 %",
+            "Baja un 10 %"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. El 10 % de bajada se calcula sobre un precio mayor, así que se descuenta más de lo que se subió.",
             "2": "Casi. $1,1\\cdot 0,9=0,99$: queda por debajo del original.",
             "3": "Casi. Los porcentajes no se restan directamente: $1,1\\cdot 0,9=0,99$."
           },
-          "hints": ["Prueba con un precio de \\$100."],
-          "solution": ["$100\\cdot 1,1=110$", "$110\\cdot 0,9=99$"]
+          "hints": [
+            "Prueba con un precio de \\$100."
+          ],
+          "solution": [
+            "$100\\cdot 1,1=110$",
+            "$110\\cdot 0,9=99$"
+          ]
         },
         {
           "id": "s3",
@@ -211,10 +311,20 @@
           "difficulty": 2,
           "prompt": "¿Cuánto es el 50 % del 40 % de 300?",
           "answer": "60",
-          "mistakes": [{ "value": "270", "feedback": "Casi. No se suman los porcentajes: es $0,5\\cdot 0,4\\cdot 300$." }],
+          "mistakes": [
+            {
+              "value": "270",
+              "feedback": "Casi. No se suman los porcentajes: es $0,5\\cdot 0,4\\cdot 300$."
+            }
+          ],
           "feedback": "Casi. Primero el 40 % de 300 y después la mitad de eso.",
-          "hints": ["El 40 % de 300 es 120."],
-          "solution": ["$0,4\\cdot 300=120$", "$0,5\\cdot 120=60$"]
+          "hints": [
+            "El 40 % de 300 es 120."
+          ],
+          "solution": [
+            "$0,4\\cdot 300=120$",
+            "$0,5\\cdot 120=60$"
+          ]
         },
         {
           "id": "s4",
@@ -223,10 +333,20 @@
           "difficulty": 3,
           "prompt": "Un producto de \\$10.000 tiene 20 % de descuento y luego un 10 % adicional sobre el precio ya rebajado. ¿Cuánto se paga? Escribe solo el número.",
           "answer": "7200",
-          "mistakes": [{ "value": "7000", "feedback": "Casi. El 10 % adicional se calcula sobre el precio rebajado, no sobre el original." }],
+          "mistakes": [
+            {
+              "value": "7000",
+              "feedback": "Casi. El 10 % adicional se calcula sobre el precio rebajado, no sobre el original."
+            }
+          ],
           "feedback": "Casi. Multiplica $10000\\cdot 0,8\\cdot 0,9$.",
-          "hints": ["Después del primer descuento queda en \\$8.000."],
-          "solution": ["$10000\\cdot 0,8=8000$", "$8000\\cdot 0,9=7200$"]
+          "hints": [
+            "Después del primer descuento queda en \\$8.000."
+          ],
+          "solution": [
+            "$10000\\cdot 0,8=8000$",
+            "$8000\\cdot 0,9=7200$"
+          ]
         },
         {
           "id": "s5",
@@ -234,10 +354,16 @@
           "skill": "argumentar",
           "difficulty": 3,
           "prompt": "Una población de 1.000 personas crece un 10 % durante dos años seguidos. ¿En qué línea está el error?",
-          "lines": ["Año 1: $1000\\cdot 1,1=1100$", "Año 2: $1100+100=1200$", "Creció un 20 % en total"],
+          "lines": [
+            "Año 1: $1000\\cdot 1,1=1100$",
+            "Año 2: $1100+100=1200$",
+            "Creció un 20 % en total"
+          ],
           "wrong": 1,
           "feedback": "Casi. Esa línea está bien. Revisa sobre qué cantidad se calcula el 10 % del segundo año.",
-          "hints": ["¿El 10 % del segundo año es de 1.000 o de 1.100?"],
+          "hints": [
+            "¿El 10 % del segundo año es de 1.000 o de 1.100?"
+          ],
           "explanation": "El segundo año el 10 % es de 1.100: $1100\\cdot 1,1=1210$, un 21 % en total."
         },
         {
@@ -246,15 +372,25 @@
           "skill": "modelar",
           "difficulty": 4,
           "prompt": "El IVA es 19 %. Un producto cuesta \\$11.900 con IVA incluido. ¿Cuál es su valor neto, sin IVA?",
-          "options": ["\\$10.000", "\\$9.639", "\\$11.881", "\\$2.261"],
+          "options": [
+            "\\$10.000",
+            "\\$9.639",
+            "\\$11.881",
+            "\\$2.261"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. El 19 % se calcula sobre el neto, no sobre el total: $1,19\\cdot N=11900$.",
             "2": "Casi. El IVA es un porcentaje, no 19 pesos.",
             "3": "Casi. Eso se parece al IVA; la pregunta es el valor neto."
           },
-          "hints": ["El total es el 119 % del neto."],
-          "solution": ["$1,19\\cdot N=11900$", "$N=11900\\div 1,19=10000$"]
+          "hints": [
+            "El total es el 119 % del neto."
+          ],
+          "solution": [
+            "$1,19\\cdot N=11900$",
+            "$N=11900\\div 1,19=10000$"
+          ]
         }
       ]
     },
@@ -264,7 +400,10 @@
       "version": 1,
       "reviewStatus": "approved",
       "estimatedMinutes": 6,
-      "skills": ["modelar", "resolver"],
+      "skills": [
+        "modelar",
+        "resolver"
+      ],
       "steps": [
         {
           "id": "s1",
@@ -280,10 +419,19 @@
           "difficulty": 1,
           "prompt": "En una encuesta a 250 personas, el 36 % prefiere el té. ¿Cuántas personas prefieren el té?",
           "answer": "90",
-          "mistakes": [{ "value": "36", "feedback": "Casi. 36 es el porcentaje; calcula el 36 % de 250." }],
+          "mistakes": [
+            {
+              "value": "36",
+              "feedback": "Casi. 36 es el porcentaje; calcula el 36 % de 250."
+            }
+          ],
           "feedback": "Casi. Calcula $0,36\\cdot 250$.",
-          "hints": ["El 10 % de 250 es 25."],
-          "solution": ["$0,36\\cdot 250=90$"]
+          "hints": [
+            "El 10 % de 250 es 25."
+          ],
+          "solution": [
+            "$0,36\\cdot 250=90$"
+          ]
         },
         {
           "id": "s3",
@@ -293,10 +441,19 @@
           "prompt": "Un curso pasó de 40 a 46 estudiantes. ¿En qué porcentaje aumentó?",
           "answer": "15",
           "suffix": "%",
-          "mistakes": [{ "value": "6", "feedback": "Casi. 6 es el aumento en estudiantes; como porcentaje: $\\frac{6}{40}\\cdot 100$." }],
+          "mistakes": [
+            {
+              "value": "6",
+              "feedback": "Casi. 6 es el aumento en estudiantes; como porcentaje: $\\frac{6}{40}\\cdot 100$."
+            }
+          ],
           "feedback": "Casi. El aumento se compara con el valor inicial: $\\frac{6}{40}\\cdot 100$.",
-          "hints": ["Aumento: $46-40=6$."],
-          "solution": ["$\\frac{6}{40}\\cdot 100=15$"]
+          "hints": [
+            "Aumento: $46-40=6$."
+          ],
+          "solution": [
+            "$\\frac{6}{40}\\cdot 100=15$"
+          ]
         },
         {
           "id": "s4",
@@ -304,15 +461,25 @@
           "skill": "modelar",
           "difficulty": 3,
           "prompt": "En un curso, el 60 % son mujeres y hay 12 hombres. ¿Cuántos estudiantes tiene el curso?",
-          "options": ["$30$", "$20$", "$18$", "$72$"],
+          "options": [
+            "$30$",
+            "$20$",
+            "$18$",
+            "$72$"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. 12 hombres son el 40 %, no el 60 %.",
             "2": "Casi. 18 serían las mujeres; la pregunta es por el total.",
             "3": "Casi. Plantea $0,4\\cdot T=12$."
           },
-          "hints": ["Si el 60 % son mujeres, ¿qué porcentaje son hombres?"],
-          "solution": ["$0,4\\cdot T=12$", "$T=30$"]
+          "hints": [
+            "Si el 60 % son mujeres, ¿qué porcentaje son hombres?"
+          ],
+          "solution": [
+            "$0,4\\cdot T=12$",
+            "$T=30$"
+          ]
         },
         {
           "id": "s5",
@@ -322,10 +489,19 @@
           "prompt": "Sofía respondió bien 42 de 60 preguntas. ¿Qué porcentaje de respuestas correctas tuvo?",
           "answer": "70",
           "suffix": "%",
-          "mistakes": [{ "value": "42", "feedback": "Casi. 42 es la cantidad de correctas; como porcentaje: $\\frac{42}{60}\\cdot 100$." }],
+          "mistakes": [
+            {
+              "value": "42",
+              "feedback": "Casi. 42 es la cantidad de correctas; como porcentaje: $\\frac{42}{60}\\cdot 100$."
+            }
+          ],
           "feedback": "Casi. Calcula $\\frac{42}{60}\\cdot 100$.",
-          "hints": ["$\\frac{42}{60}=0,7$"],
-          "solution": ["$\\frac{42}{60}\\cdot 100=70$"]
+          "hints": [
+            "$\\frac{42}{60}=0,7$"
+          ],
+          "solution": [
+            "$\\frac{42}{60}\\cdot 100=70$"
+          ]
         },
         {
           "id": "s6",
@@ -333,15 +509,24 @@
           "skill": "modelar",
           "difficulty": 4,
           "prompt": "Un sueldo de \\$600.000 tiene descuentos de 7 % para salud y 10 % para la AFP, ambos calculados sobre el sueldo. ¿Cuál es el sueldo líquido?",
-          "options": ["\\$498.000", "\\$502.200", "\\$558.000", "\\$102.000"],
+          "options": [
+            "\\$498.000",
+            "\\$502.200",
+            "\\$558.000",
+            "\\$102.000"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. Ambos descuentos se calculan sobre el sueldo original: se suman los porcentajes, 17 %.",
             "2": "Casi. Faltó descontar el 10 % de la AFP.",
             "3": "Casi. \\$102.000 es el total de descuentos; el líquido es lo que queda."
           },
-          "hints": ["Descuento total: $7+10=17$ %."],
-          "solution": ["$600000\\cdot 0,83=498000$"]
+          "hints": [
+            "Descuento total: $7+10=17$ %."
+          ],
+          "solution": [
+            "$600000\\cdot 0,83=498000$"
+          ]
         }
       ]
     }
@@ -352,9 +537,26 @@
       "title": "Porcentajes en 90 segundos",
       "reviewStatus": "approved",
       "cards": [
-        { "title": "El p % de N", "body": "Multiplica por $\\frac{p}{100}$.", "example": ["El 15 % de 200", "$0,15\\cdot 200=30$"] },
-        { "title": "Atajos", "body": "10 %: divide por 10. 50 %: la mitad. 25 %: la cuarta parte. 5 %: la mitad del 10 %." },
-        { "title": "Qué porcentaje es", "body": "Parte dividida por total, por 100.", "example": ["9 de 45", "$\\frac{9}{45}\\cdot 100=20$ %"] }
+        {
+          "title": "El p % de N",
+          "body": "Multiplica por $\\frac{p}{100}$.",
+          "example": [
+            "El 15 % de 200",
+            "$0,15\\cdot 200=30$"
+          ]
+        },
+        {
+          "title": "Atajos",
+          "body": "10 %: divide por 10. 50 %: la mitad. 25 %: la cuarta parte. 5 %: la mitad del 10 %."
+        },
+        {
+          "title": "Qué porcentaje es",
+          "body": "Parte dividida por total, por 100.",
+          "example": [
+            "9 de 45",
+            "$\\frac{9}{45}\\cdot 100=20$ %"
+          ]
+        }
       ]
     },
     {
@@ -362,9 +564,27 @@
       "title": "El multiplicador",
       "reviewStatus": "approved",
       "cards": [
-        { "title": "Descuento", "body": "Un descuento del p % multiplica por $1-\\frac{p}{100}$.", "example": ["30 % de descuento: $\\cdot 0,7$"] },
-        { "title": "Aumento", "body": "Un aumento del p % multiplica por $1+\\frac{p}{100}$.", "example": ["8 % de aumento: $\\cdot 1,08$"] },
-        { "title": "Sucesivos", "body": "Se multiplican los factores, no se suman los porcentajes.", "example": ["$1,2\\cdot 0,8=0,96$: baja un 4 %"] }
+        {
+          "title": "Descuento",
+          "body": "Un descuento del p % multiplica por $1-\\frac{p}{100}$.",
+          "example": [
+            "30 % de descuento: $\\cdot 0,7$"
+          ]
+        },
+        {
+          "title": "Aumento",
+          "body": "Un aumento del p % multiplica por $1+\\frac{p}{100}$.",
+          "example": [
+            "8 % de aumento: $\\cdot 1,08$"
+          ]
+        },
+        {
+          "title": "Sucesivos",
+          "body": "Se multiplican los factores, no se suman los porcentajes.",
+          "example": [
+            "$1,2\\cdot 0,8=0,96$: baja un 4 %"
+          ]
+        }
       ]
     },
     {
@@ -372,9 +592,93 @@
       "title": "IVA y precio original",
       "reviewStatus": "approved",
       "cards": [
-        { "title": "Con IVA", "body": "El IVA chileno es 19 %: precio con IVA = neto · 1,19." },
-        { "title": "Volver al original", "body": "Si ya se aplicó un porcentaje, divide por el multiplicador.", "example": ["Con IVA: \\$23.800", "Neto: $23800\\div 1,19=20000$"] },
-        { "title": "Ojo", "body": "Quitar el 19 % del total no da el neto: el 19 % era del neto, no del total." }
+        {
+          "title": "Con IVA",
+          "body": "El IVA chileno es 19 %: precio con IVA = neto · 1,19."
+        },
+        {
+          "title": "Volver al original",
+          "body": "Si ya se aplicó un porcentaje, divide por el multiplicador.",
+          "example": [
+            "Con IVA: \\$23.800",
+            "Neto: $23800\\div 1,19=20000$"
+          ]
+        },
+        {
+          "title": "Ojo",
+          "body": "Quitar el 19 % del total no da el neto: el 19 % era del neto, no del total."
+        }
+      ]
+    },
+    {
+      "id": "mc-pc-4",
+      "title": "Aumentos y descuentos sucesivos",
+      "reviewStatus": "approved",
+      "cards": [
+        {
+          "title": "No se suman",
+          "body": "Un 10 % y luego otro 10 % no es un 20 %: cada uno se aplica sobre el nuevo valor."
+        },
+        {
+          "title": "Multiplica los factores",
+          "body": "Subir 10 % es por 1,1; bajar 20 % es por 0,8.",
+          "example": [
+            "$1,1\\cdot 0,8=0,88$",
+            "En total baja un 12 %"
+          ]
+        },
+        {
+          "title": "Truco",
+          "body": "Escribe cada cambio como factor y multiplícalos todos; al final compara con 1."
+        }
+      ]
+    },
+    {
+      "id": "mc-pc-5",
+      "title": "Variación porcentual",
+      "reviewStatus": "approved",
+      "cards": [
+        {
+          "title": "La fórmula",
+          "body": "Cambio dividido por el valor inicial, por 100.",
+          "formula": "$\\frac{final-inicial}{inicial}\\cdot 100$"
+        },
+        {
+          "title": "Ejemplo",
+          "body": "Un precio pasa de \\$800 a \\$1.000.",
+          "example": [
+            "$\\frac{200}{800}\\cdot 100=25$",
+            "Subió un 25 %"
+          ]
+        },
+        {
+          "title": "Ojo con la base",
+          "body": "Si vuelve de \\$1.000 a \\$800, baja un 20 %, no un 25 %: la base cambió."
+        }
+      ]
+    },
+    {
+      "id": "mc-pc-6",
+      "title": "Interés simple",
+      "reviewStatus": "approved",
+      "cards": [
+        {
+          "title": "Qué es",
+          "body": "Cada periodo ganas el mismo porcentaje del capital inicial."
+        },
+        {
+          "title": "La fórmula",
+          "body": "Capital por tasa por tiempo.",
+          "formula": "$I=C\\cdot r\\cdot t$"
+        },
+        {
+          "title": "Ejemplo",
+          "body": "\\$100.000 al 2 % mensual durante 3 meses.",
+          "example": [
+            "$100.000\\cdot 0,02\\cdot 3=6.000$",
+            "Final: \\$106.000"
+          ]
+        }
       ]
     }
   ]

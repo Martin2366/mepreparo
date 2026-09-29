@@ -7,7 +7,10 @@
       "version": 1,
       "reviewStatus": "approved",
       "estimatedMinutes": 6,
-      "skills": ["resolver", "representar"],
+      "skills": [
+        "resolver",
+        "representar"
+      ],
       "steps": [
         {
           "id": "s1",
@@ -25,10 +28,19 @@
           "prompt": "Los cuadrados sobre los catetos tienen áreas de 9 cm² y 16 cm². ¿Cuál es el área del cuadrado sobre la hipotenusa?",
           "answer": "25",
           "suffix": "cm²",
-          "mistakes": [{ "value": "7", "feedback": "Casi. Se suman las áreas, no se restan: $9+16$." }],
+          "mistakes": [
+            {
+              "value": "7",
+              "feedback": "Casi. Se suman las áreas, no se restan: $9+16$."
+            }
+          ],
           "feedback": "Casi. El área grande es la suma de las otras dos.",
-          "hints": ["$9+16$"],
-          "solution": ["$9+16=25$"]
+          "hints": [
+            "$9+16$"
+          ],
+          "solution": [
+            "$9+16=25$"
+          ]
         },
         {
           "id": "s3",
@@ -39,12 +51,22 @@
           "answer": "5",
           "suffix": "cm",
           "mistakes": [
-            { "value": "25", "feedback": "Casi. 25 es el área del cuadrado; el lado es su raíz." },
-            { "value": "7", "feedback": "Casi. No es $3+4$: es $\\sqrt{9+16}$." }
+            {
+              "value": "25",
+              "feedback": "Casi. 25 es el área del cuadrado; el lado es su raíz."
+            },
+            {
+              "value": "7",
+              "feedback": "Casi. No es $3+4$: es $\\sqrt{9+16}$."
+            }
           ],
           "feedback": "Casi. El lado de un cuadrado de área 25 es $\\sqrt{25}$.",
-          "hints": ["¿Qué número al cuadrado da 25?"],
-          "solution": ["$c=\\sqrt{25}=5$"]
+          "hints": [
+            "¿Qué número al cuadrado da 25?"
+          ],
+          "solution": [
+            "$c=\\sqrt{25}=5$"
+          ]
         },
         {
           "id": "s4",
@@ -52,15 +74,25 @@
           "skill": "resolver",
           "difficulty": 2,
           "prompt": "Un triángulo rectángulo tiene catetos de 6 cm y 8 cm. ¿Cuánto mide la hipotenusa?",
-          "options": ["10 cm", "14 cm", "100 cm", "48 cm"],
+          "options": [
+            "10 cm",
+            "14 cm",
+            "100 cm",
+            "48 cm"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. La hipotenusa no es la suma de los catetos.",
             "2": "Casi. 100 es la hipotenusa al cuadrado; falta sacar la raíz.",
             "3": "Casi. $6\\cdot 8$ no aparece en Pitágoras: se suman los cuadrados."
           },
-          "hints": ["$6^{2}+8^{2}=36+64$"],
-          "solution": ["$c^{2}=36+64=100$", "$c=10$"]
+          "hints": [
+            "$6^{2}+8^{2}=36+64$"
+          ],
+          "solution": [
+            "$c^{2}=36+64=100$",
+            "$c=10$"
+          ]
         },
         {
           "id": "s5",
@@ -71,12 +103,23 @@
           "answer": "12",
           "suffix": "cm",
           "mistakes": [
-            { "value": "8", "feedback": "Casi. No se restan las medidas: se restan sus cuadrados, $13^{2}-5^{2}$." },
-            { "value": "144", "feedback": "Casi. 144 es el cateto al cuadrado; falta sacar la raíz." }
+            {
+              "value": "8",
+              "feedback": "Casi. No se restan las medidas: se restan sus cuadrados, $13^{2}-5^{2}$."
+            },
+            {
+              "value": "144",
+              "feedback": "Casi. 144 es el cateto al cuadrado; falta sacar la raíz."
+            }
           ],
           "feedback": "Casi. Para un cateto: $b^{2}=c^{2}-a^{2}$.",
-          "hints": ["$169-25$"],
-          "solution": ["$b^{2}=169-25=144$", "$b=12$"]
+          "hints": [
+            "$169-25$"
+          ],
+          "solution": [
+            "$b^{2}=169-25=144$",
+            "$b=12$"
+          ]
         },
         {
           "id": "s6",
@@ -84,14 +127,21 @@
           "skill": "argumentar",
           "difficulty": 3,
           "prompt": "¿Cuál de estos tríos de medidas corresponde a un triángulo rectángulo?",
-          "options": ["7, 24 y 25", "4, 5 y 6", "5, 6 y 7", "2, 3 y 4"],
+          "options": [
+            "7, 24 y 25",
+            "4, 5 y 6",
+            "5, 6 y 7",
+            "2, 3 y 4"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. $4^{2}+5^{2}=41$, pero $6^{2}=36$.",
             "2": "Casi. $5^{2}+6^{2}=61$, pero $7^{2}=49$.",
             "3": "Casi. $2^{2}+3^{2}=13$, pero $4^{2}=16$."
           },
-          "hints": ["Comprueba si el cuadrado del mayor es la suma de los otros dos cuadrados."],
+          "hints": [
+            "Comprueba si el cuadrado del mayor es la suma de los otros dos cuadrados."
+          ],
           "explanation": "$7^{2}+24^{2}=49+576=625=25^{2}$."
         },
         {
@@ -100,15 +150,25 @@
           "skill": "modelar",
           "difficulty": 3,
           "prompt": "Una escalera de 5 m se apoya en una pared, con su base a 3 m de la pared. ¿A qué altura toca la pared?",
-          "options": ["4 m", "2 m", "8 m", "$\\sqrt{34}$ m"],
+          "options": [
+            "4 m",
+            "2 m",
+            "8 m",
+            "$\\sqrt{34}$ m"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. No se restan las medidas: $5^{2}-3^{2}=16$.",
             "2": "Casi. La altura es menor que la escalera, que es la hipotenusa.",
             "3": "Casi. La escalera es la hipotenusa: aquí se resta, no se suma."
           },
-          "hints": ["La escalera es la hipotenusa."],
-          "solution": ["$h^{2}=5^{2}-3^{2}=16$", "$h=4$"]
+          "hints": [
+            "La escalera es la hipotenusa."
+          ],
+          "solution": [
+            "$h^{2}=5^{2}-3^{2}=16$",
+            "$h=4$"
+          ]
         }
       ]
     },
@@ -118,7 +178,10 @@
       "version": 1,
       "reviewStatus": "approved",
       "estimatedMinutes": 5,
-      "skills": ["resolver", "modelar"],
+      "skills": [
+        "resolver",
+        "modelar"
+      ],
       "steps": [
         {
           "id": "s1",
@@ -136,12 +199,22 @@
           "answer": "34",
           "suffix": "cm",
           "mistakes": [
-            { "value": "17", "feedback": "Casi. Sumaste solo dos lados; el rectángulo tiene cuatro." },
-            { "value": "60", "feedback": "Casi. 60 es el área; el perímetro es la suma de los lados." }
+            {
+              "value": "17",
+              "feedback": "Casi. Sumaste solo dos lados; el rectángulo tiene cuatro."
+            },
+            {
+              "value": "60",
+              "feedback": "Casi. 60 es el área; el perímetro es la suma de los lados."
+            }
           ],
           "feedback": "Casi. Suma los cuatro lados: $12+5+12+5$.",
-          "hints": ["Son dos largos y dos anchos."],
-          "solution": ["$2\\cdot(12+5)=34$"]
+          "hints": [
+            "Son dos largos y dos anchos."
+          ],
+          "solution": [
+            "$2\\cdot(12+5)=34$"
+          ]
         },
         {
           "id": "s3",
@@ -151,10 +224,19 @@
           "prompt": "Un cuadrado tiene un perímetro de 36 cm. ¿Cuánto mide cada lado?",
           "answer": "9",
           "suffix": "cm",
-          "mistakes": [{ "value": "6", "feedback": "Casi. Lado 6 sería si el área fuera 36; el perímetro se divide por 4." }],
+          "mistakes": [
+            {
+              "value": "6",
+              "feedback": "Casi. Lado 6 sería si el área fuera 36; el perímetro se divide por 4."
+            }
+          ],
           "feedback": "Casi. Los 4 lados son iguales: $36\\div 4$.",
-          "hints": ["Perímetro del cuadrado: $4\\cdot$ lado."],
-          "solution": ["$36\\div 4=9$"]
+          "hints": [
+            "Perímetro del cuadrado: $4\\cdot$ lado."
+          ],
+          "solution": [
+            "$36\\div 4=9$"
+          ]
         },
         {
           "id": "s4",
@@ -162,15 +244,24 @@
           "skill": "resolver",
           "difficulty": 2,
           "prompt": "¿Cuál es el perímetro de una circunferencia de radio 5 cm?",
-          "options": ["$10π$ cm", "$25π$ cm", "$5π$ cm", "$20π$ cm"],
+          "options": [
+            "$10π$ cm",
+            "$25π$ cm",
+            "$5π$ cm",
+            "$20π$ cm"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. $πr^{2}$ es el área del círculo.",
             "2": "Casi. Falta el 2: $2πr$.",
             "3": "Casi. Usaste el diámetro en $2πr$: con el radio es $2π\\cdot 5$."
           },
-          "hints": ["$P=2πr$"],
-          "solution": ["$2π\\cdot 5=10π$"]
+          "hints": [
+            "$P=2πr$"
+          ],
+          "solution": [
+            "$2π\\cdot 5=10π$"
+          ]
         },
         {
           "id": "s5",
@@ -180,10 +271,19 @@
           "prompt": "Un triángulo isósceles tiene dos lados de 7 cm y un perímetro de 22 cm. ¿Cuánto mide el tercer lado?",
           "answer": "8",
           "suffix": "cm",
-          "mistakes": [{ "value": "15", "feedback": "Casi. Los dos lados iguales suman $7+7=14$." }],
+          "mistakes": [
+            {
+              "value": "15",
+              "feedback": "Casi. Los dos lados iguales suman $7+7=14$."
+            }
+          ],
           "feedback": "Casi. Resta al perímetro los dos lados iguales.",
-          "hints": ["$22-14$"],
-          "solution": ["$22-7-7=8$"]
+          "hints": [
+            "$22-14$"
+          ],
+          "solution": [
+            "$22-7-7=8$"
+          ]
         },
         {
           "id": "s6",
@@ -191,15 +291,25 @@
           "skill": "modelar",
           "difficulty": 3,
           "prompt": "Se quiere cercar un terreno rectangular de 30 m por 20 m, dejando una puerta de 2 m sin cerca. ¿Cuántos metros de cerca se necesitan?",
-          "options": ["98 m", "100 m", "600 m", "48 m"],
+          "options": [
+            "98 m",
+            "100 m",
+            "600 m",
+            "48 m"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. Falta descontar los 2 m de la puerta.",
             "2": "Casi. 600 es el área del terreno.",
             "3": "Casi. Sumaste solo dos lados antes de restar la puerta."
           },
-          "hints": ["Perímetro menos la puerta."],
-          "solution": ["$2\\cdot(30+20)=100$", "$100-2=98$"]
+          "hints": [
+            "Perímetro menos la puerta."
+          ],
+          "solution": [
+            "$2\\cdot(30+20)=100$",
+            "$100-2=98$"
+          ]
         }
       ]
     },
@@ -209,7 +319,10 @@
       "version": 1,
       "reviewStatus": "approved",
       "estimatedMinutes": 6,
-      "skills": ["resolver", "argumentar"],
+      "skills": [
+        "resolver",
+        "argumentar"
+      ],
       "steps": [
         {
           "id": "s1",
@@ -226,10 +339,19 @@
           "prompt": "Un triángulo tiene base 10 cm y altura 7 cm. ¿Cuál es su área?",
           "answer": "35",
           "suffix": "cm²",
-          "mistakes": [{ "value": "70", "feedback": "Casi. El triángulo es la mitad del rectángulo: falta dividir por 2." }],
+          "mistakes": [
+            {
+              "value": "70",
+              "feedback": "Casi. El triángulo es la mitad del rectángulo: falta dividir por 2."
+            }
+          ],
           "feedback": "Casi. Usa $\\frac{b\\cdot h}{2}$.",
-          "hints": ["$\\frac{10\\cdot 7}{2}$"],
-          "solution": ["$\\frac{10\\cdot 7}{2}=35$"]
+          "hints": [
+            "$\\frac{10\\cdot 7}{2}$"
+          ],
+          "solution": [
+            "$\\frac{10\\cdot 7}{2}=35$"
+          ]
         },
         {
           "id": "s3",
@@ -237,15 +359,24 @@
           "skill": "resolver",
           "difficulty": 2,
           "prompt": "¿Cuál es el área de un círculo de radio 3 cm?",
-          "options": ["$9π$ cm²", "$6π$ cm²", "$3π$ cm²", "$36π$ cm²"],
+          "options": [
+            "$9π$ cm²",
+            "$6π$ cm²",
+            "$3π$ cm²",
+            "$36π$ cm²"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. $2πr=6π$ es el perímetro; el área es $πr^{2}$.",
             "2": "Casi. El radio va al cuadrado: $3^{2}=9$.",
             "3": "Casi. Usaste el diámetro en vez del radio."
           },
-          "hints": ["$πr^{2}$ con $r=3$."],
-          "solution": ["$π\\cdot 3^{2}=9π$"]
+          "hints": [
+            "$πr^{2}$ con $r=3$."
+          ],
+          "solution": [
+            "$π\\cdot 3^{2}=9π$"
+          ]
         },
         {
           "id": "s4",
@@ -255,10 +386,19 @@
           "prompt": "Un trapecio tiene bases de 8 cm y 12 cm y una altura de 5 cm. ¿Cuál es su área?",
           "answer": "50",
           "suffix": "cm²",
-          "mistakes": [{ "value": "100", "feedback": "Casi. Falta dividir por 2: $\\frac{(8+12)\\cdot 5}{2}$." }],
+          "mistakes": [
+            {
+              "value": "100",
+              "feedback": "Casi. Falta dividir por 2: $\\frac{(8+12)\\cdot 5}{2}$."
+            }
+          ],
           "feedback": "Casi. Usa $\\frac{(B+b)\\cdot h}{2}$.",
-          "hints": ["$\\frac{20\\cdot 5}{2}$"],
-          "solution": ["$\\frac{(12+8)\\cdot 5}{2}=50$"]
+          "hints": [
+            "$\\frac{20\\cdot 5}{2}$"
+          ],
+          "solution": [
+            "$\\frac{(12+8)\\cdot 5}{2}=50$"
+          ]
         },
         {
           "id": "s5",
@@ -268,10 +408,19 @@
           "prompt": "Un rombo tiene diagonales de 6 cm y 10 cm. ¿Cuál es su área?",
           "answer": "30",
           "suffix": "cm²",
-          "mistakes": [{ "value": "60", "feedback": "Casi. Falta dividir por 2: $\\frac{6\\cdot 10}{2}$." }],
+          "mistakes": [
+            {
+              "value": "60",
+              "feedback": "Casi. Falta dividir por 2: $\\frac{6\\cdot 10}{2}$."
+            }
+          ],
           "feedback": "Casi. Usa $\\frac{D\\cdot d}{2}$.",
-          "hints": ["$\\frac{10\\cdot 6}{2}$"],
-          "solution": ["$\\frac{10\\cdot 6}{2}=30$"]
+          "hints": [
+            "$\\frac{10\\cdot 6}{2}$"
+          ],
+          "solution": [
+            "$\\frac{10\\cdot 6}{2}=30$"
+          ]
         },
         {
           "id": "s6",
@@ -279,14 +428,21 @@
           "skill": "argumentar",
           "difficulty": 3,
           "prompt": "Si el lado de un cuadrado se duplica, ¿qué pasa con su área?",
-          "options": ["Se cuadruplica", "Se duplica", "Aumenta en 2", "Se triplica"],
+          "options": [
+            "Se cuadruplica",
+            "Se duplica",
+            "Aumenta en 2",
+            "Se triplica"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. $(2a)^{2}=4a^{2}$: el área se multiplica por 4.",
             "2": "Casi. No aumenta una cantidad fija: se multiplica.",
             "3": "Casi. $(2a)^{2}=4a^{2}$."
           },
-          "hints": ["Prueba con un cuadrado de lado 1 y otro de lado 2."],
+          "hints": [
+            "Prueba con un cuadrado de lado 1 y otro de lado 2."
+          ],
           "explanation": "$(2a)^{2}=4a^{2}$: el área se cuadruplica."
         }
       ]
@@ -297,7 +453,10 @@
       "version": 1,
       "reviewStatus": "approved",
       "estimatedMinutes": 6,
-      "skills": ["modelar", "argumentar"],
+      "skills": [
+        "modelar",
+        "argumentar"
+      ],
       "steps": [
         {
           "id": "s1",
@@ -314,10 +473,19 @@
           "prompt": "Una figura con forma de L está formada por un rectángulo de 8 cm × 3 cm y otro de 4 cm × 5 cm que no se superponen. ¿Cuál es su área total?",
           "answer": "44",
           "suffix": "cm²",
-          "mistakes": [{ "value": "20", "feedback": "Casi. Esa es solo una de las partes: suma las dos." }],
+          "mistakes": [
+            {
+              "value": "20",
+              "feedback": "Casi. Esa es solo una de las partes: suma las dos."
+            }
+          ],
           "feedback": "Casi. Calcula cada rectángulo y suma.",
-          "hints": ["$8\\cdot 3=24$ y $4\\cdot 5=20$."],
-          "solution": ["$24+20=44$"]
+          "hints": [
+            "$8\\cdot 3=24$ y $4\\cdot 5=20$."
+          ],
+          "solution": [
+            "$24+20=44$"
+          ]
         },
         {
           "id": "s3",
@@ -326,10 +494,20 @@
           "difficulty": 2,
           "prompt": "A un cuadrado de lado 10 cm se le recorta un círculo de radio 2 cm. El área que queda es $100-kπ$ cm². ¿Cuánto vale $k$?",
           "answer": "4",
-          "mistakes": [{ "value": "2", "feedback": "Casi. El área del círculo es $π\\cdot 2^{2}=4π$: el radio va al cuadrado." }],
+          "mistakes": [
+            {
+              "value": "2",
+              "feedback": "Casi. El área del círculo es $π\\cdot 2^{2}=4π$: el radio va al cuadrado."
+            }
+          ],
           "feedback": "Casi. Calcula el área del círculo: $πr^{2}$.",
-          "hints": ["$π\\cdot 2^{2}$"],
-          "solution": ["Círculo: $4π$", "Queda: $100-4π$"]
+          "hints": [
+            "$π\\cdot 2^{2}$"
+          ],
+          "solution": [
+            "Círculo: $4π$",
+            "Queda: $100-4π$"
+          ]
         },
         {
           "id": "s4",
@@ -337,15 +515,24 @@
           "skill": "resolver",
           "difficulty": 2,
           "prompt": "A un rectángulo de 12 cm × 8 cm se le recorta un triángulo con base 12 cm y altura 8 cm. ¿Qué área queda?",
-          "options": ["48 cm²", "96 cm²", "0 cm²", "88 cm²"],
+          "options": [
+            "48 cm²",
+            "96 cm²",
+            "0 cm²",
+            "88 cm²"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. 96 es el rectángulo completo; falta restar el triángulo.",
             "2": "Casi. El triángulo es la mitad del rectángulo, no todo.",
             "3": "Casi. El triángulo mide $\\frac{12\\cdot 8}{2}=48$."
           },
-          "hints": ["El triángulo tiene la misma base y altura que el rectángulo."],
-          "solution": ["$96-48=48$"]
+          "hints": [
+            "El triángulo tiene la misma base y altura que el rectángulo."
+          ],
+          "solution": [
+            "$96-48=48$"
+          ]
         },
         {
           "id": "s5",
@@ -353,15 +540,25 @@
           "skill": "modelar",
           "difficulty": 3,
           "prompt": "Sobre un cuadrado de lado 8 cm se dibuja un semicírculo de diámetro 8 cm. ¿Cuál es el área total de la figura?",
-          "options": ["$64+8π$ cm²", "$64+16π$ cm²", "$64+32π$ cm²", "$72π$ cm²"],
+          "options": [
+            "$64+8π$ cm²",
+            "$64+16π$ cm²",
+            "$64+32π$ cm²",
+            "$72π$ cm²"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. Es medio círculo: $\\frac{π\\cdot 4^{2}}{2}=8π$.",
             "2": "Casi. El radio es 4 (la mitad del diámetro), no 8.",
             "3": "Casi. El cuadrado y el semicírculo se suman por separado."
           },
-          "hints": ["El radio del semicírculo es 4."],
-          "solution": ["Cuadrado: 64", "Semicírculo: $\\frac{π\\cdot 16}{2}=8π$"]
+          "hints": [
+            "El radio del semicírculo es 4."
+          ],
+          "solution": [
+            "Cuadrado: 64",
+            "Semicírculo: $\\frac{π\\cdot 16}{2}=8π$"
+          ]
         },
         {
           "id": "s6",
@@ -369,10 +566,16 @@
           "skill": "argumentar",
           "difficulty": 3,
           "prompt": "Calcularon el área de un cuadrado de lado 6 cm menos el círculo inscrito en él. ¿En qué línea está el error?",
-          "lines": ["Cuadrado: $6^{2}=36$", "Círculo: $π\\cdot 6^{2}=36π$", "Queda: $36-36π$"],
+          "lines": [
+            "Cuadrado: $6^{2}=36$",
+            "Círculo: $π\\cdot 6^{2}=36π$",
+            "Queda: $36-36π$"
+          ],
           "wrong": 1,
           "feedback": "Casi. Esa línea está bien. Revisa el radio del círculo inscrito.",
-          "hints": ["¿El radio del círculo inscrito es el lado o la mitad del lado?"],
+          "hints": [
+            "¿El radio del círculo inscrito es el lado o la mitad del lado?"
+          ],
           "explanation": "El círculo inscrito tiene radio 3 (la mitad del lado): $π\\cdot 3^{2}=9π$, así que queda $36-9π$."
         }
       ]
@@ -384,9 +587,23 @@
       "title": "Pitágoras en 90 segundos",
       "reviewStatus": "approved",
       "cards": [
-        { "title": "La relación", "body": "Solo en triángulos rectángulos.", "formula": "$a^{2}+b^{2}=c^{2}$" },
-        { "title": "Hipotenusa", "body": "Suma cuadrados y saca raíz.", "example": ["$5$ y $12$", "$\\sqrt{25+144}=13$"] },
-        { "title": "Tríos útiles", "body": "3, 4, 5 · 5, 12, 13 · 8, 15, 17 · 7, 24, 25 y sus múltiplos." }
+        {
+          "title": "La relación",
+          "body": "Solo en triángulos rectángulos.",
+          "formula": "$a^{2}+b^{2}=c^{2}$"
+        },
+        {
+          "title": "Hipotenusa",
+          "body": "Suma cuadrados y saca raíz.",
+          "example": [
+            "$5$ y $12$",
+            "$\\sqrt{25+144}=13$"
+          ]
+        },
+        {
+          "title": "Tríos útiles",
+          "body": "3, 4, 5 · 5, 12, 13 · 8, 15, 17 · 7, 24, 25 y sus múltiplos."
+        }
       ]
     },
     {
@@ -394,9 +611,18 @@
       "title": "Perímetro o área",
       "reviewStatus": "approved",
       "cards": [
-        { "title": "Perímetro", "body": "Contorno: se mide en cm, m. Se suman lados." },
-        { "title": "Área", "body": "Superficie: se mide en cm², m². Se multiplican medidas." },
-        { "title": "Círculo", "body": "Perímetro $2πr$; área $πr^{2}$. No los confundas." }
+        {
+          "title": "Perímetro",
+          "body": "Contorno: se mide en cm, m. Se suman lados."
+        },
+        {
+          "title": "Área",
+          "body": "Superficie: se mide en cm², m². Se multiplican medidas."
+        },
+        {
+          "title": "Círculo",
+          "body": "Perímetro $2πr$; área $πr^{2}$. No los confundas."
+        }
       ]
     },
     {
@@ -404,9 +630,82 @@
       "title": "Figuras compuestas",
       "reviewStatus": "approved",
       "cards": [
-        { "title": "Sumar", "body": "Divide en rectángulos, triángulos y círculos conocidos." },
-        { "title": "Restar", "body": "Calcula la figura grande y quita los huecos." },
-        { "title": "Inscrito", "body": "Un círculo inscrito en un cuadrado de lado $a$ tiene radio $\\frac{a}{2}$." }
+        {
+          "title": "Sumar",
+          "body": "Divide en rectángulos, triángulos y círculos conocidos."
+        },
+        {
+          "title": "Restar",
+          "body": "Calcula la figura grande y quita los huecos."
+        },
+        {
+          "title": "Inscrito",
+          "body": "Un círculo inscrito en un cuadrado de lado $a$ tiene radio $\\frac{a}{2}$."
+        }
+      ]
+    },
+    {
+      "id": "mc-fg-4",
+      "title": "Circunferencia y círculo",
+      "reviewStatus": "approved",
+      "cards": [
+        {
+          "title": "Perímetro",
+          "body": "El largo de la circunferencia es 2 por π por el radio."
+        },
+        {
+          "title": "Área",
+          "body": "El área del círculo es π por el radio al cuadrado.",
+          "example": [
+            "Radio 3",
+            "Área: 9π; perímetro: 6π"
+          ]
+        },
+        {
+          "title": "Ojo",
+          "body": "Si te dan el diámetro, divide por 2 antes de usar las fórmulas."
+        }
+      ]
+    },
+    {
+      "id": "mc-fg-5",
+      "title": "Ángulos en triángulos",
+      "reviewStatus": "approved",
+      "cards": [
+        {
+          "title": "Suma interior",
+          "body": "Los ángulos interiores de un triángulo suman 180°."
+        },
+        {
+          "title": "Ángulo exterior",
+          "body": "Es igual a la suma de los dos interiores no adyacentes."
+        },
+        {
+          "title": "Isósceles",
+          "body": "Los ángulos de la base son iguales."
+        }
+      ]
+    },
+    {
+      "id": "mc-fg-6",
+      "title": "Tríos pitagóricos",
+      "reviewStatus": "approved",
+      "cards": [
+        {
+          "title": "Los más usados",
+          "body": "3, 4, 5 · 5, 12, 13 · 8, 15, 17."
+        },
+        {
+          "title": "Sus múltiplos",
+          "body": "6, 8, 10 y 9, 12, 15 también sirven."
+        },
+        {
+          "title": "Comprueba",
+          "body": "La hipotenusa es el mayor.",
+          "example": [
+            "$5^{2}+12^{2}=25+144=169=13^{2}$"
+          ]
+        }
       ]
     }
   ]

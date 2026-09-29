@@ -41,3 +41,15 @@ Lo que requiere el teléfono o las cuentas del fundador queda marcado como **pen
 - [ ] Build de EAS con `react-native-purchases` y `expo-print` (dev + AAB) e instalación.
 - [ ] Compra de prueba con cuenta de tester (§C y §D) y restauración al reinstalar.
 - [ ] Imprimir/guardar PDF desde la hoja de Android.
+
+## Continuación (29-09): Equis con IA, foto y pulido
+| Caso | Resultado |
+|---|---|
+| `typecheck`, `lint`, 199 tests (nuevos: `equis.test.ts`: esquemas, notación segura, tema→unidad, marco de cámara), `content:validate --production` (0 borradores, 96 mini-clases), `expo-doctor` 21/21 | ✅ |
+| Función `equis` desplegada: sin clave → 503 `not_configured`; la app lo muestra como «Equis todavía no está disponible» | ✅ |
+| Chat de Equis (web): envía, maneja el error sin bloquear | ✅ |
+| Error en práctica: «Casi…» con vaivén + «Pregúntale a Equis» | ✅ |
+| Reportar un error: hoja con motivos → fila en `content_reports` | ✅ (fila de prueba borrada) |
+| Mini tour: Inicio y Equis, con «Saltar» y «Siguiente», una sola vez | ✅ |
+| `/foto` (web): pantalla de permiso de cámara y galería | ✅ |
+| **Pendiente (teléfono + clave):** foto real de cuaderno → ejercicios parecidos, explicación con Gemini, topes 429/503, costo por foto | ⏳ |

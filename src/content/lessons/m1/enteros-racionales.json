@@ -7,7 +7,9 @@
       "version": 1,
       "reviewStatus": "approved",
       "estimatedMinutes": 5,
-      "skills": ["representar"],
+      "skills": [
+        "representar"
+      ],
       "steps": [
         {
           "id": "s1",
@@ -23,14 +25,21 @@
           "skill": "representar",
           "difficulty": 1,
           "prompt": "¿Cuál es el mayor de estos números?",
-          "options": ["$-3$", "$-7$", "$-10$", "$-4$"],
+          "options": [
+            "$-3$",
+            "$-7$",
+            "$-10$",
+            "$-4$"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. Entre negativos, el mayor es el más cercano al 0.",
             "2": "Casi. $-10$ es el que está más a la izquierda: es el menor.",
             "3": "Casi. $-3$ está más cerca del 0 que $-4$."
           },
-          "hints": ["Ubícalos en la recta: ¿cuál queda más a la derecha?"],
+          "hints": [
+            "Ubícalos en la recta: ¿cuál queda más a la derecha?"
+          ],
           "explanation": "$-3$ es el más cercano al 0, así que es el mayor."
         },
         {
@@ -40,10 +49,19 @@
           "difficulty": 2,
           "prompt": "¿Qué número está justo a la mitad entre $-4$ y $6$?",
           "answer": "1",
-          "mistakes": [{ "value": "5", "feedback": "Casi. 5 es la mitad de la distancia; hay que avanzarlo desde $-4$: $-4+5$." }],
+          "mistakes": [
+            {
+              "value": "5",
+              "feedback": "Casi. 5 es la mitad de la distancia; hay que avanzarlo desde $-4$: $-4+5$."
+            }
+          ],
           "feedback": "Casi. Calcula el promedio: $\\frac{-4+6}{2}$.",
-          "hints": ["La distancia entre $-4$ y 6 es 10."],
-          "solution": ["$\\frac{-4+6}{2}=\\frac{2}{2}=1$"]
+          "hints": [
+            "La distancia entre $-4$ y 6 es 10."
+          ],
+          "solution": [
+            "$\\frac{-4+6}{2}=\\frac{2}{2}=1$"
+          ]
         },
         {
           "id": "s4",
@@ -58,15 +76,24 @@
           "skill": "resolver",
           "difficulty": 2,
           "prompt": "¿Cuál es la distancia entre $-6$ y $2$ en la recta numérica?",
-          "options": ["$8$", "$4$", "$-8$", "$12$"],
+          "options": [
+            "$8$",
+            "$4$",
+            "$-8$",
+            "$12$"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. La distancia es $2-(-6)=2+6$.",
             "2": "Casi. Una distancia nunca es negativa.",
             "3": "Casi. Cuenta los pasos de $-6$ a 2: son 8."
           },
-          "hints": ["Mayor menos menor: $2-(-6)$."],
-          "solution": ["$2-(-6)=8$"]
+          "hints": [
+            "Mayor menos menor: $2-(-6)$."
+          ],
+          "solution": [
+            "$2-(-6)=8$"
+          ]
         },
         {
           "id": "s6",
@@ -74,9 +101,17 @@
           "skill": "representar",
           "difficulty": 2,
           "prompt": "Ordena de menor a mayor.",
-          "items": ["$-2$", "$-\\frac{1}{2}$", "$0$", "$\\frac{3}{4}$", "$\\frac{3}{2}$"],
+          "items": [
+            "$-2$",
+            "$-\\frac{1}{2}$",
+            "$0$",
+            "$\\frac{3}{4}$",
+            "$\\frac{3}{2}$"
+          ],
           "feedback": "Casi. Los negativos van primero, y entre ellos el más lejano al 0 es el menor.",
-          "hints": ["$-\\frac{1}{2}$ está entre $-1$ y 0."],
+          "hints": [
+            "$-\\frac{1}{2}$ está entre $-1$ y 0."
+          ],
           "explanation": "$-2<-\\frac{1}{2}<0<\\frac{3}{4}<\\frac{3}{2}$."
         },
         {
@@ -85,15 +120,24 @@
           "skill": "modelar",
           "difficulty": 3,
           "prompt": "A las 6:00 la temperatura era $-4$ °C y a las 14:00 era 9 °C. ¿Cuántos grados subió?",
-          "options": ["$13$", "$5$", "$-13$", "$9$"],
+          "options": [
+            "$13$",
+            "$5$",
+            "$-13$",
+            "$9$"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. Subir de $-4$ a 9 es $9-(-4)=13$.",
             "2": "Casi. Subió: el cambio es positivo.",
             "3": "Casi. De $-4$ a 0 ya subió 4 grados; faltan 9 más."
           },
-          "hints": ["Cambio = final menos inicial."],
-          "solution": ["$9-(-4)=9+4=13$"]
+          "hints": [
+            "Cambio = final menos inicial."
+          ],
+          "solution": [
+            "$9-(-4)=9+4=13$"
+          ]
         }
       ]
     },
@@ -103,7 +147,10 @@
       "version": 1,
       "reviewStatus": "approved",
       "estimatedMinutes": 6,
-      "skills": ["representar", "argumentar"],
+      "skills": [
+        "representar",
+        "argumentar"
+      ],
       "steps": [
         {
           "id": "s1",
@@ -118,14 +165,21 @@
           "skill": "representar",
           "difficulty": 1,
           "prompt": "¿Qué fracción es equivalente a $\\frac{3}{4}$?",
-          "options": ["$\\frac{9}{12}$", "$\\frac{6}{7}$", "$\\frac{4}{3}$", "$\\frac{3}{8}$"],
+          "options": [
+            "$\\frac{9}{12}$",
+            "$\\frac{6}{7}$",
+            "$\\frac{4}{3}$",
+            "$\\frac{3}{8}$"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. Sumaste 3 arriba y abajo; para que sea equivalente hay que multiplicar.",
             "2": "Casi. Invertir la fracción cambia su valor.",
             "3": "Casi. Solo cambiaste el denominador: la fracción se achicó."
           },
-          "hints": ["Multiplica numerador y denominador por el mismo número."],
+          "hints": [
+            "Multiplica numerador y denominador por el mismo número."
+          ],
           "explanation": "$\\frac{3\\cdot 3}{4\\cdot 3}=\\frac{9}{12}$."
         },
         {
@@ -135,10 +189,19 @@
           "difficulty": 2,
           "prompt": "Simplifica $\\frac{18}{24}$ al máximo. ¿Cuál es el numerador que queda?",
           "answer": "3",
-          "mistakes": [{ "value": "9", "feedback": "Casi. $\\frac{9}{12}$ todavía se puede simplificar por 3." }],
+          "mistakes": [
+            {
+              "value": "9",
+              "feedback": "Casi. $\\frac{9}{12}$ todavía se puede simplificar por 3."
+            }
+          ],
           "feedback": "Casi. Divide numerador y denominador por su máximo común divisor, 6.",
-          "hints": ["18 y 24 son múltiplos de 6."],
-          "solution": ["$\\frac{18\\div 6}{24\\div 6}=\\frac{3}{4}$"]
+          "hints": [
+            "18 y 24 son múltiplos de 6."
+          ],
+          "solution": [
+            "$\\frac{18\\div 6}{24\\div 6}=\\frac{3}{4}$"
+          ]
         },
         {
           "id": "s4",
@@ -153,14 +216,21 @@
           "skill": "argumentar",
           "difficulty": 2,
           "prompt": "¿Cuál es la fracción mayor?",
-          "options": ["$\\frac{5}{8}$", "$\\frac{3}{5}$", "$\\frac{1}{2}$", "$\\frac{7}{12}$"],
+          "options": [
+            "$\\frac{5}{8}$",
+            "$\\frac{3}{5}$",
+            "$\\frac{1}{2}$",
+            "$\\frac{7}{12}$"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. Compara en cruz $\\frac{5}{8}$ y $\\frac{3}{5}$: $25>24$.",
             "2": "Casi. $\\frac{1}{2}$ es menor que $\\frac{5}{8}$, que es más de la mitad.",
             "3": "Casi. Compara en cruz: $5\\cdot 12=60$ y $7\\cdot 8=56$."
           },
-          "hints": ["Todas están cerca de la mitad: compáralas de a dos en cruz."],
+          "hints": [
+            "Todas están cerca de la mitad: compáralas de a dos en cruz."
+          ],
           "explanation": "$\\frac{5}{8}=0,625$ es la mayor."
         },
         {
@@ -169,14 +239,21 @@
           "skill": "representar",
           "difficulty": 3,
           "prompt": "¿Qué número está entre $\\frac{1}{3}$ y $\\frac{1}{2}$?",
-          "options": ["$\\frac{2}{5}$", "$\\frac{1}{4}$", "$\\frac{2}{3}$", "$\\frac{3}{5}$"],
+          "options": [
+            "$\\frac{2}{5}$",
+            "$\\frac{1}{4}$",
+            "$\\frac{2}{3}$",
+            "$\\frac{3}{5}$"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. $\\frac{1}{4}$ es menor que $\\frac{1}{3}$.",
             "2": "Casi. $\\frac{2}{3}$ es mayor que $\\frac{1}{2}$.",
             "3": "Casi. $\\frac{3}{5}=0,6$ es mayor que $\\frac{1}{2}$."
           },
-          "hints": ["$\\frac{1}{3}$ es aproximadamente $0,33$ y $\\frac{1}{2}=0,5$."],
+          "hints": [
+            "$\\frac{1}{3}$ es aproximadamente $0,33$ y $\\frac{1}{2}=0,5$."
+          ],
           "explanation": "$\\frac{2}{5}=0,4$ está entre $0,33$ y $0,5$."
         },
         {
@@ -185,14 +262,21 @@
           "skill": "argumentar",
           "difficulty": 3,
           "prompt": "Ana comió $\\frac{3}{8}$ de una pizza y Beto $\\frac{2}{5}$ de otra pizza igual. ¿Quién comió más?",
-          "options": ["Beto", "Ana", "Comieron lo mismo", "No se puede saber"],
+          "options": [
+            "Beto",
+            "Ana",
+            "Comieron lo mismo",
+            "No se puede saber"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. Compara en cruz: $3\\cdot 5=15$ y $2\\cdot 8=16$.",
             "2": "Casi. $\\frac{3}{8}=0,375$ y $\\frac{2}{5}=0,4$ no son iguales.",
             "3": "Casi. Las pizzas son iguales: basta comparar las fracciones."
           },
-          "hints": ["Multiplica en cruz."],
+          "hints": [
+            "Multiplica en cruz."
+          ],
           "explanation": "$\\frac{2}{5}>\\frac{3}{8}$ porque $16>15$."
         }
       ]
@@ -203,7 +287,9 @@
       "version": 1,
       "reviewStatus": "approved",
       "estimatedMinutes": 6,
-      "skills": ["resolver"],
+      "skills": [
+        "resolver"
+      ],
       "steps": [
         {
           "id": "s1",
@@ -220,10 +306,19 @@
           "difficulty": 1,
           "prompt": "Calcula $\\frac{1}{2}+\\frac{1}{3}$.",
           "answer": "5/6",
-          "mistakes": [{ "value": "2/5", "feedback": "Casi. No se suman los denominadores: lleva ambas fracciones a sextos." }],
+          "mistakes": [
+            {
+              "value": "2/5",
+              "feedback": "Casi. No se suman los denominadores: lleva ambas fracciones a sextos."
+            }
+          ],
           "feedback": "Casi. Usa el denominador común 6.",
-          "hints": ["$\\frac{1}{2}=\\frac{3}{6}$ y $\\frac{1}{3}=\\frac{2}{6}$."],
-          "solution": ["$\\frac{3}{6}+\\frac{2}{6}=\\frac{5}{6}$"]
+          "hints": [
+            "$\\frac{1}{2}=\\frac{3}{6}$ y $\\frac{1}{3}=\\frac{2}{6}$."
+          ],
+          "solution": [
+            "$\\frac{3}{6}+\\frac{2}{6}=\\frac{5}{6}$"
+          ]
         },
         {
           "id": "s3",
@@ -232,10 +327,19 @@
           "difficulty": 2,
           "prompt": "Calcula $\\frac{3}{4}-\\frac{1}{6}$.",
           "answer": "7/12",
-          "mistakes": [{ "value": "1/5", "feedback": "Casi. Los denominadores no se suman ni se restan: lleva ambas a doceavos." }],
+          "mistakes": [
+            {
+              "value": "1/5",
+              "feedback": "Casi. Los denominadores no se suman ni se restan: lleva ambas a doceavos."
+            }
+          ],
           "feedback": "Casi. Usa el denominador común 12.",
-          "hints": ["$\\frac{3}{4}=\\frac{9}{12}$ y $\\frac{1}{6}=\\frac{2}{12}$."],
-          "solution": ["$\\frac{9}{12}-\\frac{2}{12}=\\frac{7}{12}$"]
+          "hints": [
+            "$\\frac{3}{4}=\\frac{9}{12}$ y $\\frac{1}{6}=\\frac{2}{12}$."
+          ],
+          "solution": [
+            "$\\frac{9}{12}-\\frac{2}{12}=\\frac{7}{12}$"
+          ]
         },
         {
           "id": "s4",
@@ -251,10 +355,19 @@
           "difficulty": 2,
           "prompt": "Calcula $\\frac{2}{5}\\cdot\\frac{15}{4}$.",
           "answer": "3/2",
-          "mistakes": [{ "value": "8/75", "feedback": "Casi. Se multiplica numerador con numerador ($2\\cdot 15$) y denominador con denominador ($5\\cdot 4$)." }],
+          "mistakes": [
+            {
+              "value": "8/75",
+              "feedback": "Casi. Se multiplica numerador con numerador ($2\\cdot 15$) y denominador con denominador ($5\\cdot 4$)."
+            }
+          ],
           "feedback": "Casi. Multiplica en línea y simplifica.",
-          "hints": ["$\\frac{2\\cdot 15}{5\\cdot 4}=\\frac{30}{20}$"],
-          "solution": ["$\\frac{30}{20}=\\frac{3}{2}$"]
+          "hints": [
+            "$\\frac{2\\cdot 15}{5\\cdot 4}=\\frac{30}{20}$"
+          ],
+          "solution": [
+            "$\\frac{30}{20}=\\frac{3}{2}$"
+          ]
         },
         {
           "id": "s6",
@@ -263,10 +376,19 @@
           "difficulty": 2,
           "prompt": "Calcula $\\frac{3}{4}\\div\\frac{1}{2}$.",
           "answer": "3/2",
-          "mistakes": [{ "value": "3/8", "feedback": "Casi. Para dividir se multiplica por el recíproco: $\\frac{3}{4}\\cdot\\frac{2}{1}$." }],
+          "mistakes": [
+            {
+              "value": "3/8",
+              "feedback": "Casi. Para dividir se multiplica por el recíproco: $\\frac{3}{4}\\cdot\\frac{2}{1}$."
+            }
+          ],
           "feedback": "Casi. Multiplica por el recíproco de $\\frac{1}{2}$.",
-          "hints": ["El recíproco de $\\frac{1}{2}$ es 2."],
-          "solution": ["$\\frac{3}{4}\\cdot 2=\\frac{6}{4}=\\frac{3}{2}$"]
+          "hints": [
+            "El recíproco de $\\frac{1}{2}$ es 2."
+          ],
+          "solution": [
+            "$\\frac{3}{4}\\cdot 2=\\frac{6}{4}=\\frac{3}{2}$"
+          ]
         },
         {
           "id": "s7",
@@ -274,10 +396,16 @@
           "skill": "argumentar",
           "difficulty": 3,
           "prompt": "Así calcularon $2-\\frac{3}{4}$. ¿En qué línea está el error?",
-          "lines": ["$2-\\frac{3}{4}$", "$=\\frac{2-3}{4}$", "$=-\\frac{1}{4}$"],
+          "lines": [
+            "$2-\\frac{3}{4}$",
+            "$=\\frac{2-3}{4}$",
+            "$=-\\frac{1}{4}$"
+          ],
           "wrong": 1,
           "feedback": "Casi. Esa línea sigue bien desde la anterior. Busca dónde se escribió el 2 como fracción.",
-          "hints": ["¿El 2 es lo mismo que $\\frac{2}{4}$?"],
+          "hints": [
+            "¿El 2 es lo mismo que $\\frac{2}{4}$?"
+          ],
           "explanation": "El 2 es $\\frac{8}{4}$: $\\frac{8}{4}-\\frac{3}{4}=\\frac{5}{4}$."
         },
         {
@@ -286,15 +414,24 @@
           "skill": "modelar",
           "difficulty": 3,
           "prompt": "Un estanque está a $\\frac{2}{3}$ de su capacidad. Se usa $\\frac{1}{4}$ del estanque completo. ¿Qué fracción del estanque queda con agua?",
-          "options": ["$\\frac{5}{12}$", "$\\frac{1}{6}$", "$\\frac{1}{3}$", "$\\frac{11}{12}$"],
+          "options": [
+            "$\\frac{5}{12}$",
+            "$\\frac{1}{6}$",
+            "$\\frac{1}{3}$",
+            "$\\frac{11}{12}$"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. $\\frac{1}{6}$ es $\\frac{2}{3}\\cdot\\frac{1}{4}$; aquí se resta.",
             "2": "Casi. Lleva ambas a doceavos: $\\frac{8}{12}-\\frac{3}{12}$.",
             "3": "Casi. Se usó agua: se resta, no se suma."
           },
-          "hints": ["$\\frac{2}{3}-\\frac{1}{4}$"],
-          "solution": ["$\\frac{8}{12}-\\frac{3}{12}=\\frac{5}{12}$"]
+          "hints": [
+            "$\\frac{2}{3}-\\frac{1}{4}$"
+          ],
+          "solution": [
+            "$\\frac{8}{12}-\\frac{3}{12}=\\frac{5}{12}$"
+          ]
         }
       ]
     },
@@ -304,7 +441,9 @@
       "version": 1,
       "reviewStatus": "approved",
       "estimatedMinutes": 5,
-      "skills": ["representar"],
+      "skills": [
+        "representar"
+      ],
       "steps": [
         {
           "id": "s1",
@@ -320,10 +459,19 @@
           "difficulty": 1,
           "prompt": "Escribe $0,4$ como fracción irreducible. ¿Cuál es su denominador?",
           "answer": "5",
-          "mistakes": [{ "value": "10", "feedback": "Casi. $\\frac{4}{10}$ todavía se simplifica por 2." }],
+          "mistakes": [
+            {
+              "value": "10",
+              "feedback": "Casi. $\\frac{4}{10}$ todavía se simplifica por 2."
+            }
+          ],
           "feedback": "Casi. $0,4=\\frac{4}{10}$; simplifícala.",
-          "hints": ["$0,4=\\frac{4}{10}$"],
-          "solution": ["$\\frac{4}{10}=\\frac{2}{5}$"]
+          "hints": [
+            "$0,4=\\frac{4}{10}$"
+          ],
+          "solution": [
+            "$\\frac{4}{10}=\\frac{2}{5}$"
+          ]
         },
         {
           "id": "s3",
@@ -331,15 +479,24 @@
           "skill": "representar",
           "difficulty": 2,
           "prompt": "¿Qué decimal corresponde a $\\frac{3}{8}$?",
-          "options": ["$0,375$", "$0,38$", "$3,8$", "$0,83$"],
+          "options": [
+            "$0,375$",
+            "$0,38$",
+            "$3,8$",
+            "$0,83$"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. $3\\div 8=0,375$ exacto; no se redondea.",
             "2": "Casi. $\\frac{3}{8}$ es menor que 1.",
             "3": "Casi. No es poner los dígitos seguidos: divide 3 por 8."
           },
-          "hints": ["Divide 3 por 8."],
-          "solution": ["$3\\div 8=0,375$"]
+          "hints": [
+            "Divide 3 por 8."
+          ],
+          "solution": [
+            "$3\\div 8=0,375$"
+          ]
         },
         {
           "id": "s4",
@@ -354,14 +511,21 @@
           "skill": "argumentar",
           "difficulty": 2,
           "prompt": "¿Cuál de estos números es el mayor?",
-          "options": ["$0,65$", "$\\frac{5}{9}$", "$0,6$", "$\\frac{7}{12}$"],
+          "options": [
+            "$0,65$",
+            "$\\frac{5}{9}$",
+            "$0,6$",
+            "$\\frac{7}{12}$"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. $\\frac{5}{9}$ es aproximadamente $0,56$.",
             "2": "Casi. $0,6$ es menor que $0,65$.",
             "3": "Casi. $\\frac{7}{12}$ es aproximadamente $0,58$."
           },
-          "hints": ["Convierte todos a decimal."],
+          "hints": [
+            "Convierte todos a decimal."
+          ],
           "explanation": "$0,65>0,6>0,58>0,56$."
         },
         {
@@ -371,10 +535,19 @@
           "difficulty": 2,
           "prompt": "Calcula $0,5+\\frac{1}{4}$. Puedes responder en decimal o como fracción.",
           "answer": "3/4",
-          "mistakes": [{ "value": "1/3", "feedback": "Casi. $0,5=\\frac{1}{2}$, y $\\frac{1}{2}+\\frac{1}{4}=\\frac{3}{4}$: no se suman denominadores." }],
+          "mistakes": [
+            {
+              "value": "1/3",
+              "feedback": "Casi. $0,5=\\frac{1}{2}$, y $\\frac{1}{2}+\\frac{1}{4}=\\frac{3}{4}$: no se suman denominadores."
+            }
+          ],
           "feedback": "Casi. Escribe $0,5$ como $\\frac{1}{2}$.",
-          "hints": ["$0,5=\\frac{2}{4}$"],
-          "solution": ["$\\frac{2}{4}+\\frac{1}{4}=\\frac{3}{4}=0,75$"]
+          "hints": [
+            "$0,5=\\frac{2}{4}$"
+          ],
+          "solution": [
+            "$\\frac{2}{4}+\\frac{1}{4}=\\frac{3}{4}=0,75$"
+          ]
         },
         {
           "id": "s7",
@@ -382,15 +555,25 @@
           "skill": "resolver",
           "difficulty": 3,
           "prompt": "El $0,25$ de un número es 12. ¿Cuál es el número?",
-          "options": ["$48$", "$3$", "$12,25$", "$36$"],
+          "options": [
+            "$48$",
+            "$3$",
+            "$12,25$",
+            "$36$"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. Multiplicaste 12 por $0,25$; aquí 12 es un cuarto del número.",
             "2": "Casi. $0,25$ multiplica al número, no se le suma.",
             "3": "Casi. Si 12 es un cuarto, el número son 4 cuartos: $4\\cdot 12$."
           },
-          "hints": ["$0,25=\\frac{1}{4}$"],
-          "solution": ["$\\frac{1}{4}\\cdot n=12$", "$n=48$"]
+          "hints": [
+            "$0,25=\\frac{1}{4}$"
+          ],
+          "solution": [
+            "$\\frac{1}{4}\\cdot n=12$",
+            "$n=48$"
+          ]
         }
       ]
     }
@@ -401,9 +584,24 @@
       "title": "Negativos sin enredos",
       "reviewStatus": "approved",
       "cards": [
-        { "title": "Sumar y restar", "body": "Restar un número es sumar su opuesto.", "formula": "$5-(-3)=5+3=8$" },
-        { "title": "Multiplicar", "body": "Signos iguales: positivo. Signos distintos: negativo.", "formula": "$(-4)\\cdot(-2)=8$" },
-        { "title": "Prioridad", "body": "Primero paréntesis y potencias, después multiplicaciones y divisiones, al final sumas y restas.", "example": ["$2+3\\cdot(-4)$", "$=2-12=-10$"] }
+        {
+          "title": "Sumar y restar",
+          "body": "Restar un número es sumar su opuesto.",
+          "formula": "$5-(-3)=5+3=8$"
+        },
+        {
+          "title": "Multiplicar",
+          "body": "Signos iguales: positivo. Signos distintos: negativo.",
+          "formula": "$(-4)\\cdot(-2)=8$"
+        },
+        {
+          "title": "Prioridad",
+          "body": "Primero paréntesis y potencias, después multiplicaciones y divisiones, al final sumas y restas.",
+          "example": [
+            "$2+3\\cdot(-4)$",
+            "$=2-12=-10$"
+          ]
+        }
       ]
     },
     {
@@ -411,8 +609,19 @@
       "title": "Comparar fracciones",
       "reviewStatus": "approved",
       "cards": [
-        { "title": "En cruz", "body": "Para comparar $\\frac{a}{b}$ y $\\frac{c}{d}$, compara $a\\cdot d$ con $b\\cdot c$.", "example": ["$\\frac{3}{7}$ y $\\frac{2}{5}$", "$15>14$", "$\\frac{3}{7}>\\frac{2}{5}$"] },
-        { "title": "Referencia", "body": "Compara con $\\frac{1}{2}$: si el numerador es más de la mitad del denominador, la fracción es mayor que un medio." }
+        {
+          "title": "En cruz",
+          "body": "Para comparar $\\frac{a}{b}$ y $\\frac{c}{d}$, compara $a\\cdot d$ con $b\\cdot c$.",
+          "example": [
+            "$\\frac{3}{7}$ y $\\frac{2}{5}$",
+            "$15>14$",
+            "$\\frac{3}{7}>\\frac{2}{5}$"
+          ]
+        },
+        {
+          "title": "Referencia",
+          "body": "Compara con $\\frac{1}{2}$: si el numerador es más de la mitad del denominador, la fracción es mayor que un medio."
+        }
       ]
     },
     {
@@ -420,9 +629,103 @@
       "title": "Decimal ↔ fracción",
       "reviewStatus": "approved",
       "cards": [
-        { "title": "Decimal a fracción", "body": "Escribe sobre 10, 100 o 1000 y simplifica.", "example": ["$0,35=\\frac{35}{100}=\\frac{7}{20}$"] },
-        { "title": "Fracción a decimal", "body": "Divide el numerador por el denominador.", "example": ["$\\frac{5}{4}=1,25$"] },
-        { "title": "Para memorizar", "body": "$\\frac{1}{2}=0,5$ · $\\frac{1}{4}=0,25$ · $\\frac{3}{4}=0,75$ · $\\frac{1}{5}=0,2$ · $\\frac{1}{8}=0,125$" }
+        {
+          "title": "Decimal a fracción",
+          "body": "Escribe sobre 10, 100 o 1000 y simplifica.",
+          "example": [
+            "$0,35=\\frac{35}{100}=\\frac{7}{20}$"
+          ]
+        },
+        {
+          "title": "Fracción a decimal",
+          "body": "Divide el numerador por el denominador.",
+          "example": [
+            "$\\frac{5}{4}=1,25$"
+          ]
+        },
+        {
+          "title": "Para memorizar",
+          "body": "$\\frac{1}{2}=0,5$ · $\\frac{1}{4}=0,25$ · $\\frac{3}{4}=0,75$ · $\\frac{1}{5}=0,2$ · $\\frac{1}{8}=0,125$"
+        }
+      ]
+    },
+    {
+      "id": "mc-er-4",
+      "title": "Orden de las operaciones",
+      "reviewStatus": "approved",
+      "cards": [
+        {
+          "title": "El orden",
+          "body": "Primero paréntesis, luego potencias, después multiplicación y división (de izquierda a derecha) y al final suma y resta."
+        },
+        {
+          "title": "Ejemplo",
+          "body": "La multiplicación va antes que la suma.",
+          "example": [
+            "$3+4\\cdot 2$",
+            "$3+8=11$"
+          ]
+        },
+        {
+          "title": "Cuidado",
+          "body": "Con paréntesis cambia todo.",
+          "example": [
+            "$(3+4)\\cdot 2$",
+            "$7\\cdot 2=14$"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mc-er-5",
+      "title": "Sumar y restar fracciones",
+      "reviewStatus": "approved",
+      "cards": [
+        {
+          "title": "Mismo denominador",
+          "body": "Se suman los numeradores y se conserva el denominador.",
+          "example": [
+            "$\\frac{2}{7}+\\frac{3}{7}=\\frac{5}{7}$"
+          ]
+        },
+        {
+          "title": "Distinto denominador",
+          "body": "Busca un denominador común (el mínimo común múltiplo) y amplifica.",
+          "example": [
+            "$\\frac{1}{4}+\\frac{1}{6}$",
+            "$\\frac{3}{12}+\\frac{2}{12}=\\frac{5}{12}$"
+          ]
+        },
+        {
+          "title": "Error típico",
+          "body": "Nunca sumes los denominadores: $\\frac{1}{2}+\\frac{1}{3}$ no es $\\frac{2}{5}$."
+        }
+      ]
+    },
+    {
+      "id": "mc-er-6",
+      "title": "Multiplicar y dividir fracciones",
+      "reviewStatus": "approved",
+      "cards": [
+        {
+          "title": "Multiplicar",
+          "body": "Numerador por numerador y denominador por denominador.",
+          "example": [
+            "$\\frac{2}{3}\\cdot \\frac{3}{5}=\\frac{6}{15}=\\frac{2}{5}$"
+          ]
+        },
+        {
+          "title": "Dividir",
+          "body": "Multiplica por el recíproco (da vuelta la segunda fracción).",
+          "example": [
+            "$\\frac{3}{4}\\div \\frac{1}{2}$",
+            "$\\frac{3}{4}\\cdot 2=\\frac{3}{2}$"
+          ]
+        },
+        {
+          "title": "Simplifica antes",
+          "body": "Cruzar factores comunes antes de multiplicar ahorra cuentas."
+        }
       ]
     }
   ]

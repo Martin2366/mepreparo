@@ -7,7 +7,10 @@
       "version": 1,
       "reviewStatus": "approved",
       "estimatedMinutes": 5,
-      "skills": ["modelar", "resolver"],
+      "skills": [
+        "modelar",
+        "resolver"
+      ],
       "steps": [
         {
           "id": "s1",
@@ -23,14 +26,21 @@
           "skill": "resolver",
           "difficulty": 1,
           "prompt": "¿Qué par de valores cumple $x+y=10$ y $x-y=2$?",
-          "options": ["$x=6$, $y=4$", "$x=5$, $y=5$", "$x=8$, $y=2$", "$x=7$, $y=3$"],
+          "options": [
+            "$x=6$, $y=4$",
+            "$x=5$, $y=5$",
+            "$x=8$, $y=2$",
+            "$x=7$, $y=3$"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. Cumple la suma, pero $5-5=0$, no 2.",
             "2": "Casi. Cumple la suma, pero $8-2=6$, no 2.",
             "3": "Casi. Cumple la suma, pero $7-3=4$, no 2."
           },
-          "hints": ["Prueba cada par en las dos ecuaciones."],
+          "hints": [
+            "Prueba cada par en las dos ecuaciones."
+          ],
           "explanation": "$6+4=10$ y $6-4=2$: cumple las dos."
         },
         {
@@ -39,14 +49,21 @@
           "skill": "modelar",
           "difficulty": 2,
           "prompt": "Una entrada de adulto y una de niño cuestan \\$9.000 en total, y la de adulto cuesta \\$3.000 más. Si $a$ es el precio de adulto y $n$ el de niño, ¿qué sistema representa la situación?",
-          "options": ["$a+n=9000$ y $a-n=3000$", "$a+n=9000$ y $n-a=3000$", "$a\\cdot n=9000$ y $a-n=3000$", "$a+n=3000$ y $a-n=9000$"],
+          "options": [
+            "$a+n=9000$ y $a-n=3000$",
+            "$a+n=9000$ y $n-a=3000$",
+            "$a\\cdot n=9000$ y $a-n=3000$",
+            "$a+n=3000$ y $a-n=9000$"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. La de adulto es la más cara: $a-n=3000$.",
             "2": "Casi. \"En total\" es una suma, no un producto.",
             "3": "Casi. Intercambiaste los datos: el total es \\$9.000."
           },
-          "hints": ["\"En total\" → suma. \"Cuesta 3.000 más\" → diferencia."],
+          "hints": [
+            "\"En total\" → suma. \"Cuesta 3.000 más\" → diferencia."
+          ],
           "explanation": "El total es la suma $a+n=9000$ y la diferencia es $a-n=3000$."
         },
         {
@@ -57,12 +74,23 @@
           "prompt": "Resuelve el sistema $x+y=12$ y $x-y=4$. ¿Cuánto vale $x$?",
           "answer": "8",
           "mistakes": [
-            { "value": "4", "feedback": "Casi. 4 es el valor de $y$; la pregunta es por $x$." },
-            { "value": "16", "feedback": "Casi. Al sumar las ecuaciones queda $2x=16$: falta dividir por 2." }
+            {
+              "value": "4",
+              "feedback": "Casi. 4 es el valor de $y$; la pregunta es por $x$."
+            },
+            {
+              "value": "16",
+              "feedback": "Casi. Al sumar las ecuaciones queda $2x=16$: falta dividir por 2."
+            }
           ],
           "feedback": "Casi. Suma las dos ecuaciones: la $y$ se cancela.",
-          "hints": ["$(x+y)+(x-y)=12+4$"],
-          "solution": ["$2x=16$", "$x=8$"]
+          "hints": [
+            "$(x+y)+(x-y)=12+4$"
+          ],
+          "solution": [
+            "$2x=16$",
+            "$x=8$"
+          ]
         },
         {
           "id": "s5",
@@ -77,15 +105,27 @@
           "skill": "modelar",
           "difficulty": 4,
           "prompt": "En un corral hay gallinas y conejos. En total hay 10 cabezas y 32 patas. ¿Cuántos conejos hay?",
-          "options": ["$6$", "$4$", "$8$", "$16$"],
+          "options": [
+            "$6$",
+            "$4$",
+            "$8$",
+            "$16$"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. 4 son las gallinas; la pregunta es por los conejos.",
             "2": "Casi. 8 conejos tendrían 32 patas solos, sin contar las gallinas.",
             "3": "Casi. Plantea el sistema: cabezas $g+c=10$ y patas $2g+4c=32$."
           },
-          "hints": ["Cabezas: $g+c=10$. Patas: $2g+4c=32$.", "Reemplaza $g=10-c$ en la segunda."],
-          "solution": ["$2(10-c)+4c=32$", "$20+2c=32$", "$c=6$"]
+          "hints": [
+            "Cabezas: $g+c=10$. Patas: $2g+4c=32$.",
+            "Reemplaza $g=10-c$ en la segunda."
+          ],
+          "solution": [
+            "$2(10-c)+4c=32$",
+            "$20+2c=32$",
+            "$c=6$"
+          ]
         }
       ]
     },
@@ -95,7 +135,9 @@
       "version": 1,
       "reviewStatus": "approved",
       "estimatedMinutes": 5,
-      "skills": ["resolver"],
+      "skills": [
+        "resolver"
+      ],
       "steps": [
         {
           "id": "s1",
@@ -110,9 +152,16 @@
           "skill": "argumentar",
           "difficulty": 2,
           "prompt": "Ordena la resolución del sistema $y=2x$ y $x+y=9$.",
-          "items": ["Reemplazar: $x+2x=9$", "$3x=9$", "$x=3$", "$y=2\\cdot 3=6$"],
+          "items": [
+            "Reemplazar: $x+2x=9$",
+            "$3x=9$",
+            "$x=3$",
+            "$y=2\\cdot 3=6$"
+          ],
           "feedback": "Casi. Primero se reemplaza, después se resuelve para $x$ y al final se calcula $y$.",
-          "hints": ["¿Qué incógnita ya está despejada?"],
+          "hints": [
+            "¿Qué incógnita ya está despejada?"
+          ],
           "explanation": "Como $y=2x$, se reemplaza en la segunda: $x+2x=9$, entonces $x=3$ e $y=6$."
         },
         {
@@ -122,10 +171,21 @@
           "difficulty": 2,
           "prompt": "Resuelve $y=x+1$ y $2x+y=10$. ¿Cuánto vale $x$?",
           "answer": "3",
-          "mistakes": [{ "value": "11/3", "feedback": "Casi. Al reemplazar, el $+1$ pasa restando: $3x=10-1$." }],
+          "mistakes": [
+            {
+              "value": "11/3",
+              "feedback": "Casi. Al reemplazar, el $+1$ pasa restando: $3x=10-1$."
+            }
+          ],
           "feedback": "Casi. Reemplaza $y$ por $x+1$ en la segunda ecuación.",
-          "hints": ["$2x+(x+1)=10$"],
-          "solution": ["$2x+x+1=10$", "$3x=9$", "$x=3$"]
+          "hints": [
+            "$2x+(x+1)=10$"
+          ],
+          "solution": [
+            "$2x+x+1=10$",
+            "$3x=9$",
+            "$x=3$"
+          ]
         },
         {
           "id": "s4",
@@ -134,10 +194,19 @@
           "difficulty": 1,
           "prompt": "Con ese valor de $x$, ¿cuánto vale $y$ en $y=x+1$?",
           "answer": "4",
-          "mistakes": [{ "value": "2", "feedback": "Casi. Es $y=x+1=3+1$." }],
+          "mistakes": [
+            {
+              "value": "2",
+              "feedback": "Casi. Es $y=x+1=3+1$."
+            }
+          ],
           "feedback": "Casi. Reemplaza $x=3$ en $y=x+1$.",
-          "hints": ["$y=3+1$"],
-          "solution": ["$y=3+1=4$"]
+          "hints": [
+            "$y=3+1$"
+          ],
+          "solution": [
+            "$y=3+1=4$"
+          ]
         },
         {
           "id": "s5",
@@ -145,10 +214,17 @@
           "skill": "argumentar",
           "difficulty": 3,
           "prompt": "Así resolvieron el sistema $x=3y$ y $x-y=8$. ¿En qué línea está el error?",
-          "lines": ["$3y-y=8$", "$2y=8$", "$y=4$", "$x=3+4=7$"],
+          "lines": [
+            "$3y-y=8$",
+            "$2y=8$",
+            "$y=4$",
+            "$x=3+4=7$"
+          ],
           "wrong": 3,
           "feedback": "Casi. Esa línea está bien. Revisa cómo se calculó $x$ al final.",
-          "hints": ["¿Qué dice la primera ecuación sobre $x$?"],
+          "hints": [
+            "¿Qué dice la primera ecuación sobre $x$?"
+          ],
           "explanation": "$x=3y$ significa 3 por $y$: $x=3\\cdot 4=12$, no $3+4$."
         },
         {
@@ -157,15 +233,26 @@
           "skill": "modelar",
           "difficulty": 3,
           "prompt": "La suma de dos números es 30 y uno es el cuádruple del otro. ¿Cuál es el número mayor?",
-          "options": ["$24$", "$6$", "$20$", "$26$"],
+          "options": [
+            "$24$",
+            "$6$",
+            "$20$",
+            "$26$"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. 6 es el menor; el mayor es su cuádruple.",
             "2": "Casi. Plantea $x+4x=30$.",
             "3": "Casi. $26+4=30$, pero 26 no es el cuádruple de 4."
           },
-          "hints": ["Si el menor es $x$, el mayor es $4x$."],
-          "solution": ["$x+4x=30$", "$x=6$", "mayor: $4\\cdot 6=24$"]
+          "hints": [
+            "Si el menor es $x$, el mayor es $4x$."
+          ],
+          "solution": [
+            "$x+4x=30$",
+            "$x=6$",
+            "mayor: $4\\cdot 6=24$"
+          ]
         }
       ]
     },
@@ -175,7 +262,9 @@
       "version": 1,
       "reviewStatus": "approved",
       "estimatedMinutes": 6,
-      "skills": ["resolver"],
+      "skills": [
+        "resolver"
+      ],
       "steps": [
         {
           "id": "s1",
@@ -190,14 +279,21 @@
           "skill": "argumentar",
           "difficulty": 1,
           "prompt": "En el sistema $2x+y=11$ y $3x-y=9$, ¿qué conviene hacer?",
-          "options": ["Sumar las ecuaciones", "Restar las ecuaciones", "Multiplicar la primera por 3", "Dividir todo por 2"],
+          "options": [
+            "Sumar las ecuaciones",
+            "Restar las ecuaciones",
+            "Multiplicar la primera por 3",
+            "Dividir todo por 2"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. Restando queda $-x+2y=2$: no se cancela ninguna incógnita.",
             "2": "Casi. No hace falta: $y$ y $-y$ ya son opuestos.",
             "3": "Casi. Eso no cancela ninguna incógnita."
           },
-          "hints": ["Fíjate en los coeficientes de $y$."],
+          "hints": [
+            "Fíjate en los coeficientes de $y$."
+          ],
           "explanation": "$y$ y $-y$ son opuestos: al sumar, queda $5x=20$."
         },
         {
@@ -207,10 +303,20 @@
           "difficulty": 2,
           "prompt": "Resuelve ese sistema. ¿Cuánto vale $x$?",
           "answer": "4",
-          "mistakes": [{ "value": "20", "feedback": "Casi. $5x=20$: falta dividir por 5." }],
+          "mistakes": [
+            {
+              "value": "20",
+              "feedback": "Casi. $5x=20$: falta dividir por 5."
+            }
+          ],
           "feedback": "Casi. Suma las ecuaciones: $5x=20$.",
-          "hints": ["$(2x+y)+(3x-y)=11+9$"],
-          "solution": ["$5x=20$", "$x=4$"]
+          "hints": [
+            "$(2x+y)+(3x-y)=11+9$"
+          ],
+          "solution": [
+            "$5x=20$",
+            "$x=4$"
+          ]
         },
         {
           "id": "s4",
@@ -219,10 +325,20 @@
           "difficulty": 2,
           "prompt": "Con $x=4$, ¿cuánto vale $y$ en $2x+y=11$?",
           "answer": "3",
-          "mistakes": [{ "value": "7", "feedback": "Casi. $2x=8$, no 4: $y=11-8$." }],
+          "mistakes": [
+            {
+              "value": "7",
+              "feedback": "Casi. $2x=8$, no 4: $y=11-8$."
+            }
+          ],
           "feedback": "Casi. Reemplaza: $2\\cdot 4+y=11$.",
-          "hints": ["$8+y=11$"],
-          "solution": ["$8+y=11$", "$y=3$"]
+          "hints": [
+            "$8+y=11$"
+          ],
+          "solution": [
+            "$8+y=11$",
+            "$y=3$"
+          ]
         },
         {
           "id": "s5",
@@ -238,10 +354,21 @@
           "difficulty": 3,
           "prompt": "Resuelve $x+2y=7$ y $3x+y=11$. ¿Cuánto vale $y$?",
           "answer": "2",
-          "mistakes": [{ "value": "3", "feedback": "Casi. 3 es el valor de $x$; la pregunta es por $y$." }],
+          "mistakes": [
+            {
+              "value": "3",
+              "feedback": "Casi. 3 es el valor de $x$; la pregunta es por $y$."
+            }
+          ],
           "feedback": "Casi. Multiplica la segunda ecuación por 2 y resta la primera.",
-          "hints": ["$6x+2y=22$ menos $x+2y=7$ da $5x=15$."],
-          "solution": ["$5x=15$, entonces $x=3$", "$3+2y=7$", "$y=2$"]
+          "hints": [
+            "$6x+2y=22$ menos $x+2y=7$ da $5x=15$."
+          ],
+          "solution": [
+            "$5x=15$, entonces $x=3$",
+            "$3+2y=7$",
+            "$y=2$"
+          ]
         },
         {
           "id": "s7",
@@ -249,15 +376,27 @@
           "skill": "modelar",
           "difficulty": 4,
           "prompt": "En una tienda, 2 poleras y 3 gorros cuestan \\$26.000, y 1 polera y 1 gorro cuestan \\$10.000. ¿Cuánto cuesta una polera?",
-          "options": ["\\$4.000", "\\$6.000", "\\$5.000", "\\$8.000"],
+          "options": [
+            "\\$4.000",
+            "\\$6.000",
+            "\\$5.000",
+            "\\$8.000"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. \\$6.000 es el precio del gorro.",
             "2": "Casi. No cuestan lo mismo: plantea el sistema.",
             "3": "Casi. Revisa: con $p+g=10000$, $2p+3g=26000$."
           },
-          "hints": ["$p+g=10000$ y $2p+3g=26000$.", "Multiplica la primera por 3 y resta."],
-          "solution": ["$3p+3g=30000$", "$(3p+3g)-(2p+3g)=30000-26000$", "$p=4000$"]
+          "hints": [
+            "$p+g=10000$ y $2p+3g=26000$.",
+            "Multiplica la primera por 3 y resta."
+          ],
+          "solution": [
+            "$3p+3g=30000$",
+            "$(3p+3g)-(2p+3g)=30000-26000$",
+            "$p=4000$"
+          ]
         }
       ]
     },
@@ -267,7 +406,10 @@
       "version": 1,
       "reviewStatus": "approved",
       "estimatedMinutes": 6,
-      "skills": ["representar", "argumentar"],
+      "skills": [
+        "representar",
+        "argumentar"
+      ],
       "steps": [
         {
           "id": "s1",
@@ -284,13 +426,49 @@
           "prompt": "La recta $y=x+1$ pasa por el punto $(2,3)$. Ajusta la recta $y=mx+n$ para que también pase por $(2,3)$ y por $(0,7)$.",
           "family": "linear",
           "params": [
-            { "name": "m", "min": -4, "max": 4, "step": "1", "start": "0" },
-            { "name": "n", "min": -5, "max": 8, "step": "1", "start": "0" }
+            {
+              "name": "m",
+              "min": -4,
+              "max": 4,
+              "step": "1",
+              "start": "0"
+            },
+            {
+              "name": "n",
+              "min": -5,
+              "max": 8,
+              "step": "1",
+              "start": "0"
+            }
           ],
-          "target": { "kind": "points", "points": [["0", "7"], ["2", "3"]] },
-          "marks": [["0", "7"], ["2", "3"]],
+          "target": {
+            "kind": "points",
+            "points": [
+              [
+                "0",
+                "7"
+              ],
+              [
+                "2",
+                "3"
+              ]
+            ]
+          },
+          "marks": [
+            [
+              "0",
+              "7"
+            ],
+            [
+              "2",
+              "3"
+            ]
+          ],
           "feedback": "Casi. Primero ubica $n$ con el punto sobre el eje $y$ y después la pendiente.",
-          "hints": ["$(0,7)$ da $n=7$.", "De $(0,7)$ a $(2,3)$ baja 4 en 2 pasos."],
+          "hints": [
+            "$(0,7)$ da $n=7$.",
+            "De $(0,7)$ a $(2,3)$ baja 4 en 2 pasos."
+          ],
           "explanation": "La recta es $y=-2x+7$. Se cruza con $y=x+1$ en $(2,3)$: esa es la solución del sistema."
         },
         {
@@ -299,14 +477,21 @@
           "skill": "argumentar",
           "difficulty": 2,
           "prompt": "Si las dos rectas de un sistema son paralelas y distintas, el sistema tiene:",
-          "options": ["Ninguna solución", "Una solución", "Infinitas soluciones", "Dos soluciones"],
+          "options": [
+            "Ninguna solución",
+            "Una solución",
+            "Infinitas soluciones",
+            "Dos soluciones"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. Las paralelas nunca se cruzan: no hay punto común.",
             "2": "Casi. Infinitas ocurre cuando las dos rectas son la misma.",
             "3": "Casi. Dos rectas distintas se cruzan a lo más en un punto."
           },
-          "hints": ["¿Se cruzan alguna vez dos rectas paralelas?"],
+          "hints": [
+            "¿Se cruzan alguna vez dos rectas paralelas?"
+          ],
           "explanation": "No se cruzan nunca: no hay solución."
         },
         {
@@ -315,14 +500,21 @@
           "skill": "argumentar",
           "difficulty": 3,
           "prompt": "¿Cuántas soluciones tiene el sistema $x+y=4$ y $2x+2y=8$?",
-          "options": ["Infinitas", "Ninguna", "Una", "Dos"],
+          "options": [
+            "Infinitas",
+            "Ninguna",
+            "Una",
+            "Dos"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. La segunda ecuación es la primera multiplicada por 2: son la misma recta.",
             "2": "Casi. Cualquier par que cumpla la primera también cumple la segunda.",
             "3": "Casi. Dos rectas no pueden cruzarse en exactamente dos puntos."
           },
-          "hints": ["Divide la segunda ecuación por 2."],
+          "hints": [
+            "Divide la segunda ecuación por 2."
+          ],
           "explanation": "Son la misma recta: todos sus puntos son solución."
         },
         {
@@ -331,14 +523,21 @@
           "skill": "argumentar",
           "difficulty": 3,
           "prompt": "¿Cuántas soluciones tiene el sistema $y=3x+1$ e $y=3x-2$?",
-          "options": ["Ninguna", "Una", "Infinitas", "Dos"],
+          "options": [
+            "Ninguna",
+            "Una",
+            "Infinitas",
+            "Dos"
+          ],
           "answer": 0,
           "feedback": {
             "1": "Casi. Tienen la misma pendiente: son paralelas.",
             "2": "Casi. Tienen distinto coeficiente de posición: no son la misma recta.",
             "3": "Casi. Dos rectas no pueden cruzarse en dos puntos."
           },
-          "hints": ["Compara las pendientes y los coeficientes de posición."],
+          "hints": [
+            "Compara las pendientes y los coeficientes de posición."
+          ],
           "explanation": "Misma pendiente y distinto $n$: son paralelas distintas, sin solución."
         },
         {
@@ -348,10 +547,21 @@
           "difficulty": 3,
           "prompt": "¿En qué valor de $x$ se cruzan las rectas $y=2x+1$ e $y=-x+7$?",
           "answer": "2",
-          "mistakes": [{ "value": "6", "feedback": "Casi. $3x=6$: falta dividir por 3." }],
+          "mistakes": [
+            {
+              "value": "6",
+              "feedback": "Casi. $3x=6$: falta dividir por 3."
+            }
+          ],
           "feedback": "Casi. En el cruce tienen la misma $y$: iguala $2x+1=-x+7$.",
-          "hints": ["$2x+1=-x+7$"],
-          "solution": ["$2x+1=-x+7$", "$3x=6$", "$x=2$"]
+          "hints": [
+            "$2x+1=-x+7$"
+          ],
+          "solution": [
+            "$2x+1=-x+7$",
+            "$3x=6$",
+            "$x=2$"
+          ]
         }
       ]
     }
@@ -362,9 +572,28 @@
       "title": "Sustitución en 3 pasos",
       "reviewStatus": "approved",
       "cards": [
-        { "title": "1. Despeja", "body": "Una incógnita en la ecuación más simple.", "example": ["$x+y=7$ → $y=7-x$"] },
-        { "title": "2. Reemplaza", "body": "En la otra ecuación y resuelve.", "example": ["$2x+(7-x)=10$", "$x=3$"] },
-        { "title": "3. Vuelve", "body": "Calcula la otra incógnita y comprueba en las dos ecuaciones.", "example": ["$y=7-3=4$"] }
+        {
+          "title": "1. Despeja",
+          "body": "Una incógnita en la ecuación más simple.",
+          "example": [
+            "$x+y=7$ → $y=7-x$"
+          ]
+        },
+        {
+          "title": "2. Reemplaza",
+          "body": "En la otra ecuación y resuelve.",
+          "example": [
+            "$2x+(7-x)=10$",
+            "$x=3$"
+          ]
+        },
+        {
+          "title": "3. Vuelve",
+          "body": "Calcula la otra incógnita y comprueba en las dos ecuaciones.",
+          "example": [
+            "$y=7-3=4$"
+          ]
+        }
       ]
     },
     {
@@ -372,8 +601,19 @@
       "title": "Reducción",
       "reviewStatus": "approved",
       "cards": [
-        { "title": "Opuestos", "body": "Si una incógnita tiene coeficientes opuestos, suma las ecuaciones.", "example": ["$x+y=9$", "$x-y=1$", "$2x=10$ → $x=5$"] },
-        { "title": "Multiplica antes", "body": "Si no hay opuestos, multiplica una ecuación para crearlos." }
+        {
+          "title": "Opuestos",
+          "body": "Si una incógnita tiene coeficientes opuestos, suma las ecuaciones.",
+          "example": [
+            "$x+y=9$",
+            "$x-y=1$",
+            "$2x=10$ → $x=5$"
+          ]
+        },
+        {
+          "title": "Multiplica antes",
+          "body": "Si no hay opuestos, multiplica una ecuación para crearlos."
+        }
       ]
     },
     {
@@ -381,9 +621,83 @@
       "title": "¿Cuántas soluciones?",
       "reviewStatus": "approved",
       "cards": [
-        { "title": "Una", "body": "Pendientes distintas: las rectas se cruzan en un punto." },
-        { "title": "Ninguna", "body": "Misma pendiente y distinto coeficiente de posición: paralelas." },
-        { "title": "Infinitas", "body": "Una ecuación es múltiplo de la otra: es la misma recta." }
+        {
+          "title": "Una",
+          "body": "Pendientes distintas: las rectas se cruzan en un punto."
+        },
+        {
+          "title": "Ninguna",
+          "body": "Misma pendiente y distinto coeficiente de posición: paralelas."
+        },
+        {
+          "title": "Infinitas",
+          "body": "Una ecuación es múltiplo de la otra: es la misma recta."
+        }
+      ]
+    },
+    {
+      "id": "mc-se-4",
+      "title": "Igualación",
+      "reviewStatus": "approved",
+      "cards": [
+        {
+          "title": "La idea",
+          "body": "Despeja la misma letra en ambas ecuaciones e iguala."
+        },
+        {
+          "title": "Ejemplo",
+          "body": "$y=2x+1$ e $y=x+4$.",
+          "example": [
+            "$2x+1=x+4$",
+            "$x=3$, $y=7$"
+          ]
+        },
+        {
+          "title": "Cuándo usarla",
+          "body": "Cuando ambas ya vienen despejadas o casi."
+        }
+      ]
+    },
+    {
+      "id": "mc-se-5",
+      "title": "Plantear un sistema",
+      "reviewStatus": "approved",
+      "cards": [
+        {
+          "title": "Paso 1",
+          "body": "Elige qué representa cada letra (y escríbelo)."
+        },
+        {
+          "title": "Paso 2",
+          "body": "Cada dato con un total da una ecuación.",
+          "example": [
+            "20 entradas, \\$58.000; adulto \\$3.500, niño \\$2.000",
+            "$x+y=20$ y $3.500x+2.000y=58.000$"
+          ]
+        },
+        {
+          "title": "Paso 3",
+          "body": "Resuelve y responde lo que preguntan, con unidades."
+        }
+      ]
+    },
+    {
+      "id": "mc-se-6",
+      "title": "Sistemas y rectas",
+      "reviewStatus": "approved",
+      "cards": [
+        {
+          "title": "Gráficamente",
+          "body": "Cada ecuación es una recta; la solución es donde se cortan."
+        },
+        {
+          "title": "Tres casos",
+          "body": "Se cortan: una solución. Paralelas: ninguna. La misma recta: infinitas."
+        },
+        {
+          "title": "Pista",
+          "body": "Misma pendiente y distinto coeficiente de posición: paralelas, sin solución."
+        }
       ]
     }
   ]
