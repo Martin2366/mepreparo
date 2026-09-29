@@ -1,4 +1,3 @@
-import * as Print from 'expo-print';
 import { Alert } from 'react-native';
 
 import { dayKey } from '@/engine/dates';
@@ -18,10 +17,13 @@ export async function printExam(title: string, minutes: number | null, questions
     .map((ex) => ({ prompt: ex.step.prompt, options: ex.step.options, answer: ex.step.answer }));
   const html = examHtml({ title, minutes, questions: items, generatedOn: longDate(dayKey(new Date())) });
   try {
+    // Carga diferida: el development build anterior no trae el módulo nativo y un import directo rompería la pantalla.
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const Print = require('expo-print') as typeof import('expo-print');
     await Print.printAsync({ html });
     track('exam_printed', { count: items.length });
   } catch {
-    Alert.alert('No se pudo abrir la impresión', 'Inténtalo de nuevo. Si sigue fallando, avísanos desde tu perfil.');
+    Alert.alert('No se pudo abrir la impresión', 'Si tu app no está actualizada, la impresión llega con la próxima versión. Si no, inténtalo de nuevo.');
   }
 }
 
