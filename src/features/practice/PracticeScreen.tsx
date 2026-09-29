@@ -30,21 +30,30 @@ export function PracticeScreen({
   unitId,
   count,
   intensive,
+  generatorId,
+  startDifficulty,
 }: {
   unitId: string;
   count?: number;
   /** Sesión de un intensivo: al llegar a la meta se marca el día como completado. */
   intensive?: { id: string; day: number };
+  /** Solo este generador (ejercicios parecidos a una foto). */
+  generatorId?: string;
+  startDifficulty?: number;
 }) {
   const ref = unitRef(unitId);
-  const generators = useMemo(() => (ref?.unit.generators ?? []).map((id) => GENERATORS[id]).filter((g) => !!g), [ref]);
+  const generators = useMemo(
+    () => (generatorId && GENERATORS[generatorId] ? [generatorId] : (ref?.unit.generators ?? [])).map((id) => GENERATORS[id]).filter((g) => !!g),
+    [ref, generatorId],
+  );
   const savedDifficulty = useProgress((s) => s.practiceDifficulty[unitId]);
   const setDifficulty = useProgress((s) => s.setDifficulty);
   const answer = useProgress((s) => s.answer);
   const practice = useAllowance('practice');
 
-  const [difficulty, setD] = useState<Difficulty>(savedDifficulty ?? 2);
-  const [exercise, setExercise] = useState<Exercise | null>(() => make(generators, 0, savedDifficulty ?? 2));
+  const firstDifficulty = clampDifficulty(startDifficulty ?? savedDifficulty ?? 2);
+  const [difficulty, setD] = useState<Difficulty>(firstDifficulty);
+  const [exercise, setExercise] = useState<Exercise | null>(() => make(generators, 0, firstDifficulty));
   const [done, setDone] = useState(0);
   const [xp, setXp] = useState(0);
   // Si ya no quedan ejercicios gratis, se avisa al pasar al siguiente (nunca en medio de un ejercicio).
@@ -161,7 +170,7 @@ export function PracticeScreen({
         <Chip label={`Nivel ${difficulty}`} />
         {!practice.unlimited ? <Chip label={`Quedan ${practice.remaining} hoy`} tone="neutral" /> : null}
       </View>
-      <StepView key={exercise.ref} step={exercise.step} onGraded={onGraded} onContinue={next} continueLabel="Siguiente" />
+      <StepView key={exercise.ref} step={exercise.step} onGraded={onGraded} onContinue={next} continueLabel="Siguiente" refId={`gen:${exercise.ref}`} />
     </Shell>
   );
 }

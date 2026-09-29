@@ -1,7 +1,8 @@
 import * as Haptics from 'expo-haptics';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { type LayoutChangeEvent, Platform, StyleSheet, View } from 'react-native';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
+import Animated, { Easing, useAnimatedProps, useSharedValue, withSequence, withTiming } from 'react-native-reanimated';
 import Svg, { Circle, Line, Polyline } from 'react-native-svg';
 
 import { IconButton } from '@/components/ui/IconButton';
@@ -115,8 +116,22 @@ function Slider({ count, index, onIndex, label }: { count: number; index: number
   );
 }
 
+const AnimatedPolyline = Animated.createAnimatedComponent(Polyline);
+/** Hueco del patrón de trazo (mayor que cualquier curva de la ventana). */
+const GAP = 100000;
+
+/** Largo de una polilínea "x,y x,y …" en píxeles. */
+function polyLength(points: string): number {
+  const pts = points.split(' ').map((p) => p.split(',').map(Number) as [number, number]);
+  let len = 0;
+  for (let i = 1; i < pts.length; i++) len += Math.hypot(pts[i]![0] - pts[i - 1]![0], pts[i]![1] - pts[i - 1]![1]);
+  return len;
+}
+
 function Plot({ step, values }: { step: Step; values: GraphValues }) {
   const [w, setW] = useState(0);
+  // La curva se dibuja sola al aparecer (explicación animada); después sigue a los deslizadores sin demora.
+  const draw = useSharedValue(GAP);
   // Ventana por defecto de −6 a 6, ampliada para que los puntos marcados queden con margen.
   const marks = (step.marks ?? []).map(([mx, my]) => [toNumber(r(mx)), toNumber(r(my))] as const);
   const [x0, x1] = step.window?.x ?? [Math.min(-6, ...marks.map((p) => p[0] - 1)), Math.max(6, ...marks.map((p) => p[0] + 1))];
@@ -139,6 +154,15 @@ function Plot({ step, values }: { step: Step; values: GraphValues }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [w, values, step.family, x0, x1, y0, y1]);
 
+  const len = useMemo(() => (points ? polyLength(points) : 0), [points]);
+  const drawn = useRef(false);
+  useEffect(() => {
+    if (!len || drawn.current) return;
+    drawn.current = true;
+    draw.value = withSequence(withTiming(len, { duration: 0 }), withTiming(0, { duration: 1100, easing: Easing.out(Easing.cubic) }));
+  }, [len, draw]);
+  const lineProps = useAnimatedProps(() => ({ strokeDashoffset: draw.value }));
+
   const xs = range(Math.ceil(x0), Math.floor(x1));
   const ys = range(Math.ceil(y0), Math.floor(y1));
   const yStep = ys.length > 14 ? 2 : 1;
@@ -155,7 +179,16 @@ function Plot({ step, values }: { step: Step; values: GraphValues }) {
             .map((y) => (
               <Line key={`y${y}`} y1={Y(y)} y2={Y(y)} x1={0} x2={w} stroke={y === 0 ? colors.ink : colors.graphite100} strokeWidth={y === 0 ? 1.5 : 1} />
             ))}
-          <Polyline points={points} fill="none" stroke={colors.sky} strokeWidth={3.5} strokeLinecap="round" strokeLinejoin="round" />
+          <AnimatedPolyline
+            points={points}
+            fill="none"
+            stroke={colors.sky}
+            strokeWidth={3.5}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeDasharray={[Math.ceil(len) + 2, GAP]}
+            animatedProps={lineProps}
+          />
           {(step.marks ?? []).map(([mx, my], i) => (
             <Circle key={i} cx={X(toNumber(r(mx)))} cy={Y(toNumber(r(my)))} r={7} fill={colors.white} stroke={colors.ink} strokeWidth={2.5} />
           ))}

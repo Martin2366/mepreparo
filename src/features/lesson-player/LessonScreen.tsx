@@ -146,7 +146,7 @@ export function LessonScreen({ lessonId }: { lessonId: string }) {
 
   return (
     <Shell onClose={() => goBack()} progress={index / lesson.steps.length} label={`${index + 1}/${lesson.steps.length}`}>
-      <StepView key={step.id} step={step} onGraded={onGraded} onContinue={next} />
+      <StepView key={step.id} step={step} onGraded={onGraded} onContinue={next} refId={`lesson:${lesson.id}:${step.id}`} />
     </Shell>
   );
 }

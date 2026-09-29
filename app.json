@@ -52,6 +52,22 @@
           "project": "mepreparo",
           "url": "https://sentry.io/"
         }
+      ],
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "MePreparo usa la cámara para leer el ejercicio de tu cuaderno.",
+          "recordAudioAndroid": false,
+          "barcodeScannerEnabled": false
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "MePreparo usa tus fotos para leer un ejercicio que elijas.",
+          "cameraPermission": "MePreparo usa la cámara para leer el ejercicio de tu cuaderno.",
+          "microphonePermission": false
+        }
       ]
     ],
     "experiments": {

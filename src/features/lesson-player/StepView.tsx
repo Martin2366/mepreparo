@@ -4,6 +4,7 @@ import { Platform, StyleSheet, View } from 'react-native';
 import Animated, { FadeInUp, ZoomIn } from 'react-native-reanimated';
 import Svg, { Path } from 'react-native-svg';
 
+import { AnimatedSolution, linesToSteps, NudgeIn } from '@/components/ui/AnimatedSolution';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Chip } from '@/components/ui/Chip';
@@ -21,6 +22,7 @@ import {
   gradeOrder,
 } from '@/engine/grading';
 import type { Outcome } from '@/engine/xp';
+import { AskEquisSheet, ReportSheet } from '@/features/equis/sheets';
 import { Graph, type GraphValues } from '@/features/interactives/graph/Graph';
 import { useAllowance } from '@/features/progress/allowance';
 import { useProgress } from '@/features/progress/store';
@@ -45,13 +47,15 @@ type Props = {
   onGraded: (e: GradedEvent) => number;
   onContinue: () => void;
   continueLabel?: string;
+  /** Referencia estable del ejercicio (para reportar un error de contenido). */
+  refId?: string;
 };
 
 /**
  * Un paso de lección o de práctica: responder → comprobar → feedback específico ("Casi…") → continuar.
  * Aprender nunca se bloquea: tras un error se puede reintentar o ver la resolución.
  */
-export function StepView({ step, onGraded, onContinue, continueLabel = 'Continuar' }: Props) {
+export function StepView({ step, onGraded, onContinue, continueLabel = 'Continuar', refId }: Props) {
   const [reveal, setReveal] = useState<Reveal>('none');
   const [feedback, setFeedback] = useState<string | undefined>();
   const [xp, setXp] = useState(0);
@@ -60,6 +64,9 @@ export function StepView({ step, onGraded, onContinue, continueLabel = 'Continua
   const [aha, setAha] = useState(false);
   const [hintsShown, setHintsShown] = useState(0);
   const [solutionShown, setSolutionShown] = useState(false);
+  const [lastAnswer, setLastAnswer] = useState<{ text: string; mistake?: string } | null>(null);
+  const [askOpen, setAskOpen] = useState(false);
+  const [reportOpen, setReportOpen] = useState(false);
   const extraHints = useAllowance('extraHints');
   const solutions = useAllowance('solutions');
 
@@ -140,6 +147,7 @@ export function StepView({ step, onGraded, onContinue, continueLabel = 'Continua
     setAttempts((n) => n + 1);
     setXp(gained);
     setFeedback(grade.feedback);
+    setLastAnswer({ text: step.type === 'choice' ? (step.options[choice!] ?? answer) : answer, mistake: grade.feedback });
     if (grade.correct) {
       setReveal('correct');
       setAha(isAha);
@@ -261,24 +269,23 @@ export function StepView({ step, onGraded, onContinue, continueLabel = 'Continua
         ) : null}
 
         {reveal === 'wrong' ? (
-          <Animated.View entering={FadeInUp.duration(dur.base)}>
+          <NudgeIn key={attempts}>
             <Card tone="paper" style={{ gap: 6, borderColor: colors.graphite200 }}>
               <View style={s.row}>
                 <Mascot pose="apoyo" height={36} float={false} />
                 <Text style={s.retryTitle}>Vuelve a intentarlo, vas bien.</Text>
               </View>
               {feedback ? <MathText source={feedback} size={15} /> : null}
+              <Button label="Pregúntale a Equis" variant="ghost" onPress={() => setAskOpen(true)} />
             </Card>
-          </Animated.View>
+          </NudgeIn>
         ) : null}
 
         {reveal === 'solution' ? (
           <Animated.View entering={FadeInUp.duration(dur.base)}>
             <Card tone="sky" style={{ gap: 8 }}>
               <Text style={s.okTitle}>Resolución paso a paso</Text>
-              {solutionLines.map((l, i) => (
-                <MathText key={i} source={l} size={16} />
-              ))}
+              {solutionLines.length ? <AnimatedSolution steps={linesToSteps(solutionLines)} /> : null}
               {explanation ? <MathText source={explanation} size={15} /> : null}
             </Card>
           </Animated.View>
@@ -319,12 +326,27 @@ export function StepView({ step, onGraded, onContinue, continueLabel = 'Continua
             ) : null}
           </View>
         ) : null}
+        {refId ? (
+          <Button label="Reportar un error" variant="ghost" onPress={() => setReportOpen(true)} />
+        ) : null}
         {reveal === 'wrong' && hasSolution && !solutions.ok ? (
           <Text style={s.limit}>
             Hoy usaste tus 3 resoluciones gratis; mañana se recargan. Las pistas y la explicación de cada error siguen siendo gratis.
           </Text>
         ) : null}
       </View>
+      <AskEquisSheet
+        visible={askOpen}
+        onClose={() => setAskOpen(false)}
+        input={{
+          statement: step.prompt,
+          options: step.type === 'choice' ? step.options : undefined,
+          solution: [...solutionLines, explanation ?? ''].filter(Boolean).join(' '),
+          studentAnswer: lastAnswer?.text,
+          mistake: lastAnswer?.mistake,
+        }}
+      />
+      {refId ? <ReportSheet visible={reportOpen} onClose={() => setReportOpen(false)} refId={refId} /> : null}
     </View>
   );
 }

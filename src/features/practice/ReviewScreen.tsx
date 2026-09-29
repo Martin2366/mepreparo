@@ -77,7 +77,7 @@ export function ReviewScreen() {
   return (
     <Shell onClose={() => goBack()} progress={i / items.length} label={`${i + 1}/${items.length}`}>
       <Text style={s.overline}>CUADERNO DE ERRORES · REPASO</Text>
-      <StepView key={current.ref} step={current.step} onGraded={onGraded} onContinue={() => setI(i + 1)} continueLabel="Siguiente" />
+      <StepView key={current.ref} step={current.step} onGraded={onGraded} onContinue={() => setI(i + 1)} continueLabel="Siguiente" refId={current.ref} />
     </Shell>
   );
 }

@@ -7,16 +7,22 @@ import { Icon, type IconName } from '@/components/ui/Icon';
 import { HandNote, Mascot } from '@/components/ui/Mascot';
 import { MathText } from '@/components/ui/MathText';
 import { Text } from '@/components/ui/Text';
+import { useState } from 'react';
+
 import { careerById } from '@/features/onboarding/admission';
+import { useHasPremium } from '@/features/premium/store';
+import { useAllowance } from '@/features/progress/allowance';
 import { useDashboard } from '@/features/progress/derived';
 import { Section, TabScreen } from '@/features/shell/TabScreen';
+
+import { AskEquisSheet } from './sheets';
 import { colors, fonts } from '@/theme/tokens';
 
-type Shortcut = { icon: IconName; label: string; href?: Href; soon?: boolean };
+type Shortcut = { icon: IconName; label: string; href?: Href; onPress?: () => void };
 
 /**
- * Equis (PRD §10): el tutor que te conoce, no un chat en blanco. En el Hito 1 la portada usa lo que ya sabemos
- * (último error, plan, carrera) y sus atajos llevan a funciones locales; la conversación llega con la API (Hito 3).
+ * Equis (PRD §10): el tutor que te conoce, no un chat en blanco. La portada usa lo que ya sabemos (último error,
+ * plan, carrera); la foto y la conversación usan la IA, y las respuestas las sigue verificando el motor.
  */
 export function EquisScreen() {
   const d = useDashboard();
@@ -25,8 +31,13 @@ export function EquisScreen() {
   const last = Object.values(d.progress.notebook).sort((a, b) => (a.lastWrongOn < b.lastWrongOn ? 1 : -1))[0];
   const focusUnit = d.next?.unitId ?? d.session.find((x) => x.kind === 'practice')?.unitId;
 
+  const [askOpen, setAskOpen] = useState(false);
+  const tutor = useAllowance('tutor');
+  const premium = useHasPremium();
+
   const shortcuts: Shortcut[] = [
-    { icon: 'notebook-pen', label: 'Explícame mi último error', href: last ? '/cuaderno' : undefined },
+    { icon: 'camera', label: 'Sácale foto a un ejercicio', href: '/foto' },
+    { icon: 'notebook-pen', label: 'Explícame mi último error', onPress: last ? () => setAskOpen(true) : undefined },
     { icon: 'target', label: '¿Qué estudio hoy?', href: '/(tabs)' },
     {
       icon: 'zap',
@@ -34,7 +45,6 @@ export function EquisScreen() {
       href: focusUnit ? { pathname: '/practica/[unit]', params: { unit: focusUnit, count: '5' } } : undefined,
     },
     { icon: 'graduation-cap', label: career ? `¿Me alcanza para ${career.name}?` : '¿Me alcanza para mi carrera?', href: '/(tabs)/progreso' },
-    { icon: 'camera', label: 'Sácale foto a un ejercicio', soon: true },
     { icon: 'lightbulb', label: 'No entiendo un concepto', href: '/(tabs)/aprender' },
   ];
 
@@ -61,31 +71,37 @@ export function EquisScreen() {
           {shortcuts.map((sc) => (
             <Card
               key={sc.label}
-              onPress={sc.href ? () => router.push(sc.href!) : undefined}
-              style={[s.shortcut, !sc.href && { opacity: sc.soon ? 1 : 0.6 }]}
+              onPress={sc.onPress ?? (sc.href ? () => router.push(sc.href!) : undefined)}
+              style={[s.shortcut, !sc.href && !sc.onPress && { opacity: 0.6 }]}
               accessibilityLabel={sc.label}
             >
               <Icon name={sc.icon} size={22} color={colors.sky700} />
               <Text style={s.shortcutText}>{sc.label}</Text>
-              {sc.soon ? <Chip label="Pronto" tone="neutral" /> : null}
             </Card>
           ))}
         </View>
       </Section>
 
-      <Card tone="sky" style={{ gap: 8 }}>
+      <Card tone="sky" style={{ gap: 8 }} onPress={() => router.push('/chat')} accessibilityLabel="Conversar con Equis">
         <View style={s.row}>
           <Icon name="message-circle" size={20} color={colors.sky700} />
           <Text style={s.strong}>Conversar con Equis</Text>
           <View style={{ flex: 1 }} />
-          <Chip label="Muy pronto" tone="neutral" />
+          {premium || tutor.unlimited ? null : <Chip label={`${tutor.remaining} de ${tutor.max} hoy`} tone="neutral" />}
         </View>
         <Text style={s.body}>
-          Podrás preguntarle cualquier duda. Equis te pregunta primero qué intentaste, te da la siguiente idea y te explica con gráficos
-          y ejemplos. Las respuestas las verifica el motor, no una IA.
+          Pregúntale cualquier duda. Equis te pregunta primero qué intentaste y te da la siguiente idea. Si tu respuesta está bien lo
+          decide el motor, no una IA.
         </Text>
         <HandNote>Yo no te doy la respuesta: te ayudo a llegar.</HandNote>
       </Card>
+      {last ? (
+        <AskEquisSheet
+          visible={askOpen}
+          onClose={() => setAskOpen(false)}
+          input={{ statement: last.prompt, mistake: last.feedback }}
+        />
+      ) : null}
     </TabScreen>
   );
 }

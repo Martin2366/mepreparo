@@ -19,6 +19,7 @@ import { useDashboard } from '@/features/progress/derived';
 import { PLAY_SUBSCRIPTIONS } from '@/features/premium/PlansScreen';
 import { usePremiumStore } from '@/features/premium/store';
 import { useProgress } from '@/features/progress/store';
+import { useTour } from '@/features/tour/Tour';
 import { Section } from '@/features/shell/TabScreen';
 import { FullScreen } from '@/features/shell/FullScreen';
 import { clp, longDate } from '@/lib/format';
@@ -141,8 +142,9 @@ export function ProfileScreen() {
 
       <Section title="Ayuda y privacidad">
         <Card style={{ gap: 4 }}>
-          <Row icon="flag" label="Reportar un error de contenido" value="Pronto: desde cada ejercicio" />
+          <Row icon="flag" label="Reportar un error de contenido" value="Desde cada ejercicio: toca «Reportar un error»" />
           <Row icon="shield-check" label="Privacidad" value="Tu apodo solo vive en este teléfono" />
+          <Button label="Ver el tour de nuevo" variant="ghost" onPress={() => useTour.getState().reset()} />
           <DeleteAccountButton />
         </Card>
       </Section>

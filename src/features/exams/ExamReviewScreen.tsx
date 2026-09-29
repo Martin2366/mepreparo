@@ -1,6 +1,8 @@
 import { router } from 'expo-router';
+import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
+import { AnimatedSolution, linesToSteps } from '@/components/ui/AnimatedSolution';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Chip } from '@/components/ui/Chip';
@@ -8,6 +10,7 @@ import { MathText } from '@/components/ui/MathText';
 import { Text } from '@/components/ui/Text';
 import { questionOf } from '@/engine/exam';
 import { unitRef } from '@/features/content/catalog';
+import { AskEquisSheet, ReportSheet } from '@/features/equis/sheets';
 import { ChoiceInput } from '@/features/lesson-player/inputs';
 import { FullScreen } from '@/features/shell/FullScreen';
 import { goBack } from '@/lib/nav';
@@ -23,6 +26,8 @@ const LETTERS = 'ABCDE';
  */
 export function ExamReviewScreen({ id, index }: { id: string; index: number }) {
   const record = useExams((s) => s.history.find((r) => r.id === id));
+  const [askOpen, setAskOpen] = useState(false);
+  const [reportOpen, setReportOpen] = useState(false);
   const q = record?.questions[index];
   const ex = q ? questionOf(q) : null;
   if (!record || !q || !ex) return <FullScreen title="Revisión">{null}</FullScreen>;
@@ -47,7 +52,7 @@ export function ExamReviewScreen({ id, index }: { id: string; index: number }) {
       }
     >
       <View style={s.row}>
-        <Chip label={ok ? 'Correcta' : chosen === null ? 'En blanco' : 'Incorrecta'} tone={ok ? 'success' : 'neutral'} />
+        <Chip label={ok ? 'Correcta' : chosen === null ? 'En blanco' : 'Casi'} tone={ok ? 'success' : 'neutral'} />
         <Chip label={unitRef(q.unitId)?.unit.name ?? ''} tone="neutral" />
       </View>
       <MathText source={step.prompt} size={18} />
@@ -74,11 +79,24 @@ export function ExamReviewScreen({ id, index }: { id: string; index: number }) {
       {step.solution?.length ? (
         <Card tone="sky" style={{ gap: 8 }}>
           <Text style={s.strong}>Resolución paso a paso</Text>
-          {step.solution.map((l, i) => (
-            <MathText key={i} source={l} size={16} />
-          ))}
+          <AnimatedSolution key={index} steps={linesToSteps(step.solution)} />
         </Card>
       ) : null}
+
+      <Button label="Pregúntale a Equis" variant="secondary" onPress={() => setAskOpen(true)} />
+      <Button label="Reportar un error" variant="ghost" onPress={() => setReportOpen(true)} />
+      <AskEquisSheet
+        visible={askOpen}
+        onClose={() => setAskOpen(false)}
+        input={{
+          statement: step.prompt,
+          options: step.options,
+          solution: [...(step.solution ?? []), step.explanation ?? ''].filter(Boolean).join(' '),
+          studentAnswer: chosen !== null ? step.options[chosen] : undefined,
+          mistake: chosen !== null && !ok ? step.feedback[String(chosen)] : undefined,
+        }}
+      />
+      <ReportSheet visible={reportOpen} onClose={() => setReportOpen(false)} refId={`gen:${q.ref}`} />
     </FullScreen>
   );
 }
