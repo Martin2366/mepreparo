@@ -5,7 +5,7 @@
       "id": "m1-er-1",
       "title": "La recta numérica",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 5,
       "skills": ["representar"],
       "steps": [
@@ -101,7 +101,7 @@
       "id": "m1-er-2",
       "title": "Fracciones que se comparan",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 6,
       "skills": ["representar", "argumentar"],
       "steps": [
@@ -201,7 +201,7 @@
       "id": "m1-er-3",
       "title": "Operar con fracciones",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 6,
       "skills": ["resolver"],
       "steps": [
@@ -302,7 +302,7 @@
       "id": "m1-er-4",
       "title": "Decimales y fracciones: la misma cosa",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 5,
       "skills": ["representar"],
       "steps": [
@@ -399,7 +399,7 @@
     {
       "id": "mc-er-1",
       "title": "Negativos sin enredos",
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "cards": [
         { "title": "Sumar y restar", "body": "Restar un número es sumar su opuesto.", "formula": "$5-(-3)=5+3=8$" },
         { "title": "Multiplicar", "body": "Signos iguales: positivo. Signos distintos: negativo.", "formula": "$(-4)\\cdot(-2)=8$" },
@@ -409,7 +409,7 @@
     {
       "id": "mc-er-2",
       "title": "Comparar fracciones",
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "cards": [
         { "title": "En cruz", "body": "Para comparar $\\frac{a}{b}$ y $\\frac{c}{d}$, compara $a\\cdot d$ con $b\\cdot c$.", "example": ["$\\frac{3}{7}$ y $\\frac{2}{5}$", "$15>14$", "$\\frac{3}{7}>\\frac{2}{5}$"] },
         { "title": "Referencia", "body": "Compara con $\\frac{1}{2}$: si el numerador es más de la mitad del denominador, la fracción es mayor que un medio." }
@@ -418,7 +418,7 @@
     {
       "id": "mc-er-3",
       "title": "Decimal ↔ fracción",
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "cards": [
         { "title": "Decimal a fracción", "body": "Escribe sobre 10, 100 o 1000 y simplifica.", "example": ["$0,35=\\frac{35}{100}=\\frac{7}{20}$"] },
         { "title": "Fracción a decimal", "body": "Divide el numerador por el denominador.", "example": ["$\\frac{5}{4}=1,25$"] },

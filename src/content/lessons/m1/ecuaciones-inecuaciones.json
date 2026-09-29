@@ -5,7 +5,7 @@
       "id": "m1-ei-1",
       "title": "Despejar: dejar la x sola",
       "version": 2,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 5,
       "skills": ["resolver"],
       "steps": [
@@ -128,7 +128,7 @@
       "id": "m1-ei-2",
       "title": "Ecuaciones con x en ambos lados",
       "version": 2,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 6,
       "skills": ["resolver", "argumentar"],
       "steps": [
@@ -255,7 +255,7 @@
       "id": "m1-ei-3",
       "title": "De palabras a ecuaciones",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 6,
       "skills": ["modelar", "resolver"],
       "steps": [
@@ -364,7 +364,7 @@
       "id": "m1-ei-4",
       "title": "Inecuaciones: cuando un lado es mayor",
       "version": 2,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 6,
       "skills": ["resolver", "representar"],
       "steps": [
@@ -483,7 +483,7 @@
     {
       "id": "mc-ei-1",
       "title": "Despejar en 90 segundos",
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "cards": [
         { "title": "La idea", "body": "Despejar es dejar la incógnita sola. Para eso deshacemos, una por una, las operaciones que la acompañan." },
         { "title": "Operación inversa", "body": "Suma ↔ resta. Multiplicación ↔ división. Siempre a ambos lados de la igualdad.", "formula": "$x+a=b$ → $x=b-a$" },
@@ -494,7 +494,7 @@
     {
       "id": "mc-ei-2",
       "title": "Cambiar de lado es cambiar de signo",
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "cards": [
         { "title": "No es magia", "body": "\"Pasar\" un término al otro lado es sumar o restar lo mismo a ambos lados. Por eso cambia de signo." },
         { "title": "Ejemplo", "body": "El $3x$ suma a la derecha, así que pasa restando a la izquierda.", "example": ["$7x+1=3x+9$", "$7x-3x=9-1$", "$4x=8$", "$x=2$"] },
@@ -504,7 +504,7 @@
     {
       "id": "mc-ei-3",
       "title": "Paréntesis: distribuir primero",
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "cards": [
         { "title": "Regla", "body": "El número de afuera multiplica a cada término de adentro.", "formula": "$a(b+c)=ab+ac$" },
         { "title": "Con signo menos", "body": "Un menos delante del paréntesis cambia todos los signos de adentro.", "formula": "$-(x-3)=-x+3$" },
@@ -514,7 +514,7 @@
     {
       "id": "mc-ei-4",
       "title": "Ecuaciones con fracciones",
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "cards": [
         { "title": "Quita el denominador", "body": "Si la $x$ está dividida, multiplica ambos lados por ese número." },
         { "title": "Ejemplo", "body": "Primero lo que suma, después lo que divide.", "example": ["$\\frac{x}{3}+2=5$", "$\\frac{x}{3}=3$", "$x=9$"] },
@@ -524,7 +524,7 @@
     {
       "id": "mc-ei-5",
       "title": "Diccionario de palabras a álgebra",
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "cards": [
         { "title": "Operaciones", "body": "Aumentado en, más: suma. Disminuido en, menos: resta. Doble, triple: $2x$, $3x$. Mitad, tercio: $\\frac{x}{2}$, $\\frac{x}{3}$." },
         { "title": "Consecutivos", "body": "Dos números consecutivos: $x$ y $x+1$. Dos pares consecutivos: $x$ y $x+2$." },
@@ -534,7 +534,7 @@
     {
       "id": "mc-ei-6",
       "title": "La regla de oro de las inecuaciones",
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "cards": [
         { "title": "Casi igual que una ecuación", "body": "Puedes sumar, restar, multiplicar y dividir a ambos lados, como siempre." },
         { "title": "La excepción", "body": "Al multiplicar o dividir por un número negativo, el signo de la desigualdad se da vuelta.", "formula": "$-2x<6$ → $x>-3$" },

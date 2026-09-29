@@ -1,5 +1,5 @@
 {
-  "reviewStatus": "draft",
+  "reviewStatus": "approved",
   "_nota": "Tarjetas de fórmulas por unidad (PRD §5.1). Notación del contenido: $…$. Revisión del fundador pendiente.",
   "units": {
     "enteros-racionales": [

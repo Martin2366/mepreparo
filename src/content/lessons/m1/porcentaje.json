@@ -5,7 +5,7 @@
       "id": "m1-pc-1",
       "title": "Qué significa un porcentaje",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 5,
       "skills": ["resolver", "representar"],
       "steps": [
@@ -89,7 +89,7 @@
       "id": "m1-pc-2",
       "title": "Descuentos y aumentos",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 6,
       "skills": ["modelar"],
       "steps": [
@@ -177,7 +177,7 @@
       "id": "m1-pc-3",
       "title": "Porcentaje de un porcentaje",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 6,
       "skills": ["argumentar", "modelar"],
       "steps": [
@@ -262,7 +262,7 @@
       "id": "m1-pc-4",
       "title": "Problemas con porcentajes",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 6,
       "skills": ["modelar", "resolver"],
       "steps": [
@@ -350,7 +350,7 @@
     {
       "id": "mc-pc-1",
       "title": "Porcentajes en 90 segundos",
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "cards": [
         { "title": "El p % de N", "body": "Multiplica por $\\frac{p}{100}$.", "example": ["El 15 % de 200", "$0,15\\cdot 200=30$"] },
         { "title": "Atajos", "body": "10 %: divide por 10. 50 %: la mitad. 25 %: la cuarta parte. 5 %: la mitad del 10 %." },
@@ -360,7 +360,7 @@
     {
       "id": "mc-pc-2",
       "title": "El multiplicador",
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "cards": [
         { "title": "Descuento", "body": "Un descuento del p % multiplica por $1-\\frac{p}{100}$.", "example": ["30 % de descuento: $\\cdot 0,7$"] },
         { "title": "Aumento", "body": "Un aumento del p % multiplica por $1+\\frac{p}{100}$.", "example": ["8 % de aumento: $\\cdot 1,08$"] },
@@ -370,7 +370,7 @@
     {
       "id": "mc-pc-3",
       "title": "IVA y precio original",
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "cards": [
         { "title": "Con IVA", "body": "El IVA chileno es 19 %: precio con IVA = neto · 1,19." },
         { "title": "Volver al original", "body": "Si ya se aplicó un porcentaje, divide por el multiplicador.", "example": ["Con IVA: \\$23.800", "Neto: $23800\\div 1,19=20000$"] },

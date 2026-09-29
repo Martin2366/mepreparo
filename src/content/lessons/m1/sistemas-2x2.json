@@ -5,7 +5,7 @@
       "id": "m1-se-1",
       "title": "Dos condiciones a la vez",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 5,
       "skills": ["modelar", "resolver"],
       "steps": [
@@ -93,7 +93,7 @@
       "id": "m1-se-2",
       "title": "Sustitución",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 5,
       "skills": ["resolver"],
       "steps": [
@@ -173,7 +173,7 @@
       "id": "m1-se-3",
       "title": "Reducción",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 6,
       "skills": ["resolver"],
       "steps": [
@@ -265,7 +265,7 @@
       "id": "m1-se-4",
       "title": "Dos rectas que se cruzan",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 6,
       "skills": ["representar", "argumentar"],
       "steps": [
@@ -360,7 +360,7 @@
     {
       "id": "mc-se-1",
       "title": "Sustitución en 3 pasos",
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "cards": [
         { "title": "1. Despeja", "body": "Una incógnita en la ecuación más simple.", "example": ["$x+y=7$ → $y=7-x$"] },
         { "title": "2. Reemplaza", "body": "En la otra ecuación y resuelve.", "example": ["$2x+(7-x)=10$", "$x=3$"] },
@@ -370,7 +370,7 @@
     {
       "id": "mc-se-2",
       "title": "Reducción",
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "cards": [
         { "title": "Opuestos", "body": "Si una incógnita tiene coeficientes opuestos, suma las ecuaciones.", "example": ["$x+y=9$", "$x-y=1$", "$2x=10$ → $x=5$"] },
         { "title": "Multiplica antes", "body": "Si no hay opuestos, multiplica una ecuación para crearlos." }
@@ -379,7 +379,7 @@
     {
       "id": "mc-se-3",
       "title": "¿Cuántas soluciones?",
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "cards": [
         { "title": "Una", "body": "Pendientes distintas: las rectas se cruzan en un punto." },
         { "title": "Ninguna", "body": "Misma pendiente y distinto coeficiente de posición: paralelas." },

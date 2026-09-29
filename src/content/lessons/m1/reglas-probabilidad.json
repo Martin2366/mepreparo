@@ -5,7 +5,7 @@
       "id": "m1-rp-1",
       "title": "Casos favorables y posibles",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 6,
       "skills": ["modelar", "resolver"],
       "steps": [
@@ -103,7 +103,7 @@
       "id": "m1-rp-2",
       "title": "Lanzar mil veces",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 5,
       "skills": ["argumentar", "modelar"],
       "steps": [
@@ -192,7 +192,7 @@
       "id": "m1-rp-3",
       "title": "Regla aditiva",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 6,
       "skills": ["resolver", "modelar"],
       "steps": [
@@ -273,7 +273,7 @@
       "id": "m1-rp-4",
       "title": "Regla multiplicativa",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 6,
       "skills": ["modelar", "resolver"],
       "steps": [
@@ -362,7 +362,7 @@
     {
       "id": "mc-rp-1",
       "title": "Laplace y complemento",
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "cards": [
         { "title": "Laplace", "body": "Casos favorables sobre casos posibles, si todos son igual de probables." },
         { "title": "Complemento", "body": "Que NO ocurra: 1 menos que ocurra.", "example": ["$P(A)=\\frac{2}{5}$", "no $A$: $\\frac{3}{5}$"] },
@@ -372,7 +372,7 @@
     {
       "id": "mc-rp-2",
       "title": "O: se suma",
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "cards": [
         { "title": "Regla aditiva", "body": "Suma y resta lo que se contó dos veces." },
         { "title": "Excluyentes", "body": "Si no pueden ocurrir juntos, solo se suma." },
@@ -382,7 +382,7 @@
     {
       "id": "mc-rp-3",
       "title": "Y: se multiplica",
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "cards": [
         { "title": "Independientes", "body": "Se multiplican las probabilidades.", "example": ["cara y 6", "$\\frac{1}{2}\\cdot \\frac{1}{6}=\\frac{1}{12}$"] },
         { "title": "Sin reposición", "body": "Actualiza el segundo paso: queda un elemento menos." },

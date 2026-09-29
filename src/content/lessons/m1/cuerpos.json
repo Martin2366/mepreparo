@@ -5,7 +5,7 @@
       "id": "m1-cg-1",
       "title": "Desarmar un cuerpo",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 5,
       "skills": ["representar"],
       "steps": [
@@ -104,7 +104,7 @@
       "id": "m1-cg-2",
       "title": "Área de superficie",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 6,
       "skills": ["resolver", "modelar"],
       "steps": [
@@ -197,7 +197,7 @@
       "id": "m1-cg-3",
       "title": "Volumen",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 6,
       "skills": ["resolver", "argumentar"],
       "steps": [
@@ -284,7 +284,7 @@
       "id": "m1-cg-4",
       "title": "Problemas de capacidad",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 6,
       "skills": ["modelar"],
       "steps": [
@@ -373,7 +373,7 @@
     {
       "id": "mc-cg-1",
       "title": "Caras, aristas y vértices",
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "cards": [
         { "title": "Cubo", "body": "6 caras, 12 aristas, 8 vértices." },
         { "title": "Euler", "body": "En todo poliedro se cumple:", "formula": "$C+V-A=2$" },
@@ -383,7 +383,7 @@
     {
       "id": "mc-cg-2",
       "title": "Área y volumen",
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "cards": [
         { "title": "Área", "body": "Suma de las caras (cm²).", "formula": "$6a^{2}$ (cubo)" },
         { "title": "Volumen", "body": "Base por altura (cm³). Pirámide y cono: un tercio.", "formula": "$V=B\\cdot h$" },
@@ -393,7 +393,7 @@
     {
       "id": "mc-cg-3",
       "title": "Litros",
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "cards": [
         { "title": "Conversiones", "body": "1 litro = 1.000 cm³ = 1 dm³. 1 m³ = 1.000 litros." },
         { "title": "Ejemplo", "body": "Una caja de 20 × 10 × 5 cm.", "example": ["$1000$ cm³", "$=1$ litro"] }

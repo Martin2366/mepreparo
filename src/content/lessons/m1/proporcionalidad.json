@@ -5,7 +5,7 @@
       "id": "m1-pp-1",
       "title": "Razones y proporciones",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 5,
       "skills": ["modelar"],
       "steps": [
@@ -86,7 +86,7 @@
       "id": "m1-pp-2",
       "title": "Proporcionalidad directa",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 6,
       "skills": ["modelar", "representar"],
       "steps": [
@@ -173,7 +173,7 @@
       "id": "m1-pp-3",
       "title": "Proporcionalidad inversa",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 6,
       "skills": ["modelar"],
       "steps": [
@@ -275,7 +275,7 @@
       "id": "m1-pp-4",
       "title": "¿Directa o inversa?",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 5,
       "skills": ["argumentar", "modelar"],
       "steps": [
@@ -363,7 +363,7 @@
     {
       "id": "mc-pp-1",
       "title": "Razón y proporción",
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "cards": [
         { "title": "Razón", "body": "Compara dos cantidades dividiendo. El orden importa.", "example": ["12 mujeres y 8 hombres", "$12:8=3:2$"] },
         { "title": "Proporción", "body": "Igualdad de dos razones. Se resuelve multiplicando en cruz.", "formula": "$\\frac{a}{b}=\\frac{c}{d}$ → $a\\cdot d=b\\cdot c$" },
@@ -373,7 +373,7 @@
     {
       "id": "mc-pp-2",
       "title": "Directa o inversa",
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "cards": [
         { "title": "Directa", "body": "El cociente es constante. Ambas suben o bajan juntas.", "formula": "$\\frac{y}{x}=k$" },
         { "title": "Inversa", "body": "El producto es constante. Una sube y la otra baja.", "formula": "$x\\cdot y=k$" },
@@ -383,7 +383,7 @@
     {
       "id": "mc-pp-3",
       "title": "Regla de tres sin enredos",
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "cards": [
         { "title": "Directa", "body": "Multiplica en cruz y divide.", "example": ["3 kg cuestan \\$2.400; 5 kg cuestan $x$", "$x=\\frac{2400\\cdot 5}{3}=4000$"] },
         { "title": "Inversa", "body": "Multiplica en línea y divide.", "example": ["4 personas: 9 días; 6 personas: $x$ días", "$x=\\frac{4\\cdot 9}{6}=6$"] }

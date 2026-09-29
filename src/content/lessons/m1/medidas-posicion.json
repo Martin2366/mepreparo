@@ -5,7 +5,7 @@
       "id": "m1-mp-1",
       "title": "Ordenar para entender",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 5,
       "skills": ["representar"],
       "steps": [
@@ -84,7 +84,7 @@
       "id": "m1-mp-2",
       "title": "Cuartiles",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 6,
       "skills": ["resolver", "representar"],
       "steps": [
@@ -184,7 +184,7 @@
       "id": "m1-mp-3",
       "title": "Percentiles",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 5,
       "skills": ["argumentar", "resolver"],
       "steps": [
@@ -273,7 +273,7 @@
       "id": "m1-mp-4",
       "title": "El diagrama de cajón",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 6,
       "skills": ["representar", "argumentar"],
       "steps": [
@@ -363,7 +363,7 @@
     {
       "id": "mc-mp-1",
       "title": "Cuartiles paso a paso",
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "cards": [
         { "title": "1. Ordena", "body": "Siempre de menor a mayor." },
         { "title": "2. Mediana", "body": "El centro: Q2." },
@@ -373,7 +373,7 @@
     {
       "id": "mc-mp-2",
       "title": "Percentiles",
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "cards": [
         { "title": "Idea", "body": "Pk deja bajo él cerca del $k$ % de los datos." },
         { "title": "Equivalencias", "body": "P25 = Q1, P50 = mediana, P75 = Q3." },
@@ -383,7 +383,7 @@
     {
       "id": "mc-mp-3",
       "title": "Diagrama de cajón",
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "cards": [
         { "title": "Cinco números", "body": "Mínimo, Q1, mediana, Q3 y máximo." },
         { "title": "Cuatro tramos", "body": "Cada tramo tiene el 25 % de los datos, aunque midan distinto." },

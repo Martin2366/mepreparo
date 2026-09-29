@@ -5,7 +5,7 @@
       "id": "m1-fl-1",
       "title": "Qué es una función",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 5,
       "skills": ["representar"],
       "steps": [
@@ -105,7 +105,7 @@
       "id": "m1-fl-2",
       "title": "La pendiente: cuánto sube la recta",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 6,
       "skills": ["representar"],
       "steps": [
@@ -220,7 +220,7 @@
       "id": "m1-fl-3",
       "title": "Mover la recta: el coeficiente de posición",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 6,
       "skills": ["representar", "argumentar"],
       "steps": [
@@ -341,7 +341,7 @@
       "id": "m1-fl-4",
       "title": "Modelar con funciones afines",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 6,
       "skills": ["modelar"],
       "steps": [
@@ -459,7 +459,7 @@
     {
       "id": "mc-fl-1",
       "title": "Función, imagen y preimagen",
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "cards": [
         { "title": "Función", "body": "A cada valor de entrada le asigna exactamente un valor de salida." },
         { "title": "Evaluar", "body": "Reemplaza la $x$ por el número, con paréntesis si es negativo.", "example": ["$f(x)=3x-1$", "$f(-2)=3\\cdot(-2)-1=-7$"] },
@@ -469,7 +469,7 @@
     {
       "id": "mc-fl-2",
       "title": "Pendiente en 3 pasos",
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "cards": [
         { "title": "1. Resta las y", "body": "Segundo punto menos primero." },
         { "title": "2. Resta las x", "body": "En el mismo orden que las $y$." },
@@ -479,7 +479,7 @@
     {
       "id": "mc-fl-3",
       "title": "El coeficiente de posición",
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "cards": [
         { "title": "Qué es", "body": "En $y=mx+n$, $n$ es el valor de $y$ cuando $x=0$: donde la recta corta al eje $y$." },
         { "title": "Para qué sirve", "body": "En problemas es el valor inicial: lo que hay antes de empezar (cargo fijo, altura inicial, agua al comienzo)." },
@@ -489,7 +489,7 @@
     {
       "id": "mc-fl-4",
       "title": "Paralelas: la misma pendiente",
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "cards": [
         { "title": "Regla", "body": "Dos rectas son paralelas si tienen la misma pendiente y distinto coeficiente de posición." },
         { "title": "Ejemplo", "body": "$y=3x+1$ y $y=3x-5$ son paralelas: suben igual y nunca se cruzan." },
@@ -499,7 +499,7 @@
     {
       "id": "mc-fl-5",
       "title": "La recta que pasa por dos puntos",
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "cards": [
         { "title": "Paso 1", "body": "Calcula la pendiente con los dos puntos." },
         { "title": "Paso 2", "body": "Reemplaza uno de los puntos en $y=mx+n$ y despeja $n$." },
@@ -509,7 +509,7 @@
     {
       "id": "mc-fl-6",
       "title": "Lineal o afín",
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "cards": [
         { "title": "Función lineal", "body": "$f(x)=mx$: pasa por el origen. Es proporcionalidad directa: si $x$ se duplica, $f(x)$ también." },
         { "title": "Función afín", "body": "$f(x)=mx+n$ con $n$ distinto de 0: la recta está trasladada y ya no pasa por el origen." },

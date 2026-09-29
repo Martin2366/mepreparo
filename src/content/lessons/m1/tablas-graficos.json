@@ -5,7 +5,7 @@
       "id": "m1-tg-1",
       "title": "Tablas de frecuencia",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 6,
       "skills": ["representar"],
       "steps": [
@@ -90,7 +90,7 @@
       "id": "m1-tg-2",
       "title": "Gráficos de barras y circulares",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 6,
       "skills": ["representar", "resolver"],
       "steps": [
@@ -180,7 +180,7 @@
       "id": "m1-tg-3",
       "title": "Gráficos que engañan",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 5,
       "skills": ["argumentar"],
       "steps": [
@@ -257,7 +257,7 @@
       "id": "m1-tg-4",
       "title": "Promedio, mediana y moda",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 6,
       "skills": ["resolver", "argumentar"],
       "steps": [
@@ -355,7 +355,7 @@
     {
       "id": "mc-tg-1",
       "title": "Frecuencias",
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "cards": [
         { "title": "Absoluta", "body": "Cuántas veces aparece un valor." },
         { "title": "Relativa", "body": "Absoluta dividida por el total.", "example": ["$8$ de $20$", "$\\frac{8}{20}=40$ %"] },
@@ -365,7 +365,7 @@
     {
       "id": "mc-tg-2",
       "title": "Gráfico circular",
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "cards": [
         { "title": "Ángulo", "body": "Fracción del total por 360°.", "formula": "$\\frac{f}{n}\\cdot 360°$" },
         { "title": "Revisa", "body": "Los porcentajes deben sumar 100 % y los ángulos, 360°." }
@@ -374,7 +374,7 @@
     {
       "id": "mc-tg-3",
       "title": "Promedio, mediana y moda",
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "cards": [
         { "title": "Promedio", "body": "Suma dividida por la cantidad de datos." },
         { "title": "Mediana", "body": "Dato central después de ordenar. Con datos pares, promedio de los dos centrales." },

@@ -5,7 +5,7 @@
       "id": "m1-ti-1",
       "title": "Trasladar",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 5,
       "skills": ["representar"],
       "steps": [
@@ -98,7 +98,7 @@
       "id": "m1-ti-2",
       "title": "Reflejar",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 6,
       "skills": ["representar", "argumentar"],
       "steps": [
@@ -198,7 +198,7 @@
       "id": "m1-ti-3",
       "title": "Rotar",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 6,
       "skills": ["representar"],
       "steps": [
@@ -293,7 +293,7 @@
       "id": "m1-ti-4",
       "title": "Componer transformaciones",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 6,
       "skills": ["argumentar", "representar"],
       "steps": [
@@ -383,7 +383,7 @@
     {
       "id": "mc-ti-1",
       "title": "Traslación",
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "cards": [
         { "title": "Regla", "body": "Se suma el vector a cada punto.", "formula": "$(x,y)$ → $(x+a,y+b)$" },
         { "title": "Vector", "body": "Punto final menos punto inicial.", "example": ["De $(1,1)$ a $(4,-2)$", "vector $(3,-3)$"] }
@@ -392,7 +392,7 @@
     {
       "id": "mc-ti-2",
       "title": "Reflexiones",
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "cards": [
         { "title": "Eje x", "body": "Cambia el signo de la $y$.", "formula": "$(x,y)$ → $(x,-y)$" },
         { "title": "Eje y", "body": "Cambia el signo de la $x$.", "formula": "$(x,y)$ → $(-x,y)$" },
@@ -402,7 +402,7 @@
     {
       "id": "mc-ti-3",
       "title": "Rotaciones",
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "cards": [
         { "title": "90° antihorario", "body": "Centro en el origen.", "formula": "$(x,y)$ → $(-y,x)$" },
         { "title": "90° horario", "body": "Centro en el origen.", "formula": "$(x,y)$ → $(y,-x)$" },

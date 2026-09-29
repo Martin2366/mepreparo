@@ -5,7 +5,7 @@
       "id": "m1-fg-1",
       "title": "Pitágoras con cuadrados",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 6,
       "skills": ["resolver", "representar"],
       "steps": [
@@ -116,7 +116,7 @@
       "id": "m1-fg-2",
       "title": "Perímetros",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 5,
       "skills": ["resolver", "modelar"],
       "steps": [
@@ -207,7 +207,7 @@
       "id": "m1-fg-3",
       "title": "Áreas de figuras planas",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 6,
       "skills": ["resolver", "argumentar"],
       "steps": [
@@ -295,7 +295,7 @@
       "id": "m1-fg-4",
       "title": "Figuras compuestas",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 6,
       "skills": ["modelar", "argumentar"],
       "steps": [
@@ -382,7 +382,7 @@
     {
       "id": "mc-fg-1",
       "title": "Pitágoras en 90 segundos",
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "cards": [
         { "title": "La relación", "body": "Solo en triángulos rectángulos.", "formula": "$a^{2}+b^{2}=c^{2}$" },
         { "title": "Hipotenusa", "body": "Suma cuadrados y saca raíz.", "example": ["$5$ y $12$", "$\\sqrt{25+144}=13$"] },
@@ -392,7 +392,7 @@
     {
       "id": "mc-fg-2",
       "title": "Perímetro o área",
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "cards": [
         { "title": "Perímetro", "body": "Contorno: se mide en cm, m. Se suman lados." },
         { "title": "Área", "body": "Superficie: se mide en cm², m². Se multiplican medidas." },
@@ -402,7 +402,7 @@
     {
       "id": "mc-fg-3",
       "title": "Figuras compuestas",
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "cards": [
         { "title": "Sumar", "body": "Divide en rectángulos, triángulos y círculos conocidos." },
         { "title": "Restar", "body": "Calcula la figura grande y quita los huecos." },

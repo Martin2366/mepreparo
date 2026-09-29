@@ -5,7 +5,7 @@
       "id": "m1-sm-1",
       "title": "Misma forma, otro tamaño",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 5,
       "skills": ["resolver", "argumentar"],
       "steps": [
@@ -87,7 +87,7 @@
       "id": "m1-sm-2",
       "title": "Criterios de semejanza",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 6,
       "skills": ["argumentar"],
       "steps": [
@@ -181,7 +181,7 @@
       "id": "m1-sm-3",
       "title": "Teorema de Thales",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 6,
       "skills": ["resolver", "modelar"],
       "steps": [
@@ -265,7 +265,7 @@
       "id": "m1-sm-4",
       "title": "Escalas y sombras",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 6,
       "skills": ["modelar"],
       "steps": [
@@ -356,7 +356,7 @@
     {
       "id": "mc-sm-1",
       "title": "Razón de semejanza",
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "cards": [
         { "title": "Razón", "body": "Divide un lado de la figura grande por su homólogo en la pequeña.", "formula": "$k=\\frac{A}{a}$" },
         { "title": "Áreas", "body": "Si los lados están en razón $k$, las áreas están en razón $k^{2}$." }
@@ -365,7 +365,7 @@
     {
       "id": "mc-sm-2",
       "title": "Criterios",
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "cards": [
         { "title": "AA", "body": "Dos ángulos iguales." },
         { "title": "LLL", "body": "Tres lados proporcionales." },
@@ -375,7 +375,7 @@
     {
       "id": "mc-sm-3",
       "title": "Thales y sombras",
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "cards": [
         { "title": "Thales", "body": "Paralelas cortan segmentos proporcionales.", "formula": "$\\frac{a}{b}=\\frac{c}{d}$" },
         { "title": "Sombras", "body": "A la misma hora, alturas y sombras son proporcionales.", "example": ["poste 2 m, sombra 3 m", "árbol con sombra 9 m: 6 m"] }

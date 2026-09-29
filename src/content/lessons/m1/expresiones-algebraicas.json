@@ -5,7 +5,7 @@
       "id": "m1-ea-1",
       "title": "Términos semejantes",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 5,
       "skills": ["resolver"],
       "steps": [
@@ -117,7 +117,7 @@
       "id": "m1-ea-2",
       "title": "El modelo de área",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 6,
       "skills": ["representar", "resolver"],
       "steps": [
@@ -214,7 +214,7 @@
       "id": "m1-ea-3",
       "title": "Productos notables",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 6,
       "skills": ["representar", "resolver"],
       "steps": [
@@ -314,7 +314,7 @@
       "id": "m1-ea-4",
       "title": "Factorizar: volver al rectángulo",
       "version": 1,
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "estimatedMinutes": 6,
       "skills": ["resolver", "representar"],
       "steps": [
@@ -431,7 +431,7 @@
     {
       "id": "mc-ea-1",
       "title": "Reducir en 90 segundos",
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "cards": [
         { "title": "Semejantes", "body": "Misma parte literal (letras y exponentes). Solo esos se suman o restan.", "example": ["$3x^{2}+2x-x^{2}+5x$", "$=2x^{2}+7x$"] },
         { "title": "Paréntesis", "body": "Un número delante multiplica a cada término; un menos cambia todos los signos.", "formula": "$-(a-b)=-a+b$" },
@@ -441,7 +441,7 @@
     {
       "id": "mc-ea-2",
       "title": "Productos notables",
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "cards": [
         { "title": "Cuadrado de binomio", "body": "Primero al cuadrado, más el doble del primero por el segundo, más el segundo al cuadrado.", "formula": "$(a+b)^{2}=a^{2}+2ab+b^{2}$" },
         { "title": "Con resta", "body": "Solo cambia el signo del término del medio.", "formula": "$(a-b)^{2}=a^{2}-2ab+b^{2}$" },
@@ -451,7 +451,7 @@
     {
       "id": "mc-ea-3",
       "title": "Factorizar paso a paso",
-      "reviewStatus": "draft",
+      "reviewStatus": "approved",
       "cards": [
         { "title": "1. Factor común", "body": "Siempre primero.", "example": ["$5x^{2}-10x=5x(x-2)$"] },
         { "title": "2. Diferencia de cuadrados", "body": "Dos cuadrados restados.", "example": ["$x^{2}-25=(x+5)(x-5)$"] },

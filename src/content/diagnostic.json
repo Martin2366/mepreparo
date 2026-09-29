@@ -1,7 +1,7 @@
 {
   "id": "diagnostico-m1",
   "version": 1,
-  "reviewStatus": "draft",
+  "reviewStatus": "approved",
   "_fuente": "Diseño del onboarding (Claude Design). Respuestas verificadas por test (src/features/onboarding/__tests__/diagnostic.test.ts). Pendiente de revisión del fundador.",
   "questions": [
     { "id": "d1", "topic": "Ecuaciones lineales", "focus": "Álgebra", "q": "Si $3x-5=10$, ¿cuánto vale $x$?", "options": ["$3$", "$5$", "$15$", "$-5$"], "answer": 1 },
