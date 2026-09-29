@@ -9,7 +9,10 @@ import { Icon, type IconName } from '@/components/ui/Icon';
 import { Mascot } from '@/components/ui/Mascot';
 import { ProgressBar } from '@/components/ui/ProgressBar';
 import { Text } from '@/components/ui/Text';
+import { enterGoogle } from '@/features/cloud/AccountCard';
+import { linkGoogle } from '@/features/cloud/auth';
 import { planOf } from '@/features/plan/context';
+import { confirm } from '@/lib/confirm';
 import { dur, easeOut } from '@/theme/motion';
 import { colors, fonts } from '@/theme/tokens';
 
@@ -178,17 +181,31 @@ export function PremiumStep({ next }: StepProps) {
     update({ trialStartedAt: startedAt ?? new Date().toISOString() });
     next();
   };
-  const google = () =>
-    Alert.alert(
-      'Muy pronto',
-      'Pronto podrás respaldar tu progreso con Google. Por ahora queda guardado en este teléfono.',
-      [{ text: 'Entendido', onPress: start }],
-    );
+  const [busy, setBusy] = useState(false);
+  // Respaldo con Google (mismo flujo que el Perfil). Si esa cuenta ya tenía progreso, se ofrece entrar a ella.
+  const google = async () => {
+    update({ trialStartedAt: startedAt ?? new Date().toISOString() });
+    setBusy(true);
+    const r = await linkGoogle();
+    setBusy(false);
+    if (r === 'ok') return next();
+    if (r === 'cancelled') return;
+    if (r === 'conflict') {
+      const ok = await confirm(
+        'Esa cuenta de Google ya tiene progreso',
+        'Puedes entrar a esa cuenta: juntamos lo de este teléfono con lo que ya tenías respaldado.',
+        'Usar mi cuenta de Google',
+      );
+      if (ok && (await enterGoogle())) next();
+      return;
+    }
+    Alert.alert('No se pudo conectar con Google', 'Puedes continuar sin cuenta y respaldar después desde tu perfil.');
+  };
 
   return (
     <SafeAreaView style={{ flex: 1 }} edges={[]}>
       <StepLayout
-        primary={{ label: 'Iniciar con Google', onPress: google, arrow: false }}
+        primary={{ label: busy ? 'Conectando…' : 'Iniciar con Google', onPress: google, arrow: false, disabled: busy }}
         secondary={{ label: 'Continuar sin cuenta', onPress: start, variant: 'secondary' }}
       >
         <View style={{ alignItems: 'center', gap: 6, paddingTop: 16 }}>
