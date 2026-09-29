@@ -44,8 +44,11 @@ export async function hasPermission(): Promise<boolean> {
   return granted;
 }
 
-/** Reprograma los avisos de los próximos 7 días. `time` en formato HH:MM. */
-export async function syncReminders(opts: { on: boolean; time: string; activeToday: boolean }): Promise<void> {
+/**
+ * Reprograma los avisos de los próximos 7 días. `time` en formato HH:MM.
+ * Con `trialEndsAt`, suma los avisos honestos de la prueba (PRD §4.1): 2 días antes y el último día, a esa misma hora.
+ */
+export async function syncReminders(opts: { on: boolean; time: string; activeToday: boolean; trialEndsAt?: Date }): Promise<void> {
   try {
     await Notifications.cancelAllScheduledNotificationsAsync();
     if (!opts.on || !(await hasPermission())) return;
@@ -59,6 +62,21 @@ export async function syncReminders(opts: { on: boolean; time: string; activeTod
         content: { title: 'MePreparo', body: MESSAGES[(at.getDate() + i) % MESSAGES.length]! },
         trigger: { type: Notifications.SchedulableTriggerInputTypes.DATE, date: at, channelId: CHANNEL },
       });
+    }
+    if (opts.trialEndsAt) {
+      const notices: [number, string][] = [
+        [2, 'Te quedan 2 días de Premium. Al terminar no se cobra nada: sigues gratis.'],
+        [1, 'Hoy termina tu prueba Premium. No se cobra nada automáticamente.'],
+      ];
+      for (const [daysBefore, body] of notices) {
+        const e = opts.trialEndsAt;
+        const at = new Date(e.getFullYear(), e.getMonth(), e.getDate() - daysBefore, h, m);
+        if (at <= now) continue;
+        await Notifications.scheduleNotificationAsync({
+          content: { title: 'MePreparo', body },
+          trigger: { type: Notifications.SchedulableTriggerInputTypes.DATE, date: at, channelId: CHANNEL },
+        });
+      }
     }
   } catch {
     // Sin permisos o sin soporte: la app funciona igual.

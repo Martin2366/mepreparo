@@ -1,10 +1,16 @@
 import { Image } from 'expo-image';
-import { View } from 'react-native';
+import { router } from 'expo-router';
+import { useState } from 'react';
+import { Alert, View } from 'react-native';
 import Animated, { FadeIn, FadeInUp } from 'react-native-reanimated';
 
 import { HandNote, Mascot } from '@/components/ui/Mascot';
 import { Text } from '@/components/ui/Text';
+import { enterGoogle } from '@/features/cloud/AccountCard';
+import { supabase } from '@/lib/supabase';
 import { dur, easeOut } from '@/theme/motion';
+
+import { useOnboarding } from '../store';
 
 import { StepLayout, TopicTile } from '../components';
 import type { StepProps } from './types';
@@ -16,8 +22,23 @@ const VALUES = [
 ];
 
 export function Welcome({ next }: StepProps) {
+  const [busy, setBusy] = useState(false);
+
+  // Teléfono nuevo (plan §5.5): se entra a la cuenta de Google y se baja el progreso respaldado.
+  const restore = async () => {
+    setBusy(true);
+    const ok = await enterGoogle();
+    setBusy(false);
+    if (!ok) return;
+    if (useOnboarding.getState().completed) router.replace('/');
+    else Alert.alert('Entraste con Google', 'No encontramos progreso guardado en esa cuenta. Partamos: lo que hagas quedará respaldado.');
+  };
+
   return (
-    <StepLayout primary={{ label: 'Comenzar', onPress: next }}>
+    <StepLayout
+      primary={{ label: 'Comenzar', onPress: next }}
+      secondary={supabase ? { label: busy ? 'Conectando…' : '¿Ya tienes progreso? Entrar con Google', onPress: restore, disabled: busy } : undefined}
+    >
       <View className="flex-1 justify-center gap-6 py-2">
         <Animated.View entering={FadeIn.duration(dur.slow)}>
           <View className="items-center">

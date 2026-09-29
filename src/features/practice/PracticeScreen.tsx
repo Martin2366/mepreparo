@@ -3,22 +3,20 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
 import { Chip } from '@/components/ui/Chip';
 import { Mascot } from '@/components/ui/Mascot';
 import { Text } from '@/components/ui/Text';
 import { logAttempt } from '@/data/attempts';
 import { dayKey } from '@/engine/dates';
-import { PRICES } from '@/engine/entitlements';
 import { clampDifficulty, type Difficulty, type Exercise, GENERATORS, nextDifficulty } from '@/engine/generators';
 import type { Outcome } from '@/engine/xp';
 import { unitRef } from '@/features/content/catalog';
 import { type GradedEvent, StepView } from '@/features/lesson-player/StepView';
 import { Shell } from '@/features/lesson-player/LessonScreen';
 import { useIntensives } from '@/features/intensives/store';
+import { LimitCard } from '@/features/premium/LimitCard';
 import { useAllowance } from '@/features/progress/allowance';
 import { useProgress } from '@/features/progress/store';
-import { clp } from '@/lib/format';
 import { goBack } from '@/lib/nav';
 import { colors, fonts } from '@/theme/tokens';
 
@@ -133,14 +131,12 @@ export function PracticeScreen({
           </Text>
         </View>
         {blocked ? (
-          <Card tone="paper" style={{ gap: 8, marginTop: 16 }}>
-            <Text style={s.bodyStrong}>Hoy hiciste tus {practice.unlimited ? '' : practice.max} ejercicios gratis.</Text>
-            <Text style={s.small}>
-              Mañana se recargan. Mientras, las lecciones siguen siendo gratis y sin límite. Con Premium practicas sin límite por {clp(PRICES.monthly)} al mes, sin cobros
-              sorpresa.
-            </Text>
-            <Chip label="Premium muy pronto" tone="premium" />
-          </Card>
+          <View style={{ marginTop: 16 }}>
+            <LimitCard
+              title={`Hoy hiciste tus ${practice.unlimited ? '' : practice.max} ejercicios gratis`}
+              free="Mañana se recargan. Mientras, las lecciones siguen siendo gratis y sin límite."
+            />
+          </View>
         ) : null}
         <View style={{ flex: 1 }} />
         <View style={{ gap: 8, marginTop: 16 }}>

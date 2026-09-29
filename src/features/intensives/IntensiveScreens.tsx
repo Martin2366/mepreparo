@@ -9,21 +9,19 @@ import { Mascot } from '@/components/ui/Mascot';
 import { ProgressBar } from '@/components/ui/ProgressBar';
 import { Text } from '@/components/ui/Text';
 import { dayKey } from '@/engine/dates';
-import { hasPremium, planState } from '@/engine/entitlements';
+import { useHasPremium } from '@/features/premium/store';
 import { isFreeDay, nextStep } from '@/engine/intensive';
 import { unitRef } from '@/features/content/catalog';
 import { useExams } from '@/features/exams/store';
-import { useOnboarding } from '@/features/onboarding/store';
 import { FullScreen } from '@/features/shell/FullScreen';
 import { confirm } from '@/lib/confirm';
 import { colors, fonts } from '@/theme/tokens';
 
+import { LimitCard } from '@/features/premium/LimitCard';
+
 import { PROGRAMS, programById, useIntensives } from './store';
 
-function usePremium() {
-  const trialStartedAt = useOnboarding((s) => s.answers.trialStartedAt);
-  return hasPremium(planState({ trialStartedAt }, dayKey(new Date())));
-}
+const usePremium = useHasPremium;
 
 /** Lista de intensivos. */
 export function IntensivesScreen() {
@@ -152,16 +150,7 @@ export function IntensiveScreen({ id }: { id: string }) {
         />
       ) : step?.kind === 'day' ? (
         lockedDay ? (
-          <Card tone="paper" style={{ gap: 8 }}>
-            <View style={s.row}>
-              <PremiumTag />
-              <Text style={s.strong}>El día {step.day} es parte de Premium</Text>
-            </View>
-            <Text style={s.small}>
-              El día 1 es gratis. Para seguir el intensivo completo necesitas Premium, sin cobros sorpresa. Las lecciones y la práctica
-              diaria siguen gratis.
-            </Text>
-          </Card>
+          <LimitCard title={`El día ${step.day} es parte de Premium`} free="El día 1 es gratis. Las lecciones y la práctica diaria siguen gratis." />
         ) : (
           <SessionCard
             title={`Sesión del día ${step.day}`}

@@ -6,11 +6,10 @@ import { Mascot } from '@/components/ui/Mascot';
 import { Text } from '@/components/ui/Text';
 import { logAttempt } from '@/data/attempts';
 import { dayKey } from '@/engine/dates';
-import { hasPremium, planState } from '@/engine/entitlements';
+import { useHasPremium } from '@/features/premium/store';
 import { dueItems } from '@/engine/review';
 import { Shell } from '@/features/lesson-player/LessonScreen';
 import { type GradedEvent, StepView } from '@/features/lesson-player/StepView';
-import { useOnboarding } from '@/features/onboarding/store';
 import { useProgress } from '@/features/progress/store';
 import { goBack } from '@/lib/nav';
 import { colors, fonts } from '@/theme/tokens';
@@ -22,12 +21,11 @@ const SESSION = 5;
 /** Repaso espaciado del cuaderno de errores: hasta 5 errores que vencen hoy. */
 export function ReviewScreen() {
   const today = dayKey(new Date());
-  const trialStartedAt = useOnboarding((s) => s.answers.trialStartedAt);
+  const premium = useHasPremium();
   const answer = useProgress((s) => s.answer);
   // La lista se fija al abrir: responder cambia las fechas, pero la sesión no debe saltar.
   const [items] = useState(() => {
     const st = useProgress.getState();
-    const premium = hasPremium(planState({ trialStartedAt }, today));
     const from = freeNotebookFrom(today);
     return dueItems(st.reviews, today)
       .filter((r) => premium || r.addedOn >= from)

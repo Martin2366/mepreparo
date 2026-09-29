@@ -2,13 +2,13 @@ import diagnostic from '@/content/diagnostic.json';
 import type { Axis, Skill } from '@/content/schema';
 import { SKILLS } from '@/content/schema';
 import { dayKey } from '@/engine/dates';
-import { planState } from '@/engine/entitlements';
 import { masteryOf, seedFromDiagnostic } from '@/engine/mastery';
 import { dailySession, nextLesson } from '@/engine/plan';
 import { dueItems } from '@/engine/review';
 import { estimateRange } from '@/engine/score';
 import { streakOf } from '@/engine/streak';
 import { dailyGoalXp, levelOf } from '@/engine/xp';
+import { usePlan } from '@/features/premium/store';
 import { allUnits, curriculum, lessonsOf, pathUnits } from '@/features/content/catalog';
 import type { Answers } from '@/features/onboarding/model';
 import { useOnboarding } from '@/features/onboarding/store';
@@ -59,6 +59,7 @@ export function useDashboard() {
   const now = new Date();
   const today = dayKey(now);
   const plan = planOf(a, now);
+  const plan_ = usePlan();
   const completed = new Set(Object.entries(p.lessons).filter(([, l]) => l.status === 'completed').map(([id]) => id));
   const next = nextLesson(pathUnits, completed, plan.focus);
   const due = dueItems(p.reviews, today);
@@ -88,7 +89,7 @@ export function useDashboard() {
     level: levelOf(p.xp),
     xpToday: p.xpByDay[today] ?? 0,
     goalXp: dailyGoalXp(a.minutes),
-    planState: planState({ trialStartedAt: a.trialStartedAt }, today),
+    planState: plan_,
     next,
     inProgress,
     due,

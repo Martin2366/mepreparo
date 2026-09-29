@@ -34,6 +34,12 @@ function open(): SQLiteDatabase {
       synced INTEGER NOT NULL DEFAULT 0
     );
     CREATE INDEX IF NOT EXISTS step_attempts_synced ON step_attempts (synced);
+    CREATE TABLE IF NOT EXISTS outbox (
+      id TEXT PRIMARY KEY NOT NULL,
+      created_at TEXT NOT NULL,
+      kind TEXT NOT NULL,
+      payload TEXT NOT NULL
+    );
   `);
   return db;
 }
@@ -82,4 +88,37 @@ export function pendingSync(limit = 200): Attempt[] {
       answer: (r.answer as string | null) ?? undefined,
       xp: Number(r.xp),
     }));
+}
+
+export function markSynced(ids: readonly string[]): void {
+  if (!ids.length) return;
+  open().runSync(`UPDATE step_attempts SET synced = 1 WHERE id IN (${ids.map(() => '?').join(',')})`, ...ids);
+}
+
+/** Al pasar a otra cuenta (Google), todo se vuelve a subir a esa cuenta (la subida es idempotente). */
+export function markAllUnsynced(): void {
+  open().runSync('UPDATE step_attempts SET synced = 0');
+}
+
+/** Borrar mi cuenta y datos: también se borra lo guardado en el teléfono. */
+export function clearLocalData(): void {
+  open().execSync('DELETE FROM step_attempts; DELETE FROM outbox;');
+}
+
+/** Cola de eventos y reportes de contenido: se guardan aquí y se suben en lote cuando hay red. */
+export type OutboxItem = { id: string; createdAt: string; kind: 'event' | 'report'; payload: Record<string, unknown> };
+
+export function enqueue(kind: OutboxItem['kind'], payload: Record<string, unknown>): void {
+  open().runSync('INSERT INTO outbox (id, created_at, kind, payload) VALUES (?, ?, ?, ?)', randomUUID(), new Date().toISOString(), kind, JSON.stringify(payload));
+}
+
+export function pendingOutbox(limit = 200): OutboxItem[] {
+  return open()
+    .getAllSync<{ id: string; created_at: string; kind: OutboxItem['kind']; payload: string }>('SELECT * FROM outbox ORDER BY created_at LIMIT ?', limit)
+    .map((r) => ({ id: r.id, createdAt: r.created_at, kind: r.kind, payload: JSON.parse(r.payload) as Record<string, unknown> }));
+}
+
+export function removeOutbox(ids: readonly string[]): void {
+  if (!ids.length) return;
+  open().runSync(`DELETE FROM outbox WHERE id IN (${ids.map(() => '?').join(',')})`, ...ids);
 }

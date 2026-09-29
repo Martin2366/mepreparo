@@ -9,7 +9,7 @@ import { Mascot } from '@/components/ui/Mascot';
 import { Text } from '@/components/ui/Text';
 import { type Badge, BADGES, type BadgeStats, newBadges } from '@/engine/badges';
 import { dayKey } from '@/engine/dates';
-import { hasPremium, planState } from '@/engine/entitlements';
+import { useHasPremium } from '@/features/premium/store';
 import { isMastered } from '@/engine/mastery';
 import { streakOf } from '@/engine/streak';
 import { levelOf } from '@/engine/xp';
@@ -49,17 +49,16 @@ export function badgeStats(p: ProgressData, e: ExamData): BadgeStats {
 export function BadgeWatcher() {
   const progress = useProgress();
   const exams = useExams();
-  const trialStartedAt = useOnboarding((s) => s.answers.trialStartedAt);
+  const premium = useHasPremium();
   const completed = useOnboarding((s) => s.completed);
 
   useEffect(() => {
     if (!completed) return;
-    const premium = hasPremium(planState({ trialStartedAt }, dayKey(new Date())));
     const fresh = newBadges(badgeStats(progress, exams), premium, progress.badges);
     if (fresh.length === 0) return;
     progress.earnBadges(fresh);
     if (Platform.OS !== 'web') Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-  }, [progress, exams, trialStartedAt, completed]);
+  }, [progress, exams, premium, completed]);
 
   const current = BADGES.find((b) => b.id === progress.unseenBadges[0]);
   if (!current) return null;

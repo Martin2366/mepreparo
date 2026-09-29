@@ -9,6 +9,7 @@ import { Mascot } from '@/components/ui/Mascot';
 import { ProgressBar } from '@/components/ui/ProgressBar';
 import { Text } from '@/components/ui/Text';
 import type { SessionItem } from '@/engine/plan';
+import { useBackupLabel } from '@/features/cloud/AccountCard';
 import { lessonById, unitRef } from '@/features/content/catalog';
 import { careerById, institutionById } from '@/features/onboarding/admission';
 import { formatScore } from '@/features/onboarding/model';
@@ -38,6 +39,7 @@ export function HomeScreen() {
     : `Porque ${axisName} está en tu foco de estas semanas.`;
   const inProgress = d.inProgress ? lessonById(d.inProgress) : undefined;
   const allDone = rows.length > 0 && doneCount === rows.length;
+  const backup = useBackupLabel();
 
   return (
     <TabScreen>
@@ -54,13 +56,26 @@ export function HomeScreen() {
       </View>
 
       {d.planState.kind === 'trial' ? (
-        <Card tone="coral" padding={12} style={s.row}>
-          <Chip label="Premium" tone="premium" />
-          <Text style={[s.small, { flex: 1 }]}>
-            {d.planState.daysLeft === 1 ? 'Hoy es el último día de tu prueba.' : `Te quedan ${d.planState.daysLeft} días de prueba.`} Sin
-            cobros al terminar.
-          </Text>
-        </Card>
+        d.planState.daysLeft <= 2 ? (
+          // Avisos del día 5 y del día 7 (PRD §4.1): honestos y con el camino a los planes.
+          <Card tone="coral" padding={14} style={{ gap: 8 }}>
+            <View style={s.row}>
+              <Chip label="Premium" tone="premium" />
+              <Text style={[s.bodyStrong, { flex: 1 }]}>
+                {d.planState.daysLeft === 1 ? 'Hoy termina tu prueba' : 'Te quedan 2 días de Premium'}
+              </Text>
+            </View>
+            <Text style={s.small}>
+              No se cobra nada automáticamente: al terminar sigues gratis, con todas las lecciones, tu racha y tu XP.
+            </Text>
+            <Button label="Ver planes" variant="secondary" onPress={() => router.push('/planes')} />
+          </Card>
+        ) : (
+          <Card tone="coral" padding={12} style={s.row}>
+            <Chip label="Premium" tone="premium" />
+            <Text style={[s.small, { flex: 1 }]}>Te quedan {d.planState.daysLeft} días de prueba. Sin cobros al terminar.</Text>
+          </Card>
+        )
       ) : null}
 
       <Card padding={18} style={{ gap: 14 }}>
@@ -149,8 +164,8 @@ export function HomeScreen() {
       </Section>
 
       <View style={[s.row, { justifyContent: 'center' }]}>
-        <Icon name="smartphone" size={16} color={colors.graphite} />
-        <Text style={s.caption}>Tu progreso se guarda en este teléfono.</Text>
+        <Icon name={backup.backedUp ? 'cloud-check' : 'smartphone'} size={16} color={backup.backedUp ? colors.success700 : colors.graphite} />
+        <Text style={s.caption}>{backup.label}</Text>
       </View>
     </TabScreen>
   );

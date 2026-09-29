@@ -3,15 +3,15 @@ import { StyleSheet, View } from 'react-native';
 
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
-import { Chip, PremiumTag } from '@/components/ui/Chip';
+import { Chip } from '@/components/ui/Chip';
 import { Mascot } from '@/components/ui/Mascot';
 import { MathText } from '@/components/ui/MathText';
 import { Text } from '@/components/ui/Text';
 import { dayKey } from '@/engine/dates';
-import { hasPremium, planState } from '@/engine/entitlements';
+import { LimitCard } from '@/features/premium/LimitCard';
+import { useHasPremium } from '@/features/premium/store';
 import { dueItems } from '@/engine/review';
 import { unitRef } from '@/features/content/catalog';
-import { useOnboarding } from '@/features/onboarding/store';
 import { useProgress } from '@/features/progress/store';
 import { FullScreen } from '@/features/shell/FullScreen';
 import { colors, fonts } from '@/theme/tokens';
@@ -23,8 +23,7 @@ export function NotebookScreen() {
   const today = dayKey(new Date());
   const notebook = useProgress((s) => s.notebook);
   const reviews = useProgress((s) => s.reviews);
-  const trialStartedAt = useOnboarding((s) => s.answers.trialStartedAt);
-  const premium = hasPremium(planState({ trialStartedAt }, today));
+  const premium = useHasPremium();
   const from = freeNotebookFrom(today);
   const entries = Object.values(notebook).sort((a, b) => (a.lastWrongOn < b.lastWrongOn ? 1 : -1));
   const visible = premium ? entries : entries.filter((e) => e.addedOn >= from);
@@ -60,12 +59,11 @@ export function NotebookScreen() {
         </Card>
       ))}
       {hidden > 0 ? (
-        <Card tone="paper" style={[s.row, { gap: 10 }]}>
-          <Text style={[s.body, { flex: 1, textAlign: 'left' }]}>
-            {hidden} {hidden === 1 ? 'error más antiguo' : 'errores más antiguos'} de 7 días. Todo el historial está en Premium.
-          </Text>
-          <PremiumTag />
-        </Card>
+        <LimitCard
+          title={`${hidden} ${hidden === 1 ? 'error más antiguo' : 'errores más antiguos'} de 7 días`}
+          free="Los errores de los últimos 7 días y su repaso siguen gratis. Todo el historial está en Premium."
+          compact
+        />
       ) : null}
     </FullScreen>
   );

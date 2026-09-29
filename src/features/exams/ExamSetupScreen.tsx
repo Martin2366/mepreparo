@@ -4,7 +4,7 @@ import { Alert, StyleSheet, View } from 'react-native';
 
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
-import { Chip, PremiumTag } from '@/components/ui/Chip';
+import { Chip } from '@/components/ui/Chip';
 import { Icon } from '@/components/ui/Icon';
 import { IconButton } from '@/components/ui/IconButton';
 import { Tappable } from '@/components/ui/Tappable';
@@ -12,11 +12,14 @@ import { Text } from '@/components/ui/Text';
 import { type ExamKind, type ExamSpec, PRESETS, realMinutes } from '@/engine/exam';
 import type { Feature } from '@/engine/entitlements';
 import { curriculum } from '@/features/content/catalog';
+import { LimitCard } from '@/features/premium/LimitCard';
+import { useHasPremium } from '@/features/premium/store';
 import { useAllowance } from '@/features/progress/allowance';
 import { Section } from '@/features/shell/TabScreen';
 import { FullScreen } from '@/features/shell/FullScreen';
 import { colors, fonts } from '@/theme/tokens';
 
+import { printNewExam } from './print';
 import { useExams } from './store';
 
 const FEATURE: Record<ExamKind, Feature> = { full: 'fullExam', mini: 'miniExam', thematic: 'customExam', custom: 'customExam' };
@@ -45,6 +48,7 @@ export function ExamSetupScreen({ kind, initialUnits = [] }: { kind: ExamKind; i
   const [timeMode, setTimeMode] = useState<TimeMode>('real');
   const [ownMinutes, setOwnMinutes] = useState(30);
   const info = INFO[kind];
+  const premium = useHasPremium();
 
   const spec = (): ExamSpec | null => {
     if (kind === 'full' || kind === 'mini') return { ...PRESETS[kind], title: info.title };
@@ -94,6 +98,15 @@ export function ExamSetupScreen({ kind, initialUnits = [] }: { kind: ExamKind; i
         <View style={{ gap: 6 }}>
           <Button label={allowance.ok ? 'Empezar' : 'No disponible por ahora'} arrow={allowance.ok} disabled={!s || !allowance.ok} onPress={begin} />
           {limitText ? <Text style={[s2.caption, { textAlign: 'center' }]}>{limitText}</Text> : null}
+          <Button
+            label={premium ? 'Imprimir en PDF con clavijero' : 'Imprimir en PDF · Premium'}
+            variant="ghost"
+            disabled={!s}
+            onPress={() => {
+              if (!premium) return router.push('/planes');
+              if (s) void printNewExam(s);
+            }}
+          />
         </View>
       }
     >
@@ -115,15 +128,10 @@ export function ExamSetupScreen({ kind, initialUnits = [] }: { kind: ExamKind; i
       </Card>
 
       {!allowance.ok ? (
-        <Card tone="paper" style={{ gap: 6 }}>
-          <View style={s2.row}>
-            <PremiumTag />
-            <Text style={s2.strong}>{allowance.max === 0 ? 'Este formato es de Premium' : 'Ya usaste el de este periodo'}</Text>
-          </View>
-          <Text style={s2.small}>
-            Las lecciones, la práctica y la explicación de cada error siguen gratis. Premium incluye ensayos sin límite, sin cobros sorpresa.
-          </Text>
-        </Card>
+        <LimitCard
+          title={allowance.max === 0 ? 'Este formato es de Premium' : allowance.per === 'month' ? 'Ya hiciste tu ensayo completo del mes' : 'Ya usaste el de esta semana'}
+          free="Las lecciones, la práctica y la explicación de cada error siguen gratis."
+        />
       ) : null}
 
       {kind === 'thematic' ? (

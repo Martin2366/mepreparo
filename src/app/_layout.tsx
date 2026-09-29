@@ -17,6 +17,9 @@ import { useEffect } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
+import { track } from '@/features/cloud/auth';
+import { startSync } from '@/features/cloud/sync';
+import { refreshCustomerInfo } from '@/features/premium/purchases';
 import { BadgeWatcher } from '@/features/progress/badges';
 import { initSentry, Sentry } from '@/lib/sentry';
 import { colors } from '@/theme/tokens';
@@ -38,6 +41,13 @@ function RootLayout() {
   useEffect(() => {
     if (loaded || error) SplashScreen.hideAsync();
   }, [loaded, error]);
+
+  // Nube y compras en segundo plano: nunca bloquean el arranque (local primero).
+  useEffect(() => {
+    startSync();
+    track('app_open');
+    void refreshCustomerInfo();
+  }, []);
 
   // Si una fuente falla, igual se muestra la app (con la fuente del sistema) en vez de quedar pegada en el splash.
   if (!loaded && !error) return null;

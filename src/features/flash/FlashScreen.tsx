@@ -4,14 +4,14 @@ import { Platform, StyleSheet, View } from 'react-native';
 import Animated, { ZoomIn } from 'react-native-reanimated';
 
 import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
-import { Chip, PremiumTag } from '@/components/ui/Chip';
+import { Chip } from '@/components/ui/Chip';
 import { Mascot } from '@/components/ui/Mascot';
 import { ProgressBar } from '@/components/ui/ProgressBar';
 import { Tappable } from '@/components/ui/Tappable';
 import { Text } from '@/components/ui/Text';
 import { DURATION_MS, flashQuestion, flashXp, levelFor, pointsFor } from '@/engine/flash';
 import { Shell } from '@/features/lesson-player/LessonScreen';
+import { LimitCard } from '@/features/premium/LimitCard';
 import { useAllowance } from '@/features/progress/allowance';
 import { useProgress } from '@/features/progress/store';
 import { goBack } from '@/lib/nav';
@@ -103,13 +103,7 @@ export function FlashScreen() {
         {allowance.ok ? (
           <Button label="¡Partir!" arrow onPress={start} />
         ) : (
-          <Card tone="paper" style={{ gap: 6 }}>
-            <View style={s.row}>
-              <PremiumTag />
-              <Text style={s.strong}>Hoy ya jugaste tu partida gratis</Text>
-            </View>
-            <Text style={s.small}>Mañana tienes otra. Con Premium juegas sin límite.</Text>
-          </Card>
+          <LimitCard title="Hoy ya jugaste tu partida gratis" free="Mañana tienes otra. Mientras, puedes practicar o seguir tu lección." compact />
         )}
       </Shell>
     );

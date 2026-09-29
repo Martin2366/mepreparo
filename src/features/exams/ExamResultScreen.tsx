@@ -11,16 +11,19 @@ import { Text } from '@/components/ui/Text';
 import { SKILL_LABEL, SKILLS } from '@/content/schema';
 import { questionOf } from '@/engine/exam';
 import { axisById } from '@/features/content/catalog';
+import { useHasPremium } from '@/features/premium/store';
 import { Section } from '@/features/shell/TabScreen';
 import { FullScreen } from '@/features/shell/FullScreen';
 import { colors, fonts } from '@/theme/tokens';
 
+import { printExam } from './print';
 import { useExams } from './store';
 
 const minutes = (ms: number) => Math.max(1, Math.round(ms / 60000));
 
 export function ExamResultScreen({ id }: { id: string }) {
   const history = useExams((s) => s.history);
+  const premium = useHasPremium();
   const record = history.find((r) => r.id === id);
   if (!record) return <FullScreen title="Resultados">{null}</FullScreen>;
   const { result } = record;
@@ -117,6 +120,11 @@ export function ExamResultScreen({ id }: { id: string }) {
       </Section>
 
       <Button label="Revisar desde la primera" arrow onPress={() => router.push({ pathname: '/ensayo/revision/[id]', params: { id, q: '0' } })} />
+      <Button
+        label={premium ? 'Imprimir este ensayo en PDF' : 'Imprimir en PDF · Premium'}
+        variant="ghost"
+        onPress={() => (premium ? printExam(record.spec.title, record.spec.minutes, record.questions) : router.push('/planes'))}
+      />
     </FullScreen>
   );
 }
